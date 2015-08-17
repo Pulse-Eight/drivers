@@ -6,13 +6,12 @@
   <model>neo:4 Professional</model>
   <created>08/14/2015 10:39 PM</created>
   <modified>08/14/2015 10:39 PM</modified>
-  <version>1</version>
+  <version>5</version>
   <small>devices_sm\receiver.gif</small>
   <large>devices_lg\receiver.gif</large>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
-  <templatedescription>AVSwitch Proxy Template</templatedescription>
   <search_types>
     <type>c4:av_gen</type>
   </search_types>
@@ -60,27 +59,172 @@
       </classes>
     </connection>
     <connection>
-      <id>6000</id>
-      <facing>1</facing>
-      <connectionname>Network</connectionname>
-      <type>4</type>
-      <consumer>True</consumer>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
-      <linelevel>True</linelevel>
+      <id>1000</id>
+      <type>5</type>
+      <connectionname>Input 1</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
       <classes>
         <class>
-          <classname>TCP</classname>
-          <ports>
-            <port>
-              <number>1000</number>
-              <auto_connect>True</auto_connect>
-              <monitor_connection>True</monitor_connection>
-              <keep_connection>True</keep_connection>
-            </port>
-          </ports>
+          <classname>HDMI</classname>
         </class>
       </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>1001</id>
+      <type>5</type>
+      <connectionname>Input 2</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>1002</id>
+      <type>5</type>
+      <connectionname>Input 3</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>1003</id>
+      <type>5</type>
+      <connectionname>Input 4</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2000</id>
+      <type>5</type>
+      <connectionname>Output 1</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2001</id>
+      <type>5</type>
+      <connectionname>Output 2</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2002</id>
+      <type>5</type>
+      <connectionname>Output 3</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2003</id>
+      <type>5</type>
+      <connectionname>Output 4</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7000</id>
+      <type>7</type>
+      <connectionname>Room 1</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7001</id>
+      <type>7</type>
+      <connectionname>Room 2</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7002</id>
+      <type>7</type>
+      <connectionname>Room 3</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7003</id>
+      <type>7</type>
+      <connectionname>Room 4</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
     </connection>
   </connections>
   <config>
@@ -92,6 +236,14 @@
     <documentation file="documentation.rtf" />
     <script file="driver.lua" />
     <properties>
+      <property>
+        <name>Device IP Address</name>
+        <type>STRING</type>
+        <readonly>false</readonly>
+        <default>www.gotomymatrix.com</default>
+        <tooltip>If you are unsure of the IP address of your matrix, enter www.gotomymatrix.com to be redirected</tooltip>
+        <description>The IP address of your neo matrix, the default valid will not work and is an easy way for you to discover the matrix ip. Enter www.gotomymatrix.com into your browser</description>
+      </property>
       <property>
         <name>Log Level</name>
         <type>LIST</type>
@@ -163,18 +315,6 @@
         <type>STRING</type>
         <readonly>true</readonly>
         <default>false</default>
-      </property>
-      <property>
-        <name>Driver Name</name>
-        <type>STRING</type>
-        <readonly>true</readonly>
-        <default>(Change Driver Name Property)</default>
-      </property>
-      <property>
-        <name>Max Volume</name>
-        <type>STRING</type>
-        <readonly>true</readonly>
-        <default>100</default>
       </property>
     </properties>
   </config>

@@ -9,6 +9,11 @@ if (TEMPLATE_VERSION ~= nil) then
 	TEMPLATE_VERSION.device_messages = "2015.03.31"
 end
 
+function GET_VIDEO_PATH(...)
+    LogTrace("Requesting current video path")
+end
+
+
 --=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 -- Power Functions
 --=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -79,18 +84,10 @@ end
 		input: mod 1000 value of Input Connection id
 --]]
 function SET_INPUT(idBinding, output, input)
-	local command
-	if (gControlMethod == "IR") then		
-		-- TODO: create packet/command to send to the device
-		command = tInputCommandMap_IR[output][tInputConnMapByID[input].Name]	
-	else
-		-- TODO: create packet/command to send to the device
-		--Edit the Input Selection command syntax based upon the protocol specification
-		--if the tables referenced below are set up properly them no editing may be necessary 	
-		command = tOutputCommandMap[output] .. tInputCommandMap[tInputConnMapByID[input].Name] 
-	end 		
-	LogTrace("command = " .. command)
-	PackAndQueueCommand("SET_INPUT", command)
+    local ip = Properties["Device IP Address"] or ""
+    local uri = "http://" .. ip .. "/Port/Set/" .. input .. "/" .. output
+    LogTrace("Routing URI = " .. uri)
+    C4:urlGet(uri)
 end
 
 --=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
