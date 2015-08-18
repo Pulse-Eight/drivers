@@ -1,0 +1,492 @@
+<devicedata>
+  <copyright>Copyright 2015 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <creator>Pulse-Eight</creator>
+  <manufacturer>Pulse-Eight</manufacturer>
+  <name>neo:8 Modular IP Driver</name>
+  <model>neo:8 Modular</model>
+  <created>08/14/2015 10:39 PM</created>
+  <modified>08/14/2015 10:39 PM</modified>
+  <version>1</version>
+  <small>devices_sm\receiver.gif</small>
+  <large>devices_lg\receiver.gif</large>
+  <control>lua_gen</control>
+  <controlmethod>ip</controlmethod>
+  <driver>DriverWorks</driver>
+  <search_types>
+    <type>c4:av_gen</type>
+  </search_types>
+  <proxies>
+    <proxy proxybindingid="5001" name="neo:8 Modular">avswitch</proxy>
+  </proxies>
+  <capabilities>
+    <audio_consumer_count>0</audio_consumer_count>
+    <audio_provider_count>0</audio_provider_count>
+    <can_downclass>False</can_downclass>
+    <can_switch>True</can_switch>
+    <can_upclass>True</can_upclass>
+    <has_audio_sense_control>False</has_audio_sense_control>
+    <has_discrete_balance_control>False</has_discrete_balance_control>
+    <has_discrete_bass_control>False</has_discrete_bass_control>
+    <has_discrete_input_select>True</has_discrete_input_select>
+    <has_discrete_loudness_control>False</has_discrete_loudness_control>
+    <has_discrete_mute_control>True</has_discrete_mute_control>
+    <has_discrete_treble_control>False</has_discrete_treble_control>
+    <has_discrete_volume_control>True</has_discrete_volume_control>
+    <has_toad_input_select>False</has_toad_input_select>
+    <has_toggle_loudness_control>False</has_toggle_loudness_control>
+    <has_toggle_mute_control>True</has_toggle_mute_control>
+    <has_up_down_balance_control>False</has_up_down_balance_control>
+    <has_up_down_bass_control>False</has_up_down_bass_control>
+    <has_up_down_treble_control>False</has_up_down_treble_control>
+    <has_video_sense_control>False</has_video_sense_control>
+    <video_consumer_count>8</video_consumer_count>
+    <video_provider_count>8</video_provider_count>
+    <can_switch_separately>True</can_switch_separately>
+    <requires_separate_switching>True</requires_separate_switching>
+    <has_up_down_volume_control>false</has_up_down_volume_control>
+  </capabilities>
+  <connections>
+    <connection>
+      <id>5001</id>
+      <type>2</type>
+      <connectionname>AVSWITCH</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>AVSWITCH</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>1000</id>
+      <type>5</type>
+      <connectionname>Input 1</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>1001</id>
+      <type>5</type>
+      <connectionname>Input 2</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>1002</id>
+      <type>5</type>
+      <connectionname>Input 3</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>1003</id>
+      <type>5</type>
+      <connectionname>Input 4</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>1004</id>
+      <type>5</type>
+      <connectionname>Input 5</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>1005</id>
+      <type>5</type>
+      <connectionname>Input 6</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>1006</id>
+      <type>5</type>
+      <connectionname>Input 7</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>1007</id>
+      <type>5</type>
+      <connectionname>Input 8</connectionname>
+      <consumer>true</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2000</id>
+      <type>5</type>
+      <connectionname>Output 1</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2001</id>
+      <type>5</type>
+      <connectionname>Output 2</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2002</id>
+      <type>5</type>
+      <connectionname>Output 3</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2003</id>
+      <type>5</type>
+      <connectionname>Output 4</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2004</id>
+      <type>5</type>
+      <connectionname>Output 5</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2005</id>
+      <type>5</type>
+      <connectionname>Output 6</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2006</id>
+      <type>5</type>
+      <connectionname>Output 7</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>2007</id>
+      <type>5</type>
+      <connectionname>Output 8</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7000</id>
+      <type>7</type>
+      <connectionname>Room 1</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7001</id>
+      <type>7</type>
+      <connectionname>Room 2</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7002</id>
+      <type>7</type>
+      <connectionname>Room 3</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7003</id>
+      <type>7</type>
+      <connectionname>Room 4</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7004</id>
+      <type>7</type>
+      <connectionname>Room 5</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7005</id>
+      <type>7</type>
+      <connectionname>Room 6</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7006</id>
+      <type>7</type>
+      <connectionname>Room 7</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+    <connection>
+      <id>7007</id>
+      <type>7</type>
+      <connectionname>Room 8</connectionname>
+      <consumer>false</consumer>
+      <linelevel>true</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+      <facing>1</facing>
+    </connection>
+  </connections>
+  <config>
+    <power_management_method>AlwaysOn</power_management_method>
+    <power_command_delay>0</power_command_delay>
+    <power_delay>0</power_delay>
+    <power_command_needed>False</power_command_needed>
+    <serialsettings>9600 8 none 1 none 232</serialsettings>
+    <documentation file="documentation.rtf" />
+    <script file="driver.lua" />
+    <properties>
+      <property>
+        <name>Device IP Address</name>
+        <type>STRING</type>
+        <readonly>false</readonly>
+        <default>www.gotomymatrix.com</default>
+        <tooltip>If you are unsure of the IP address of your matrix, enter www.gotomymatrix.com to be redirected</tooltip>
+        <description>The IP address of your neo matrix, the default valid will not work and is an easy way for you to discover the matrix ip. Enter www.gotomymatrix.com into your browser</description>
+      </property>
+      <property>
+        <name>Log Level</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>2 - Warning</default>
+        <items>
+          <item>0 - Alert</item>
+          <item>1 - Error</item>
+          <item>2 - Warning</item>
+          <item>3 - Info</item>
+          <item>4 - Trace</item>
+          <item>5 - Debug</item>
+        </items>
+      </property>
+      <property>
+        <name>Log Mode</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Off</default>
+        <items>
+          <item>Off</item>
+          <item>Print</item>
+          <item>Log</item>
+          <item>Print and Log</item>
+        </items>
+      </property>
+      <property>
+        <name>Command Delay Milliseconds</name>
+        <type>RANGED_INTEGER</type>
+        <readonly>false</readonly>
+        <default>250</default>
+        <minimum>200</minimum>
+        <maximum>2500</maximum>
+      </property>
+      <property>
+        <name>Power On Delay Seconds</name>
+        <type>RANGED_INTEGER</type>
+        <readonly>false</readonly>
+        <default>10</default>
+        <minimum>1</minimum>
+        <maximum>30</maximum>
+      </property>
+      <property>
+        <name>Power Off Delay Seconds</name>
+        <type>RANGED_INTEGER</type>
+        <readonly>false</readonly>
+        <default>2</default>
+        <minimum>1</minimum>
+        <maximum>5</maximum>
+      </property>
+      <property>
+        <name>Volume Ramp Delay Milliseconds</name>
+        <type>RANGED_INTEGER</type>
+        <readonly>false</readonly>
+        <default>200</default>
+        <minimum>200</minimum>
+        <maximum>500</maximum>
+      </property>
+      <property>
+        <name>NetworkKeepAliveIntervalSeconds</name>
+        <type>RANGED_INTEGER</type>
+        <readonly>false</readonly>
+        <default>30</default>
+        <minimum>15</minimum>
+        <maximum>120</maximum>
+      </property>
+      <property>
+        <name>Connected To Network</name>
+        <type>STRING</type>
+        <readonly>true</readonly>
+        <default>false</default>
+      </property>
+    </properties>
+  </config>
+  <composer_categories>
+    <category>Audio/Video</category>
+  </composer_categories>
+</devicedata>
