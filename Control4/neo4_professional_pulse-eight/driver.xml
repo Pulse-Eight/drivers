@@ -294,6 +294,12 @@
         <readonly>true</readonly>
         <default>Unknown</default>
       </property>
+	  <property>
+        <name>System Uptime</name>
+        <type>STRING</type>
+        <readonly>true</readonly>
+        <default>Unknown</default>
+      </property>
     </properties>
   </config>
   <composer_categories>

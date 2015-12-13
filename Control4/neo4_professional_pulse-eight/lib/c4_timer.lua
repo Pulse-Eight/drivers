@@ -92,7 +92,6 @@ end
     idTimer(string) - Timer ID of expired timer.
 ===============================================================================]]
 function OnTimerExpired(idTimer)
-    LogTrace("Timer Expired: " .. idTimer)
 	for k,v in pairs(gTimerLibTimers) do
 		if (idTimer == v._id) then
 			if (v._Callback) then

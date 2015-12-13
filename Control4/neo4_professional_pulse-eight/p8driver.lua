@@ -16,10 +16,11 @@ MAX_OUTPUTS = 4
 --Init Functions
 
 local gP8RoutingUpdateTimer
+local gP8DetailsTimer
 local gP8HealthTimer
 
 function ON_DRIVER_EARLY_INIT.main()
-    
+    C4:AddVariable("Temp0", 0, "NUMBER")
 end
 
 function ON_DRIVER_INIT.main()
@@ -27,6 +28,12 @@ function ON_DRIVER_INIT.main()
     gP8RoutingUpdateTimer:StartTimer()
     gP8DetailsTimer = c4_timer:new("Details Update", 10, "SECONDS", DetailsUpdateTimer, true)
     gP8DetailsTimer:StartTimer()
+    gP8HealthTimer = c4_timer:new("Health Update", 1, "MINUTES", HealthUpdateTimer, true)
+    gP8HealthTimer:StartTimer()
+    --Call once to set initial states
+    RoutingUpdateTimer()
+    DetailsUpdateTimer()
+    HealthUpdateTimer()
 end
 
 function RoutingUpdateTimer()
@@ -35,4 +42,8 @@ end
 
 function DetailsUpdateTimer()
     P8INT:GET_DETAILS(DEFAULT_PROXY_BINDINGID)
+end
+
+function HealthUpdateTimer()
+    P8INT:GET_HEALTH(DEFAULT_PROXY_BINDINGID)
 end
