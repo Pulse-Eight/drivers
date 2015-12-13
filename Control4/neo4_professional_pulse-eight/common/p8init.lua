@@ -1,38 +1,61 @@
---[[=============================================================================
-    Initial driver initialization and destruction functions
+require "common.p8declares"
+require "common.p8properties"
 
-    Copyright 2015 Control4 Corporation. All Rights Reserved.
-===============================================================================]]
-require "common.c4_driver_declarations"
-require "common.c4_property"
+require "lib.c4_log"
+require "lib.c4_timer"
 
--- Set template version for this file
-if (TEMPLATE_VERSION ~= nil) then
-	TEMPLATE_VERSION.c4_init = "2015.03.02"
+gForceLogging = false
+
+function ON_DRIVER_INIT.p8init()
+	-- Create Log Timer
+	gC4LogTimer = c4_timer:new("Log Timer", 45, "MINUTES", OnLogTimerExpired)
 end
 
---[[=============================================================================
-    OnDriverInit()
+function OnLogTimerExpired()
+	LogWarn("Turning Log Mode Off (timer expired)")
+	gC4LogTimer:KillTimer()
+	
+	C4:UpdateProperty("Log Mode", "Off")
+	OnPropertyChanged("Log Mode")
+end
 
-    Description
-    Invoked by director when a driver is loaded. This API is provided for the
-    driver developer to contain all of the driver objects that will require
-    initialization.
+function ON_PROPERTY_CHANGED.LogMode(propertyValue)
+	gC4LogTimer:KillTimer()
+	
+	if (gForceLogging) then
+		LOG:OutputPrint(true)
+		LOG:OutputC4Log(true)
+	else
+		LOG:OutputPrint(propertyValue:find("Print") ~= nil)
+		LOG:OutputC4Log(propertyValue:find("Log") ~= nil)
+		if (propertyValue == "Off") then
+			return
+		end
+		
+		gC4LogTimer:StartTimer()
+	end
+end
 
-    Parameters
-    None
+function ON_PROPERTY_CHANGED.LogLevel(propertyValue)
+	if (gForceLogging) then
+		LOG:SetLogLevel("5 - Debug")
+	else
+		LOG:SetLogLevel(propertyValue)
+	end
+end
 
-    Returns
-    Nothing
-===============================================================================]]
+
+-- Main calls from the Director
+
 function OnDriverInit()
-	gInitializingDriver = true
-	C4:ErrorLog("INIT_CODE: OnDriverInit()")
+    gInitializingDriver = true
+    C4:ErrorLog("INIT_CODE: OnDriverInit()")
 
 	-- Call all ON_DRIVER_EARLY_INIT functions.
 	for k,v in pairs(ON_DRIVER_EARLY_INIT) do
 		if (ON_DRIVER_EARLY_INIT[k] ~= nil and type(ON_DRIVER_EARLY_INIT[k]) == "function") then
 			C4:ErrorLog("INIT_CODE: ON_DRIVER_EARLY_INIT." .. k .. "()")
+			print("INIT_CODE: ON_DRIVER_EARLY_INIT." .. k .. "()")
 			local status, err = pcall(ON_DRIVER_EARLY_INIT[k])
 			if (not status) then
 				LogError("LUA_ERROR: " .. err)
@@ -44,6 +67,7 @@ function OnDriverInit()
 	for k,v in pairs(ON_DRIVER_INIT) do
 		if (ON_DRIVER_INIT[k] ~= nil and type(ON_DRIVER_INIT[k]) == "function") then
 			C4:ErrorLog("INIT_CODE: ON_DRIVER_INIT." .. k .. "()")
+			print("INIT_CODE: ON_DRIVER_INIT." .. k .. "()")
 			local status, err = pcall(ON_DRIVER_INIT[k])
 			if (not status) then
 				LogError("LUA_ERROR: " .. err)
@@ -64,21 +88,6 @@ function OnDriverInit()
 	gInitializingDriver = false
 end
 
---[[=============================================================================
-    OnDriverLateInit()
-
-    Description
-    Invoked by director after all drivers in the project have been loaded. This
-    API is provided for the driver developer to contain all of the driver
-    objects that will require initialization after all drivers in the project
-    have been loaded.
-
-    Parameters
-    None
-
-    Returns
-    Nothing
-===============================================================================]]
 function OnDriverLateInit()
 	C4:ErrorLog("INIT_CODE: OnDriverLateInit()")
 	
@@ -91,18 +100,6 @@ function OnDriverLateInit()
 	end
 end
 
-
---[[=============================================================================
-    OnDriverDestroyed()
-    Function called by Director when a driver is removed. Release things this
-    driver has allocated such as timers.
-
-    Parameters
-    None
-
-    Returns
-    Nothing
-===============================================================================]]
 function OnDriverDestroyed()
 	C4:ErrorLog("INIT_CODE: OnDriverDestroyed()")
 	

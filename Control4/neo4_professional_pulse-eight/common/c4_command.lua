@@ -3,12 +3,7 @@
 
     Copyright 2015 Control4 Corporation. All Rights Reserved.
 ===============================================================================]]
-require "common.c4_driver_declarations"
-
--- Set template version for this file
-if (TEMPLATE_VERSION ~= nil) then
-	TEMPLATE_VERSION.c4_command = "2015.03.02"
-end
+require "common.p8declares"
 
 --[[=============================================================================
     ExecuteCommand(sCommand, tParams)
@@ -74,45 +69,6 @@ function EX_CMD.LUA_ACTION(tParams)
 				end
 				break
 			end
-		end
-	end
-end
-
---[[=============================================================================
-    ReceivedFromProxy(idBinding, sCommand, tParams)
-
-    Description
-    Function called for any actions executed by the user from the Actions Tab
-    in Composer.
-
-    Parameters
-    idBinding(int)   - Binding ID of the proxy that sent a BindMessage to the
-                       DriverWorks driver.
-    sCommand(string) - Command that was sent
-    tParams(table)   - Lua table of received command parameters
-
-    Returns
-    Nothing
-===============================================================================]]
-function ReceivedFromProxy(idBinding, sCommand, tParams)
-
-	if (sCommand ~= nil) then
-
-		-- initial table variable if nil
-		if (tParams == nil) then
-			tParams = {}
-		end
-		
-		LogTrace("ReceivedFromProxy(): " .. sCommand .. " on binding " .. idBinding .. "; Call Function PRX_CMD." .. sCommand .. "()")
-		LogInfo(tParams)
-
-		if ((PRX_CMD[sCommand]) ~= nil) then
-			local status, err = pcall(PRX_CMD[sCommand], idBinding, tParams)
-			if (not status) then
-				LogError("LUA_ERROR: " .. err)
-			end
-		else
-			LogInfo("ReceivedFromProxy: Unhandled command = " .. sCommand)
 		end
 	end
 end

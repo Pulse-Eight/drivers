@@ -4,11 +4,6 @@
     Copyright 2015 Control4 Corporation. All Rights Reserved.
 ===============================================================================]]
 
--- Set template version for this file
-if (TEMPLATE_VERSION ~= nil) then
-	TEMPLATE_VERSION.c4_object = "2015.03.02"
-end
-
 function inheritsFrom( baseClass )
 	local new_class = {}
 	local class_mt = { __index = new_class }

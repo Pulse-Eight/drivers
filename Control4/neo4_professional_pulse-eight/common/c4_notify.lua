@@ -3,12 +3,7 @@
 
     Copyright 2015 Control4 Corporation. All Rights Reserved.
 ===============================================================================]]
-require "common.c4_driver_declarations"
-
--- Set template version for this file
-if (TEMPLATE_VERSION ~= nil) then
-	TEMPLATE_VERSION.c4_notify = "2015.03.02"
-end
+require "common.p8declares"
 
 --[[=============================================================================
     SendNotify(notifyText, tParams, bindingID)

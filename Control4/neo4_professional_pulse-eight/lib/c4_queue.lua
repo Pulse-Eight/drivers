@@ -3,13 +3,8 @@
 
     Copyright 2015 Control4 Corporation. All Rights Reserved.
 ===============================================================================]]
-require "common.c4_driver_declarations"
+require "common.p8init"
 require "lib.c4_object"
-
--- Set template version for this file
-if (TEMPLATE_VERSION ~= nil) then
-	TEMPLATE_VERSION.c4_queue = "2015.03.02"
-end
 
 c4_queue = inheritsFrom(nil)
 

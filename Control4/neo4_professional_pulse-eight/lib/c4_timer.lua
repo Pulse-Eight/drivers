@@ -3,13 +3,8 @@
 
     Copyright 2015 Control4 Corporation. All Rights Reserved.
 ===============================================================================]]
-require "common.c4_driver_declarations"
+require "common.p8declares"
 require "lib.c4_object"
-
--- Set template version for this file
-if (TEMPLATE_VERSION ~= nil) then
-	TEMPLATE_VERSION.c4_timer = "2015.03.02"
-end
 
 c4_timer = inheritsFrom(nil)
 
@@ -97,6 +92,7 @@ end
     idTimer(string) - Timer ID of expired timer.
 ===============================================================================]]
 function OnTimerExpired(idTimer)
+    LogTrace("Timer Expired: " .. idTimer)
 	for k,v in pairs(gTimerLibTimers) do
 		if (idTimer == v._id) then
 			if (v._Callback) then
