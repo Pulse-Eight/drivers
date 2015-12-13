@@ -25,14 +25,14 @@ end
 function ON_DRIVER_INIT.main()
     gP8RoutingUpdateTimer = c4_timer:new("Routing Update", 15, "SECONDS", RoutingUpdateTimer, true)
     gP8RoutingUpdateTimer:StartTimer()
-    gP8HealthTimer = c4_timer:new("Health Update", 10, "SECONDS", HealthUpdateTimer, true)
-    gP8HealthTimer:StartTimer()
+    gP8DetailsTimer = c4_timer:new("Details Update", 10, "SECONDS", DetailsUpdateTimer, true)
+    gP8DetailsTimer:StartTimer()
 end
 
 function RoutingUpdateTimer()
     P8INT:GET_ROUTING(DEFAULT_PROXY_BINDINGID)
 end
 
-function HealthUpdateTimer()
-    P8INT:GET_HEALTH(DEFAULT_PROXY_BINDINGID)
+function DetailsUpdateTimer()
+    P8INT:GET_DETAILS(DEFAULT_PROXY_BINDINGID)
 end

@@ -1,7 +1,7 @@
 require "lib.json"
 
-function P8INT:GET_HEALTH(idBinding)
-    LogTrace("Updating System Health")
+function P8INT:GET_DETAILS(idBinding)
+    LogTrace("Updating System Details")
     local uri = P8INT:GET_MATRIX_URL() .. "/System/Details"
     C4:urlGet(uri, {}, false, 
 	   function(ticketId, strData, responseCode, tHeaders, strError)
