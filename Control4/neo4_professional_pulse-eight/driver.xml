@@ -229,12 +229,20 @@
     </connection>
   </connections>
   <config>
-	<actions>
-		<action>
-			<name>Reboot System</name>
-			<command>REBOOT</command>
-		</action>
-	</actions>
+    <actions>
+      <action>
+        <name>Reboot System</name>
+        <command>REBOOT</command>
+      </action>
+      <action>
+        <name>Discover System</name>
+        <command>DISCOVER</command>
+      </action>
+      <action>
+        <name>Send Monitoring Pulse</name>
+        <command>SENDPULSE</command>
+      </action>
+    </actions>
     <power_management_method>AlwaysOn</power_management_method>
     <power_command_delay>0</power_command_delay>
     <power_delay>0</power_delay>
@@ -247,9 +255,9 @@
         <name>Device IP Address</name>
         <type>STRING</type>
         <readonly>false</readonly>
-        <default>www.gotomymatrix.com</default>
-        <tooltip>If you are unsure of the IP address of your matrix, enter www.gotomymatrix.com to be redirected</tooltip>
-        <description>The IP address of your neo matrix, the default valid will not work and is an easy way for you to discover the matrix ip. Enter www.gotomymatrix.com into your browser</description>
+        <default>[Goto Action Tab and Click Discover System]</default>
+        <tooltip>If you are unsure of the IP address of your matrix, enter www.gotomymatrix.com to be redirected to the web UI, copy the IP from your browser into this box</tooltip>
+        <description>The IP address of your neo matrix, this in many cases can be auto discovered via the action tab button "Discover System". If this fails, enter www.gotomymatrix.com into your browser for more information.</description>
       </property>
       <property>
         <name>Log Level</name>
@@ -289,6 +297,14 @@
         <readonly>true</readonly>
         <default>Unknown</default>
       </property>
+	  <property>
+        <name>Installer Id</name>
+        <type>RANGED_INTEGER</type>
+		<minimum>1000</minimum>
+		<maximum>9999</maximum>
+        <readonly>false</readonly>
+        <default>9999</default>
+      </property>
       <property>
         <name>Model</name>
         <type>STRING</type>
@@ -302,6 +318,12 @@
         <default>Unknown</default>
       </property>
 	  <property>
+        <name>Serial</name>
+        <type>STRING</type>
+        <readonly>true</readonly>
+        <default>Unknown</default>
+      </property>
+      <property>
         <name>System Uptime</name>
         <type>STRING</type>
         <readonly>true</readonly>

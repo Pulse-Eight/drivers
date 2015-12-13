@@ -3,10 +3,11 @@ require "common.p8init"
 require "common.p8core"
 require "common.c4_command"
 require "common.c4_notify"
-require "common.c4_diagnostics" --DEBUG
+--require "common.c4_diagnostics" --DEBUG
 require "p8proxy"
 require "p8system"
 require "p8routing"
+require "p8monitoring"
 
 --Defines
 

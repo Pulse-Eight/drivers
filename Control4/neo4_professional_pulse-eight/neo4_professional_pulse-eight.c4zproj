@@ -9,5 +9,6 @@
   <Item type="file" name="p8routing.lua" />
   <Item type="file" name="p8system.lua" />
   <Item type="file" name="p8driver.lua" />
+  <Item type="file" name="p8monitoring.lua" />
  </Items>
 </Driver>

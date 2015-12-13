@@ -9,6 +9,7 @@ function P8INT:GET_DETAILS(idBinding)
 			 LogWarn("Unable to connect to system")
 			 LogWarn("Error = " .. strError)
 			 LogWarn("Response Code = " .. responseCode)
+			 UpdateProperty("Connected To Network", "No")
 			 UpdateProperty("System Status", "Unable to connect to system")
 			 return
 		  end
@@ -17,6 +18,7 @@ function P8INT:GET_DETAILS(idBinding)
 			 UpdateProperty("System Status", jsonResponse.StatusMessage)
 			 UpdateProperty("Connected To Network", "Yes")
 			 UpdateProperty("Version", jsonResponse.Version)
+			 UpdateProperty("Serial", jsonResponse.Serial)
 			 if jsonResponse.Model == "FFMB44" then
 				UpdateProperty("Model", "neo:4 Basic")
 			 elseif jsonResponse.Model == "FFMS44" then
@@ -27,6 +29,7 @@ function P8INT:GET_DETAILS(idBinding)
 		  else
 			 UpdateProperty("Model", "Unknown")
 			 UpdateProperty("Version", "Unknown")
+			 UpdateProperty("Serial", "Unknown")
 			 UpdateProperty("Connected To Network", "No")
 			 UpdateProperty("System Status", jsonResponse.ErrorMessage)
 		  end
@@ -42,6 +45,7 @@ function P8INT:GET_HEALTH(idBinding)
 			 LogWarn("Unable to connect to system")
 			 LogWarn("Error = " .. strError)
 			 LogWarn("Response Code = " .. responseCode)
+			 UpdateProperty("System Uptime", "Unknown")
 			 return
 		  end
 		  local jsonResponse = JSON:decode(strData)

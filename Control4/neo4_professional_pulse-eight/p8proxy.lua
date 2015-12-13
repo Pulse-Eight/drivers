@@ -64,5 +64,9 @@ end
 function EX_CMD.LUA_ACTION(tParams)
     if tParams["ACTION"] == "REBOOT" then
 	   P8INT:REBOOT()
+    elseif tParams["ACTION"] == "DISCOVER" then
+	   P8INT:DISCOVER()
+    elseif tParams["ACTION"] == "SENDPULSE" then
+	   P8INT:SEND_PULSE()
     end
 end
