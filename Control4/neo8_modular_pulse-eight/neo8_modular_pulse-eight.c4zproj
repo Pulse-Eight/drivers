@@ -1,18 +1,14 @@
 ﻿<Driver type="c4z" name="neo8_modular_pulse-eight">
  <Items>
-  <Item type="dir" c4zDir="avswitch" name="avswitch" recurse="true" exclude="false" />
+  <Item type="dir" c4zDir="assets" name="assets" recurse="true" exclude="false" />
   <Item type="dir" c4zDir="common" name="common" recurse="true" exclude="false" />
   <Item type="dir" c4zDir="lib" name="lib" recurse="true" exclude="false" />
-  <Item type="file" name="actions.lua" />
-  <Item type="file" name="avswitch_init.lua" />
-  <Item type="file" name="connections.lua" />
-  <Item type="file" name="device_messages.lua" />
-  <Item type="file" name="device_specific_commands.lua" />
   <Item type="file" name="documentation.rtf" />
-  <Item type="file" name="driver.lua" />
   <Item type="file" name="driver.xml" />
-  <Item type="file" name="properties.lua" />
-  <Item type="file" name="proxy_commands.lua" />
-  <Item type="file" name="template documentation.rtf" exclude="true" />
+  <Item type="file" name="p8proxy.lua" />
+  <Item type="file" name="p8routing.lua" />
+  <Item type="file" name="p8system.lua" />
+  <Item type="file" name="p8driver.lua" />
+  <Item type="file" name="p8monitoring.lua" />
  </Items>
 </Driver>

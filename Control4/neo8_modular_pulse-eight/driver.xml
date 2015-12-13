@@ -5,10 +5,11 @@
   <name>neo:8 Modular IP Driver</name>
   <model>neo:8 Modular</model>
   <created>08/14/2015 10:39 PM</created>
-  <modified>08/14/2015 10:39 PM</modified>
-  <version>1</version>
-  <small>devices_sm\receiver.gif</small>
-  <large>devices_lg\receiver.gif</large>
+  <modified>12/12/2015 3:58 PM</modified>
+  <OnlineCategory>AVSwitch</OnlineCategory>
+  <version>29</version>
+  <small>assets\neo_sm.gif</small>
+  <large>assets\neo_lg.gif</large>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
@@ -23,26 +24,26 @@
     <audio_provider_count>0</audio_provider_count>
     <can_downclass>False</can_downclass>
     <can_switch>True</can_switch>
-    <can_upclass>True</can_upclass>
+    <can_upclass>False</can_upclass>
     <has_audio_sense_control>False</has_audio_sense_control>
     <has_discrete_balance_control>False</has_discrete_balance_control>
     <has_discrete_bass_control>False</has_discrete_bass_control>
     <has_discrete_input_select>True</has_discrete_input_select>
     <has_discrete_loudness_control>False</has_discrete_loudness_control>
-    <has_discrete_mute_control>True</has_discrete_mute_control>
+    <has_discrete_mute_control>False</has_discrete_mute_control>
     <has_discrete_treble_control>False</has_discrete_treble_control>
-    <has_discrete_volume_control>True</has_discrete_volume_control>
+    <has_discrete_volume_control>False</has_discrete_volume_control>
     <has_toad_input_select>False</has_toad_input_select>
     <has_toggle_loudness_control>False</has_toggle_loudness_control>
-    <has_toggle_mute_control>True</has_toggle_mute_control>
+    <has_toggle_mute_control>False</has_toggle_mute_control>
     <has_up_down_balance_control>False</has_up_down_balance_control>
     <has_up_down_bass_control>False</has_up_down_bass_control>
     <has_up_down_treble_control>False</has_up_down_treble_control>
     <has_video_sense_control>False</has_video_sense_control>
     <video_consumer_count>8</video_consumer_count>
     <video_provider_count>8</video_provider_count>
-    <can_switch_separately>True</can_switch_separately>
-    <requires_separate_switching>True</requires_separate_switching>
+    <can_switch_separately>false</can_switch_separately>
+    <requires_separate_switching>false</requires_separate_switching>
     <has_up_down_volume_control>false</has_up_down_volume_control>
   </capabilities>
   <connections>
@@ -396,21 +397,35 @@
     </connection>
   </connections>
   <config>
+    <actions>
+      <action>
+        <name>Reboot System</name>
+        <command>REBOOT</command>
+      </action>
+      <action>
+        <name>Discover System</name>
+        <command>DISCOVER</command>
+      </action>
+      <action>
+        <name>Send Monitoring Pulse</name>
+        <command>SENDPULSE</command>
+      </action>
+    </actions>
     <power_management_method>AlwaysOn</power_management_method>
     <power_command_delay>0</power_command_delay>
     <power_delay>0</power_delay>
     <power_command_needed>False</power_command_needed>
     <serialsettings>9600 8 none 1 none 232</serialsettings>
     <documentation file="documentation.rtf" />
-    <script file="driver.lua" />
+    <script file="p8driver.lua" />
     <properties>
       <property>
         <name>Device IP Address</name>
         <type>STRING</type>
         <readonly>false</readonly>
-        <default>www.gotomymatrix.com</default>
-        <tooltip>If you are unsure of the IP address of your matrix, enter www.gotomymatrix.com to be redirected</tooltip>
-        <description>The IP address of your neo matrix, the default valid will not work and is an easy way for you to discover the matrix ip. Enter www.gotomymatrix.com into your browser</description>
+        <default>[Goto Action Tab and Click Discover System]</default>
+        <tooltip>If you are unsure of the IP address of your matrix, enter www.gotomymatrix.com to be redirected to the web UI, copy the IP from your browser into this box</tooltip>
+        <description>The IP address of your neo matrix, this in many cases can be auto discovered via the action tab button "Discover System". If this fails, enter www.gotomymatrix.com into your browser for more information.</description>
       </property>
       <property>
         <name>Log Level</name>
@@ -439,50 +454,48 @@
         </items>
       </property>
       <property>
-        <name>Command Delay Milliseconds</name>
-        <type>RANGED_INTEGER</type>
-        <readonly>false</readonly>
-        <default>250</default>
-        <minimum>200</minimum>
-        <maximum>2500</maximum>
-      </property>
-      <property>
-        <name>Power On Delay Seconds</name>
-        <type>RANGED_INTEGER</type>
-        <readonly>false</readonly>
-        <default>10</default>
-        <minimum>1</minimum>
-        <maximum>30</maximum>
-      </property>
-      <property>
-        <name>Power Off Delay Seconds</name>
-        <type>RANGED_INTEGER</type>
-        <readonly>false</readonly>
-        <default>2</default>
-        <minimum>1</minimum>
-        <maximum>5</maximum>
-      </property>
-      <property>
-        <name>Volume Ramp Delay Milliseconds</name>
-        <type>RANGED_INTEGER</type>
-        <readonly>false</readonly>
-        <default>200</default>
-        <minimum>200</minimum>
-        <maximum>500</maximum>
-      </property>
-      <property>
-        <name>NetworkKeepAliveIntervalSeconds</name>
-        <type>RANGED_INTEGER</type>
-        <readonly>false</readonly>
-        <default>30</default>
-        <minimum>15</minimum>
-        <maximum>120</maximum>
-      </property>
-      <property>
         <name>Connected To Network</name>
         <type>STRING</type>
         <readonly>true</readonly>
-        <default>false</default>
+        <default>No</default>
+      </property>
+      <property>
+        <name>System Status</name>
+        <type>STRING</type>
+        <readonly>true</readonly>
+        <default>Unknown</default>
+      </property>
+	  <property>
+        <name>Installer Id</name>
+        <type>RANGED_INTEGER</type>
+		<minimum>1000</minimum>
+		<maximum>9999</maximum>
+        <readonly>false</readonly>
+        <default>9999</default>
+      </property>
+      <property>
+        <name>Model</name>
+        <type>STRING</type>
+        <readonly>true</readonly>
+        <default>Unknown</default>
+      </property>
+      <property>
+        <name>Version</name>
+        <type>STRING</type>
+        <readonly>true</readonly>
+        <default>Unknown</default>
+      </property>
+	  <property>
+        <name>Serial</name>
+        <type>STRING</type>
+        <readonly>true</readonly>
+        <default>Unknown</default>
+      </property>
+      <property>
+        <name>System Uptime</name>
+        <type>STRING</type>
+        <readonly>true</readonly>
+        <default>Unknown</default>
       </property>
     </properties>
   </config>
