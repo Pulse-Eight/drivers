@@ -20,8 +20,8 @@ require "common.p8declares"
     Nothing
 ===============================================================================]]
 function ExecuteCommand(sCommand, tParams)
-	LogTrace("ExecuteCommand(" .. sCommand .. ")")
-	LogInfo(tParams)
+	--LogTrace("ExecuteCommand(" .. sCommand .. ")")
+	--LogInfo(tParams)
 
 	-- Remove any spaces (trim the command)
 	local trimmedCommand = string.gsub(sCommand, " ", "")

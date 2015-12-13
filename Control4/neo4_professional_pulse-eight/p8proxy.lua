@@ -60,3 +60,9 @@ end
 function PRX_CMD.GET_AUDIO_PATH(idBinding, tParams)
     P8INT:GET_ROUTING(idBinding, tParams)
 end
+
+function EX_CMD.LUA_ACTION(tParams)
+    if tParams["ACTION"] == "REBOOT" then
+	   P8INT:REBOOT()
+    end
+end
