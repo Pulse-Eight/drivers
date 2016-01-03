@@ -1,0 +1,25 @@
+DRIVER_ID			= AUDIO_ZONECTLR_GENDRIVE_LUA_NETWORK
+DRIVER_VERSION		= 1.0.0
+VENDOR				= Pulse-Eight
+DRIVER_NAME			= neo 4 Professional
+LUA_SRC				= neo_4_Professional.lua
+SCHEMA				= 3
+
+VOLUME_MODE			= ABSOLUTE
+
+NUM_SOURCES		= 4
+
+SOURCE_1_NAME	= Source 1
+SOURCE_2_NAME	= Source 2
+SOURCE_3_NAME	= Source 3
+SOURCE_4_NAME	= Source 4
+
+NUM_ZONES		= 4
+
+ZONE_1_NAME	= Zone 1
+ZONE_2_NAME	= Zone 2
+ZONE_3_NAME	= Zone 3
+ZONE_4_NAME	= Zone 4
+
+DEFAULT_PORT		= 80
+
