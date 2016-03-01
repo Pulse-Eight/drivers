@@ -25,7 +25,10 @@ function ON_DRIVER_EARLY_INIT.main()
 end
 
 function ON_DRIVER_INIT.main()
-    gP8RoutingUpdateTimer = c4_timer:new("Routing Update", 15, "SECONDS", RoutingUpdateTimer, true)
+    GetMyProxyId()
+    --Init Connected Devices
+    P8INT:SETUP()
+    gP8RoutingUpdateTimer = c4_timer:new("Routing Update", 2, "SECONDS", RoutingUpdateTimer, true)
     gP8RoutingUpdateTimer:StartTimer()
     gP8DetailsTimer = c4_timer:new("Details Update", 10, "SECONDS", DetailsUpdateTimer, true)
     gP8DetailsTimer:StartTimer()

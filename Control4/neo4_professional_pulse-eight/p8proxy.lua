@@ -24,7 +24,7 @@ function ReceivedFromProxy(idBinding, sCommand, tParams)
 			tParams = {}
 		end
 		
-		LogTrace("ReceivedFromProxy(): " .. sCommand .. " on binding " .. idBinding .. "; Call Function PRX_CMD." .. sCommand .. "()")
+		--LogTrace("ReceivedFromProxy(): " .. sCommand .. " on binding " .. idBinding .. "; Call Function PRX_CMD." .. sCommand .. "()")
 		--LogInfo(tParams)
 		if ((PRX_CMD[sCommand]) ~= nil) then
 			local status, err = pcall(PRX_CMD[sCommand], idBinding, tParams)
@@ -54,11 +54,11 @@ function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
 end
 
 function PRX_CMD.GET_VIDEO_PATH(idBinding, tParams)
-    P8INT:GET_ROUTING(idBinding, tParams)
+    --P8INT:GET_ROUTING(idBinding, tParams)
 end
 
 function PRX_CMD.GET_AUDIO_PATH(idBinding, tParams)
-    P8INT:GET_ROUTING(idBinding, tParams)
+    --P8INT:GET_ROUTING(idBinding, tParams)
 end
 
 function EX_CMD.LUA_ACTION(tParams)
