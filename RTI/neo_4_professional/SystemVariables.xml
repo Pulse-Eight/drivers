@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<variables>
+  <category name="Communications">
+    <variable name="Last TCP Data" sysvar="LastTCPDataSysvar" type="string" sample="Last RX string." />
+    <variable name="TCP RX Count" sysvar="TCPRXCountSysvar" type="integer" sample="99999" />
+  </category>
+</variables>
