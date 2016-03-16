@@ -12,7 +12,6 @@
 		minimumSoftwareVersion="9.7"
 		processorType="XP-8"
 		configSettingsStream="ConfigSettings.xml"
-		systemVariablesStream="SystemVariables.xml"
 	    systemFunctionsStream="SystemFunctions.xml"
 		helpTextStream="instructions.rtf">
 		<processorScript stream="p8core.js" />

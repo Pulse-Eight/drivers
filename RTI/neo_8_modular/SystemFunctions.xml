@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<functions>
+	<category name="Routing">
+		<function name="Port Set" export="PortSet" repeatrate="0">
+			<parameter name="Input" type="integer" description="Input Port (1-8)" min="1" max="8" />
+			<parameter name="Output" type="integer" description="Input Port (1-8)" min="1" max="8" />
+		</function>
+	</category>
+</functions>

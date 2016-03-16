@@ -1,6 +1,4 @@
-// TCP Sample Driver
-// Copyright 2010 Remote Technologies Inc.
-//
+//Copyright Pulse-Eight Limtied 2016
 
 System.Print("P8Core: Initializing...\r\n");
 
