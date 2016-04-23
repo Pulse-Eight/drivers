@@ -7,7 +7,7 @@
   <created>08/14/2015 10:39 PM</created>
   <modified>12/12/2015 3:58 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>30</version>
+  <version>31</version>
   <small>assets\neo_sm.gif</small>
   <large>assets\neo_lg.gif</large>
   <control>lua_gen</control>
@@ -297,11 +297,11 @@
         <readonly>true</readonly>
         <default>Unknown</default>
       </property>
-	  <property>
+      <property>
         <name>Installer Id</name>
         <type>RANGED_INTEGER</type>
-		<minimum>1000</minimum>
-		<maximum>9999</maximum>
+        <minimum>1000</minimum>
+        <maximum>9999</maximum>
         <readonly>false</readonly>
         <default>9999</default>
       </property>
@@ -317,7 +317,7 @@
         <readonly>true</readonly>
         <default>Unknown</default>
       </property>
-	  <property>
+      <property>
         <name>Serial</name>
         <type>STRING</type>
         <readonly>true</readonly>

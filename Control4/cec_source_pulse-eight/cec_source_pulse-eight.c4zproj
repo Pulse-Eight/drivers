@@ -1,0 +1,13 @@
+﻿<Driver type="c4z" name="cec_source_pulse-eight">
+ <Items>
+  <Item type="dir" c4zDir="assets" name="assets" recurse="true" exclude="false" />
+  <Item type="dir" c4zDir="common" name="common" recurse="true" exclude="false" />
+  <Item type="dir" c4zDir="lib" name="lib" recurse="true" exclude="false" />
+  <Item type="file" name="documentation.rtf" />
+  <Item type="file" name="driver.xml" />
+  <Item type="file" name="p8proxy.lua" />
+  <Item type="file" name="p8system.lua" />
+  <Item type="file" name="p8driver.lua" />
+  <Item type="file" name="p8control.lua" />
+ </Items>
+</Driver>

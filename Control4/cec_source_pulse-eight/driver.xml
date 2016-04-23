@@ -1,0 +1,146 @@
+<devicedata>
+  <copyright>Copyright 2016 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <creator>Pulse-Eight</creator>
+  <manufacturer>Pulse-Eight</manufacturer>
+  <name>CEC Source Device</name>
+  <model>CEC Source</model>
+  <created>04/23/2016 12:00 PM</created>
+  <modified>04/23/2016 12:00 PM</modified>
+  <version>3</version>
+  <small>assets\neo_sm.gif</small>
+  <large>assets\neo_lg.gif</large>
+  <control>lua_gen</control>
+  <controlmethod>ip</controlmethod>
+  <driver>DriverWorks</driver>
+  <proxies qty="1">
+    <proxy>dvd</proxy>
+  </proxies>
+  <connections>
+    <connection>
+      <id>5001</id>
+      <facing>6</facing>
+      <connectionname>DVD</connectionname>
+      <type>2</type>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>False</linelevel>
+      <classes>
+        <class>
+          <classname>DVD</classname>
+        </class>
+      </classes>
+    </connection>
+    <!--
+    <connection proxybindingid="5001">
+      <id>4000</id>
+      <facing>6</facing>
+      <connectionname>Output</connectionname>
+      <type>6</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
+	-->
+    <connection proxybindingid="5001">
+      <id>2000</id>
+      <facing>6</facing>
+      <connectionname>Output</connectionname>
+      <type>5</type>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>True</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+  </connections>
+  <config>
+    <actions>
+      <action>
+        <name>Discover System</name>
+        <command>DISCOVER</command>
+      </action>
+    </actions>
+    <power_management_method>DiscreteCodes</power_management_method>
+    <power_command_delay>0</power_command_delay>
+    <power_delay>0</power_delay>
+    <power_command_needed>False</power_command_needed>
+    <serialsettings>9600 8 none 1 none 232</serialsettings>
+    <documentation file="documentation.rtf" />
+    <script file="p8driver.lua" />
+    <properties>
+      <property>
+        <name>Device IP Address</name>
+        <type>STRING</type>
+        <readonly>false</readonly>
+        <default>[Goto Action Tab and Click Discover System]</default>
+        <tooltip>If you are unsure of the IP address of your matrix, enter www.gotomymatrix.com to be redirected to the web UI, copy the IP from your browser into this box</tooltip>
+        <description>The IP address of your neo matrix, this in many cases can be auto discovered via the action tab button "Discover System". If this fails, enter www.gotomymatrix.com into your browser for more information.</description>
+      </property>
+      <property>
+        <name>Log Level</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>2 - Warning</default>
+        <items>
+          <item>0 - Alert</item>
+          <item>1 - Error</item>
+          <item>2 - Warning</item>
+          <item>3 - Info</item>
+          <item>4 - Trace</item>
+          <item>5 - Debug</item>
+        </items>
+      </property>
+      <property>
+        <name>Log Mode</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Off</default>
+        <items>
+          <item>Off</item>
+          <item>Print</item>
+          <item>Log</item>
+          <item>Print and Log</item>
+        </items>
+      </property>
+      <property>
+        <name>Input Port</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Input 1</default>
+        <items>
+          <item>Input 1</item>
+          <item>Input 2</item>
+          <item>Input 3</item>
+          <item>Input 4</item>
+          <item>Input 5</item>
+          <item>Input 6</item>
+          <item>Input 7</item>
+          <item>Input 8</item>
+        </items>
+      </property>
+    </properties>
+  </config>
+  <composer_categories>
+    <category>Audio/Video</category>
+  </composer_categories>
+  <search_types>
+    <type>c4:av_gen</type>
+  </search_types>
+</devicedata>
