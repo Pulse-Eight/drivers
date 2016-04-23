@@ -52,7 +52,7 @@ function P8INT:GET_HEALTH(idBinding)
 		  if jsonResponse.Result then
 			 C4:SetVariable("Temp0", jsonResponse.Temperature0)
 			 local s = jsonResponse.Uptime
-			 UpdateProperty("System Uptime", string.format("%.1d days %.1d hours %.1d minutes %.2d seconds", s/(60*60*24), s/(60*60), s/60%60, s%60))
+			 UpdateProperty("System Uptime", string.format("%.1d days %.1d hours %.1d minutes %.2d seconds", s/(60*60*24), math.floor(s/(60*60)) - (math.floor(s/(60*60*24))*24), s/60%60, s%60))
 		  else
 			 UpdateProperty("System Uptime", "Unknown")
 		  end
