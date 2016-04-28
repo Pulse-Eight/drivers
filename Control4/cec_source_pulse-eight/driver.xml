@@ -6,7 +6,7 @@
   <model>CEC Source</model>
   <created>04/23/2016 12:00 PM</created>
   <modified>04/23/2016 12:00 PM</modified>
-  <version>3</version>
+  <version>4</version>
   <small>assets\neo_sm.gif</small>
   <large>assets\neo_lg.gif</large>
   <control>lua_gen</control>
@@ -31,18 +31,20 @@
         </class>
       </classes>
     </connection>
-    <!--
     <connection proxybindingid="5001">
-      <id>4000</id>
+      <id>2000</id>
       <facing>6</facing>
       <connectionname>Output</connectionname>
-      <type>6</type>
+      <type>5</type>
       <consumer>False</consumer>
       <audiosource>True</audiosource>
-      <videosource>False</videosource>
+      <videosource>True</videosource>
       <linelevel>True</linelevel>
       <classes>
         <class>
+          <classname>HDMI</classname>
+        </class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -50,22 +52,6 @@
         </class>
         <class>
           <classname>DIGITAL_COAX</classname>
-        </class>
-      </classes>
-    </connection>
-	-->
-    <connection proxybindingid="5001">
-      <id>2000</id>
-      <facing>6</facing>
-      <connectionname>Output</connectionname>
-      <type>5</type>
-      <consumer>False</consumer>
-      <audiosource>False</audiosource>
-      <videosource>True</videosource>
-      <linelevel>True</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
         </class>
       </classes>
     </connection>
