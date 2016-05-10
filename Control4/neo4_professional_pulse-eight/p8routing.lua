@@ -59,16 +59,19 @@ function CalculateRoomForOutput()
     local rooms = C4:GetDevicesByC4iName("roomdevice.c4i")
     for roomId,roomName in pairs(rooms) do
 	   LogTrace("Scanning Room: " .. roomId .. " (" .. roomName .. ")")
-	   for deviceId,deviceName in pairs(C4:RoomGetVideoDevices(roomId)) do
-		  LogTrace("Attempting to link device: " .. deviceId .. " (" .. deviceName .. ")")
-		  for i = 0, (MAX_OUTPUTS-1) do
-			 if outputConsumers["OUTPUT" .. i] ~= nil and tonumber(deviceId) == outputConsumers["OUTPUT" .. i] then
-				LogTrace("Mapping Output " .. (i+1) .. " to Room: " .. roomId .. " (" .. roomName .. ")")
-				outputRoom["OUTPUT" .. i] = roomId
-			 elseif outputConsumers["OUTPUT" .. i] == nil then
-				LogTrace("Device Id: " .. deviceId .. " cannot match Output " .. i .. " as there are no consumers linked")
-			 else
-				LogTrace("Device Id: " .. deviceId .. " does not match Output " .. i .. " Consumer " .. outputConsumers["OUTPUT" .. i])
+	   local roomDevices = C4:RoomGetVideoDevices(roomId)
+	   if roomDevices ~= nil then
+		  for deviceId,deviceName in pairs(roomDevices) do
+			 LogTrace("Attempting to link device: " .. deviceId .. " (" .. deviceName .. ")")
+			 for i = 0, (MAX_OUTPUTS-1) do
+				if outputConsumers["OUTPUT" .. i] ~= nil and tonumber(deviceId) == outputConsumers["OUTPUT" .. i] then
+				    LogTrace("Mapping Output " .. (i+1) .. " to Room: " .. roomId .. " (" .. roomName .. ")")
+				    outputRoom["OUTPUT" .. i] = roomId
+				elseif outputConsumers["OUTPUT" .. i] == nil then
+				    LogTrace("Device Id: " .. deviceId .. " cannot match Output " .. i .. " as there are no consumers linked")
+				else
+				    LogTrace("Device Id: " .. deviceId .. " does not match Output " .. i .. " Consumer " .. outputConsumers["OUTPUT" .. i])
+				end
 			 end
 		  end
 	   end
