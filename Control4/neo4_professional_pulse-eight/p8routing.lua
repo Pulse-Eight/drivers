@@ -48,8 +48,9 @@ function P8INT:SETUP()
 	   local sourceProxyId = C4:GetBoundProviderDevice(gP8ProxyId,1000+i)
 	   if (sourceProxyId == 0) then
 		  LogWarn("WARNING: Source " .. (i+1) .. " is not mapped in Composer, if this input port is used, it must be bound correctly in Composer to a source device")
+	   else
+		  inputProxies["INPUT"..i] = sourceProxyId
 	   end
-	   inputProxies["INPUT"..i] = sourceProxyId
     end
     GetConsumersForOutputs()
     CalculateRoomForOutput()

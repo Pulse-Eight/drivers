@@ -23,6 +23,8 @@ function P8INT:GET_DETAILS(idBinding)
 				UpdateProperty("Model", "neo:4 Basic")
 			 elseif jsonResponse.Model == "FFMS44" then
 				UpdateProperty("Model", "neo:4 Professional")
+			 elseif jsonResponse.Model == "MM88" then
+				UpdateProperty("Model", "neo:8 Modular")
 			 else
 				UpdateProperty("Model", "Unknown Model " .. jsonResponse.Model .. " (You may have loaded the wrong driver")
 			 end
