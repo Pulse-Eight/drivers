@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<functions>
+	<category name="Control">
+		<function name="Send Command" export="SendCommand" repeatrate="0">
+			<parameter name="Input" type="mcstring" description="Key">
+				<choice name="Enter" value="0x00" />
+				<choice name="Up" value="0x01" />
+				<choice name="Down" value="0x02" />
+				<choice name="Left" value="0x03" />
+				<choice name="Right" value="0x04" />
+				<choice name="Return/Back" value="0x0D" />
+				<choice name="Play" value="0x44" />
+				<choice name="Stop" value="0x45" />
+				<choice name="Pause" value="0x46" />
+				<choice name="Backwards" value="0x48" />
+				<choice name="Forwards" value="0x49" />
+				<choice name="ChapterForward" value="0x4B" />
+				<choice name="ChapterBack" value="0x4C" />
+				<choice name="Red" value="0x72" />
+				<choice name="Green" value="0x73" />
+				<choice name="Yellow" value="0x74" />
+				<choice name="Blue" value="0x71" />
+			</parameter>
+		</function>
+	</category>
+</functions>
