@@ -14,6 +14,7 @@ function P8INT:DISCOVER()
 			 httpLocation = string.gsub(httpLocation, "/", "")
 			 UpdateProperty("Device IP Address", httpLocation)
 			 LogInfo("Device IP Address has been updated to: " .. httpLocation)
+			 ON_DRIVER_INIT.main()
 		  else
 			 LogWarn("Failed to discover your system, please visit www.gotomymatrix.com in your browser for more information")
 		  end
