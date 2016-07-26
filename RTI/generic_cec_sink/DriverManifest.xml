@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<driverManifest>
+	<driver
+		id="{85000166-5ae1-4451-8c80-f8750a8c5ff7}"
+		name="Generic CEC Sink"
+		author="Pulse-Eight Limited"
+		copyright="Pulse-Eight Limited 2016"
+		deviceManufacturer="Pulse-Eight Limited"
+		deviceModel="neo Matrix CEC Sink"
+		driverVersion="1.0"
+		minimumRuntimeVersion="1"		
+		minimumSoftwareVersion="9.7"
+		processorType="XP-8"
+		configSettingsStream="ConfigSettings.xml"
+	    systemFunctionsStream="SystemFunctions.xml"
+		helpTextStream="instructions.rtf">
+		<processorScript stream="p8core.js" />
+		<processorScript stream="p8control.js" />
+		<package>
+			<output filename="generic_cec_sink" public="false"/>
+			<description>
+				Generic CEC Sink
+			</description>
+		</package>
+	</driver>
+</driverManifest>

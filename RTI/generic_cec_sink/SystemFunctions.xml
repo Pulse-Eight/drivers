@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<functions>
+	<category name="Control">
+		<function name="Send Command" export="SendCommand" repeatrate="0">
+			<parameter name="Input" type="mcstring" description="Key">
+				<choice name="Enter" value="0x00" />
+				<choice name="Up" value="0x01" />
+				<choice name="Down" value="0x02" />
+				<choice name="Left" value="0x03" />
+				<choice name="Right" value="0x04" />
+				<choice name="Return/Back" value="0x0D" />
+				<choice name="Play" value="0x44" />
+				<choice name="Stop" value="0x45" />
+				<choice name="Pause" value="0x46" />
+				<choice name="Backwards" value="0x48" />
+				<choice name="Forwards" value="0x49" />
+				<choice name="ChapterForward" value="0x4B" />
+				<choice name="ChapterBack" value="0x4C" />
+				<choice name="Red" value="0x72" />
+				<choice name="Green" value="0x73" />
+				<choice name="Yellow" value="0x74" />
+				<choice name="Blue" value="0x71" />
+				<choice name="Volume Up" value="0x41" />
+				<choice name="Volume Down" value="0x42" />
+				<choice name="Mute" value="0x43" />
+
+				<choice name="Number 0" value="0x20" />
+				<choice name="Number 1" value="0x21" />
+				<choice name="Number 2" value="0x22" />
+				<choice name="Number 3" value="0x23" />
+				<choice name="Number 4" value="0x24" />
+				<choice name="Number 5" value="0x25" />
+				<choice name="Number 6" value="0x26" />
+				<choice name="Number 7" value="0x27" />
+				<choice name="Number 8" value="0x28" />
+				<choice name="Number 9" value="0x29" />
+				<choice name="Dot" value="0x2A" />
+
+				<choice name="Channel Up" value="0x30" />
+				<choice name="Channel Down" value="0x31" />
+
+				<choice name="Input Select" value="0x34" />
+
+				<choice name="EPG" value="0x53" />
+
+				<choice name="Root Menu" value="0x09" />
+				<choice name="Setup Menu" value="0x0A" />
+				<choice name="Contents Menu" value="0x0B" />
+				<choice name="Favourite Menu" value="0x0C" />
+				<choice name="Exit" value="0x0D" />
+			</parameter>
+		</function>
+		<function name="Power" export="PowerSet" repeatrate="0">
+			<parameter name="State" type="mcstring" description="Power State to set too">
+				<choice name="On" value="on" />
+				<choice name="Off" value="off" />
+			</parameter>
+		</function>
+	</category>
+</functions>
