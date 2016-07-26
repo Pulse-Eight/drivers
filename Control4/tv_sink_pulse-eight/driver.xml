@@ -1,0 +1,277 @@
+<devicedata>
+  <copyright>Copyright 2016 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <creator>Pulse-Eight</creator>
+  <manufacturer>Pulse-Eight</manufacturer>
+  <name>CEC Sink (TV) Device</name>
+  <model>CEC Sink (TV)</model>
+  <created>04/23/2016 12:00 PM</created>
+  <modified>04/23/2016 12:00 PM</modified>
+  <version>14</version>
+  <small>assets\neo_sm.gif</small>
+  <large>assets\neo_lg.gif</large>
+  <control>lua_gen</control>
+  <controlmethod>ip</controlmethod>
+  <driver>DriverWorks</driver>
+  <proxies qty="1">
+    <proxy>tv</proxy>
+  </proxies>
+  <capabilities>
+    <requires_channel_after_input>False</requires_channel_after_input>
+    <has_discrete_volume_control>True</has_discrete_volume_control>
+    <has_up_down_volume_control>True</has_up_down_volume_control>
+    <has_discrete_input_select>True</has_discrete_input_select>
+    <has_toad_input_select>True</has_toad_input_select>
+    <has_discrete_channel_select>True</has_discrete_channel_select>
+    <has_channel_up_down>True</has_channel_up_down>
+    <has_discrete_bass_control>False</has_discrete_bass_control>
+    <has_up_down_bass_control>False</has_up_down_bass_control>
+    <has_discrete_treble_control>False</has_discrete_treble_control>
+    <has_up_down_treble_control>False</has_up_down_treble_control>
+    <has_discrete_balance_control>False</has_discrete_balance_control>
+    <has_up_down_balance_control>False</has_up_down_balance_control>
+    <has_discrete_loudness_control>False</has_discrete_loudness_control>
+    <has_toggle_loudness_control>False</has_toggle_loudness_control>
+    <has_discrete_mute_control>False</has_discrete_mute_control>
+    <has_toggle_mute_control>True</has_toggle_mute_control>
+    <has_audio>True</has_audio>
+  </capabilities>
+  <connections>
+    <connection>
+      <id>5001</id>
+      <type>2</type>
+      <connectionname>TV</connectionname>
+      <consumer>False</consumer>
+      <linelevel>False</linelevel>
+      <classes>
+        <class>
+          <classname>TV</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>1000</id>
+      <type>5</type>
+      <connectionname>CABLE/TV</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>RF_UHF_VHF</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>1002</id>
+      <type>5</type>
+      <connectionname>HDMI 2</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>4000</id>
+      <type>6</type>
+      <connectionname>Audio</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>1008</id>
+      <type>5</type>
+      <connectionname>PC</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>VGA</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>3006</id>
+      <type>6</type>
+      <connectionname>VIDEO 1</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>3005</id>
+      <type>6</type>
+      <connectionname>COMPONENT</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>1006</id>
+      <type>5</type>
+      <connectionname>VIDEO 1</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>COMPOSITE</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>1005</id>
+      <type>5</type>
+      <connectionname>COMPONENT</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>COMPONENT</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>1003</id>
+      <type>5</type>
+      <connectionname>HDMI 3</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7000</id>
+      <type>7</type>
+      <connectionname>Room Control</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>1001</id>
+      <type>5</type>
+      <connectionname>HDMI 1</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>1</id>
+      <type>1</type>
+      <connectionname>IR Sensor</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>IR_OUT</classname>
+        </class>
+      </classes>
+    </connection>
+  </connections>
+  <config>
+    <actions>
+      <action>
+        <name>Discover System</name>
+        <command>DISCOVER</command>
+      </action>
+    </actions>
+    <power_management_method>DiscreteCodes</power_management_method>
+    <power_command_delay>0</power_command_delay>
+    <power_delay>0</power_delay>
+    <power_command_needed>False</power_command_needed>
+    <documentation file="documentation.rtf" />
+    <script file="p8driver.lua" />
+    <properties>
+      <property>
+        <name>Device IP Address</name>
+        <type>STRING</type>
+        <readonly>false</readonly>
+        <default>[Goto Action Tab and Click Discover System]</default>
+        <tooltip>If you are unsure of the IP address of your matrix, enter www.gotomymatrix.com to be redirected to the web UI, copy the IP from your browser into this box</tooltip>
+        <description>The IP address of your neo matrix, this in many cases can be auto discovered via the action tab button "Discover System". If this fails, enter www.gotomymatrix.com into your browser for more information.</description>
+      </property>
+      <property>
+        <name>Log Level</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>2 - Warning</default>
+        <items>
+          <item>0 - Alert</item>
+          <item>1 - Error</item>
+          <item>2 - Warning</item>
+          <item>3 - Info</item>
+          <item>4 - Trace</item>
+          <item>5 - Debug</item>
+        </items>
+      </property>
+      <property>
+        <name>Log Mode</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Off</default>
+        <items>
+          <item>Off</item>
+          <item>Print</item>
+          <item>Log</item>
+          <item>Print and Log</item>
+        </items>
+      </property>
+      <property>
+        <name>Output Port</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Output 1</default>
+        <items>
+          <item>Output 1</item>
+          <item>Output 2</item>
+          <item>Output 3</item>
+          <item>Output 4</item>
+          <item>Output 5</item>
+          <item>Output 6</item>
+          <item>Output 7</item>
+          <item>Output 8</item>
+        </items>
+      </property>
+    </properties>
+  </config>
+  <composer_categories>
+    <category>Audio/Video</category>
+  </composer_categories>
+  <search_types>
+    <type>c4:av_gen</type>
+  </search_types>
+</devicedata>
