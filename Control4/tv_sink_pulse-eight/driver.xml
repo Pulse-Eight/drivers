@@ -6,7 +6,7 @@
   <model>CEC Sink (TV)</model>
   <created>04/23/2016 12:00 PM</created>
   <modified>04/23/2016 12:00 PM</modified>
-  <version>14</version>
+  <version>15</version>
   <small>assets\neo_sm.gif</small>
   <large>assets\neo_lg.gif</large>
   <control>lua_gen</control>
