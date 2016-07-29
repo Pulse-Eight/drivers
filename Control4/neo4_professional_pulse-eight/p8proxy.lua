@@ -37,6 +37,10 @@ function ReceivedFromProxy(idBinding, sCommand, tParams)
 	end
 end
 
+function PRX_CMD.BINDING_CHANGE_ACTION(idBinding, tParams)
+    P8INT:SETUP()
+end
+
 function PRX_CMD.SET_INPUT(idBinding, tParams)
     P8INT:PORT_SET(idBinding, tParams)
 end
