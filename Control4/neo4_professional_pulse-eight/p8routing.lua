@@ -30,6 +30,13 @@ local outputRoom = {
 	OUTPUT2 = nil,
 	OUTPUT3 = nil
 }
+
+local roomPower = {
+    OUTPUT0 = -3,
+    OUTPUT1 = -3,
+    OUTPUT2 = -3,
+    OUTPUT3 = -3
+}
 	
 function GetMyProxyId()
     local proxyIdList = C4:GetBoundConsumerDevices(0, DEFAULT_PROXY_BINDINGID)
@@ -60,14 +67,14 @@ function CalculateRoomForOutput()
     local rooms = C4:GetDevicesByC4iName("roomdevice.c4i")
     if rooms ~= nil then
 	   for roomId,roomName in pairs(rooms) do
-		  LogTrace("Scanning Room: " .. roomId .. " (" .. roomName .. ")")
+		  LogInfo("Scanning Room: " .. roomId .. " (" .. roomName .. ")")
 		  local roomDevices = C4:RoomGetVideoDevices(roomId)
 		  if roomDevices ~= nil then
 			 for deviceId,deviceName in pairs(roomDevices) do
 				LogTrace("Attempting to link device: " .. deviceId .. " (" .. deviceName .. ")")
 				for i = 0, (MAX_OUTPUTS-1) do
 				    if outputConsumers["OUTPUT" .. i] ~= nil and tonumber(deviceId) == outputConsumers["OUTPUT" .. i] then
-					   LogTrace("Mapping Output " .. (i+1) .. " to Room: " .. roomId .. " (" .. roomName .. ")")
+					   LogInfo("Mapping Output " .. (i+1) .. " to Room: " .. roomId .. " (" .. roomName .. ")")
 					   outputRoom["OUTPUT" .. i] = roomId
 				    elseif outputConsumers["OUTPUT" .. i] == nil then
 					   LogTrace("Device Id: " .. deviceId .. " cannot match Output " .. i .. " as there are no consumers linked")
@@ -99,7 +106,7 @@ function P8INT:PORT_SET(idBinding, tParams)
     local input = tonumber(tParams["INPUT"] % 1000)
     local output = tonumber(tParams["OUTPUT"] % 1000)
     local uri = P8INT:GET_MATRIX_URL() .. "/Port/Set/" .. input .. "/" .. output
-    LogTrace("Changing Routing. Input: " .. input .. " -> Output: " .. output)
+    LogInfo("Changing Routing. Input: " .. input .. " -> Output: " .. output)
     existingRouting["OUTPUT" .. output] = input
     C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 		  local jsonResponse = JSON:decode(strData)
@@ -108,6 +115,63 @@ function P8INT:PORT_SET(idBinding, tParams)
 		  end
 	   end)
 end
+
+function GetPowerState(data, mode, bay)
+    for index,port in pairs(data.Ports) do
+	   if port.Bay == bay and port.Mode == mode then
+		  return port.DPS
+	   end
+    end
+end
+
+function P8INT:GET_POWER_STATE(idBinding)
+    LogTrace("Updating Sink Power State")
+    local uri = P8INT:GET_MATRIX_URL() .. "/Port/List"
+    C4:urlGet(uri, {}, false, 
+	   function(ticketId, strData, responseCode, tHeaders, strError)
+   		  if responseCode ~= 200 or strError ~= nil then
+			 LogWarn("Unable to refresh routing")
+			 LogWarn("Error = " .. strError)
+			 LogWarn("Response Code = " .. responseCode)
+			 return
+		  end
+	   
+		  local jsonResponse = JSON:decode(strData)
+		  if jsonResponse.Result then
+			 for i = 1,MAX_OUTPUTS do
+				local dps = GetPowerState(jsonResponse, "Output", (i-1))
+				if roomPower["OUTPUT" .. (i-1)] ~= dps and outputRoom["OUTPUT" .. (i-1)] ~= nil then
+				    LogInfo("Output " .. i .. " power state has changed, was " .. roomPower["OUTPUT" .. (i-1)] .. " now " .. dps)
+				    local outputsNewInput = existingRouting["OUTPUT" .. (i-1)]
+				    local newSourceProxyId = inputProxies["INPUT" .. outputsNewInput]
+				    local success = false
+				    if dps == 0 then
+					   --Tell Director to do a routing change and turn on any other items required
+					   if outputsNewInput ~= nil and newSourceProxyId ~= nil then
+						  success = true
+						  C4:SendToDevice(outputRoom["OUTPUT" .. (i-1)], "SELECT_VIDEO_DEVICE", {deviceid = newSourceProxyId})
+					   else
+						  LogWarn("Output " .. i .. " Power State changed to on, however the source routed to this output is not mapped in composer. No notification will be sent to composer until it is correctly mapped.")
+					   end
+				    end
+				    if dps == 1 then
+					   --Tell director this output has turned off
+					   if outputsNewInput ~= nil and newSourceProxyId ~= nil then
+						  success = true
+						  --TODO: Tell Director the sink has turned off
+					   else
+						  LogWarn("Output " .. i .. " Power State changed to off, however the source routed to this output is not mapped in composer. No notification will be sent to composer until it is correctly mapped.")
+					   end
+				    end
+				    if success then
+					   roomPower["OUTPUT" .. (i-1)] = dps
+				    end
+				end
+			 end
+		  end
+	   end)
+end
+
 
 function P8INT:GET_ROUTING(idBinding)
     LogTrace("Updating Current Routing")

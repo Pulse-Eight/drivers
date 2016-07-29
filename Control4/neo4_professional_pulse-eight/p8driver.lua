@@ -3,7 +3,7 @@ require "common.p8init"
 require "common.p8core"
 require "common.c4_command"
 require "common.c4_notify"
---require "common.c4_diagnostics" --DEBUG
+require "common.c4_diagnostics" --DEBUG
 require "p8proxy"
 require "p8system"
 require "p8routing"
@@ -25,6 +25,10 @@ function ON_DRIVER_EARLY_INIT.main()
 end
 
 function ON_DRIVER_INIT.main()
+    FirstRun()
+end
+
+function FirstRun()
     --Init Connected Devices
     P8INT:SETUP()
     gP8RoutingUpdateTimer = c4_timer:new("Routing Update", 2, "SECONDS", RoutingUpdateTimer, true)
@@ -40,7 +44,10 @@ function ON_DRIVER_INIT.main()
 end
 
 function RoutingUpdateTimer()
-    P8INT:GET_ROUTING(DEFAULT_PROXY_BINDINGID)
+    if (Properties["Auto Sync Navigators"] == "Yes") then
+	   P8INT:GET_ROUTING(DEFAULT_PROXY_BINDINGID)
+	   P8INT:GET_POWER_STATE(DEFAULT_PROXY_BINDINGID)
+    end
 end
 
 function DetailsUpdateTimer()

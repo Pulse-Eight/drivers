@@ -60,7 +60,7 @@ function P8INT:GET_HEALTH(idBinding)
 end
 
 function P8INT:REBOOT()
-    LogTrace("Rebooting System")
+    LogInfo("Rebooting System")
     local uri = P8INT:GET_MATRIX_URL() .. "/System/Restart"
     C4:urlGet(uri)
 end

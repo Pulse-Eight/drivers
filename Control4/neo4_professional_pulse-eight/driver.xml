@@ -7,7 +7,7 @@
   <created>08/14/2015 10:39 PM</created>
   <modified>18/07/2016 3:58 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>34</version>
+  <version>37</version>
   <small>assets\neo_sm.gif</small>
   <large>assets\neo_lg.gif</large>
   <control>lua_gen</control>
@@ -328,6 +328,16 @@
         <type>STRING</type>
         <readonly>true</readonly>
         <default>Unknown</default>
+      </property>
+	  <property>
+        <name>Auto Sync Navigators</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Yes</default>
+        <items>
+          <item>Yes</item>
+          <item>No</item>
+        </items>
       </property>
     </properties>
   </config>
