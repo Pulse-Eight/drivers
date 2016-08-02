@@ -6,7 +6,7 @@
   <model>CEC Sink (TV)</model>
   <created>04/23/2016 12:00 PM</created>
   <modified>04/23/2016 12:00 PM</modified>
-  <version>15</version>
+  <version>16</version>
   <small>assets\neo_sm.gif</small>
   <large>assets\neo_lg.gif</large>
   <control>lua_gen</control>
@@ -85,6 +85,9 @@
         <class>
           <classname>DIGITAL_OPTICAL</classname>
         </class>
+		<class>
+			<classname>STEREO</classname>
+		</class>
       </classes>
     </connection>
     <connection>

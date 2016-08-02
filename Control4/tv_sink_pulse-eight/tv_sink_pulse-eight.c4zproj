@@ -9,5 +9,6 @@
   <Item type="file" name="p8system.lua" />
   <Item type="file" name="p8driver.lua" />
   <Item type="file" name="p8control.lua" />
+  <Item type="file" name="p8feedback.lua" />
  </Items>
 </Driver>

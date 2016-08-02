@@ -1,24 +1,7 @@
 --Copyright Pulse-Eight Limited 2016
---[[=============================================================================
-    ReceivedFromProxy(idBinding, sCommand, tParams)
 
-    Description
-    Function called for any actions executed by the user from the Actions Tab
-    in Composer.
-
-    Parameters
-    idBinding(int)   - Binding ID of the proxy that sent a BindMessage to the
-                       DriverWorks driver.
-    sCommand(string) - Command that was sent
-    tParams(table)   - Lua table of received command parameters
-
-    Returns
-    Nothing
-===============================================================================]]
 function ReceivedFromProxy(idBinding, sCommand, tParams)
-
 	if (sCommand ~= nil) then
-
 		-- initial table variable if nil
 		if (tParams == nil) then
 			tParams = {}
