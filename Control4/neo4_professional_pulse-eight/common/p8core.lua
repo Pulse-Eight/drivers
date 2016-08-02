@@ -1,4 +1,4 @@
---Copyright Pulse-Eight Limited 2015
+--Copyright Pulse-Eight Limited 2016
 
 function P8INT:GET_MATRIX_URL()
     local ip = Properties["Device IP Address"] or ""
@@ -19,6 +19,10 @@ function P8INT:DISCOVER()
 			 LogWarn("Failed to discover your system, please visit www.gotomymatrix.com in your browser for more information")
 		  end
 	   end)
+end
+
+function ON_PROPERTY_CHANGED.DeviceIPAddress(propertyValue)
+    FirstRun()
 end
 
 function string.starts(String,Start)
