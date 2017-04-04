@@ -1,15 +1,15 @@
 <devicedata>
-  <copyright>Copyright 2016 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2017 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Pulse-Eight</manufacturer>
   <name>neo:4 Professional IP Driver</name>
   <model>neo:4 Professional</model>
   <created>08/14/2015 10:39 PM</created>
-  <modified>18/07/2016 3:58 PM</modified>
+  <modified>04/04/2017 3:58 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>38</version>
-  <small>assets\neo_sm.gif</small>
-  <large>assets\neo_lg.gif</large>
+  <version>39</version>
+  <small image_source="c4z">Images/neo_sm.png</small>
+  <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
@@ -17,7 +17,7 @@
     <type>c4:av_gen</type>
   </search_types>
   <proxies>
-    <proxy proxybindingid="5001" name="neo:4 Professional">avswitch</proxy>
+    <proxy proxybindingid="5001" name="neo:4 Professional" large_image="Images/neo_lg.png" small_image="Images/neo_sm.png" smimagepath="Images/neo_sm.png" lgimagepath="Images/neo_lg.png" image_source="c4z">avswitch</proxy>
   </proxies>
   <capabilities>
     <audio_consumer_count>0</audio_consumer_count>
@@ -247,8 +247,7 @@
     <power_command_delay>0</power_command_delay>
     <power_delay>0</power_delay>
     <power_command_needed>False</power_command_needed>
-    <serialsettings>9600 8 none 1 none 232</serialsettings>
-    <documentation file="documentation.rtf" />
+    <documentation file="www/documentation.rtf" />
     <script file="p8driver.lua" />
     <properties>
       <property>
