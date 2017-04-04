@@ -1,0 +1,123 @@
+<devicedata>
+  <copyright>Copyright 2017 Pulse-Eight Limited. All rights reserved.</copyright>
+  <creator>Pulse-Eight</creator>
+  <manufacturer>Pulse-Eight</manufacturer>
+  <name>neo PDU 8</name>
+  <model>neo PDU 8</model>
+  <created>04/04/2017 12:00 PM</created>
+  <modified>04/04/2017 12:00 PM</modified>
+  <version>2</version>
+  <small image_source="c4z">Images/neo_sm.png</small>
+  <large image_source="c4z">Images/neo_lg.png</large>
+  <control>lua_gen</control>
+  <controlmethod>ip</controlmethod>
+  <driver>DriverWorks</driver>
+  <combo>true</combo>
+  <proxies qty="1">
+    <proxy name="neo PDU8" large_image="Images/neo_lg.png" small_image="Images/neo_sm.png" proxybindingid="5001" smimagepath="Images/neo_sm.png" lgimagepath="Images/neo_lg.png" image_source="c4z">load_controller</proxy>
+  </proxies>
+  <capabilities />
+  <connections>
+    <connection>
+      <id>5001</id>
+      <facing>6</facing>
+      <connectionname>load_controller</connectionname>
+      <type>2</type>
+      <consumer>false</consumer>
+      <audiosource>false</audiosource>
+      <videosource>false</videosource>
+      <linelevel>false</linelevel>
+      <classes>
+        <class>
+          <classname>load_controller</classname>
+        </class>
+      </classes>
+    </connection>
+  </connections>
+  <config>
+	<commands>
+		<command>
+			<name>Cycle Outlet 1</name>
+			<description>Cycle power on outlet 1 on NAME</description>
+		</command>
+		<command>
+			<name>Cycle Outlet 2</name>
+			<description>Cycle power on outlet 2 on NAME</description>
+		</command>
+		<command>
+			<name>Cycle Outlet 3</name>
+			<description>Cycle power on outlet 3 on NAME</description>
+		</command>
+		<command>
+			<name>Cycle Outlet 4</name>
+			<description>Cycle power on outlet 4 on NAME</description>
+		</command>
+		<command>
+			<name>Cycle Outlet 5</name>
+			<description>Cycle power on outlet 5 on NAME</description>
+		</command>
+		<command>
+			<name>Cycle Outlet 6</name>
+			<description>Cycle power on outlet 6 on NAME</description>
+		</command>
+		<command>
+			<name>Cycle Outlet 7</name>
+			<description>Cycle power on outlet 7 on NAME</description>
+		</command>
+		<command>
+			<name>Cycle Outlet 8</name>
+			<description>Cycle power on outlet 8 on NAME</description>
+		</command>
+	</commands>
+    <actions>
+      <action>
+        <name>Discover System</name>
+        <command>DISCOVER</command>
+      </action>
+    </actions>
+    <documentation file="www/documentation.rtf" />
+    <script file="p8driver.lua" />
+    <properties>
+      <property>
+        <name>Device IP Address</name>
+        <type>STRING</type>
+        <readonly>false</readonly>
+        <default>[Goto Action Tab and Click Discover System]</default>
+        <tooltip>If you are unsure of the IP address of your matrix, enter www.gotomymatrix.com to be redirected to the web UI, copy the IP from your browser into this box</tooltip>
+        <description>The IP address of your neo matrix, this in many cases can be auto discovered via the action tab button "Discover System". If this fails, enter www.gotomymatrix.com into your browser for more information.</description>
+      </property>
+      <property>
+        <name>Log Level</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>2 - Warning</default>
+        <items>
+          <item>0 - Alert</item>
+          <item>1 - Error</item>
+          <item>2 - Warning</item>
+          <item>3 - Info</item>
+          <item>4 - Trace</item>
+          <item>5 - Debug</item>
+        </items>
+      </property>
+      <property>
+        <name>Log Mode</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Off</default>
+        <items>
+          <item>Off</item>
+          <item>Print</item>
+          <item>Log</item>
+          <item>Print and Log</item>
+        </items>
+      </property>
+    </properties>
+  </config>
+  <composer_categories>
+    <category>PDU</category>
+  </composer_categories>
+  <search_types>
+    <type>c4:av_gen</type>
+  </search_types>
+</devicedata>
