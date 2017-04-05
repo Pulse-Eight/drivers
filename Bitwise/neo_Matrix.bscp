@@ -1,0 +1,45 @@
+<SCRIPTDEVICE ID="?">
+  <NAME>neo_Matrix</NAME>
+  <NOTES><![CDATA[Pulse-Eight neo Matrix Driver
+=========================================================
+For help and support using this driver please contact cs@pulse-eight.com]]></NOTES>
+  <PROTOCOL>API</PROTOCOL>
+  <PORT>
+  </PORT>
+  <IP>
+  </IP>
+  <AUTORC>true</AUTORC>
+  <FUNCTIONS>
+    <FUNCTION ID="?">
+      <NAME>RoutingChange</NAME>
+      <PARMS>input,output</PARMS>
+      <SCRIPT><![CDATA[
+GUIAPI.HTTP.DoGET(myResponseHandlerTag,'http://' + THIS_DEVICE.SETTINGS.IP_Address + '/Port/Set/' + input + '/' + output);
+return "";]]></SCRIPT>
+    </FUNCTION>
+  </FUNCTIONS>
+  <EXPRESSIONS />
+  <INCOMING>
+    <TERM>0D0A</TERM>
+    <SCRIPT><![CDATA[]]></SCRIPT>
+    <ASCII>True</ASCII>
+  </INCOMING>
+  <SHARED>
+    <SCRIPT><![CDATA[/***** Default Script Device Callbacks ****/
+
+var myResponseHandlerTag = "MyResponseHandler"; 
+GUIAPI.HTTP.AddHandler(myResponseHandlerTag,function(response){
+	try{ 
+		GUIAPI.Debug.WriteLine(unescape(response));
+	}catch(e){
+		alert(e); 
+	} 
+});
+
+]]></SCRIPT>
+  </SHARED>
+  <SETTINGS>
+    <SETTING NAME="IP_Address"><![CDATA["192.168.1.100"]]></SETTING>
+    <NOTES><![CDATA[Change the IP address to the IP of your matrix, you can find this easily by typing www.gotomymatrx.com into your browser and looking at the address that appears once the page loads.]]></NOTES>
+  </SETTINGS>
+</SCRIPTDEVICE>
