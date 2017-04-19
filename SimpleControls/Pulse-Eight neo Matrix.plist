@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>brand</key>
+		<string>Pulse-Eight</string>
+		<key>cat</key>
+		<string>neo Matrix Family</string>
+		<key>codes</key>
+		<dict>
+			<key>INPUT 1 TO OUTPUT 1</key>
+			<string>GET /Port/Set/0/0</string>
+			<key>INPUT 1 TO OUTPUT 2</key>
+			<string>GET /Port/Set/0/1</string>
+			<key>INPUT 1 TO OUTPUT 3</key>
+			<string>GET /Port/Set/0/1</string>
+			<key>INPUT 1 TO OUTPUT 4</key>
+			<string>GET /Port/Set/0/1</string>
+			<key>INPUT 1 TO OUTPUT 5</key>
+			<string>GET /Port/Set/0/1</string>
+			<key>INPUT 1 TO OUTPUT 6</key>
+			<string>GET /Port/Set/0/1</string>
+			<key>INPUT 1 TO OUTPUT 7</key>
+			<string>GET /Port/Set/0/1</string>
+			<key>INPUT 1 TO OUTPUT 8</key>
+			<string>GET /Port/Set/0/1</string>
+
+
+			<key>INPUT 2 TO OUTPUT 1</key>
+			<string>GET /Port/Set/1/0</string>
+			<key>INPUT 2 TO OUTPUT 2</key>
+			<string>GET /Port/Set/1/1</string>
+			<key>INPUT 2 TO OUTPUT 3</key>
+			<string>GET /Port/Set/1/1</string>
+			<key>INPUT 2 TO OUTPUT 4</key>
+			<string>GET /Port/Set/1/1</string>
+			<key>INPUT 2 TO OUTPUT 5</key>
+			<string>GET /Port/Set/1/1</string>
+			<key>INPUT 2 TO OUTPUT 6</key>
+			<string>GET /Port/Set/1/1</string>
+			<key>INPUT 2 TO OUTPUT 7</key>
+			<string>GET /Port/Set/1/1</string>
+			<key>INPUT 2 TO OUTPUT 8</key>
+			<string>GET /Port/Set/1/1</string>
+
+
+			<key>INPUT 3 TO OUTPUT 1</key>
+			<string>GET /Port/Set/2/0</string>
+			<key>INPUT 3 TO OUTPUT 2</key>
+			<string>GET /Port/Set/2/1</string>
+			<key>INPUT 3 TO OUTPUT 3</key>
+			<string>GET /Port/Set/2/1</string>
+			<key>INPUT 3 TO OUTPUT 4</key>
+			<string>GET /Port/Set/2/1</string>
+			<key>INPUT 3 TO OUTPUT 5</key>
+			<string>GET /Port/Set/2/1</string>
+			<key>INPUT 3 TO OUTPUT 6</key>
+			<string>GET /Port/Set/2/1</string>
+			<key>INPUT 3 TO OUTPUT 7</key>
+			<string>GET /Port/Set/2/1</string>
+			<key>INPUT 3 TO OUTPUT 8</key>
+			<string>GET /Port/Set/2/1</string>
+
+
+			<key>INPUT 4 TO OUTPUT 1</key>
+			<string>GET /Port/Set/3/0</string>
+			<key>INPUT 4 TO OUTPUT 2</key>
+			<string>GET /Port/Set/3/1</string>
+			<key>INPUT 4 TO OUTPUT 3</key>
+			<string>GET /Port/Set/3/1</string>
+			<key>INPUT 4 TO OUTPUT 4</key>
+			<string>GET /Port/Set/3/1</string>
+			<key>INPUT 4 TO OUTPUT 5</key>
+			<string>GET /Port/Set/3/1</string>
+			<key>INPUT 4 TO OUTPUT 6</key>
+			<string>GET /Port/Set/3/1</string>
+			<key>INPUT 4 TO OUTPUT 7</key>
+			<string>GET /Port/Set/3/1</string>
+			<key>INPUT 4 TO OUTPUT 8</key>
+			<string>GET /Port/Set/3/1</string>
+
+
+			<key>INPUT 5 TO OUTPUT 1</key>
+			<string>GET /Port/Set/4/0</string>
+			<key>INPUT 5 TO OUTPUT 2</key>
+			<string>GET /Port/Set/4/1</string>
+			<key>INPUT 5 TO OUTPUT 3</key>
+			<string>GET /Port/Set/4/1</string>
+			<key>INPUT 5 TO OUTPUT 4</key>
+			<string>GET /Port/Set/4/1</string>
+			<key>INPUT 5 TO OUTPUT 5</key>
+			<string>GET /Port/Set/4/1</string>
+			<key>INPUT 5 TO OUTPUT 6</key>
+			<string>GET /Port/Set/4/1</string>
+			<key>INPUT 5 TO OUTPUT 7</key>
+			<string>GET /Port/Set/4/1</string>
+			<key>INPUT 5 TO OUTPUT 8</key>
+			<string>GET /Port/Set/4/1</string>
+
+
+			<key>INPUT 6 TO OUTPUT 1</key>
+			<string>GET /Port/Set/5/0</string>
+			<key>INPUT 6 TO OUTPUT 2</key>
+			<string>GET /Port/Set/5/1</string>
+			<key>INPUT 6 TO OUTPUT 3</key>
+			<string>GET /Port/Set/5/1</string>
+			<key>INPUT 6 TO OUTPUT 4</key>
+			<string>GET /Port/Set/5/1</string>
+			<key>INPUT 6 TO OUTPUT 5</key>
+			<string>GET /Port/Set/5/1</string>
+			<key>INPUT 6 TO OUTPUT 6</key>
+			<string>GET /Port/Set/5/1</string>
+			<key>INPUT 6 TO OUTPUT 7</key>
+			<string>GET /Port/Set/5/1</string>
+			<key>INPUT 6 TO OUTPUT 8</key>
+			<string>GET /Port/Set/5/1</string>
+
+
+			<key>INPUT 7 TO OUTPUT 1</key>
+			<string>GET /Port/Set/6/0</string>
+			<key>INPUT 7 TO OUTPUT 2</key>
+			<string>GET /Port/Set/6/1</string>
+			<key>INPUT 7 TO OUTPUT 3</key>
+			<string>GET /Port/Set/6/1</string>
+			<key>INPUT 7 TO OUTPUT 4</key>
+			<string>GET /Port/Set/6/1</string>
+			<key>INPUT 7 TO OUTPUT 5</key>
+			<string>GET /Port/Set/6/1</string>
+			<key>INPUT 7 TO OUTPUT 6</key>
+			<string>GET /Port/Set/6/1</string>
+			<key>INPUT 7 TO OUTPUT 7</key>
+			<string>GET /Port/Set/6/1</string>
+			<key>INPUT 7 TO OUTPUT 8</key>
+			<string>GET /Port/Set/6/1</string>
+
+
+			<key>INPUT 8 TO OUTPUT 1</key>
+			<string>GET /Port/Set/7/0</string>
+			<key>INPUT 8 TO OUTPUT 2</key>
+			<string>GET /Port/Set/7/1</string>
+			<key>INPUT 8 TO OUTPUT 3</key>
+			<string>GET /Port/Set/7/1</string>
+			<key>INPUT 8 TO OUTPUT 4</key>
+			<string>GET /Port/Set/7/1</string>
+			<key>INPUT 8 TO OUTPUT 5</key>
+			<string>GET /Port/Set/7/1</string>
+			<key>INPUT 8 TO OUTPUT 6</key>
+			<string>GET /Port/Set/7/1</string>
+			<key>INPUT 8 TO OUTPUT 7</key>
+			<string>GET /Port/Set/7/1</string>
+			<key>INPUT 8 TO OUTPUT 8</key>
+			<string>GET /Port/Set/7/1</string>
+		</dict>
+		<key>method</key>
+		<string>http</string>
+		<key>type</key>
+		<integer>21</integer>
+	</dict>
+</array>
+</plist>
