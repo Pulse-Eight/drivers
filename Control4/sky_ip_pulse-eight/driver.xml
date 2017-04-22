@@ -57,12 +57,6 @@
     </connection>
   </connections>
   <config>
-    <actions>
-      <action>
-        <name>Discover System</name>
-        <command>DISCOVER</command>
-      </action>
-    </actions>
     <documentation file="www/documentation.rtf" />
     <script file="p8driver.lua" />
 	<rfs>
