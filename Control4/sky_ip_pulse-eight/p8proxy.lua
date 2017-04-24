@@ -238,6 +238,14 @@ function PRX_CMD.CUSTOM_3(idBinding, tParams)
     P8INT:SEND_KEY(GetKeyForName(Properties["Custom 3 Button"]))
 end
 
+function PRX_CMD.OFF(idBinding, tParams)
+    P8INT:SEND_KEY(0)
+end
+
+function PRX_CMD.ON(idBinding, tParams)
+    P8INT:SEND_KEY(11)
+end
+
 function EX_CMD.LUA_ACTION(tParams)
     if tParams["ACTION"] == "DISCOVER" then
 	   P8INT:DISCOVER()

@@ -6,7 +6,7 @@
   <model>Sky Q/HD</model>
   <created>22/04/2017 12:00 PM</created>
   <modified>22/04/2017 12:00 PM</modified>
-  <version>1</version>
+  <version>2</version>
   <small image_source="c4z">assets/device_sm.png</small>
   <large image_source="c4z">assets/device_lg.png</large>
   <control>lua_gen</control>
@@ -55,7 +55,60 @@
         </class>
       </classes>
     </connection>
+
+    <connection>
+      <id>1000</id>
+      <type>5</type>
+      <connectionname>Cable In</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>RF_SKY</classname>
+        </class>
+      </classes>
+    </connection>
+      <connection proxybindingid="5001" verified="True">
+        <id>7000</id>
+        <facing>6</facing>
+        <connectionname>Room Selection - OUTPUT</connectionname>
+        <type>7</type>
+        <consumer>False</consumer>
+        <audiosource>True</audiosource>
+        <videosource>True</videosource>
+        <linelevel>True</linelevel>
+        <classes>
+          <class>
+            <classname>VIDEO_SELECTION</classname>
+          </class>
+        </classes>
+      </connection>
+
   </connections>
+  <capabilities>
+		<navigator_display_option proxybindingid="5001">
+			<display_icons>
+				<Icon height="140" width="140">controller://driver/sky_ip_pulse-eight/assets/device/experience_140.png</Icon>
+				<Icon height="130" width="120">controller://driver/sky_ip_pulse-eight/assets/device/experience_130.png</Icon>
+				<Icon height="120" width="120">controller://driver/sky_ip_pulse-eight/assets/device/experience_120.png</Icon>
+				<Icon height="110" width="110">controller://driver/sky_ip_pulse-eight/assets/device/experience_110.png</Icon>
+				<Icon height="100" width="100">controller://driver/sky_ip_pulse-eight/assets/device/experience_100.png</Icon>
+				<Icon height="90" width="90">controller://driver/sky_ip_pulse-eight/assets/device/experience_90.png</Icon>
+				<Icon height="80" width="80">controller://driver/sky_ip_pulse-eight/assets/device/experience_80.png</Icon>
+				<Icon height="70" width="70">controller://driver/sky_ip_pulse-eight/assets/device/experience_70.png</Icon>
+				<Icon height="60" width="60">controller://driver/sky_ip_pulse-eight/assets/device/experience_60.png</Icon>
+				<Icon height="50" width="50">controller://driver/sky_ip_pulse-eight/assets/device/experience_50.png</Icon>
+				<Icon height="40" width="40">controller://driver/sky_ip_pulse-eight/assets/device/experience_40.png</Icon>
+				<Icon height="30" width="30">controller://driver/sky_ip_pulse-eight/assets/device/experience_30.png</Icon>
+				<Icon height="20" width="20">controller://driver/sky_ip_pulse-eight/assets/device/experience_20.png</Icon>
+			</display_icons>
+		</navigator_display_option>
+   <digital_audio_support>False</digital_audio_support>
+   <has_discrete_volume_control>False</has_discrete_volume_control>
+   <has_up_down_volume_control>False</has_up_down_volume_control>
+   <has_discrete_channel_select>True</has_discrete_channel_select>
+   <has_discrete_input_select>False</has_discrete_input_select>
+  </capabilities>
   <config>
     <documentation file="www/documentation.rtf" />
     <script file="p8driver.lua" />
