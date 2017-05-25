@@ -243,7 +243,7 @@ function PRX_CMD.OFF(idBinding, tParams)
 end
 
 function PRX_CMD.ON(idBinding, tParams)
-    P8INT:SEND_KEY(11)
+    P8INT:TURN_ON()
 end
 
 function EX_CMD.LUA_ACTION(tParams)

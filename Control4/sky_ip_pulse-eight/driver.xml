@@ -5,8 +5,8 @@
   <name>Sky Q/HD IP Driver</name>
   <model>Sky Q/HD</model>
   <created>22/04/2017 12:00 PM</created>
-  <modified>22/04/2017 12:00 PM</modified>
-  <version>2</version>
+  <modified>25/05/2017 12:00 PM</modified>
+  <version>3</version>
   <small image_source="c4z">assets/device_sm.png</small>
   <large image_source="c4z">assets/device_lg.png</large>
   <control>lua_gen</control>

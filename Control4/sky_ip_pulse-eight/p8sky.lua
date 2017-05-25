@@ -1,3 +1,5 @@
+require "lib.json"
+
 function P8INT:SEND_KEY(code)
     if (code == -1) then
 	   return
@@ -24,4 +26,23 @@ function P8INT:SEND_KEY(code)
 		  end
 	   end)
 	   :Connect(ip, port)
+end
+
+function P8INT:TURN_ON()
+    local boxType = Properties["Sky Box Type"] or ""
+    if (boxType == "Sky+ HD") then
+	   P8INT:SEND_KEY(11)
+    end
+    
+    local ip = Properties["Device IP Address"] or ""
+    local uri = "http://" .. ip .. ":9006/as/system/information"
+    C4:urlGet(uri, {}, false,
+	   function(ticketId, strData, responseCode, tHeaders, strError)
+		  if responseCode == 200 then
+			 local jsonResponse = JSON:decode(strData)
+			 if (jsonResponse.activeStandby) then
+				P8INT:SEND_KEY(11)
+			 end
+		  end
+	   end)
 end
