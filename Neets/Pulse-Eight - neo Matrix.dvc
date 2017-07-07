@@ -490,6 +490,26 @@
                 <Lock2 Value="2" />
               </Command>
             </Sequence>
+			<Sequence Name="49743fc4-4d5c-4c38-8086-7322d72e2c9c" Caption="Input 1 to Output 9" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F302F3820485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+			<Sequence Name="49743fc4-4d5c-4c38-8086-7322d72e2c9c" Caption="Input 1 to Output 10" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F302F3920485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
             <Sequence Name="26804ca2-3e47-4b08-bb9b-21cce45bd989" Caption="Input 2 to Output 1" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
               <Description />
               <Image />
@@ -565,6 +585,26 @@
               <Image />
               <Command>
                 <Data1>474554202F506F72742F5365742F312F3720485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="57c05d3e-25dd-4125-a8ec-3adc98031a91" Caption="Input 2 to Output 9" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F312F3820485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="57c05d3e-25dd-4125-a8ec-3adc98031a91" Caption="Input 2 to Output 9" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F312F3920485454502F312E300D0A0D0A</Data1>
                 <Data2 />
                 <Lock1 Value="100" />
                 <Lock2 Value="2" />
@@ -650,6 +690,26 @@
                 <Lock2 Value="2" />
               </Command>
             </Sequence>
+            <Sequence Name="671b0e31-cf3f-4e80-90ad-2864e4b1ae36" Caption="Input 3 to Output 9" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F322F3820485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="671b0e31-cf3f-4e80-90ad-2864e4b1ae36" Caption="Input 3 to Output 10" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F322F3920485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
             <Sequence Name="adbd04cc-25aa-4e7a-af83-f6eda1e07b8e" Caption="Input 4 to Output 1" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
               <Description />
               <Image />
@@ -725,6 +785,26 @@
               <Image />
               <Command>
                 <Data1>474554202F506F72742F5365742F332F3720485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="6320c5a7-f893-4319-989e-9765b7947455" Caption="Input 4 to Output 9" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F332F3820485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="6196513f-af3e-49eb-bea5-b6bd10cb5b40" Caption="Input 4 to Output 10" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F332F3920485454502F312E300D0A0D0A</Data1>
                 <Data2 />
                 <Lock1 Value="100" />
                 <Lock2 Value="2" />
@@ -810,6 +890,26 @@
                 <Lock2 Value="2" />
               </Command>
             </Sequence>
+            <Sequence Name="2c92340c-f2b7-4f24-9a06-fd73e2afde84" Caption="Input 5 to Output 9" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F342F3820485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="7a604686-04eb-4e76-87fb-6c2668a1202f" Caption="Input 5 to Output 10" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F342F3920485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
             <Sequence Name="bd08598f-7b6e-4715-ad50-c93a44cc1d02" Caption="Input 6 to Output 1" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
               <Description />
               <Image />
@@ -885,6 +985,26 @@
               <Image />
               <Command>
                 <Data1>474554202F506F72742F5365742F352F3720485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="7e8d2337-d97c-4444-8d7b-d94a61b417a7" Caption="Input 6 to Output 9" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F352F3820485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="345c3a33-d104-4e54-8808-35879c65d10e" Caption="Input 6 to Output 10" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F352F3920485454502F312E300D0A0D0A</Data1>
                 <Data2 />
                 <Lock1 Value="100" />
                 <Lock2 Value="2" />
@@ -970,6 +1090,26 @@
                 <Lock2 Value="2" />
               </Command>
             </Sequence>
+            <Sequence Name="b37a241a-022b-4ab7-a840-30d436f661af" Caption="Input 7 to Output 9" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F362F3820485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="2a8da948-6a32-4dac-802e-e666251af57d" Caption="Input 7 to Output 10" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F362F3920485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
             <Sequence Name="1f34c84e-f9b1-48f7-9f81-355c86e2cb04" Caption="Input 8 to Output 1" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
               <Description />
               <Image />
@@ -1045,6 +1185,26 @@
               <Image />
               <Command>
                 <Data1>474554202F506F72742F5365742F372F3720485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="f88a83bd-6d32-4447-a640-7db04fa18b4f" Caption="Input 8 to Output 9" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F372F3820485454502F312E300D0A0D0A</Data1>
+                <Data2 />
+                <Lock1 Value="100" />
+                <Lock2 Value="2" />
+              </Command>
+            </Sequence>
+            <Sequence Name="ea3a6a74-33e2-43c7-9985-d809f429f431" Caption="Input 8 to Output 10" DeviceMenu="True" ProjectMenu="True" Selectable="True" SequenceType="Control" Deletable="True" HasData="False" UseHeaderFooter="True">
+              <Description />
+              <Image />
+              <Command>
+                <Data1>474554202F506F72742F5365742F372F3920485454502F312E300D0A0D0A</Data1>
                 <Data2 />
                 <Lock1 Value="100" />
                 <Lock2 Value="2" />

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <driverManifest>
 	<driver
-		id="{85000166-5ae1-4451-8c80-f8750a8c5ff7}"
+		id="{8867b771-e02f-41ea-b2fa-09718824a2bd}"
 		name="Generic CEC Source"
 		author="Pulse-Eight Limited"
 		copyright="Pulse-Eight Limited 2016"

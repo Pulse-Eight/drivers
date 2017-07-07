@@ -3,7 +3,7 @@
 	<category name="Routing">
 		<function name="Port Set" export="PortSet" repeatrate="0">
 			<parameter name="Input" type="integer" description="Input Port (1-4)" min="1" max="4" />
-			<parameter name="Output" type="integer" description="Input Port (1-4)" min="1" max="4" />
+			<parameter name="Output" type="integer" description="Output Port (1-4)" min="1" max="4" />
 		</function>
 	</category>
 </functions>

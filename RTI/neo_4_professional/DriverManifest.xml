@@ -4,16 +4,18 @@
 		id="{85000166-5ae1-4451-8c80-f8750a8c5ff7}"
 		name="neo:4 Professional"
 		author="Pulse-Eight Limited"
-		copyright="Pulse-Eight Limited 2016"
+		copyright="Pulse-Eight Limited 2017"
 		deviceManufacturer="Pulse-Eight Limited"
 		deviceModel="neo:4"
-		driverVersion="1.0"
+		driverVersion="1.1"
 		minimumRuntimeVersion="1"		
 		minimumSoftwareVersion="9.7"
 		processorType="XP-8"
 		configSettingsStream="ConfigSettings.xml"
 	    systemFunctionsStream="SystemFunctions.xml"
+		systemVariablesStream="SystemVariables.xml"
 		helpTextStream="instructions.rtf">
+		<processorScript stream="json2.js" />
 		<processorScript stream="p8core.js" />
 		<processorScript stream="p8routing.js" />
 		<package>

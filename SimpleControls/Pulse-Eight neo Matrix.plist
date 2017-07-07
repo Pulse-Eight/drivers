@@ -25,7 +25,10 @@
 			<string>GET /Port/Set/0/6</string>
 			<key>INPUT 1 TO OUTPUT 8</key>
 			<string>GET /Port/Set/0/7</string>
-
+			<key>INPUT 1 TO OUTPUT 9</key>
+			<string>GET /Port/Set/0/8</string>
+			<key>INPUT 1 TO OUTPUT 10</key>
+			<string>GET /Port/Set/0/9</string>
 
 			<key>INPUT 2 TO OUTPUT 1</key>
 			<string>GET /Port/Set/1/0</string>
@@ -43,7 +46,10 @@
 			<string>GET /Port/Set/1/6</string>
 			<key>INPUT 2 TO OUTPUT 8</key>
 			<string>GET /Port/Set/1/7</string>
-
+			<key>INPUT 2 TO OUTPUT 9</key>
+			<string>GET /Port/Set/1/8</string>
+			<key>INPUT 2 TO OUTPUT 10</key>
+			<string>GET /Port/Set/1/9</string>
 
 			<key>INPUT 3 TO OUTPUT 1</key>
 			<string>GET /Port/Set/2/0</string>
@@ -61,7 +67,10 @@
 			<string>GET /Port/Set/2/6</string>
 			<key>INPUT 3 TO OUTPUT 8</key>
 			<string>GET /Port/Set/2/7</string>
-
+			<key>INPUT 3 TO OUTPUT 9</key>
+			<string>GET /Port/Set/2/8</string>
+			<key>INPUT 3 TO OUTPUT 10</key>
+			<string>GET /Port/Set/2/9</string>
 
 			<key>INPUT 4 TO OUTPUT 1</key>
 			<string>GET /Port/Set/3/0</string>
@@ -79,7 +88,10 @@
 			<string>GET /Port/Set/3/6</string>
 			<key>INPUT 4 TO OUTPUT 8</key>
 			<string>GET /Port/Set/3/7</string>
-
+			<key>INPUT 4 TO OUTPUT 9</key>
+			<string>GET /Port/Set/3/8</string>
+			<key>INPUT 4 TO OUTPUT 10</key>
+			<string>GET /Port/Set/3/9</string>
 
 			<key>INPUT 5 TO OUTPUT 1</key>
 			<string>GET /Port/Set/4/0</string>
@@ -97,7 +109,10 @@
 			<string>GET /Port/Set/4/6</string>
 			<key>INPUT 5 TO OUTPUT 8</key>
 			<string>GET /Port/Set/4/7</string>
-
+			<key>INPUT 5 TO OUTPUT 9</key>
+			<string>GET /Port/Set/4/8</string>
+			<key>INPUT 5 TO OUTPUT 10</key>
+			<string>GET /Port/Set/4/9</string>
 
 			<key>INPUT 6 TO OUTPUT 1</key>
 			<string>GET /Port/Set/5/0</string>
@@ -115,7 +130,10 @@
 			<string>GET /Port/Set/5/6</string>
 			<key>INPUT 6 TO OUTPUT 8</key>
 			<string>GET /Port/Set/5/7</string>
-
+			<key>INPUT 6 TO OUTPUT 9</key>
+			<string>GET /Port/Set/5/8</string>
+			<key>INPUT 6 TO OUTPUT 10</key>
+			<string>GET /Port/Set/5/9</string>
 
 			<key>INPUT 7 TO OUTPUT 1</key>
 			<string>GET /Port/Set/6/0</string>
@@ -133,7 +151,10 @@
 			<string>GET /Port/Set/6/6</string>
 			<key>INPUT 7 TO OUTPUT 8</key>
 			<string>GET /Port/Set/6/7</string>
-
+			<key>INPUT 7 TO OUTPUT 9</key>
+			<string>GET /Port/Set/6/8</string>
+			<key>INPUT 7 TO OUTPUT 10</key>
+			<string>GET /Port/Set/6/9</string>
 
 			<key>INPUT 8 TO OUTPUT 1</key>
 			<string>GET /Port/Set/7/0</string>
@@ -151,6 +172,10 @@
 			<string>GET /Port/Set/7/6</string>
 			<key>INPUT 8 TO OUTPUT 8</key>
 			<string>GET /Port/Set/7/7</string>
+			<key>INPUT 8 TO OUTPUT 9</key>
+			<string>GET /Port/Set/7/8</string>
+			<key>INPUT 8 TO OUTPUT 10</key>
+			<string>GET /Port/Set/7/9</string>
 		</dict>
 		<key>method</key>
 		<string>http</string>

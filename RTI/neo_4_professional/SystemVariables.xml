@@ -1,0 +1,20 @@
+<variables>
+	<category name="Output Routing">
+		<variable name="Output 1 Using Input 1" type="boolean" sysvar="O0I0" />
+		<variable name="Output 1 Using Input 2" type="boolean" sysvar="O0I1" />
+		<variable name="Output 1 Using Input 3" type="boolean" sysvar="O0I2" />
+		<variable name="Output 1 Using Input 4" type="boolean" sysvar="O0I3" />
+		<variable name="Output 2 Using Input 1" type="boolean" sysvar="O1I0" />
+		<variable name="Output 2 Using Input 2" type="boolean" sysvar="O1I1" />
+		<variable name="Output 2 Using Input 3" type="boolean" sysvar="O1I2" />
+		<variable name="Output 2 Using Input 4" type="boolean" sysvar="O1I3" />
+		<variable name="Output 3 Using Input 1" type="boolean" sysvar="O2I0" />
+		<variable name="Output 3 Using Input 2" type="boolean" sysvar="O2I1" />
+		<variable name="Output 3 Using Input 3" type="boolean" sysvar="O2I2" />
+		<variable name="Output 3 Using Input 4" type="boolean" sysvar="O2I3" />
+		<variable name="Output 4 Using Input 1" type="boolean" sysvar="O3I0" />
+		<variable name="Output 4 Using Input 2" type="boolean" sysvar="O3I1" />
+		<variable name="Output 4 Using Input 3" type="boolean" sysvar="O3I2" />
+		<variable name="Output 4 Using Input 4" type="boolean" sysvar="O3I3" />
+	</category>
+</variables>

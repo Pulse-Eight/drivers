@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <driverManifest>
 	<driver
-		id="{85000166-5ae1-4451-8c80-f8750a8c5ff7}"
+		id="{01781c9c-0bef-434a-96a3-89f32fcab15c}"
 		name="Generic CEC Sink"
 		author="Pulse-Eight Limited"
 		copyright="Pulse-Eight Limited 2016"

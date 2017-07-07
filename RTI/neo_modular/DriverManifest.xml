@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<driverManifest>
+	<driver
+		id="{f20880f7-f0f1-4c31-b2f8-536a25671087}"
+		name="neo:Modular"
+		author="Pulse-Eight Limited"
+		copyright="Pulse-Eight Limited 2017"
+		deviceManufacturer="Pulse-Eight Limited"
+		deviceModel="neo:Modular"
+		driverVersion="1.1"
+		minimumRuntimeVersion="1"		
+		minimumSoftwareVersion="9.7"
+		processorType="XP-8"
+		configSettingsStream="ConfigSettings.xml"
+	    systemFunctionsStream="SystemFunctions.xml"
+		systemVariablesStream="SystemVariables.xml"
+		helpTextStream="instructions.rtf">
+		<processorScript stream="json2.js" />
+		<processorScript stream="p8core.js" />
+		<processorScript stream="p8routing.js" />
+		<package>
+			<output filename="neoModular" public="false"/>
+			<description>
+				neo:Modular Driver
+			</description>
+		</package>
+	</driver>
+</driverManifest>
