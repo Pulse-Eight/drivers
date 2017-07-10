@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <driverManifest>
 	<driver
-		id="{01781c9c-0bef-434a-96a3-89f32fcab15c}"
+		id="{df2b1c37-1fc0-42e0-9e3d-9401ea64682f}"
 		name="Generic CEC Sink"
 		author="Pulse-Eight Limited"
-		copyright="Pulse-Eight Limited 2016"
+		copyright="Pulse-Eight Limited 2017"
 		deviceManufacturer="Pulse-Eight Limited"
 		deviceModel="neo Matrix CEC Sink"
 		driverVersion="1.0"

@@ -23,7 +23,7 @@ function sendKeyPress() {
 	}
 	var state = connection.Write(data);
 	if (state && DEBUG) {
-		System.Print('Response: ' + connection.Read(2000) + '\r\n');
+		//System.Print('Response: ' + connection.Read(2000) + '\r\n');
 	}
 	connection.Close();
 }
@@ -41,9 +41,9 @@ function SendCommand(Input) {
 	connection.OnConnectFunc = sendKeyPress;
 	var openState = connection.Open(Config.Get('IPAddress'), 80);
 	if (DEBUG) {
-		System.Print('Opened: ' + openState + '\r\n');
-		System.Print('OpenState: ' + connection.OpenState);
-		System.Print('ConnectState: ' + connection.ConnectState);
+		//System.Print('Opened: ' + openState + '\r\n');
+		//System.Print('OpenState: ' + connection.OpenState);
+		//System.Print('ConnectState: ' + connection.ConnectState);
 	}
 }
 
