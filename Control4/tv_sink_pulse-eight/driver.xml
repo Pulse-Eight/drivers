@@ -1,12 +1,12 @@
 <devicedata>
-  <copyright>Copyright 2016 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2017 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Pulse-Eight</manufacturer>
   <name>CEC Sink (TV) Device</name>
   <model>CEC Sink (TV)</model>
   <created>04/23/2016 12:00 PM</created>
-  <modified>04/23/2016 12:00 PM</modified>
-  <version>16</version>
+  <modified>07/12/2017 12:00 PM</modified>
+  <version>17</version>
   <small>assets\neo_sm.gif</small>
   <large>assets\neo_lg.gif</large>
   <control>lua_gen</control>
@@ -267,6 +267,18 @@
           <item>Output 6</item>
           <item>Output 7</item>
           <item>Output 8</item>
+		  <item>Output 9</item>
+		  <item>Output 10</item>
+        </items>
+      </property>
+      <property>
+        <name>Port Type</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Output</default>
+        <items>
+          <item>Output</item>
+          <item>Mirror</item>
         </items>
       </property>
     </properties>
