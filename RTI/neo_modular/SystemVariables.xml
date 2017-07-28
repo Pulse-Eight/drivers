@@ -32,7 +32,7 @@
 		<variable name="Output 4 Using Input 6" type="boolean" sysvar="O3I5" />
 		<variable name="Output 4 Using Input 7" type="boolean" sysvar="O3I6" />
 		<variable name="Output 4 Using Input 8" type="boolean" sysvar="O3I7" />
-		<variable name="Output 5 Using Input 1" type="boolean" sysvar="O3I0" />
+		<variable name="Output 5 Using Input 1" type="boolean" sysvar="O4I0" />
 		<variable name="Output 5 Using Input 2" type="boolean" sysvar="O4I1" />
 		<variable name="Output 5 Using Input 3" type="boolean" sysvar="O4I2" />
 		<variable name="Output 5 Using Input 4" type="boolean" sysvar="O4I3" />
@@ -40,7 +40,7 @@
 		<variable name="Output 5 Using Input 6" type="boolean" sysvar="O4I5" />
 		<variable name="Output 5 Using Input 7" type="boolean" sysvar="O4I6" />
 		<variable name="Output 5 Using Input 8" type="boolean" sysvar="O4I7" />
-		<variable name="Output 6 Using Input 1" type="boolean" sysvar="O5I0" />
+		<variable name="Output 6 Using Input 1" type="boolean" sysvar="O6I0" />
 		<variable name="Output 6 Using Input 2" type="boolean" sysvar="O5I1" />
 		<variable name="Output 6 Using Input 3" type="boolean" sysvar="O5I2" />
 		<variable name="Output 6 Using Input 4" type="boolean" sysvar="O5I3" />
