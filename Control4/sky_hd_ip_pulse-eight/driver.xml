@@ -1,0 +1,276 @@
+<devicedata>
+  <copyright>Copyright 2018 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <creator>Pulse-Eight</creator>
+  <manufacturer>Sky</manufacturer>
+  <name>Sky HD IP Driver</name>
+  <model>Sky HD</model>
+  <created>22/04/2017 12:00 PM</created>
+  <modified>25/01/2018 12:00 PM</modified>
+  <version>5</version>
+  <small image_source="c4z">assets/device_sm.png</small>
+  <large image_source="c4z">assets/device_lg.png</large>
+  <control>lua_gen</control>
+  <controlmethod>ip</controlmethod>
+  <driver>DriverWorks</driver>
+  <proxies qty="1">
+    <proxy name="Sky" large_image="assets/device_lg.png" small_image="assets/device_sm.png" smimagepath="assets/device_sm.png" lgimagepath="assets/device_lg.png" image_source="c4z">satellite</proxy>
+  </proxies>
+  <connections>
+    <connection>
+      <id>5001</id>
+      <facing>6</facing>
+      <connectionname>SATELLITE</connectionname>
+      <type>2</type>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>False</linelevel>
+      <classes>
+        <class>
+          <classname>SATELLITE</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2000</id>
+      <facing>6</facing>
+      <connectionname>Output</connectionname>
+      <type>5</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>True</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>1000</id>
+      <type>5</type>
+      <connectionname>Cable In</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>RF_SKY</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001" verified="True">
+      <id>7000</id>
+      <facing>6</facing>
+      <connectionname>Room Selection - OUTPUT</connectionname>
+      <type>7</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>True</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>VIDEO_SELECTION</classname>
+        </class>
+      </classes>
+    </connection>
+  </connections>
+  <capabilities>
+    <navigator_display_option proxybindingid="5001">
+      <display_icons>
+        <Icon height="140" width="140">controller://driver/sky_ip_pulse-eight/assets/device/experience_140.png</Icon>
+        <Icon height="130" width="120">controller://driver/sky_ip_pulse-eight/assets/device/experience_130.png</Icon>
+        <Icon height="120" width="120">controller://driver/sky_ip_pulse-eight/assets/device/experience_120.png</Icon>
+        <Icon height="110" width="110">controller://driver/sky_ip_pulse-eight/assets/device/experience_110.png</Icon>
+        <Icon height="100" width="100">controller://driver/sky_ip_pulse-eight/assets/device/experience_100.png</Icon>
+        <Icon height="90" width="90">controller://driver/sky_ip_pulse-eight/assets/device/experience_90.png</Icon>
+        <Icon height="80" width="80">controller://driver/sky_ip_pulse-eight/assets/device/experience_80.png</Icon>
+        <Icon height="70" width="70">controller://driver/sky_ip_pulse-eight/assets/device/experience_70.png</Icon>
+        <Icon height="60" width="60">controller://driver/sky_ip_pulse-eight/assets/device/experience_60.png</Icon>
+        <Icon height="50" width="50">controller://driver/sky_ip_pulse-eight/assets/device/experience_50.png</Icon>
+        <Icon height="40" width="40">controller://driver/sky_ip_pulse-eight/assets/device/experience_40.png</Icon>
+        <Icon height="30" width="30">controller://driver/sky_ip_pulse-eight/assets/device/experience_30.png</Icon>
+        <Icon height="20" width="20">controller://driver/sky_ip_pulse-eight/assets/device/experience_20.png</Icon>
+      </display_icons>
+    </navigator_display_option>
+    <digital_audio_support>False</digital_audio_support>
+    <has_discrete_volume_control>False</has_discrete_volume_control>
+    <has_up_down_volume_control>False</has_up_down_volume_control>
+    <has_discrete_channel_select>True</has_discrete_channel_select>
+    <has_discrete_input_select>False</has_discrete_input_select>
+  </capabilities>
+  <config>
+    <documentation file="www/documentation.rtf" />
+    <script file="p8driver.lua" />
+    <rfs>
+      <rf>rf_sky</rf>
+    </rfs>
+    <properties>
+      <property>
+        <name>Device IP Address</name>
+        <type>STRING</type>
+        <readonly>false</readonly>
+        <default>192.168.1.100</default>
+        <tooltip>It is highly recommended that you set a static IP address on your Sky box</tooltip>
+        <description>The IP address of your Sky box.</description>
+      </property>
+      <property>
+        <name>Custom 1 Button</name>
+        <type>LIST</type>
+        <items>
+          <item>DISMISS</item>
+          <item>INTERACTIVE</item>
+          <item>SIDEBAR</item>
+          <item>HELP</item>
+          <item>SERVICES</item>
+          <item>SEARCH</item>
+          <item>BOX OFFICE</item>
+          <item>HOME</item>
+          <item>TEXT</item>
+          <item>Un-mapped</item>
+        </items>
+        <default>Un-mapped</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>Custom 2 Button</name>
+        <type>LIST</type>
+        <items>
+          <item>DISMISS</item>
+          <item>INTERACTIVE</item>
+          <item>SIDEBAR</item>
+          <item>HELP</item>
+          <item>SERVICES</item>
+          <item>SEARCH</item>
+          <item>BOX OFFICE</item>
+          <item>HOME</item>
+          <item>TEXT</item>
+          <item>Un-mapped</item>
+        </items>
+        <default>Un-mapped</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>Custom 3 Button</name>
+        <type>LIST</type>
+        <items>
+          <item>DISMISS</item>
+          <item>INTERACTIVE</item>
+          <item>SIDEBAR</item>
+          <item>HELP</item>
+          <item>SERVICES</item>
+          <item>SEARCH</item>
+          <item>BOX OFFICE</item>
+          <item>HOME</item>
+          <item>TEXT</item>
+          <item>Un-mapped</item>
+        </items>
+        <default>Un-mapped</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>Hash Button</name>
+        <type>LIST</type>
+        <items>
+          <item>DISMISS</item>
+          <item>INTERACTIVE</item>
+          <item>SIDEBAR</item>
+          <item>HELP</item>
+          <item>SERVICES</item>
+          <item>SEARCH</item>
+          <item>BOX OFFICE</item>
+          <item>HOME</item>
+          <item>TEXT</item>
+          <item>Un-mapped</item>
+        </items>
+        <default>Un-mapped</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>Star Button</name>
+        <type>LIST</type>
+        <items>
+          <item>DISMISS</item>
+          <item>INTERACTIVE</item>
+          <item>SIDEBAR</item>
+          <item>HELP</item>
+          <item>SERVICES</item>
+          <item>SEARCH</item>
+          <item>BOX OFFICE</item>
+          <item>HOME</item>
+          <item>TEXT</item>
+          <item>Un-mapped</item>
+        </items>
+        <default>Un-mapped</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>Menu Button</name>
+        <type>LIST</type>
+        <items>
+          <item>DISMISS</item>
+          <item>INTERACTIVE</item>
+          <item>SIDEBAR</item>
+          <item>HELP</item>
+          <item>SERVICES</item>
+          <item>SEARCH</item>
+          <item>BOX OFFICE</item>
+          <item>HOME</item>
+          <item>TEXT</item>
+          <item>Un-mapped</item>
+        </items>
+        <default>SIDEBAR</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>Cancel Button</name>
+        <type>LIST</type>
+        <items>
+          <item>DISMISS</item>
+          <item>Un-mapped</item>
+        </items>
+        <default>DISMISS</default>
+      </property>
+      <property>
+        <name>Log Level</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>2 - Warning</default>
+        <items>
+          <item>0 - Alert</item>
+          <item>1 - Error</item>
+          <item>2 - Warning</item>
+          <item>3 - Info</item>
+          <item>4 - Trace</item>
+          <item>5 - Debug</item>
+        </items>
+      </property>
+      <property>
+        <name>Log Mode</name>
+        <type>LIST</type>
+        <readonly>false</readonly>
+        <default>Off</default>
+        <items>
+          <item>Off</item>
+          <item>Print</item>
+          <item>Log</item>
+          <item>Print and Log</item>
+        </items>
+      </property>
+    </properties>
+  </config>
+  <composer_categories>
+    <category>Audio/Video</category>
+  </composer_categories>
+  <search_types>
+    <type>c4:av_gen</type>
+  </search_types>
+</devicedata>

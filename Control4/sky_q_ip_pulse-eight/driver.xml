@@ -1,12 +1,12 @@
 <devicedata>
-  <copyright>Copyright 2017 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2018 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Sky</manufacturer>
-  <name>Sky Q/HD IP Driver</name>
-  <model>Sky Q/HD</model>
+  <name>Sky Q IP Driver</name>
+  <model>Sky Q</model>
   <created>22/04/2017 12:00 PM</created>
-  <modified>07/12/2017 12:00 PM</modified>
-  <version>4</version>
+  <modified>25/01/2018 12:00 PM</modified>
+  <version>5</version>
   <small image_source="c4z">assets/device_sm.png</small>
   <large image_source="c4z">assets/device_lg.png</large>
   <control>lua_gen</control>
@@ -123,20 +123,10 @@
         <description>The IP address of your Sky box.</description>
       </property>
       <property>
-        <name>Sky Box Type</name>
-        <type>LIST</type>
-        <items>
-          <item>Sky+ HD</item>
-          <item>Sky Q</item>
-        </items>
-        <default>Sky Q</default>
-        <readonly>false</readonly>
-      </property>
-      <property>
         <name>Firmware Version</name>
         <type>STRING</type>
 		<readonly>true</readonly>
-        <default>Unknown (Only available on Sky Q boxes)</default>
+        <default>Unknown</default>
       </property>
       <property>
         <name>Custom 1 Button</name>
