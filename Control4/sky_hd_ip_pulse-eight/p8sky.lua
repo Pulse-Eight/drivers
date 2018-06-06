@@ -1,6 +1,6 @@
 require "lib.json"
 
-PORT = 5900
+PORT = 49160
 
 function P8INT:SETUP()
 end

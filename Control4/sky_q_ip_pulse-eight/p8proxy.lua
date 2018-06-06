@@ -27,6 +27,7 @@ function ReceivedFromProxy(idBinding, sCommand, tParams)
 		LogTrace("ReceivedFromProxy(): " .. sCommand .. " on binding " .. idBinding .. "; Call Function PRX_CMD." .. sCommand .. "()")
 		--LogInfo(tParams)
 		if ((PRX_CMD[sCommand]) ~= nil) then
+			LogInfo("Code: " .. sCommand)
 			local status, err = pcall(PRX_CMD[sCommand], idBinding, tParams)
 			if (not status) then
 				LogError("LUA_ERROR: " .. err)
@@ -239,7 +240,11 @@ function PRX_CMD.CUSTOM_3(idBinding, tParams)
 end
 
 function PRX_CMD.OFF(idBinding, tParams)
-    P8INT:SEND_KEY(0)
+    if (Properties["Allow Power Off"] == "Yes") then
+        P8INT:TURN_OFF()
+    else
+        LogInfo("Power State Control Disabled [Off Prevented]")
+    end
 end
 
 function PRX_CMD.ON(idBinding, tParams)
@@ -250,4 +255,20 @@ function EX_CMD.LUA_ACTION(tParams)
     if tParams["ACTION"] == "DISCOVER" then
 	   P8INT:DISCOVER()
     end
+end
+
+function PRX_CMD.SELECT_SOURCE(idBinding, tParams)
+--Ignored
+end
+
+function PRX_CMD.GET_VIDEO_PATH(idBinding, tParams)
+--Ignored
+end
+
+function PRX_CMD.GET_AUDIO_PATH(idBinding, tParams)
+--Ignored
+end
+
+function PRX_CMD.REQUEST_CURRENT_MEDIA_INFO(idBinding, tParams)
+
 end

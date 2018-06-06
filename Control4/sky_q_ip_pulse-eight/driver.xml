@@ -5,8 +5,8 @@
   <name>Sky Q IP Driver</name>
   <model>Sky Q</model>
   <created>22/04/2017 12:00 PM</created>
-  <modified>25/01/2018 12:00 PM</modified>
-  <version>5</version>
+  <modified>29/05/2018 12:00 PM</modified>
+  <version>6</version>
   <small image_source="c4z">assets/device_sm.png</small>
   <large image_source="c4z">assets/device_lg.png</large>
   <control>lua_gen</control>
@@ -244,6 +244,16 @@
           <item>Un-mapped</item>
         </items>
         <default>DISMISS</default>
+      </property>
+      <property>
+        <name>Allow Power Off</name>
+        <type>LIST</type>
+		<readonly>false</readonly>
+        <default>Yes</default>
+		<items>
+			<item>Yes</item>
+			<item>No</item>
+		</items>
       </property>
       <property>
         <name>Log Level</name>
