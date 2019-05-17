@@ -40,8 +40,8 @@
     <has_up_down_bass_control>False</has_up_down_bass_control>
     <has_up_down_treble_control>False</has_up_down_treble_control>
     <has_video_sense_control>False</has_video_sense_control>
-    <video_consumer_count>4</video_consumer_count>
-    <video_provider_count>4</video_provider_count>
+    <video_consumer_count>8</video_consumer_count>
+    <video_provider_count>8</video_provider_count>
     <can_switch_separately>false</can_switch_separately>
     <requires_separate_switching>false</requires_separate_switching>
     <has_up_down_volume_control>false</has_up_down_volume_control>
