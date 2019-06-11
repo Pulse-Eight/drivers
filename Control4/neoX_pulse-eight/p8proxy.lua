@@ -47,12 +47,36 @@ function PRX_CMD.ON(idBinding, tParams)
     --No Action Required
 end
 
-function PRX_CMD.CONNECT_OUTPUT(idBinding, tParams)
+function PRX_CMD.OFF(idBinding, tParams)
     --No Action Required
 end
 
+function PRX_CMD.CONNECT_OUTPUT(idBinding, tParams)
+	if tonumber(tParams["OUTPUT"]) > -1 then
+		local output = tonumber(tParams["OUTPUT"] % 1000)
+		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/false"
+		LogInfo("Set Mute OFF Due to Connect. Output: " .. output)
+		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+			  local jsonResponse = JSON:decode(strData)
+			  if jsonResponse.Result then
+				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
+			  end
+		   end)
+	end
+end
+
 function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
-    --No Action Required
+	if tonumber(tParams["OUTPUT"]) > -1 then
+		local output = tonumber(tParams["OUTPUT"] % 1000)
+		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/true"
+		LogInfo("Set Mute ON Due to Disconnect. Output: " .. output)
+		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+			  local jsonResponse = JSON:decode(strData)
+			  if jsonResponse.Result then
+				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
+			  end
+		   end)
+	end
 end
 
 function PRX_CMD.GET_VIDEO_PATH(idBinding, tParams)
@@ -112,7 +136,7 @@ function PRX_CMD.MUTE_ON(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
 		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/true"
-		LogInfo("Toggle Mute. Output: " .. output)
+		LogInfo("Mute On. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
 			  if jsonResponse.Result then
@@ -129,7 +153,7 @@ function PRX_CMD.MUTE_OFF(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
 		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/false"
-		LogInfo("Toggle Mute. Output: " .. output)
+		LogInfo("Mute Off. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
 			  if jsonResponse.Result then
@@ -221,6 +245,7 @@ function P8INT:UPDATE_AUDIO(idBinding, output)
 	LogTrace("Updating Audio for Output: " .. output)
 	local p8output = tonumber(output % 1000)
 	local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. p8output
+	LogTrace("URI = " .. uri)
 	C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 		if responseCode ~= 200 or strError ~= nil then
 			LogWarn("Unable to fetch audio settings")
@@ -231,6 +256,7 @@ function P8INT:UPDATE_AUDIO(idBinding, output)
 
 		local jsonResponse = JSON:decode(strData)
 		if jsonResponse.Result then
+		     LogTrace("Volume Level Changed = " .. tonumber(jsonResponse["volume"]) .. " Output = " .. (tonumber(output)-3000))
 			local volChangedParams = { LEVEL = tonumber(jsonResponse["volume"]), OUTPUT = (tonumber(output)-3000) }
 			local muteChangedParams = { MUTE = jsonResponse["muted"], OUTPUT = (tonumber(output)-3000) }
 			C4:SendToProxy(idBinding, "VOLUME_LEVEL_CHANGED", volChangedParams)
