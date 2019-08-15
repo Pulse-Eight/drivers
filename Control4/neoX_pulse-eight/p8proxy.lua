@@ -204,9 +204,11 @@ function PRX_CMD.PULSE_VOL_UP(idBinding, tParams)
 		LogInfo("Volume Up. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
-			  --if jsonResponse.Result then
+			  if jsonResponse.Result then
 				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-			  --end
+			  else
+			     LogWarn("System not set to control volume on this zone")
+			  end
 		   end)
 	end
 end
@@ -215,7 +217,7 @@ function PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
 		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. output .. "/down"
-		LogInfo("Volume Down. Output: " .. output)
+		--LogInfo("Volume Down. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
 			  --if jsonResponse.Result then
@@ -225,27 +227,55 @@ function PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
 	end
 end
 
+local outputVolumeTimers = {
+	OUTPUT0 = nil,
+	OUTPUT1 = nil,
+	OUTPUT2 = nil,
+	OUTPUT3 = nil,
+	OUTPUT4 = nil,
+	OUTPUT5 = nil,
+	OUTPUT6 = nil,
+	OUTPUT7 = nil,
+	OUTPUT8 = nil,
+	OUTPUT9 = nil
+}
+
 function PRX_CMD.START_VOL_UP(idBinding, tParams)
-    --TODO
+    LogTrace("Ramp Up Start")
+    local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
+    local output = tonumber(tParams["OUTPUT"] % 1000)
+    
+    outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
+	   PRX_CMD.PULSE_VOL_UP(idBinding, tParams)
+    end, true)
 end
 
-function PRX_CMD.END_VOL_UP(idBinding, tParams)
-    --TODO
+function PRX_CMD.STOP_VOL_UP(idBinding, tParams)
+    LogTrace("Ramp Up End")
+    local output = tonumber(tParams["OUTPUT"] % 1000)
+    outputVolumeTimers["OUTPUT" .. output]:Cancel()
 end
 
 function PRX_CMD.START_VOL_DOWN(idBinding, tParams)
-    --TODO
+    LogTrace("Ramp Down Start")
+    local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
+    local output = tonumber(tParams["OUTPUT"] % 1000)
+    
+    outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
+	   PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
+    end, true)
 end
 
-function PRX_CMD.END_VOL_DOWN(idBinding, tParams)
-    --TODO
+function PRX_CMD.STOP_VOL_DOWN(idBinding, tParams)
+    LogTrace("Ramp Down End")
+    local output = tonumber(tParams["OUTPUT"] % 1000)
+    outputVolumeTimers["OUTPUT" .. output]:Cancel()
 end
 
 function P8INT:UPDATE_AUDIO(idBinding, output)
-	LogTrace("Updating Audio for Output: " .. output)
+	--LogTrace("Updating Audio for Output: " .. output)
 	local p8output = tonumber(output % 1000)
 	local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. p8output
-	LogTrace("URI = " .. uri)
 	C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 		if responseCode ~= 200 or strError ~= nil then
 			LogWarn("Unable to fetch audio settings")
@@ -256,7 +286,7 @@ function P8INT:UPDATE_AUDIO(idBinding, output)
 
 		local jsonResponse = JSON:decode(strData)
 		if jsonResponse.Result then
-		     LogTrace("Volume Level Changed = " .. tonumber(jsonResponse["volume"]) .. " Output = " .. (tonumber(output)-3000))
+		     LogTrace("Volume Level Changed = " .. tonumber(jsonResponse["volume"]) .. " Output (" .. output .. ") = " .. (tonumber(output)-3000))
 			local volChangedParams = { LEVEL = tonumber(jsonResponse["volume"]), OUTPUT = (tonumber(output)-3000) }
 			local muteChangedParams = { MUTE = jsonResponse["muted"], OUTPUT = (tonumber(output)-3000) }
 			C4:SendToProxy(idBinding, "VOLUME_LEVEL_CHANGED", volChangedParams)

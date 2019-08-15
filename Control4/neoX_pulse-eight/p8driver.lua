@@ -19,6 +19,7 @@ MAX_OUTPUTS = 10
 local gP8RoutingUpdateTimer
 local gP8DetailsTimer
 local gP8HealthTimer
+local gP8VolumeTimer
 
 function ON_DRIVER_EARLY_INIT.main()
     C4:AddVariable("Temp0", 0, "NUMBER")
@@ -37,10 +38,19 @@ function FirstRun()
     gP8DetailsTimer:StartTimer()
     gP8HealthTimer = c4_timer:new("Health Update", 1, "MINUTES", HealthUpdateTimer, true)
     gP8HealthTimer:StartTimer()
+    gP8VolumeTimer = c4_timer:new("Volume Update", 10, "SECONDS", VolumeUpdateTimer, true)
+    gP8VolumeTimer:StartTimer()
     --Call once to set initial states
     RoutingUpdateTimer()
     DetailsUpdateTimer()
     HealthUpdateTimer()
+    VolumeUpdateTimer()
+end
+
+function VolumeUpdateTimer()
+    for i = 1,MAX_OUTPUTS do
+	   --P8INT:UPDATE_AUDIO(DEFAULT_PROXY_BINDINGID, 4000 + i - 1)
+    end
 end
 
 function RoutingUpdateTimer()

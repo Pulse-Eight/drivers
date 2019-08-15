@@ -153,7 +153,7 @@ function GetPowerState(data, mode, bay)
 end
 
 function P8INT:GET_POWER_STATE(idBinding)
-    LogTrace("Updating Sink Power State")
+    --LogTrace("Updating Sink Power State")
     local uri = P8INT:GET_MATRIX_URL() .. "/Port/List"
     C4:urlGet(uri, {}, false, 
 	   function(ticketId, strData, responseCode, tHeaders, strError)
@@ -207,7 +207,7 @@ end
 
 
 function P8INT:GET_ROUTING(idBinding)
-    LogTrace("Updating Current Routing")
+    --LogTrace("Updating Current Routing")
     local uri = P8INT:GET_MATRIX_URL() .. "/Port/List/Concise"
     C4:urlGet(uri, {}, false, 
 	   function(ticketId, strData, responseCode, tHeaders, strError)

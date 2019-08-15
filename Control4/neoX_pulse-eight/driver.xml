@@ -7,7 +7,7 @@
   <created>05/04/2019 12:00 PM</created>
   <modified>05/04/2019 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>2</version>
+  <version>3</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
@@ -828,6 +828,13 @@
           <item>No</item>
         </items>
       </property>
+	  <property>
+		<name>Volume Ramp Speed</name>
+		<type>SCROLL</type>
+		<minimum>50</minimum>
+		<maximum>300</maximum>
+		<default>200</default>
+	  </property>
     </properties>
   </config>
   <composer_categories>
