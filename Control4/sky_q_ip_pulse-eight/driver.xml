@@ -1,12 +1,12 @@
 <devicedata>
-  <copyright>Copyright 2018 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2020 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Sky</manufacturer>
   <name>Sky Q IP Driver</name>
   <model>Sky Q</model>
   <created>22/04/2017 12:00 PM</created>
-  <modified>29/05/2018 12:00 PM</modified>
-  <version>6</version>
+  <modified>14/03/2020 12:00 PM</modified>
+  <version>7</version>
   <small image_source="c4z">assets/device_sm.png</small>
   <large image_source="c4z">assets/device_lg.png</large>
   <control>lua_gen</control>
@@ -86,19 +86,19 @@
   <capabilities>
     <navigator_display_option proxybindingid="5001">
       <display_icons>
-        <Icon height="140" width="140">controller://driver/sky_ip_pulse-eight/assets/device/experience_140.png</Icon>
-        <Icon height="130" width="120">controller://driver/sky_ip_pulse-eight/assets/device/experience_130.png</Icon>
-        <Icon height="120" width="120">controller://driver/sky_ip_pulse-eight/assets/device/experience_120.png</Icon>
-        <Icon height="110" width="110">controller://driver/sky_ip_pulse-eight/assets/device/experience_110.png</Icon>
-        <Icon height="100" width="100">controller://driver/sky_ip_pulse-eight/assets/device/experience_100.png</Icon>
-        <Icon height="90" width="90">controller://driver/sky_ip_pulse-eight/assets/device/experience_90.png</Icon>
-        <Icon height="80" width="80">controller://driver/sky_ip_pulse-eight/assets/device/experience_80.png</Icon>
-        <Icon height="70" width="70">controller://driver/sky_ip_pulse-eight/assets/device/experience_70.png</Icon>
-        <Icon height="60" width="60">controller://driver/sky_ip_pulse-eight/assets/device/experience_60.png</Icon>
-        <Icon height="50" width="50">controller://driver/sky_ip_pulse-eight/assets/device/experience_50.png</Icon>
-        <Icon height="40" width="40">controller://driver/sky_ip_pulse-eight/assets/device/experience_40.png</Icon>
-        <Icon height="30" width="30">controller://driver/sky_ip_pulse-eight/assets/device/experience_30.png</Icon>
-        <Icon height="20" width="20">controller://driver/sky_ip_pulse-eight/assets/device/experience_20.png</Icon>
+        <Icon height="140" width="140">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_140.png</Icon>
+        <Icon height="130" width="120">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_130.png</Icon>
+        <Icon height="120" width="120">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_120.png</Icon>
+        <Icon height="110" width="110">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_110.png</Icon>
+        <Icon height="100" width="100">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_100.png</Icon>
+        <Icon height="90" width="90">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_90.png</Icon>
+        <Icon height="80" width="80">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_80.png</Icon>
+        <Icon height="70" width="70">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_70.png</Icon>
+        <Icon height="60" width="60">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_60.png</Icon>
+        <Icon height="50" width="50">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_50.png</Icon>
+        <Icon height="40" width="40">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_40.png</Icon>
+        <Icon height="30" width="30">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_30.png</Icon>
+        <Icon height="20" width="20">controller://driver/sky_q_ip_pulse-eight/assets/device/experience_20.png</Icon>
       </display_icons>
     </navigator_display_option>
     <digital_audio_support>False</digital_audio_support>
