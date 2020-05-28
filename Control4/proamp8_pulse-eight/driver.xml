@@ -1,0 +1,485 @@
+<devicedata>
+  <copyright>Copyright 2020 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <creator>Pulse-Eight</creator>
+  <manufacturer>Pulse-Eight</manufacturer>
+  <name>ProAmp 8 IP Driver</name>
+  <model>ProAmp 8</model>
+  <created>28/05/2020 12:00 PM</created>
+  <modified>28/05/2020 12:00 PM</modified>
+  <OnlineCategory>AVSwitch</OnlineCategory>
+  <version>1</version>
+  <small image_source="c4z">Images/proamp_sm.png</small>
+  <large image_source="c4z">Images/proamp_lg.png</large>
+  <control>lua_gen</control>
+  <controlmethod>ip</controlmethod>
+  <driver>DriverWorks</driver>
+  <search_types>
+    <type>c4:av_gen</type>
+  </search_types>
+  <composer_categories>
+    <category>Audio/Video</category>
+  </composer_categories>
+  <proxies qty="1">
+    <proxy proxybindingid="5001" name="ProAmp 8" large_image="Images/proamp_lg.png" small_image="Images/proamp_sm.png" smimagepath="Images/proamp_sm.png" lgimagepath="Images/proamp_lg.png" image_source="c4z">amplifier</proxy>
+  </proxies>
+  <capabilities>
+	<audio_consumer_count>8</audio_consumer_count>
+	<audio_provider_count>8</audio_provider_count>
+  </capabilities>
+  <connections>
+    <connection>
+      <id>3000</id>
+      <type>6</type>
+      <connectionname>Input 1</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>3001</id>
+      <type>6</type>
+      <connectionname>Input 2</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>3002</id>
+      <type>6</type>
+      <connectionname>Input 3</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>3003</id>
+      <type>6</type>
+      <connectionname>Input 4</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>3004</id>
+      <type>6</type>
+      <connectionname>Input 5</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>3005</id>
+      <type>6</type>
+      <connectionname>Input 6</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>3006</id>
+      <type>6</type>
+      <connectionname>Input 7</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>3007</id>
+      <type>6</type>
+      <connectionname>Input 8</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+     <connection>
+      <id>4000</id>
+      <facing>6</facing>
+      <connectionname>Output 1</connectionname>
+      <type>6</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>SPEAKER</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>4001</id>
+      <facing>6</facing>
+      <connectionname>Output 2</connectionname>
+      <type>6</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>SPEAKER</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>4002</id>
+      <facing>6</facing>
+      <connectionname>Output 3</connectionname>
+      <type>6</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>SPEAKER</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>4003</id>
+      <facing>6</facing>
+      <connectionname>Output 4</connectionname>
+      <type>6</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>SPEAKER</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>4004</id>
+      <facing>6</facing>
+      <connectionname>Output 5</connectionname>
+      <type>6</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>SPEAKER</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>4005</id>
+      <facing>6</facing>
+      <connectionname>Output 6</connectionname>
+      <type>6</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>SPEAKER</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>4006</id>
+      <facing>6</facing>
+      <connectionname>Output 7</connectionname>
+      <type>6</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>SPEAKER</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>4007</id>
+      <facing>6</facing>
+      <connectionname>Output 8</connectionname>
+      <type>6</type>
+      <consumer>False</consumer>
+      <audiosource>True</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>SPEAKER</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>5001</id>
+      <type>2</type>
+      <connectionname>Amplifier</connectionname>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>AVSWITCH</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>7000</id>
+      <type>7</type>
+      <connectionname>Room 1</connectionname>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>7001</id>
+      <type>7</type>
+      <connectionname>Room 2</connectionname>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>7002</id>
+      <type>7</type>
+      <connectionname>Room 3</connectionname>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>7003</id>
+      <type>7</type>
+      <connectionname>Room 4</connectionname>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>7004</id>
+      <type>7</type>
+      <connectionname>Room 5</connectionname>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>7005</id>
+      <type>7</type>
+      <connectionname>Room 6</connectionname>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>7006</id>
+      <type>7</type>
+      <connectionname>Room 7</connectionname>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection>
+      <id>7007</id>
+      <type>7</type>
+      <connectionname>Room 8</connectionname>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
+      </classes>
+    </connection>
+  </connections>
+  <config>
+    <actions>
+      <action>
+        <name>Reboot System</name>
+        <command>REBOOT</command>
+      </action>
+      <action>
+        <name>Discover System</name>
+        <command>DISCOVER</command>
+      </action>
+      <action>
+        <name>Send Monitoring Pulse</name>
+        <command>SENDPULSE</command>
+      </action>
+    </actions>
+    <power_management_method>AlwaysOn</power_management_method>
+    <power_command_delay>0</power_command_delay>
+    <power_delay>0</power_delay>
+    <power_command_needed>False</power_command_needed>
+    <documentation file="www/documentation.rtf" />
+    <script file="p8driver.lua" />
+    <properties>
+      <property>
+        <name>Device IP Address</name>
+        <type>STRING</type>
+        <readonly>False</readonly>
+        <default>[Goto Action Tab and Click Discover System]</default>
+        <tooltip>If you are unsure of the IP address of your system, enter www.gotomymatrix.com to be redirected to the web UI, copy the IP from your browser into this box</tooltip>
+        <description>The IP address of your system, this in many cases can be auto discovered via the action tab button "Discover System". If this fails, enter www.gotomymatrix.com into your browser for more information.</description>
+      </property>
+      <property>
+        <name>Log Level</name>
+        <type>LIST</type>
+        <readonly>False</readonly>
+        <default>2 - Warning</default>
+        <items>
+          <item>0 - Alert</item>
+          <item>1 - Error</item>
+          <item>2 - Warning</item>
+          <item>3 - Info</item>
+          <item>4 - Trace</item>
+          <item>5 - Debug</item>
+        </items>
+      </property>
+      <property>
+        <name>Log Mode</name>
+        <type>LIST</type>
+        <readonly>False</readonly>
+        <default>Off</default>
+        <items>
+          <item>Off</item>
+          <item>Print</item>
+          <item>Log</item>
+          <item>Print and Log</item>
+        </items>
+      </property>
+      <property>
+        <name>Connected To Network</name>
+        <type>STRING</type>
+        <readonly>True</readonly>
+        <default>No</default>
+      </property>
+      <property>
+        <name>System Status</name>
+        <type>STRING</type>
+        <readonly>True</readonly>
+        <default>Unknown</default>
+      </property>
+      <property>
+        <name>Installer Id</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>1000</minimum>
+        <maximum>99999</maximum>
+        <readonly>False</readonly>
+        <default>1234</default>
+      </property>
+      <property>
+        <name>Model</name>
+        <type>STRING</type>
+        <readonly>True</readonly>
+        <default>Unknown</default>
+      </property>
+      <property>
+        <name>Version</name>
+        <type>STRING</type>
+        <readonly>True</readonly>
+        <default>Unknown</default>
+      </property>
+      <property>
+        <name>Serial</name>
+        <type>STRING</type>
+        <readonly>True</readonly>
+        <default>Unknown</default>
+      </property>
+      <property>
+        <name>System Uptime</name>
+        <type>STRING</type>
+        <readonly>True</readonly>
+        <default>Unknown</default>
+      </property>
+      <property>
+        <name>Volume Ramp Speed</name>
+        <type>SCROLL</type>
+        <minimum>50</minimum>
+        <maximum>300</maximum>
+        <default>200</default>
+      </property>
+    </properties>
+  </config>
+  <composer_categories>
+    <category>Audio/Video</category>
+  </composer_categories>
+</devicedata>
