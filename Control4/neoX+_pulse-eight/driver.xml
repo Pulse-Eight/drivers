@@ -306,7 +306,7 @@
     <connection proxybindingid="5001">
       <id>3008</id>
       <type>6</type>
-      <connectionname>Input X9</connectionname>
+      <connectionname>Input 9</connectionname>
       <consumer>True</consumer>
       <linelevel>False</linelevel>
 	  <audiosource>False</audiosource>
