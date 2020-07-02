@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<functions>
+	<category name="Power">
+		<function export="SetPower" name="Power State" repeatrate="0">
+			<parameter name="Zone" type="integer" description="Output Zone (1-8)" min="1" max="8" />
+			<parameter name="State" type="mcinteger" default="1">
+				<choice name="Off" value="0" />
+				<choice name="On" value="1" />
+			</parameter>
+		</function>
+
+		<function export="SetMute" name="Mute State" repeatrate="0">
+			<parameter name="Zone" type="integer" description="Output Zone (1-8)" min="1" max="8" />
+			<parameter name="State" type="mcinteger" default="1">
+				<choice name="Unmuted" value="0" />
+				<choice name="Muted" value="1" />
+			</parameter>
+		</function>
+	</category>
+
+	<category name="Volume">
+		<function export="SetVolume" name="Set Volume" repeatrate="0">
+			<parameter name="Zone" type="integer" description="Output Zone (1-8)" min="1" max="8" />
+			<parameter default="20" max="100" min="0" name="Volume" type="integer" />
+		</function>
+	</category>
+</functions>

@@ -1,0 +1,32 @@
+<variables>
+	<category name="ZoneVolume">
+		<variable name="VolumeZone1" type="integer" sysvar="VolumeZone1" />
+		<variable name="VolumeZone2" type="integer" sysvar="VolumeZone2" />
+		<variable name="VolumeZone3" type="integer" sysvar="VolumeZone3" />
+		<variable name="VolumeZone4" type="integer" sysvar="VolumeZone4" />
+		<variable name="VolumeZone5" type="integer" sysvar="VolumeZone5" />
+		<variable name="VolumeZone6" type="integer" sysvar="VolumeZone6" />
+		<variable name="VolumeZone7" type="integer" sysvar="VolumeZone7" />
+		<variable name="VolumeZone8" type="integer" sysvar="VolumeZone8" />
+	</category>
+	<category name="ZonePower">
+		<variable format="B:Off:On" name="PowerZone1" type="boolean" sysvar="PowerZone1" />
+		<variable format="B:Off:On" name="PowerZone2" type="boolean" sysvar="PowerZone2" />
+		<variable format="B:Off:On" name="PowerZone3" type="boolean" sysvar="PowerZone3" />
+		<variable format="B:Off:On" name="PowerZone4" type="boolean" sysvar="PowerZone4" />
+		<variable format="B:Off:On" name="PowerZone5" type="boolean" sysvar="PowerZone5" />
+		<variable format="B:Off:On" name="PowerZone6" type="boolean" sysvar="PowerZone6" />
+		<variable format="B:Off:On" name="PowerZone7" type="boolean" sysvar="PowerZone7" />
+		<variable format="B:Off:On" name="PowerZone8" type="boolean" sysvar="PowerZone8" />
+	</category>
+	<category name="ZoneMute">
+		<variable format="B:No:Yes" name="MuteZone1" type="boolean" sysvar="MuteZone1" />
+		<variable format="B:No:Yes" name="MuteZone2" type="boolean" sysvar="MuteZone2" />
+		<variable format="B:No:Yes" name="MuteZone3" type="boolean" sysvar="MuteZone3" />
+		<variable format="B:No:Yes" name="MuteZone4" type="boolean" sysvar="MuteZone4" />
+		<variable format="B:No:Yes" name="MuteZone5" type="boolean" sysvar="MuteZone5" />
+		<variable format="B:No:Yes" name="MuteZone6" type="boolean" sysvar="MuteZone6" />
+		<variable format="B:No:Yes" name="MuteZone7" type="boolean" sysvar="MuteZone7" />
+		<variable format="B:No:Yes" name="MuteZone8" type="boolean" sysvar="MuteZone8" />
+	</category>
+</variables>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <category name="Connection" description="Connection Details">
+    <setting type="string" name="System Address" variable="IPAddress" default="192.168.1.101" description="The network address (xxx.xxx.xxx.xxx) or hostname of the system." />
+  </category>
+  <category name="Debug Settings" description="Driver debug options">
+    <setting type="boolean" name="Enable Trace" variable="DebugTrace" description="Enable verbose debug output" />
+  </category>
+</configuration>
