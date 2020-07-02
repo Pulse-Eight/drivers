@@ -69,7 +69,7 @@ function SetPower(zone, state) {
 	}
 
 	zone--; //Fix offset
-	var response = System.GetURL(SYSTEM_URL + '/Audio/Power/' + zone + '/' + state);
+	var response = System.GetURL(SYSTEM_URL + '/amp/Power/' + zone + '/' + state);
 	if (DEBUG) {
 		System.Print(response);
 	}
