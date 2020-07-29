@@ -143,27 +143,32 @@ function P8INT:GET_POWER_STATE(idBinding)
 			 for i = 1,MAX_OUTPUTS do
 				local dps = GetPowerState(jsonResponse, "Output", (i-1))
 				if roomPower["OUTPUT" .. (i-1)] ~= dps and outputRoom["OUTPUT" .. (i-1)] ~= nil then
-				    LogInfo("Output " .. i .. " power state has changed, was " .. roomPower["OUTPUT" .. (i-1)] .. " now " .. dps)
-				    local outputsNewInput = existingRouting["OUTPUT" .. (i-1)]
-				    local newSourceProxyId = inputProxies["INPUT" .. outputsNewInput]
-				    local success = false
-				    if dps == 0 then
-					   --Tell Director to do a routing change and turn on any other items required
-					   if outputsNewInput ~= nil and newSourceProxyId ~= nil then
-						  success = true
-						  C4:SendToDevice(outputRoom["OUTPUT" .. (i-1)], "SELECT_VIDEO_DEVICE", {deviceid = newSourceProxyId})
-					   else
-						  LogWarn("Output " .. i .. " Power State changed to on, however the source routed to this output is not mapped in composer. No notification will be sent to composer until it is correctly mapped.")
-					   end
-				    end
-				    if dps == 1 then
-					   --Tell director this output has turned off
-					   if outputsNewInput ~= nil and newSourceProxyId ~= nil then
-						  success = true
-						  --TODO: Tell Director the sink has turned off
-					   else
-						  LogWarn("Output " .. i .. " Power State changed to off, however the source routed to this output is not mapped in composer. No notification will be sent to composer until it is correctly mapped.")
-					   end
+				    if dps ~= nil then
+					dps = -9
+					LogInfo("Output " .. i .. " unknown power state due to CEC being disabled")
+				    else
+					    LogInfo("Output " .. i .. " power state has changed, was " .. roomPower["OUTPUT" .. (i-1)] .. " now " .. dps)
+					    local outputsNewInput = existingRouting["OUTPUT" .. (i-1)]
+					    local newSourceProxyId = inputProxies["INPUT" .. outputsNewInput]
+					    local success = false
+					    if dps == 0 then
+						   --Tell Director to do a routing change and turn on any other items required
+						   if outputsNewInput ~= nil and newSourceProxyId ~= nil then
+							  success = true
+							  C4:SendToDevice(outputRoom["OUTPUT" .. (i-1)], "SELECT_VIDEO_DEVICE", {deviceid = newSourceProxyId})
+						   else
+							  LogWarn("Output " .. i .. " Power State changed to on, however the source routed to this output is not mapped in composer. No notification will be sent to composer until it is correctly mapped.")
+						   end
+					    end
+					    if dps == 1 then
+						   --Tell director this output has turned off
+						   if outputsNewInput ~= nil and newSourceProxyId ~= nil then
+							  success = true
+							  --TODO: Tell Director the sink has turned off
+						   else
+							  LogWarn("Output " .. i .. " Power State changed to off, however the source routed to this output is not mapped in composer. No notification will be sent to composer until it is correctly mapped.")
+						   end
+					    end
 				    end
 				    if dps < 0 then
 					success = true
