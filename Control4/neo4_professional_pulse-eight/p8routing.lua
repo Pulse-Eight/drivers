@@ -125,13 +125,15 @@ function GetPowerState(data, mode, bay)
 end
 
 function P8INT:GET_POWER_STATE(idBinding)
-    LogTrace("Updating Sink Power State")
+    --LogTrace("Updating Sink Power State")
     local uri = P8INT:GET_MATRIX_URL() .. "/Port/List"
     C4:urlGet(uri, {}, false, 
 	   function(ticketId, strData, responseCode, tHeaders, strError)
    		  if responseCode ~= 200 or strError ~= nil then
 			 LogWarn("Unable to refresh routing")
-			 LogWarn("Error = " .. strError)
+			 if strError ~= nil then
+				 LogWarn("Error = " .. strError)
+			 end
 			 LogWarn("Response Code = " .. responseCode)
 			 return
 		  end
@@ -162,6 +164,9 @@ function P8INT:GET_POWER_STATE(idBinding)
 					   else
 						  LogWarn("Output " .. i .. " Power State changed to off, however the source routed to this output is not mapped in composer. No notification will be sent to composer until it is correctly mapped.")
 					   end
+				    end
+				    if dps < 0 then
+					success = true
 				    end
 				    if success then
 					   roomPower["OUTPUT" .. (i-1)] = dps

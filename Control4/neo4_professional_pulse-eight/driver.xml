@@ -1,13 +1,13 @@
 <devicedata>
-  <copyright>Copyright 2017 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2020 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Pulse-Eight</manufacturer>
   <name>neo:4 Professional IP Driver</name>
   <model>neo:4 Professional</model>
   <created>08/14/2015 10:39 PM</created>
-  <modified>04/04/2017 3:58 PM</modified>
+  <modified>29/07/2020 1:01 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>39</version>
+  <version>40</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
