@@ -143,7 +143,7 @@ function P8INT:GET_POWER_STATE(idBinding)
 			 for i = 1,MAX_OUTPUTS do
 				local dps = GetPowerState(jsonResponse, "Output", (i-1))
 				if roomPower["OUTPUT" .. (i-1)] ~= dps and outputRoom["OUTPUT" .. (i-1)] ~= nil then
-				    if dps ~= nil then
+				    if dps = nil then
 					dps = -9
 					LogInfo("Output " .. i .. " unknown power state due to CEC being disabled")
 				    else
