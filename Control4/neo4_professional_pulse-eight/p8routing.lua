@@ -143,10 +143,7 @@ function P8INT:GET_POWER_STATE(idBinding)
 			 for i = 1,MAX_OUTPUTS do
 				local dps = GetPowerState(jsonResponse, "Output", (i-1))
 				if roomPower["OUTPUT" .. (i-1)] ~= dps and outputRoom["OUTPUT" .. (i-1)] ~= nil then
-				    if dps = nil then
-					dps = -9
-					LogInfo("Output " .. i .. " unknown power state due to CEC being disabled")
-				    else
+				    if dps ~= nil then
 					    LogInfo("Output " .. i .. " power state has changed, was " .. roomPower["OUTPUT" .. (i-1)] .. " now " .. dps)
 					    local outputsNewInput = existingRouting["OUTPUT" .. (i-1)]
 					    local newSourceProxyId = inputProxies["INPUT" .. outputsNewInput]
@@ -169,6 +166,9 @@ function P8INT:GET_POWER_STATE(idBinding)
 							  LogWarn("Output " .. i .. " Power State changed to off, however the source routed to this output is not mapped in composer. No notification will be sent to composer until it is correctly mapped.")
 						   end
 					    end
+				    else
+				    	dps = -9
+					LogInfo("Output " .. i .. " unknown power state due to CEC being disabled")
 				    end
 				    if dps < 0 then
 					success = true
