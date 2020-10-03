@@ -5,15 +5,15 @@
   <name>Sky Q IP Driver</name>
   <model>Sky Q</model>
   <created>22/04/2017 12:00 PM</created>
-  <modified>14/03/2020 12:00 PM</modified>
-  <version>7</version>
+  <modified>03/10/2020 12:00 PM</modified>
+  <version>8</version>
   <small image_source="c4z">assets/device_sm.png</small>
   <large image_source="c4z">assets/device_lg.png</large>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
   <proxies qty="1">
-    <proxy name="Sky" large_image="assets/device_lg.png" small_image="assets/device_sm.png" smimagepath="assets/device_sm.png" lgimagepath="assets/device_lg.png" image_source="c4z">satellite</proxy>
+    <proxy proxybindingid="5001" name="Sky" primary="True" large_image="assets/device_lg.png" small_image="assets/device_sm.png" image_source="c4z">satellite</proxy>
   </proxies>
   <connections>
     <connection>
