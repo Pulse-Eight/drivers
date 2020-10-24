@@ -1,0 +1,1333 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="racepoint_component_profile.xsd" manufacturer="Pulse-Eight" model="neo 8x10" device_class="AV_switch" minimum_component_engine_version="8.0" rpm_xml_version="2.05">
+    <notes>
+        ====================== Change Log ==================
+        Version: 2.05 Change: Removed RS232 port pending 
+        Version: 2.04 Change: Fixed typo in Output 4 Implementations
+        Version: 2.03 Change: Reduced PowerOn and PowerOff delays.
+        Version: 2.02 Change: Added logical components for outputs 2-8
+        Version: 2.01 Change: Changed port numbering in implementation action_to_select arguments - zero counted (0-7, not 1-8)
+        Version: 2.00 Change: Profile created.
+    </notes>
+    <control_interfaces preferred="ip">
+        <ip port="80" response_time_length_ms="500" protocol="http"/>
+    </control_interfaces>
+    <media_interfaces>
+        <input name_on_component="IN 1">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+        </input>
+        <input name_on_component="IN 2">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+        </input>
+        <input name_on_component="IN 3">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+        </input>
+        <input name_on_component="IN 4">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+        </input>
+        <input name_on_component="IN 5">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+        </input>
+        <input name_on_component="IN 6">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+        </input>
+        <input name_on_component="IN 7">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+        </input>
+        <input name_on_component="IN 8">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+        </input>
+        <output name_on_component="OUT 1">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+            <resource resource_type="AV_AUDIOSWITCH_FUNCTION"/>
+            <resource resource_type="AV_VIDEOSWITCH_FUNCTION"/>
+        </output>
+        <output name_on_component="OUT 2">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+            <resource resource_type="AV_AUDIOSWITCH_FUNCTION"/>
+            <resource resource_type="AV_VIDEOSWITCH_FUNCTION"/>
+        </output>
+        <output name_on_component="OUT 3">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+            <resource resource_type="AV_AUDIOSWITCH_FUNCTION"/>
+            <resource resource_type="AV_VIDEOSWITCH_FUNCTION"/>
+        </output>
+        <output name_on_component="OUT 4">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+            <resource resource_type="AV_AUDIOSWITCH_FUNCTION"/>
+            <resource resource_type="AV_VIDEOSWITCH_FUNCTION"/>
+        </output>
+        <output name_on_component="OUT 5">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+            <resource resource_type="AV_AUDIOSWITCH_FUNCTION"/>
+            <resource resource_type="AV_VIDEOSWITCH_FUNCTION"/>
+        </output>
+        <output name_on_component="OUT 6">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+            <resource resource_type="AV_AUDIOSWITCH_FUNCTION"/>
+            <resource resource_type="AV_VIDEOSWITCH_FUNCTION"/>
+        </output>
+        <output name_on_component="OUT 7">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+            <resource resource_type="AV_AUDIOSWITCH_FUNCTION"/>
+            <resource resource_type="AV_VIDEOSWITCH_FUNCTION"/>
+        </output>
+        <output name_on_component="OUT 8">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+            <resource resource_type="AV_AUDIOSWITCH_FUNCTION"/>
+            <resource resource_type="AV_VIDEOSWITCH_FUNCTION"/>
+        </output>
+        <output name_on_component="OUT 9">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+            <resource resource_type="AV_AUDIOSWITCH_FUNCTION"/>
+            <resource resource_type="AV_VIDEOSWITCH_FUNCTION"/>
+        </output>
+        <output name_on_component="OUT 10">
+            <combined_media>
+                <audio_media type="hdmi_audio"/>
+                <video_media type="hdmi"/>
+            </combined_media>
+            <resource resource_type="AV_AUDIOSWITCH_FUNCTION"/>
+            <resource resource_type="AV_VIDEOSWITCH_FUNCTION"/>
+        </output>
+        <data name_on_component="LAN 1">
+            <combined_media>
+                <data_media type="ethernet"></data_media>
+                <control port="80"></control>
+            </combined_media>
+        </data>
+    </media_interfaces>
+    <logical_component logical_component_name="Output 1">
+        <implementation>
+            <input name_on_component="IN 1">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">0</arg>
+                    <arg name="Output">0</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 1"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 2">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">1</arg>
+                    <arg name="Output">0</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 1"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 3">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">2</arg>
+                    <arg name="Output">0</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 1"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 4">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">3</arg>
+                    <arg name="Output">0</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 1"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 5">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">4</arg>
+                    <arg name="Output">0</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 1"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 6">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">5</arg>
+                    <arg name="Output">0</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 1"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 7">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">6</arg>
+                    <arg name="Output">0</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 1"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 8">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">7</arg>
+                    <arg name="Output">0</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 1"/>
+        </implementation>
+        <status_messages>
+            <status_message name="PortInfoMessage">
+                <root_object name="none" format="json" matches_required="at_least_one">
+                    <values path="//Ports" matches_required="at_least_one">
+                        <update state="test" type="string"></update>
+                        <append_identifier path="//Ports//Name" name="Output number" note="Array item"/>
+                    </values>
+                    
+                </root_object>
+            </status_message>
+        </status_messages>
+        
+        <universal_component_actions>
+            <action name="PowerOn">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/on/output/0</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="PowerOff">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/off/output/0</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </universal_component_actions>
+        <custom_component_actions>
+            <action name="SelectInput">
+                <action_argument name="Output"/>
+                <action_argument name="Input"/>
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/set/</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Input"/>
+                            <parameter parameter_data_type="character">/</parameter>
+                            <parameter parameter_data_type="character" action_argument="Output"/>
+                        </parameter_list>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="GetPortInfo">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/list/</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </custom_component_actions>
+    </logical_component>
+    <logical_component logical_component_name="Output 2">
+        <implementation>
+            <input name_on_component="IN 1">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">0</arg>
+                    <arg name="Output">1</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 2"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 2">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">1</arg>
+                    <arg name="Output">1</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 2"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 3">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">2</arg>
+                    <arg name="Output">1</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 2"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 4">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">3</arg>
+                    <arg name="Output">1</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 2"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 5">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">4</arg>
+                    <arg name="Output">1</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 2"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 6">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">5</arg>
+                    <arg name="Output">1</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 2"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 7">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">6</arg>
+                    <arg name="Output">1</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 2"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 8">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">7</arg>
+                    <arg name="Output">1</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 2"/>
+        </implementation>
+        <universal_component_actions>
+            <action name="PowerOn">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/on/output/1</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="PowerOff">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/off/output/1</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </universal_component_actions>
+        <custom_component_actions>
+            <action name="SelectInput">
+                <action_argument name="Output"/>
+                <action_argument name="Input"/>
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/set/</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Input"/>
+                            <parameter parameter_data_type="character">/</parameter>
+                            <parameter parameter_data_type="character" action_argument="Output"/>
+                        </parameter_list>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="GetPortInfo">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/list/</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </custom_component_actions>
+    </logical_component>
+    <logical_component logical_component_name="Output 3">
+        <implementation>
+            <input name_on_component="IN 1">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">0</arg>
+                    <arg name="Output">2</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 3"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 2">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">1</arg>
+                    <arg name="Output">2</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 3"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 3">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">2</arg>
+                    <arg name="Output">2</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 3"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 4">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">3</arg>
+                    <arg name="Output">2</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 3"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 5">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">4</arg>
+                    <arg name="Output">2</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 3"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 6">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">5</arg>
+                    <arg name="Output">2</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 3"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 7">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">6</arg>
+                    <arg name="Output">2</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 3"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 8">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">7</arg>
+                    <arg name="Output">2</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 3"/>
+        </implementation>
+        <universal_component_actions>
+            <action name="PowerOn">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/on/output/2</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="PowerOff">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/off/output/2</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </universal_component_actions>
+        <custom_component_actions>
+            <action name="SelectInput">
+                <action_argument name="Output"/>
+                <action_argument name="Input"/>
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/set/</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Input"/>
+                            <parameter parameter_data_type="character">/</parameter>
+                            <parameter parameter_data_type="character" action_argument="Output"/>
+                        </parameter_list>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="GetPortInfo">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/list/</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </custom_component_actions>
+    </logical_component>
+    <logical_component logical_component_name="Output 4">
+        <implementation>
+            <input name_on_component="IN 1">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">0</arg>
+                    <arg name="Output">3</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 4"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 2">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">1</arg>
+                    <arg name="Output">3</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 4"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 3">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">2</arg>
+                    <arg name="Output">3</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 4"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 4">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">3</arg>
+                    <arg name="Output">3</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 4"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 5">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">4</arg>
+                    <arg name="Output">3</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 4"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 6">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">5</arg>
+                    <arg name="Output">3</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 4"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 7">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">6</arg>
+                    <arg name="Output">3</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 4"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 8">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">7</arg>
+                    <arg name="Output">3</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 4"/>
+        </implementation>
+        <universal_component_actions>
+            <action name="PowerOn">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/on/output/3</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="PowerOff">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/off/output/3</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </universal_component_actions>
+        <custom_component_actions>
+            <action name="SelectInput">
+                <action_argument name="Output"/>
+                <action_argument name="Input"/>
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/set/</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Input"/>
+                            <parameter parameter_data_type="character">/</parameter>
+                            <parameter parameter_data_type="character" action_argument="Output"/>
+                        </parameter_list>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="GetPortInfo">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/list/</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </custom_component_actions>
+    </logical_component>
+    <logical_component logical_component_name="Output 5">
+        <implementation>
+            <input name_on_component="IN 1">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">0</arg>
+                    <arg name="Output">4</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 5"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 2">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">1</arg>
+                    <arg name="Output">4</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 5"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 3">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">2</arg>
+                    <arg name="Output">4</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 5"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 4">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">3</arg>
+                    <arg name="Output">4</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 5"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 5">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">4</arg>
+                    <arg name="Output">4</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 5"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 6">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">5</arg>
+                    <arg name="Output">4</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 5"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 7">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">6</arg>
+                    <arg name="Output">4</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 5"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 8">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">7</arg>
+                    <arg name="Output">4</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 5"/>
+        </implementation>
+        <universal_component_actions>
+            <action name="PowerOn">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/on/output/4</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="PowerOff">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/off/output/4</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </universal_component_actions>
+        <custom_component_actions>
+            <action name="SelectInput">
+                <action_argument name="Output"/>
+                <action_argument name="Input"/>
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/set/</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Input"/>
+                            <parameter parameter_data_type="character">/</parameter>
+                            <parameter parameter_data_type="character" action_argument="Output"/>
+                        </parameter_list>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="GetPortInfo">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/list/</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </custom_component_actions>
+    </logical_component>
+    <logical_component logical_component_name="Output 6">
+        <implementation>
+            <input name_on_component="IN 1">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">0</arg>
+                    <arg name="Output">5</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 6"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 2">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">1</arg>
+                    <arg name="Output">5</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 6"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 3">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">2</arg>
+                    <arg name="Output">5</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 6"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 4">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">3</arg>
+                    <arg name="Output">5</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 6"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 5">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">4</arg>
+                    <arg name="Output">5</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 6"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 6">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">5</arg>
+                    <arg name="Output">5</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 6"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 7">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">6</arg>
+                    <arg name="Output">5</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 6"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 8">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">7</arg>
+                    <arg name="Output">5</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 6"/>
+        </implementation>
+        <universal_component_actions>
+            <action name="PowerOn">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/on/output/4</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="PowerOff">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/off/output/4</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </universal_component_actions>
+        <custom_component_actions>
+            <action name="SelectInput">
+                <action_argument name="Output"/>
+                <action_argument name="Input"/>
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/set/</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Input"/>
+                            <parameter parameter_data_type="character">/</parameter>
+                            <parameter parameter_data_type="character" action_argument="Output"/>
+                        </parameter_list>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="GetPortInfo">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/list/</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </custom_component_actions>
+    </logical_component>
+    <logical_component logical_component_name="Output 7">
+        <implementation>
+            <input name_on_component="IN 1">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">0</arg>
+                    <arg name="Output">6</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 7"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 2">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">1</arg>
+                    <arg name="Output">6</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 7"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 3">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">2</arg>
+                    <arg name="Output">6</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 7"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 4">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">3</arg>
+                    <arg name="Output">6</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 7"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 5">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">4</arg>
+                    <arg name="Output">6</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 7"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 6">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">5</arg>
+                    <arg name="Output">6</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 7"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 7">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">6</arg>
+                    <arg name="Output">6</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 7"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 8">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">7</arg>
+                    <arg name="Output">6</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 7"/>
+        </implementation>
+        <universal_component_actions>
+            <action name="PowerOn">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/on/output/6</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="PowerOff">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/off/output/6</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </universal_component_actions>
+        <custom_component_actions>
+            <action name="SelectInput">
+                <action_argument name="Output"/>
+                <action_argument name="Input"/>
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/set/</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Input"/>
+                            <parameter parameter_data_type="character">/</parameter>
+                            <parameter parameter_data_type="character" action_argument="Output"/>
+                        </parameter_list>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="GetPortInfo">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/list/</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </custom_component_actions>
+    </logical_component>
+    <logical_component logical_component_name="Output 8">
+        <implementation>
+            <input name_on_component="IN 1">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">0</arg>
+                    <arg name="Output">7</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 8"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 2">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">1</arg>
+                    <arg name="Output">7</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 8"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 3">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">2</arg>
+                    <arg name="Output">7</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 8"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 4">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">3</arg>
+                    <arg name="Output">7</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 8"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 5">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">4</arg>
+                    <arg name="Output">7</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 8"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 6">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">5</arg>
+                    <arg name="Output">7</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 8"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 7">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">6</arg>
+                    <arg name="Output">7</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 8"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 8">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">7</arg>
+                    <arg name="Output">7</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 8"/>
+        </implementation>
+        <universal_component_actions>
+            <action name="PowerOn">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/on/output/7</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="PowerOff">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/off/output/7</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </universal_component_actions>
+        <custom_component_actions>
+            <action name="SelectInput">
+                <action_argument name="Output"/>
+                <action_argument name="Input"/>
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/set/</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Input"/>
+                            <parameter parameter_data_type="character">/</parameter>
+                            <parameter parameter_data_type="character" action_argument="Output"/>
+                        </parameter_list>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="GetPortInfo">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/list/</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </custom_component_actions>
+    </logical_component>
+    <logical_component logical_component_name="Output 9">
+        <implementation>
+            <input name_on_component="IN 1">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">0</arg>
+                    <arg name="Output">8</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 9"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 2">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">1</arg>
+                    <arg name="Output">8</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 9"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 3">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">2</arg>
+                    <arg name="Output">8</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 9"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 4">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">3</arg>
+                    <arg name="Output">8</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 9"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 5">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">4</arg>
+                    <arg name="Output">8</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 9"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 6">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">5</arg>
+                    <arg name="Output">8</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 9"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 7">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">6</arg>
+                    <arg name="Output">8</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 9"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 8">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">7</arg>
+                    <arg name="Output">8</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 9"/>
+        </implementation>
+        <universal_component_actions>
+            <action name="PowerOn">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/on/output/8</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="PowerOff">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/off/output/8</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </universal_component_actions>
+        <custom_component_actions>
+            <action name="SelectInput">
+                <action_argument name="Output"/>
+                <action_argument name="Input"/>
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/set/</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Input"/>
+                            <parameter parameter_data_type="character">/</parameter>
+                            <parameter parameter_data_type="character" action_argument="Output"/>
+                        </parameter_list>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="GetPortInfo">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/list/</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </custom_component_actions>
+    </logical_component>
+    <logical_component logical_component_name="Output 10">
+        <implementation>
+            <input name_on_component="IN 1">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">0</arg>
+                    <arg name="Output">9</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 10"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 2">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">1</arg>
+                    <arg name="Output">9</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 10"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 3">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">2</arg>
+                    <arg name="Output">9</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 10"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 4">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">3</arg>
+                    <arg name="Output">9</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 10"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 5">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">4</arg>
+                    <arg name="Output">9</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 10"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 6">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">5</arg>
+                    <arg name="Output">9</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 8"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 7">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">6</arg>
+                    <arg name="Output">9</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 10"/>
+        </implementation>
+        <implementation>
+            <input name_on_component="IN 8">
+                <action_to_select name="SelectInput">
+                    <arg name="Input">7</arg>
+                    <arg name="Output">9</arg>
+                </action_to_select>
+            </input>
+            <output name_on_component="OUT 10"/>
+        </implementation>
+        <universal_component_actions>
+            <action name="PowerOn">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/on/output/9</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="PowerOff">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">cec/off/output/9</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </universal_component_actions>
+        <custom_component_actions>
+            <action name="SelectInput">
+                <action_argument name="Output"/>
+                <action_argument name="Input"/>
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/set/</command_string>
+                        <parameter_list>
+                            <parameter parameter_data_type="character" action_argument="Input"/>
+                            <parameter parameter_data_type="character">/</parameter>
+                            <parameter parameter_data_type="character" action_argument="Output"/>
+                        </parameter_list>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+            <action name="GetPortInfo">
+                <command_interface interface="ip">
+                    <command response_required="no">
+                        <command_string type="character" http_request_type="GET">port/list/</command_string>
+                        <delay ms_delay="200"/>
+                    </command>
+                </command_interface>
+            </action>
+        </custom_component_actions>
+    </logical_component>
+</component>
