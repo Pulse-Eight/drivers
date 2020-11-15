@@ -174,6 +174,12 @@ function PRX_CMD.MENU(idBinding, tParams)
     P8INT:SEND_KEY(GetKeyForName(Properties["Menu Button"]))
 end
 
+function PRX_CMD.SET_CHANNEL(idBinding, tParams)
+	for c in tParams["CHANNEL"]:gmatch"." do
+	    P8INT:SEND_KEY(string.byte(c, 1))
+	end
+end
+
 function PRX_CMD.NUMBER_1(idBinding, tParams)
     P8INT:SEND_KEY(49)
 end

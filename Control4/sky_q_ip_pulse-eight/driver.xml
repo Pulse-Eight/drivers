@@ -5,8 +5,8 @@
   <name>Sky Q IP Driver</name>
   <model>Sky Q</model>
   <created>22/04/2017 12:00 PM</created>
-  <modified>03/10/2020 12:00 PM</modified>
-  <version>8</version>
+  <modified>15/11/2020 12:00 PM</modified>
+  <version>9</version>
   <small image_source="c4z">assets/device_sm.png</small>
   <large image_source="c4z">assets/device_lg.png</large>
   <control>lua_gen</control>
