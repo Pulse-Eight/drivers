@@ -256,6 +256,12 @@ function PRX_CMD.STOP_VOL_UP(idBinding, tParams)
     outputVolumeTimers["OUTPUT" .. output]:Cancel()
 end
 
+function PRX_CMD.END_VOL_UP(idBinding, tParams)
+    LogTrace("Ramp Up End")
+    local output = tonumber(tParams["OUTPUT"] % 1000)
+    outputVolumeTimers["OUTPUT" .. output]:Cancel()
+end
+
 function PRX_CMD.START_VOL_DOWN(idBinding, tParams)
     LogTrace("Ramp Down Start")
     local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
@@ -267,6 +273,12 @@ function PRX_CMD.START_VOL_DOWN(idBinding, tParams)
 end
 
 function PRX_CMD.STOP_VOL_DOWN(idBinding, tParams)
+    LogTrace("Ramp Down End")
+    local output = tonumber(tParams["OUTPUT"] % 1000)
+    outputVolumeTimers["OUTPUT" .. output]:Cancel()
+end
+
+function PRX_CMD.END_VOL_DOWN(idBinding, tParams)
     LogTrace("Ramp Down End")
     local output = tonumber(tParams["OUTPUT"] % 1000)
     outputVolumeTimers["OUTPUT" .. output]:Cancel()
