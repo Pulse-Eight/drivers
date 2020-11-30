@@ -286,8 +286,10 @@ function P8INT:UPDATE_AUDIO(idBinding, output)
 
 		local jsonResponse = JSON:decode(strData)
 		if jsonResponse.Result then
-		     LogTrace("Volume Level Changed = " .. tonumber(jsonResponse["volLeft"]) .. " Output (" .. output .. ") = " .. (tonumber(output)-3000))
-			local volChangedParams = { LEVEL = tonumber(jsonResponse["volLeft"]), OUTPUT = (tonumber(output)-3000) }
+			local volLevel = tonumber(jsonResponse["volLeft"]) or tonumber(jsonResponse["dolbyvolume"])
+
+			LogTrace("Volume Level Changed = " .. volLevel .. " Output (" .. output .. ") = " .. (tonumber(output)-3000))
+			local volChangedParams = { LEVEL = volLevel, OUTPUT = (tonumber(output)-3000) }
 			local muteChangedParams = { MUTE = jsonResponse["mute"], OUTPUT = (tonumber(output)-3000) }
 			C4:SendToProxy(idBinding, "VOLUME_LEVEL_CHANGED", volChangedParams)
 			C4:SendToProxy(idBinding, "MUTE_CHANGED", muteChangedParams)
