@@ -5,9 +5,9 @@
   <name>ProAmp 8 IP Driver</name>
   <model>ProAmp 8</model>
   <created>28/05/2020 12:00 PM</created>
-  <modified>28/05/2020 12:00 PM</modified>
+  <modified>30/11/2020 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>1</version>
+  <version>2</version>
   <small image_source="c4z">Images/proamp_sm.png</small>
   <large image_source="c4z">Images/proamp_lg.png</large>
   <control>lua_gen</control>
@@ -36,6 +36,12 @@
       <classes>
         <class>
           <classname>STEREO</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
         </class>
       </classes>
     </connection>
