@@ -7,7 +7,7 @@
   <created>28/05/2020 12:00 PM</created>
   <modified>30/11/2020 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>2</version>
+  <version>3</version>
   <small image_source="c4z">Images/proamp_sm.png</small>
   <large image_source="c4z">Images/proamp_lg.png</large>
   <control>lua_gen</control>
@@ -275,6 +275,9 @@
         <class>
           <classname>AUDIO_VOLUME</classname>
         </class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection>
@@ -288,6 +291,9 @@
       <classes>
         <class>
           <classname>AUDIO_VOLUME</classname>
+        </class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
         </class>
       </classes>
     </connection>
@@ -303,6 +309,9 @@
         <class>
           <classname>AUDIO_VOLUME</classname>
         </class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection>
@@ -316,6 +325,9 @@
       <classes>
         <class>
           <classname>AUDIO_VOLUME</classname>
+        </class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
         </class>
       </classes>
     </connection>
@@ -331,6 +343,9 @@
         <class>
           <classname>AUDIO_VOLUME</classname>
         </class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection>
@@ -344,6 +359,9 @@
       <classes>
         <class>
           <classname>AUDIO_VOLUME</classname>
+        </class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
         </class>
       </classes>
     </connection>
@@ -359,6 +377,9 @@
         <class>
           <classname>AUDIO_VOLUME</classname>
         </class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection>
@@ -372,6 +393,9 @@
       <classes>
         <class>
           <classname>AUDIO_VOLUME</classname>
+        </class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
         </class>
       </classes>
     </connection>
