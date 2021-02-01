@@ -1,13 +1,13 @@
 <devicedata>
-  <copyright>Copyright 2020 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2021 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Pulse-Eight</manufacturer>
   <name>ProAmp 8 IP Driver</name>
   <model>ProAmp 8</model>
   <created>28/05/2020 12:00 PM</created>
-  <modified>30/11/2020 12:00 PM</modified>
-  <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>3</version>
+  <modified>01/02/2021 12:00 PM</modified>
+  <OnlineCategory>receiver</OnlineCategory>
+  <version>10</version>
   <small image_source="c4z">Images/proamp_sm.png</small>
   <large image_source="c4z">Images/proamp_lg.png</large>
   <control>lua_gen</control>
@@ -20,7 +20,7 @@
     <category>Audio/Video</category>
   </composer_categories>
   <proxies qty="1">
-    <proxy proxybindingid="5001" name="ProAmp 8" large_image="Images/proamp_lg.png" small_image="Images/proamp_sm.png" smimagepath="Images/proamp_sm.png" lgimagepath="Images/proamp_lg.png" image_source="c4z">amplifier</proxy>
+    <proxy proxybindingid="5001" name="ProAmp 8" large_image="Images/proamp_lg.png" small_image="Images/proamp_sm.png" smimagepath="Images/proamp_sm.png" lgimagepath="Images/proamp_lg.png" image_source="c4z">receiver</proxy>
   </proxies>
   <capabilities>
 	<audio_consumer_count>8</audio_consumer_count>
@@ -252,14 +252,14 @@
     <connection>
       <id>5001</id>
       <type>2</type>
-      <connectionname>Amplifier</connectionname>
+      <connectionname>Receiver</connectionname>
       <consumer>False</consumer>
       <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
         <class>
-          <classname>AVSWITCH</classname>
+          <classname>RECEIVER</classname>
         </class>
       </classes>
     </connection>

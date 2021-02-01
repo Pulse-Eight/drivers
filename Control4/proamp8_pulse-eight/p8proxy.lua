@@ -241,51 +241,63 @@ local outputVolumeTimers = {
 }
 
 function PRX_CMD.START_VOL_UP(idBinding, tParams)
-    LogTrace("Ramp Up Start")
-    local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
-    local output = tonumber(tParams["OUTPUT"] % 1000)
-    
-    outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
-	   PRX_CMD.PULSE_VOL_UP(idBinding, tParams)
-    end, true)
+	LogTrace("Start Vol Up")
+	local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
+	local output = tonumber(tParams["OUTPUT"]) % 1000
+
+	if outputVolumeTimers["OUTPUT" .. output] then
+		outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
+		   PRX_CMD.PULSE_VOL_UP(idBinding, tParams)
+		end, true)
+	end
 end
 
 function PRX_CMD.STOP_VOL_UP(idBinding, tParams)
-    LogTrace("Ramp Up End")
-    local output = tonumber(tParams["OUTPUT"] % 1000)
-    outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	LogTrace("Stop Vol Up")
+	local output = tonumber(tParams["OUTPUT"]) % 1000
+	if outputVolumeTimers["OUTPUT" .. output] then
+		outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	end
 end
 
 function PRX_CMD.END_VOL_UP(idBinding, tParams)
-    LogTrace("Ramp Up End")
-    local output = tonumber(tParams["OUTPUT"] % 1000)
-    outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	LogTrace("Vol Up End")
+	local output = tonumber(tParams["OUTPUT"]) % 1000
+	if outputVolumeTimers["OUTPUT" .. output] then
+		outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	end
 end
 
 function PRX_CMD.START_VOL_DOWN(idBinding, tParams)
-    LogTrace("Ramp Down Start")
+    LogTrace("Start Vol Down")
     local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
-    local output = tonumber(tParams["OUTPUT"] % 1000)
-    
-    outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
-	   PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
-    end, true)
+    local output = tonumber(tParams["OUTPUT"]) % 1000
+    if outputVolumeTimers["OUTPUT" .. output] then
+	    outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
+		   PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
+	    end, true)
+    end
 end
 
 function PRX_CMD.STOP_VOL_DOWN(idBinding, tParams)
-    LogTrace("Ramp Down End")
-    local output = tonumber(tParams["OUTPUT"] % 1000)
-    outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	LogTrace("Stop Vol Down")
+	local output = tonumber(tParams["OUTPUT"]) % 1000
+	if outputVolumeTimers["OUTPUT" .. output] then
+		outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	end
 end
 
 function PRX_CMD.END_VOL_DOWN(idBinding, tParams)
-    LogTrace("Ramp Down End")
-    local output = tonumber(tParams["OUTPUT"] % 1000)
-    outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	LogTrace("End Vol Down")
+	local output = tonumber(tParams["OUTPUT"]) % 1000
+	if outputVolumeTimers["OUTPUT" .. output] then
+		outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	end
 end
 
 function P8INT:UPDATE_AUDIO(idBinding, output)
 	--LogTrace("Updating Audio for Output: " .. output)
+	local adjust = 3000;
 	local p8output = tonumber(output % 1000)
 	local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. p8output
 	C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
@@ -300,11 +312,19 @@ function P8INT:UPDATE_AUDIO(idBinding, output)
 		if jsonResponse.Result then
 			local volLevel = tonumber(jsonResponse["volLeft"]) or tonumber(jsonResponse["dolbyvolume"])
 
-			LogTrace("Volume Level Changed = " .. volLevel .. " Output (" .. output .. ") = " .. (tonumber(output)-3000))
-			local volChangedParams = { LEVEL = volLevel, OUTPUT = (tonumber(output)-3000) }
-			local muteChangedParams = { MUTE = jsonResponse["mute"], OUTPUT = (tonumber(output)-3000) }
+			LogTrace("Volume Level Changed = " .. volLevel .. " Output (" .. output .. ") = " .. (tonumber(output)-adjust))
+			local volChangedParams = { LEVEL = volLevel, OUTPUT = (tonumber(output)-adjust) }
+			local muteChangedParams = { MUTE = jsonResponse["mute"], OUTPUT = (tonumber(output)-adjust) }
+			local volChangedParams1 = { LEVEL = volLevel, OUTPUT = (tonumber(output)) }
+			local muteChangedParams1 = { MUTE = jsonResponse["mute"], OUTPUT = (tonumber(output)) }
+			local volChangedParams2 = { LEVEL = volLevel, OUTPUT = (tonumber(output)-4000) }
+			local muteChangedParams2 = { MUTE = jsonResponse["mute"], OUTPUT = (tonumber(output)-4000) }
 			C4:SendToProxy(idBinding, "VOLUME_LEVEL_CHANGED", volChangedParams)
 			C4:SendToProxy(idBinding, "MUTE_CHANGED", muteChangedParams)
+			C4:SendToProxy(idBinding, "VOLUME_LEVEL_CHANGED", volChangedParams1)
+			C4:SendToProxy(idBinding, "MUTE_CHANGED", muteChangedParams1)
+			C4:SendToProxy(idBinding, "VOLUME_LEVEL_CHANGED", volChangedParams2)
+			C4:SendToProxy(idBinding, "MUTE_CHANGED", muteChangedParams2)
 		end
 	end)
 end

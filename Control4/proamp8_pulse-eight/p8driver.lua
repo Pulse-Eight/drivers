@@ -41,12 +41,16 @@ function FirstRun()
     --Call once to set initial states
     DetailsUpdateTimer()
     HealthUpdateTimer()
-    VolumeUpdateTimer()
+    LoopVolumeUpdate()
 end
 
 function VolumeUpdateTimer()
+	--LoopVolumeUpdate()
+end
+
+function LoopVolumeUpdate()
     for i = 1,MAX_OUTPUTS do
-	   --P8INT:UPDATE_AUDIO(DEFAULT_PROXY_BINDINGID, 4000 + i - 1)
+	   P8INT:UPDATE_AUDIO(DEFAULT_PROXY_BINDINGID, 4000 + i - 1)
     end
 end
 
