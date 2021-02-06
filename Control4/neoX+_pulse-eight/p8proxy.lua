@@ -37,6 +37,7 @@ end
 
 function PRX_CMD.BINDING_CHANGE_ACTION(idBinding, tParams)
     P8INT:SETUP()
+    P8INT:FETCH_INSTALLER_ID()
 end
 
 function PRX_CMD.SET_INPUT(idBinding, tParams)

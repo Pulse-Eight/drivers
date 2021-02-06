@@ -31,6 +31,7 @@ end
 function FirstRun()
     --Init Connected Devices
     P8INT:SETUP()
+    P8INT:FETCH_INSTALLER_ID()
     gP8RoutingUpdateTimer = c4_timer:new("Routing Update", 2, "SECONDS", RoutingUpdateTimer, true)
     gP8RoutingUpdateTimer:StartTimer()
     gP8DetailsTimer = c4_timer:new("Details Update", 10, "SECONDS", DetailsUpdateTimer, true)
@@ -44,6 +45,7 @@ function FirstRun()
 end
 
 function RoutingUpdateTimer()
+    LogTrace("Routing Timer")
     if (Properties["Auto Sync Navigators"] == "Yes") then
 	   P8INT:GET_ROUTING(DEFAULT_PROXY_BINDINGID)
 	   P8INT:GET_POWER_STATE(DEFAULT_PROXY_BINDINGID)

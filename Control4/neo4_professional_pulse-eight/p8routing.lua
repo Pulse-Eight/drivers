@@ -111,7 +111,8 @@ function P8INT:PORT_SET(idBinding, tParams)
     C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 		  local jsonResponse = JSON:decode(strData)
 		  if jsonResponse.Result then
-			 --self:GET_ROUTING(idBinding)
+			local tParams = {INPUT = 1000 + input, OUTPUT = 2000 + output}
+			SendNotify("INPUT_OUTPUT_CHANGED", tParams, idBinding)
 		  end
 	   end)
 end
@@ -197,7 +198,7 @@ function P8INT:GET_ROUTING(idBinding)
 	   
 		  local jsonResponse = JSON:decode(strData)
 		  if jsonResponse.Result then
-			 for i = 1,MAX_OUTPUTS do
+			 for i = 1, MAX_OUTPUTS do
 				if existingRouting["OUTPUT" .. (i-1)] ~= jsonResponse["Output" .. i][1] and outputRoom["OUTPUT" .. (i-1)] ~= nil then
 				    LogTrace("Output " .. i .. " routing has changed, was " .. existingRouting["OUTPUT" .. (i-1)] .. " now " .. jsonResponse["Output" .. i][1])
 				    existingRouting["OUTPUT" .. (i-1)] = jsonResponse["Output" .. i][1]
@@ -205,10 +206,7 @@ function P8INT:GET_ROUTING(idBinding)
 				    local outputsNewInput = existingRouting["OUTPUT" .. (i-1)]
 				    local newSourceProxyId = inputProxies["INPUT" .. outputsNewInput]
 				    C4:SendToDevice(outputRoom["OUTPUT" .. (i-1)], "SELECT_VIDEO_DEVICE", {deviceid = newSourceProxyId})
-				    local tParams = {INPUT = jsonResponse["Output" .. i][1] + 3000, OUTPUT = 4000 + i}
-				    --According to @Piadas INPUT_OUTPUT_CHANGED is only used to update the 'Control' Control inside Composer and has little other effect (and may not even work)
-				    SendNotify("INPUT_OUTPUT_CHANGED", tParams, idBinding)
-				    tParams = {INPUT = jsonResponse["Output" .. i][1] + 1000, OUTPUT = 2000 + i}
+				    local tParams = {INPUT = jsonResponse["Output" .. i][1] + 1000, OUTPUT = 2000 + (i-1)}
 				    SendNotify("INPUT_OUTPUT_CHANGED", tParams, idBinding)
 				end
 			 end

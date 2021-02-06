@@ -35,6 +35,7 @@ function ON_DRIVER_INIT.main()
     RoutingUpdateTimer()
     DetailsUpdateTimer()
     HealthUpdateTimer()
+    P8INT:FETCH_INSTALLER_ID()
 end
 
 function RoutingUpdateTimer()

@@ -36,7 +36,7 @@ function ReceivedFromProxy(idBinding, sCommand, tParams)
 end
 
 function PRX_CMD.BINDING_CHANGE_ACTION(idBinding, tParams)
-    --No Action Required
+    P8INT:FETCH_INSTALLER_ID()
 end
 
 function PRX_CMD.SET_INPUT(idBinding, tParams)

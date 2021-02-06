@@ -8,12 +8,15 @@ end
 
 function P8INT:FETCH_INSTALLER_ID()
     local uri = P8INT:GET_MATRIX_URL() .. "/Monitoring/Settings"
+    LogTrace("Fetching Monitoring Settings")
     C4:urlGet(uri, {}, false,
 	   function(ticketId, strData, responseCode, tHeaders, strError)
 		  if responseCode == 200 then
 			 local jsonResponse = JSON:decode(strData)
 			 if jsonResponse.Result then
-				UpdateProperty("Installer Id", jsonResponse.InstallerId)
+				UpdateProperty("Installer Id", tonumber(jsonResponse.InstallerId))
+			 else
+			 	LogWarn("Failed to retrieve Monitoring Settings")
 			 end
 		  end
 	   end)
@@ -25,10 +28,4 @@ function ON_PROPERTY_CHANGED.InstallerId(propertyValue)
     local postData = "{\"monInstallerId\": \"" .. propertyValue .. "\"}"
     C4:urlPost(uri, postData)
     P8INT:SEND_PULSE()
-end
-
---Init Functions
-
-function ON_DRIVER_INIT.p8monitoring()
-    P8INT:FETCH_INSTALLER_ID()
 end

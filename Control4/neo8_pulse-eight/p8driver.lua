@@ -31,6 +31,7 @@ end
 function FirstRun()
     --Init Connected Devices
     P8INT:SETUP()
+    P8INT:FETCH_INSTALLER_ID()
     gP8RoutingUpdateTimer = c4_timer:new("Routing Update", 2, "SECONDS", RoutingUpdateTimer, true)
     gP8RoutingUpdateTimer:StartTimer()
     gP8DetailsTimer = c4_timer:new("Details Update", 10, "SECONDS", DetailsUpdateTimer, true)

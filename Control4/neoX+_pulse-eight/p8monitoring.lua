@@ -26,9 +26,3 @@ function ON_PROPERTY_CHANGED.InstallerId(propertyValue)
     C4:urlPost(uri, postData)
     P8INT:SEND_PULSE()
 end
-
---Init Functions
-
-function ON_DRIVER_INIT.p8monitoring()
-    P8INT:FETCH_INSTALLER_ID()
-end

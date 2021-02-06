@@ -5,9 +5,9 @@
   <name>ProAmp 8 IP Driver</name>
   <model>ProAmp 8</model>
   <created>28/05/2020 12:00 PM</created>
-  <modified>01/02/2021 12:00 PM</modified>
+  <modified>06/02/2021 12:00 PM</modified>
   <OnlineCategory>receiver</OnlineCategory>
-  <version>10</version>
+  <version>11</version>
   <small image_source="c4z">Images/proamp_sm.png</small>
   <large image_source="c4z">Images/proamp_lg.png</large>
   <control>lua_gen</control>

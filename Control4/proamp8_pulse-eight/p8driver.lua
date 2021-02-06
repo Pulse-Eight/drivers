@@ -42,6 +42,7 @@ function FirstRun()
     DetailsUpdateTimer()
     HealthUpdateTimer()
     LoopVolumeUpdate()
+    P8INT:FETCH_INSTALLER_ID()
 end
 
 function VolumeUpdateTimer()

@@ -1,13 +1,13 @@
 <devicedata>
-  <copyright>Copyright 2019 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2021 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Pulse-Eight</manufacturer>
   <name>neo:X IP Driver</name>
   <model>neo:X</model>
   <created>05/04/2019 12:00 PM</created>
-  <modified>05/04/2019 12:00 PM</modified>
+  <modified>06/02/2021 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>3</version>
+  <version>4</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
