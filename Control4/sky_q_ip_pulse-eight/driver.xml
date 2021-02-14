@@ -1,12 +1,12 @@
 <devicedata>
-  <copyright>Copyright 2020 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2021 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Sky</manufacturer>
   <name>Sky Q IP Driver</name>
   <model>Sky Q</model>
   <created>22/04/2017 12:00 PM</created>
-  <modified>15/11/2020 12:00 PM</modified>
-  <version>9</version>
+  <modified>14/02/2021 12:00 PM</modified>
+  <version>10</version>
   <small image_source="c4z">assets/device_sm.png</small>
   <large image_source="c4z">assets/device_lg.png</large>
   <control>lua_gen</control>
@@ -141,6 +141,7 @@
           <item>BOX OFFICE</item>
           <item>HOME</item>
           <item>TEXT</item>
+		  <item>SKY</item>
           <item>Un-mapped</item>
         </items>
         <default>Un-mapped</default>
@@ -159,6 +160,7 @@
           <item>BOX OFFICE</item>
           <item>HOME</item>
           <item>TEXT</item>
+		  <item>SKY</item>
           <item>Un-mapped</item>
         </items>
         <default>Un-mapped</default>
@@ -177,6 +179,7 @@
           <item>BOX OFFICE</item>
           <item>HOME</item>
           <item>TEXT</item>
+		  <item>SKY</item>
           <item>Un-mapped</item>
         </items>
         <default>Un-mapped</default>
@@ -195,6 +198,7 @@
           <item>BOX OFFICE</item>
           <item>HOME</item>
           <item>TEXT</item>
+		  <item>SKY</item>
           <item>Un-mapped</item>
         </items>
         <default>Un-mapped</default>
@@ -213,6 +217,7 @@
           <item>BOX OFFICE</item>
           <item>HOME</item>
           <item>TEXT</item>
+		  <item>SKY</item>
           <item>Un-mapped</item>
         </items>
         <default>Un-mapped</default>
@@ -231,6 +236,7 @@
           <item>BOX OFFICE</item>
           <item>HOME</item>
           <item>TEXT</item>
+		  <item>SKY</item>
           <item>Un-mapped</item>
         </items>
         <default>SIDEBAR</default>

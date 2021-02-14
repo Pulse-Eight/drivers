@@ -66,6 +66,9 @@ function GetKeyForName(codeName)
     if (codeName == "TEXT") then
 	   return 15
     end
+    if (codeName == "SKY") then
+	   return 241
+    end
     if (codeName == "Un-mapped") then
 	   return -1
     end
