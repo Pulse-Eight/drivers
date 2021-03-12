@@ -5,9 +5,9 @@
   <name>ProAmp 8 IP Driver</name>
   <model>ProAmp 8</model>
   <created>28/05/2020 12:00 PM</created>
-  <modified>06/02/2021 12:00 PM</modified>
-  <OnlineCategory>receiver</OnlineCategory>
-  <version>11</version>
+  <modified>03/10/2021 12:34 PM</modified>
+  <OnlineCategory>amplifier</OnlineCategory>
+  <version>16</version>
   <small image_source="c4z">Images/proamp_sm.png</small>
   <large image_source="c4z">Images/proamp_lg.png</large>
   <control>lua_gen</control>
@@ -20,11 +20,15 @@
     <category>Audio/Video</category>
   </composer_categories>
   <proxies qty="1">
-    <proxy proxybindingid="5001" name="ProAmp 8" large_image="Images/proamp_lg.png" small_image="Images/proamp_sm.png" smimagepath="Images/proamp_sm.png" lgimagepath="Images/proamp_lg.png" image_source="c4z">receiver</proxy>
+    <proxy proxybindingid="5001" name="ProAmp 8" large_image="Images/proamp_lg.png" small_image="Images/proamp_sm.png" smimagepath="Images/proamp_sm.png" lgimagepath="Images/proamp_lg.png" image_source="c4z">amplifier</proxy>
   </proxies>
   <capabilities>
-	<audio_consumer_count>8</audio_consumer_count>
-	<audio_provider_count>8</audio_provider_count>
+    <audio_consumer_count>8</audio_consumer_count>
+    <audio_provider_count>8</audio_provider_count>
+    <has_discrete_volume_control>True</has_discrete_volume_control>
+    <has_up_down_volume_control>True</has_up_down_volume_control>
+    <has_discrete_mute_control>True</has_discrete_mute_control>
+    <has_toggle_mute_control>True</has_toggle_mute_control>
   </capabilities>
   <connections>
     <connection>
@@ -129,7 +133,7 @@
         </class>
       </classes>
     </connection>
-     <connection>
+    <connection>
       <id>4000</id>
       <facing>6</facing>
       <connectionname>Output 1</connectionname>
@@ -252,14 +256,14 @@
     <connection>
       <id>5001</id>
       <type>2</type>
-      <connectionname>Receiver</connectionname>
+      <connectionname>Amplifier</connectionname>
       <consumer>False</consumer>
       <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
         <class>
-          <classname>RECEIVER</classname>
+          <classname>AVSWITCH</classname>
         </class>
       </classes>
     </connection>

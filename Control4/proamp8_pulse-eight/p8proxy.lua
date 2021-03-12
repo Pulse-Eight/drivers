@@ -54,7 +54,7 @@ end
 function PRX_CMD.CONNECT_OUTPUT(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/0"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/1"
 		LogInfo("Set Mute OFF Due to Connect. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -68,7 +68,7 @@ end
 function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/1"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/0"
 		LogInfo("Set Mute ON Due to Disconnect. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -135,7 +135,7 @@ function PRX_CMD.MUTE_ON(idBinding, tParams)
 	--DEVICE_ID (230)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/0"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/1"
 		LogInfo("Mute On. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -152,7 +152,7 @@ function PRX_CMD.MUTE_OFF(idBinding, tParams)
 	--DEVICE_ID (230)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/1"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/0"
 		LogInfo("Mute Off. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -228,23 +228,23 @@ function PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
 end
 
 local outputVolumeTimers = {
-	OUTPUT0 = nil,
-	OUTPUT1 = nil,
-	OUTPUT2 = nil,
-	OUTPUT3 = nil,
-	OUTPUT4 = nil,
-	OUTPUT5 = nil,
-	OUTPUT6 = nil,
-	OUTPUT7 = nil,
+	OUTPUT0 = 1,
+	OUTPUT1 = 1,
+	OUTPUT2 = 1,
+	OUTPUT3 = 1,
+	OUTPUT4 = 1,
+	OUTPUT5 = 1,
+	OUTPUT6 = 1,
+	OUTPUT7 = 1,
 	OUTPUT8 = nil,
 	OUTPUT9 = nil
 }
 
 function PRX_CMD.START_VOL_UP(idBinding, tParams)
-	LogTrace("Start Vol Up")
 	local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
 	local output = tonumber(tParams["OUTPUT"]) % 1000
-
+     LogTrace("Start Vol Up " .. output)
+    
 	if outputVolumeTimers["OUTPUT" .. output] then
 		outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
 		   PRX_CMD.PULSE_VOL_UP(idBinding, tParams)
@@ -253,8 +253,8 @@ function PRX_CMD.START_VOL_UP(idBinding, tParams)
 end
 
 function PRX_CMD.STOP_VOL_UP(idBinding, tParams)
-	LogTrace("Stop Vol Up")
 	local output = tonumber(tParams["OUTPUT"]) % 1000
+	LogTrace("Stop Vol Up " .. output)
 	if outputVolumeTimers["OUTPUT" .. output] then
 		outputVolumeTimers["OUTPUT" .. output]:Cancel()
 	end
@@ -269,9 +269,9 @@ function PRX_CMD.END_VOL_UP(idBinding, tParams)
 end
 
 function PRX_CMD.START_VOL_DOWN(idBinding, tParams)
-    LogTrace("Start Vol Down")
     local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
     local output = tonumber(tParams["OUTPUT"]) % 1000
+    LogTrace("Start Vol Down " .. output)
     if outputVolumeTimers["OUTPUT" .. output] then
 	    outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
 		   PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
@@ -280,8 +280,8 @@ function PRX_CMD.START_VOL_DOWN(idBinding, tParams)
 end
 
 function PRX_CMD.STOP_VOL_DOWN(idBinding, tParams)
-	LogTrace("Stop Vol Down")
 	local output = tonumber(tParams["OUTPUT"]) % 1000
+	LogTrace("Stop Vol Down " .. output)
 	if outputVolumeTimers["OUTPUT" .. output] then
 		outputVolumeTimers["OUTPUT" .. output]:Cancel()
 	end
@@ -311,7 +311,12 @@ function P8INT:UPDATE_AUDIO(idBinding, output)
 		local jsonResponse = JSON:decode(strData)
 		if jsonResponse.Result then
 			local volLevel = tonumber(jsonResponse["volLeft"]) or tonumber(jsonResponse["dolbyvolume"])
-
+			if volLevel > 100 then
+				volLevel = 100
+			end
+			if volLevel < 0 then
+				volLevel = 0
+			end
 			LogTrace("Volume Level Changed = " .. volLevel .. " Output (" .. output .. ") = " .. (tonumber(output)-adjust))
 			local volChangedParams = { LEVEL = volLevel, OUTPUT = (tonumber(output)-adjust) }
 			local muteChangedParams = { MUTE = jsonResponse["mute"], OUTPUT = (tonumber(output)-adjust) }
