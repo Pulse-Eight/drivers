@@ -238,7 +238,7 @@ function P8INT:GET_ROUTING(idBinding)
 					    
 					end
 					local tParams = {INPUT = (jsonResponse["Output" .. i][1] + 3000), OUTPUT = (4000 + (i-1))}
-					--According to @Piadas INPUT_OUTPUT_CHANGED is only used to update the 'Control' Control inside Composer and has little other effect (and may not even work)
+					--INPUT_OUTPUT_CHANGED is only used to update the 'Control' Control inside Composer and has little other effect
 					SendNotify("INPUT_OUTPUT_CHANGED", tParams, idBinding)
 					tParams = {INPUT = (jsonResponse["Output" .. i][1] + 1000), OUTPUT = 2000 + (i-1)}
 					SendNotify("INPUT_OUTPUT_CHANGED", tParams, idBinding)

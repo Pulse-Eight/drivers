@@ -21,6 +21,8 @@ function P8INT:GET_DETAILS(idBinding)
 			 UpdateProperty("Serial", jsonResponse.Serial)
 			 if jsonResponse.Model == "FF88" then
 				UpdateProperty("Model", "neo:8")
+			 elseif jsonResponse.Model == "FF66A" then
+				UpdateProperty("Model", "neo:6")
 			 else
 				UpdateProperty("Model", "Unknown Model " .. jsonResponse.Model .. " (You may have loaded the wrong driver)")
 			 end
