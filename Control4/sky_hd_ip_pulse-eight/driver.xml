@@ -5,8 +5,8 @@
   <name>Sky HD IP Driver</name>
   <model>Sky HD</model>
   <created>22/04/2017 12:00 PM</created>
-  <modified>15/11/2020 12:00 PM</modified>
-  <version>7</version>
+  <modified>07/05/2021 12:00 PM</modified>
+  <version>8</version>
   <small image_source="c4z">assets/device_sm.png</small>
   <large image_source="c4z">assets/device_lg.png</large>
   <control>lua_gen</control>
@@ -252,6 +252,16 @@
           <item>4 - Trace</item>
           <item>5 - Debug</item>
         </items>
+      </property>
+      <property>
+        <name>Manage Power State</name>
+        <type>LIST</type>
+		<readonly>false</readonly>
+        <default>Yes</default>
+		<items>
+			<item>Yes</item>
+			<item>No</item>
+		</items>
       </property>
       <property>
         <name>Allow Power Off</name>

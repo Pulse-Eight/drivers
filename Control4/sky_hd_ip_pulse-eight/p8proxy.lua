@@ -245,15 +245,23 @@ function PRX_CMD.CUSTOM_3(idBinding, tParams)
 end
 
 function PRX_CMD.OFF(idBinding, tParams)
-    if (Properties["Allow Power Off"] == "Yes") then
-        P8INT:SEND_KEY(0)
+    if (Properties["Manage Power State"] == "Yes") then
+	    if (Properties["Allow Power Off"] == "Yes") then
+		P8INT:SEND_KEY(0)
+	    else
+		LogInfo("Power State Control Disabled [Off Prevented]")
+	    end
     else
-        LogInfo("Power State Control Disabled [Off Prevented]")
+    	LogInfo("Power Management Disabled [Off Prevented]")
     end
 end
 
 function PRX_CMD.ON(idBinding, tParams)
-    P8INT:TURN_ON()
+    if (Properties["Manage Power State"] == "Yes") then
+        P8INT:TURN_ON()
+    else
+    	LogInfo("Power Management Disabled [On Prevented]")
+    end
 end
 
 function EX_CMD.LUA_ACTION(tParams)
