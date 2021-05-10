@@ -12,7 +12,7 @@
 			"SupportsReconnect": false
 		},
 		"GeneralInformation": {
-			"DeviceType": "AudioVideo Switcher",
+			"DeviceType": "AV Switcher",
 			"Manufacturer": "Pulse-Eight",
 			"BaseModel": "NEO8",
 			"VersionDate": "2021-01-28 00:00:00.000",
