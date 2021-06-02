@@ -74,3 +74,27 @@ function SetPower(zone, state) {
 		System.Print(response);
 	}
 }
+
+function VolumeUp(zone) {
+	if (DEBUG) {
+		System.Print('Volume Up: Zone ' + zone + '\r\n');
+	}
+
+	zone--; //Fix offset
+	var response = System.GetURL(SYSTEM_URL + '/Audio/Volume/' + zone + '/up');
+	if (DEBUG) {
+		System.Print(response);
+	}
+}
+
+function VolumeDown(zone) {
+	if (DEBUG) {
+		System.Print('Volume Down: Zone ' + zone + '\r\n');
+	}
+
+	zone--; //Fix offset
+	var response = System.GetURL(SYSTEM_URL + '/Audio/Volume/' + zone + '/down');
+	if (DEBUG) {
+		System.Print(response);
+	}
+}

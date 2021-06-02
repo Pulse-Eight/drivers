@@ -23,5 +23,13 @@
 			<parameter name="Zone" type="integer" description="Output Zone (1-8)" min="1" max="8" />
 			<parameter default="20" max="100" min="0" name="Volume" type="integer" />
 		</function>
+
+		<function export="VolumeUp" name="Volume Up" repeatrate="0">
+			<parameter name="Zone" type="integer" description="Output Zone (1-8)" min="1" max="8" />
+		</function>
+
+		<function export="VolumeDown" name="Volume Down" repeatrate="0">
+			<parameter name="Zone" type="integer" description="Output Zone (1-8)" min="1" max="8" />
+		</function>
 	</category>
 </functions>
