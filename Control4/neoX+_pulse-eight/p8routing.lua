@@ -1,4 +1,4 @@
---Copyright Pulse-Eight Limited 2015
+--Copyright Pulse-Eight Limited 2021
 
 require "lib.json"
 
@@ -217,7 +217,7 @@ function P8INT:GET_ROUTING(idBinding)
 	   function(ticketId, strData, responseCode, tHeaders, strError)
    		  if responseCode ~= 200 or strError ~= nil then
 			 LogWarn("Unable to refresh routing")
-			 LogWarn("Error = " .. strError)
+			 LogWarn("Error = " .. (strError or "Unknown Error"))
 			 LogWarn("Response Code = " .. responseCode)
 			 return
 		  end

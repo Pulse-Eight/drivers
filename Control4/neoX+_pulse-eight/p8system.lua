@@ -43,7 +43,7 @@ function P8INT:GET_HEALTH(idBinding)
 	   function(ticketId, strData, responseCode, tHeaders, strError)
 		  if responseCode ~= 200 or strError ~= nil then
 			 LogWarn("Unable to connect to system")
-			 LogWarn("Error = " .. strError)
+			 LogWarn("Error = " .. strError or "Unknown Error")
 			 LogWarn("Response Code = " .. responseCode)
 			 UpdateProperty("System Uptime", "Unknown")
 			 return

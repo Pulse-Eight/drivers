@@ -31,6 +31,7 @@ end
 
 function FirstRun()
     --Init Connected Devices
+    LogInfo("First Run")
     P8INT:SETUP()
     P8INT:FETCH_INSTALLER_ID()
     gP8RoutingUpdateTimer = c4_timer:new("Routing Update", 2, "SECONDS", RoutingUpdateTimer, true)
@@ -46,6 +47,15 @@ function FirstRun()
     DetailsUpdateTimer()
     HealthUpdateTimer()
     VolumeUpdateTimer()
+    --Register for SDDP Setup
+    local deviceId = C4:GetDeviceID()
+    C4:RegisterSystemEvent(C4SystemEvents["OnSDDPDeviceStatus"], deviceId)
+    C4:RegisterSystemEvent(C4SystemEvents["OnDiscoveredDeviceChanged"], deviceId)
+    C4:RegisterSystemEvent(C4SystemEvents["OnNetworkBindingAdded"], deviceId) --This is triggered when the user maps the IP in the Network Connections Tab
+    C4:RegisterSystemEvent(C4SystemEvents["OnDeviceIPAddressChanged"], deviceId)
+    C4:RegisterSystemEvent(C4SystemEvents["OnDiscoveredDeviceAdded"], deviceId)
+    C4:RegisterSystemEvent(C4SystemEvents["OnSDDPDeviceDiscover"], deviceId)
+    C4:RegisterSystemEvent(C4SystemEvents["OnDeviceDiscovered"], deviceId)
 end
 
 function VolumeUpdateTimer()

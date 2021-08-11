@@ -1,4 +1,4 @@
---Copyright Pulse-Eight Limited 2015
+--Copyright Pulse-Eight Limited 2021
 --[[=============================================================================
     ReceivedFromProxy(idBinding, sCommand, tParams)
 
@@ -22,8 +22,8 @@ function ReceivedFromProxy(idBinding, sCommand, tParams)
 			tParams = {}
 		end
 		
-		--LogTrace("ReceivedFromProxy(): " .. sCommand .. " on binding " .. idBinding .. "; Call Function PRX_CMD." .. sCommand .. "()")
-		--LogInfo(tParams)
+		LogTrace("ReceivedFromProxy(): " .. sCommand .. " on binding " .. idBinding .. "; Call Function PRX_CMD." .. sCommand .. "()")
+		LogInfo(tParams)
 		if ((PRX_CMD[sCommand]) ~= nil) then
 			local status, err = pcall(PRX_CMD[sCommand], idBinding, tParams)
 			if (not status) then
@@ -33,6 +33,17 @@ function ReceivedFromProxy(idBinding, sCommand, tParams)
 			LogInfo("ReceivedFromProxy: Unhandled command = " .. sCommand)
 		end
 	end
+end
+
+function OnSystemEvent(data)
+    --print("System Event " .. data)
+    local myIP = C4:GetMyNetworkAddress()
+    if (myIP ~= nil) then
+	   print("Updating Network Address to " .. myIP)
+	   UpdateProperty("Device IP Address", myIP)
+	   P8INT:SETUP()
+	   P8INT:FETCH_INSTALLER_ID()
+    end
 end
 
 function PRX_CMD.BINDING_CHANGE_ACTION(idBinding, tParams)

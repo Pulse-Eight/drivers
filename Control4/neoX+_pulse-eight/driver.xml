@@ -5,16 +5,16 @@
   <name>neo:X+ IP Driver</name>
   <model>neo:X+</model>
   <created>05/04/2019 12:00 PM</created>
-  <modified>06/02/2021 12:00 PM</modified>
+  <modified>11/08/2021 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>3</version>
+  <version>5</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
   <search_types>
-    <type>c4:av_gen</type>
+    <type>pulse-eight:NeoX</type>
   </search_types>
   <composer_categories>
 	<category>Audio/Video</category>
@@ -582,6 +582,28 @@
       <classes>
         <class>
           <classname>AVSWITCH</classname>
+        </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>6000</id>
+      <connectionname>Network</connectionname>
+      <type>4</type>
+      <consumer>True</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>TCP</classname>
+          <ports>
+            <port>
+              <number>80</number>
+              <auto_connect>False</auto_connect>
+              <monitor_connection>True</monitor_connection>
+              <keep_connection>True</keep_connection>
+            </port>
+          </ports>
         </class>
       </classes>
     </connection>
