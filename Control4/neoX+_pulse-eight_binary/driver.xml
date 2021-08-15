@@ -276,36 +276,8 @@
 		</classes>
 	</connection>
 	<connection>
-		<id>209</id>
-		<connectionname>Input 9</connectionname>
-		<type>1</type>
-		<consumer>False</consumer>
-		<audiosource>False</audiosource>
-		<videosource>False</videosource>
-		<linelevel>True</linelevel>
-		<classes>
-			<class>
-				<classname>IR_OUT</classname>
-			</class>
-		</classes>
-	</connection>
-	<connection>
 		<id>309</id>
 		<connectionname>Output 9</connectionname>
-		<type>1</type>
-		<consumer>False</consumer>
-		<audiosource>False</audiosource>
-		<videosource>False</videosource>
-		<linelevel>True</linelevel>
-		<classes>
-			<class>
-				<classname>IR_OUT</classname>
-			</class>
-		</classes>
-	</connection>
-	<connection>
-		<id>210</id>
-		<connectionname>Input 10</connectionname>
 		<type>1</type>
 		<consumer>False</consumer>
 		<audiosource>False</audiosource>
