@@ -4,10 +4,10 @@
   <manufacturer>Pulse-Eight</manufacturer>
   <name>neo:X+ IP Driver</name>
   <model>neo:X+</model>
-  <created>05/04/2019 12:00 PM</created>
-  <modified>11/08/2021 12:00 PM</modified>
+  <created>04/05/2019 12:00 PM</created>
+  <modified>08/15/2021 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>5</version>
+  <version>6</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
@@ -600,8 +600,8 @@
             <port>
               <number>80</number>
               <auto_connect>False</auto_connect>
-              <monitor_connection>True</monitor_connection>
-              <keep_connection>True</keep_connection>
+              <monitor_connection>False</monitor_connection>
+              <keep_connection>False</keep_connection>
             </port>
           </ports>
         </class>
