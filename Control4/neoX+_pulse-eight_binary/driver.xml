@@ -1080,7 +1080,7 @@
     <power_delay>0</power_delay>
     <power_command_needed>False</power_command_needed>
     <documentation file="www/documentation.rtf" />
-    <script file="p8driver.lua" />
+    <script file="p8driver.lua" jit="1" />
     <properties>
       <property>
         <name>Device IP Address</name>

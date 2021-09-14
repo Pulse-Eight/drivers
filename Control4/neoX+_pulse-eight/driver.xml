@@ -4,17 +4,17 @@
   <manufacturer>Pulse-Eight</manufacturer>
   <name>neo:X+ IP Driver</name>
   <model>neo:X+</model>
-  <created>04/05/2019 12:00 PM</created>
-  <modified>08/15/2021 12:00 PM</modified>
+  <created>05/04/2019 12:00 PM</created>
+  <modified>19/08/2021 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>6</version>
+  <version>10</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
   <search_types>
-    <type>pulse-eight:NeoX</type>
+    <type>pulse-eight:NeoX+</type>
   </search_types>
   <composer_categories>
 	<category>Audio/Video</category>
@@ -828,7 +828,7 @@
     <power_delay>0</power_delay>
     <power_command_needed>False</power_command_needed>
     <documentation file="www/documentation.rtf" />
-    <script file="p8driver.lua" />
+    <script file="p8driver.lua" jit="1" />
     <properties>
       <property>
         <name>Device IP Address</name>
