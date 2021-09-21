@@ -19,10 +19,8 @@ function P8INT:GET_DETAILS(idBinding)
 			 UpdateProperty("Connected To Network", "Yes")
 			 UpdateProperty("Version", jsonResponse.Version)
 			 UpdateProperty("Serial", jsonResponse.Serial)
-			 if jsonResponse.Model == "FF88S" then
-				UpdateProperty("Model", "neo:X")
-			 elseif jsonResponse.Model == "FF88SA" then
-				UpdateProperty("Model", "neo:X+")
+			 if jsonResponse.Model == "FF64S" then
+				UpdateProperty("Model", "neo:XSR")
 			 else
 				UpdateProperty("Model", "Unknown Model " .. jsonResponse.Model .. " (You may have loaded the wrong driver)")
 			 end
