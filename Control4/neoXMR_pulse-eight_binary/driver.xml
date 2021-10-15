@@ -7,7 +7,7 @@
   <created>04/05/2019 12:00 PM</created>
   <modified>09/21/2021 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>8</version>
+  <version>9</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
@@ -24,7 +24,7 @@
   </proxies>
   <capabilities>
     <audio_consumer_count>4</audio_consumer_count>
-    <audio_provider_count>10</audio_provider_count>
+    <audio_provider_count>8</audio_provider_count>
     <can_downclass>True</can_downclass>
     <can_switch>True</can_switch>
     <can_upclass>True</can_upclass>
@@ -44,8 +44,8 @@
     <has_up_down_bass_control>False</has_up_down_bass_control>
     <has_up_down_treble_control>False</has_up_down_treble_control>
     <has_video_sense_control>False</has_video_sense_control>
-    <video_consumer_count>8</video_consumer_count>
-    <video_provider_count>10</video_provider_count>
+    <video_consumer_count>6</video_consumer_count>
+    <video_provider_count>8</video_provider_count>
     <can_switch_separately>False</can_switch_separately>
     <requires_separate_switching>False</requires_separate_switching>
     <has_up_down_volume_control>True</has_up_down_volume_control>
