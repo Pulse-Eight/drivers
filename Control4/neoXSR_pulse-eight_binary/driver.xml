@@ -7,14 +7,14 @@
   <created>04/05/2019 12:00 PM</created>
   <modified>09/21/2021 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>8</version>
+  <version>9</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
   <search_types>
-    <type>pulse-eight:NeoXSR</type>
+    <type>pulse-eight:neoXSR</type>
   </search_types>
   <composer_categories>
 	<category>Audio/Video</category>

@@ -14,7 +14,7 @@
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
   <search_types>
-    <type>pulse-eight:NeoXMR</type>
+    <type>pulse-eight:neoXMR</type>
   </search_types>
   <composer_categories>
 	<category>Audio/Video</category>
