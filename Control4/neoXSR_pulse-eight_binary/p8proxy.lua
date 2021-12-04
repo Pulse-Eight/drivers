@@ -64,8 +64,7 @@ function OnSystemEvent(data)
     if (myIP ~= nil) then
 	   print("Updating Network Address to " .. myIP)
 	   UpdateProperty("Device IP Address", myIP)
-	   P8INT:SETUP()
-	   P8INT:FETCH_INSTALLER_ID()
+	   FirstRun()
     end
 end
 
