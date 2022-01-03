@@ -35,4 +35,12 @@ function EDRV_ZoneSetMute(zone_index, mute_on_off)
 	ELAN_DisconnectTCP()
 end
 
+function EDRV_Init()
+	ip_string = ELAN_GetIPString()
+	ELAN_ConnectTCP()
+	ELAN_SendHTTP("GET /Details")
+	ELAN_DisconnectTCP()
+end
+
+
 
