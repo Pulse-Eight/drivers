@@ -5,9 +5,9 @@
 
   <manufacturer>Pulse-Eight</manufacturer>
   <creator>Zonn Moore</creator>
-  <copyright>(c) Copyright 2020, Pulse-Eight.  All rights reserved.</copyright>
+  <copyright>(c) Copyright 2022, Pulse-Eight.  All rights reserved.</copyright>
   <created>11/06/2016 12:00 AM</created>
-  <modified>09/10/2020 12:00 AM</modified>
+  <modified>01/19/2022 12:00 AM</modified>
 
   <version>300</version>
   <history>
@@ -5092,7 +5092,8 @@ ErrMsgT =
     </script>
   </config>
 
-  <control>IP</control>
+  <control>lua_gen</control>
+  <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
 
   <small>devices_sm/avswitch.GIF</small>
