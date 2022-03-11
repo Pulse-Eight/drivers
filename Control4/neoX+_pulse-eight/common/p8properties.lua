@@ -24,6 +24,7 @@ function OnPropertyChanged(sProperty)
 end
 
 function UpdateProperty(propertyName, propertyValue)
+    --LogTrace("UpdateProperty("..propertyName..", "..propertyValue..") current value: "..Properties[propertyName])
 	if (Properties[propertyName] ~= nil) then
 		C4:UpdateProperty(propertyName, propertyValue)
 	end

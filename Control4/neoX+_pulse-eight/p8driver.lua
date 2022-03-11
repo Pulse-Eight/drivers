@@ -42,11 +42,14 @@ function FirstRun()
     gP8HealthTimer:StartTimer()
     gP8VolumeTimer = c4_timer:new("Volume Update", 10, "SECONDS", VolumeUpdateTimer, true)
     gP8VolumeTimer:StartTimer()
+    gP8PropertiesTimer = c4_timer:new("Properties Update", 10, "SECONDS", PropertiesUpdateTimer, true)
+    gP8PropertiesTimer:StartTimer()
     --Call once to set initial states
     RoutingUpdateTimer()
     DetailsUpdateTimer()
     HealthUpdateTimer()
     VolumeUpdateTimer()
+    PropertiesUpdateTimer()
     --Register for SDDP Setup
     local deviceId = C4:GetDeviceID()
     C4:RegisterSystemEvent(C4SystemEvents["OnSDDPDeviceStatus"], deviceId)
@@ -77,4 +80,9 @@ end
 
 function HealthUpdateTimer()
     P8INT:GET_HEALTH(DEFAULT_PROXY_BINDINGID)
+end
+
+function PropertiesUpdateTimer()
+    P8INT:GET_SOURCESINKMODE(DEFAULT_PROXY_BINDINGID)
+    P8INT:GET_POWERON_ON_ROUTING_CHANGE(DEFAULT_PROXY_BINDINGID)
 end

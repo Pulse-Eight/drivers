@@ -36,6 +36,103 @@ function P8INT:GET_DETAILS(idBinding)
 	   end)
 end
 
+function P8INT:GET_SOURCESINKMODE(idBinding)
+     --LogTrace("Updating Source/Sink Mode")
+	local uri = P8INT:GET_MATRIX_URL() .. "/Audio/SinkMode"
+	C4:urlGet(uri, {}, false,
+	   function(ticketId, strData, responseCode, tHeaders, strError)
+			if responseCode ~= 200 or strError ~= nil then
+				LogWarn("Unable to connect to system")
+				LogWarn("Error = " .. strError or "Unknown Error")
+				LogWarn("Response Code = " .. responseCode)
+				UpdateProperty("System Uptime", "Unknown")
+				C4:SetBindingStatus(6000, "offline")
+				return
+			end
+			local jsonResponse = JSON:decode(strData)
+			if jsonResponse.Result then
+				if jsonResponse.SinkMode == true then
+				    MODE_SINK = 1
+				    UpdateProperty("Routing Mode", "Sink Mode")
+				else
+				    MODE_SINK = 0
+				    UpdateProperty("Routing Mode", "Source Mode")
+				end
+			end
+		end)
+end
+
+function P8INT:GET_POWERON_ON_ROUTING_CHANGE(idBinding)
+     --LogTrace("Getting autopoweron")
+	local uri = P8INT:GET_MATRIX_URL() .. "/CEC/AutoPowerOn"
+	C4:urlGet(uri, {}, false,
+	   function(ticketId, strData, responseCode, tHeaders, strError)
+			if responseCode ~= 200 or strError ~= nil then
+				LogWarn("Unable to connect to system")
+				LogWarn("Error = " .. strError or "Unknown Error")
+				LogWarn("Response Code = " .. responseCode)
+				UpdateProperty("System Uptime", "Unknown")
+				C4:SetBindingStatus(6000, "offline")
+				return
+			end
+			local jsonResponse = JSON:decode(strData)
+			--LogTrace(jsonResponse)
+			if jsonResponse.Result then
+				if jsonResponse.Setting == true then
+				    MODE_POWERON_ON_ROUTING_CHANGE = 1
+				    UpdateProperty("Send CEC ON during route change", "Yes")
+				else
+				    MODE_POWERON_ON_ROUTING_CHANGE = 0
+				    UpdateProperty("Send CEC ON during route change", "No")
+				end
+			end
+		end)
+end
+
+function P8INT:SET_POWERON_ON_ROUTING_CHANGE(value)
+     --LogTrace("Setting autopoweron")
+	local uri = P8INT:GET_MATRIX_URL() .. "/CEC/AutoPowerOn"
+	local postData = {}
+	if value == 1 then
+	   postData["Setting"] = true
+     else
+	   postData["Setting"] = false
+     end
+	C4:urlPost(uri, JSON:encode(postData), {}, false,
+	   function(ticketId, strData, responseCode, tHeaders, strError)
+			if responseCode ~= 200 or strError ~= nil then
+				LogWarn("Unable to connect to system")
+				LogWarn("Error = " .. strError or "Unknown Error")
+				LogWarn("Response Code = " .. responseCode)
+				UpdateProperty("System Uptime", "Unknown")
+				C4:SetBindingStatus(6000, "offline")
+				return
+		     else
+				MODE_POWERON_ON_ROUTING_CHANGE = value
+			end
+		end)
+end
+
+-- SETSOURCESINKMODE(value) expects a value of 1 for Sink Mode, 0 for Source Mode
+function P8INT:SET_SOURCESINKMODE(value)
+     --LogTrace("Setting Source/Sink Mode")
+	local uri = P8INT:GET_MATRIX_URL() .. "/Audio/SinkMode/"..value
+	C4:urlGet(uri, {}, false,
+	   function(ticketId, strData, responseCode, tHeaders, strError)
+			if responseCode ~= 200 or strError ~= nil then
+				LogWarn("Unable to connect to system")
+				LogWarn("Error = " .. strError or "Unknown Error")
+				LogWarn("Response Code = " .. responseCode)
+				UpdateProperty("System Uptime", "Unknown")
+				C4:SetBindingStatus(6000, "offline")
+				return
+			else
+				MODE_SINK = value
+		     end
+		     
+		end)
+end
+
 function P8INT:GET_HEALTH(idBinding)
 	--LogTrace("Updating Health Details")
 	local uri = P8INT:GET_MATRIX_URL() .. "/System/Health"

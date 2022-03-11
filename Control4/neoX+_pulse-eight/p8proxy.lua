@@ -24,6 +24,14 @@ function ReceivedFromProxy(idBinding, sCommand, tParams)
 		
 		LogTrace("ReceivedFromProxy(): " .. sCommand .. " on binding " .. idBinding .. "; Call Function PRX_CMD." .. sCommand .. "()")
 		LogInfo(tParams)
+		if (sCommand == "IS_AV_OUTPUT_TO_INPUT_VALID") then
+            local status, retval = pcall(PRX_CMD[sCommand], idBinding, tParams)
+		  if (status) then
+			 LogTrace("IS_AV_OUTPUT_TO_INPUT_VALID returned " .. retval .. " for path of class " .. tParams["Provider_sClass"] .. " from " .. tonumber(tParams["Consumer_idBinding"]) .. " to " .. tonumber(tParams["Provider_idBinding"]))
+			 return retval
+		  end
+          end
+
 		if ((PRX_CMD[sCommand]) ~= nil) then
 			local status, err = pcall(PRX_CMD[sCommand], idBinding, tParams)
 			if (not status) then
@@ -80,6 +88,9 @@ end
 function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
+		if MODE_POWEROFF_ON_ZONE_OFF == 1 then
+		  C4:urlGet(P8INT:GET_MATRIX_URL() .. "/CEC/Off/Output/" .. output, {})
+		end
 		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/true"
 		LogInfo("Set Mute ON Due to Disconnect. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
@@ -311,4 +322,26 @@ end
 function PRX_CMD.SET_ROOM_BINDING_NAME(idBinding, tParams)
     --PartnerDevice
     --OUTPUT
+end
+
+
+function PRX_CMD.IS_AV_OUTPUT_TO_INPUT_VALID(idBinding, tParams)
+    local pathIsValid =  "True"
+
+    -- In sink mode assume all paths are valid
+    if MODE_SINK == 0 then
+	   local provider_class    	= tParams["Provider_sClass"]
+	   -- TODO: Test for other video sources gAVPathType[tonumber(params["Params_bindingType"])]?
+	   if provider_class ~= "VIDEO_SELECTION" then
+		  local consumer_idBinding 	= tonumber(tParams["Consumer_idBinding"])	-- we are consuming the source, so the consumer binding is the source
+		  local provider_idBinding 	= tonumber(tParams["Provider_idBinding"]) 	-- we are providing the output, to the output is the provider binding    
+		  local consumer_class    	= tParams["Consumer_sClass"]
+		  local roomID			= tonumber(tParams["Params_idRoom"])
+		  
+		  if (consumer_idBinding % 1000) ~= (provider_idBinding % 1000) then
+			 pathIsValid = "False"
+		  end
+	   end
+    end
+    return pathIsValid
 end
