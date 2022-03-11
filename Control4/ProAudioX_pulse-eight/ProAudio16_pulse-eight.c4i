@@ -5093,7 +5093,6 @@ ErrMsgT =
   </config>
 
   <control>lua_gen</control>
-  <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
 
   <small>devices_sm/avswitch.GIF</small>

@@ -7,10 +7,12 @@
   <creator>Zonn Moore</creator>
   <copyright>(c) Copyright 2022, Pulse-Eight.  All rights reserved.</copyright>
   <created>11/06/2016 12:00 AM</created>
-  <modified>01/19/2022 12:00 AM</modified>
+  <modified>03/01/2022 12:00 AM</modified>
 
-  <version>300</version>
+  <version>301</version>
   <history>
+	Version 3.01
+	  Added trigger connection
     Version 3.00
       Initial Release.
   </history>
@@ -22,6 +24,7 @@
 REQUIREMENTS
 
 This driver requires the switch to be running Version 3.00 or above firmware. The firmware version is displayed on the top line of the "Properties" page after connecting to the switch.
+Updating trigger state within Control4 requires the switch to be running Version 3.0.3 or above firmware.
 
 This driver requires Control4 OS 2.10 or above.
 
@@ -3022,6 +3025,22 @@ function rTRGZ( paramT)
   end
 end
 
++--============================================================================
+-- TRGX = Zone's trigger association.
+--============================================================================
+function rTRGX( paramT)
+  -- Decode the parameters assuming a "zone" type command
+  zone,trg = parseZoneResp( paramT)
+  if (trg == 1) then
+    C4:SendToProxy(100+tonumber(zone), "CLOSED", {}, "NOTIFY")
+	dbg( "SendToProxy: TRIGGER_ACTIVITY, ZONE=" .. zone .. ", STATE=CLOSED")
+  else
+    C4:SendToProxy(100+tonumber(zone), "OPENED", {}, "NOTIFY")
+	dbg( "SendToProxy: TRIGGER_ACTIVITY, ZONE=" .. zone .. ", STATE=OPENED")
+
+  end
+end
+
 --============================================================================
 -- STRG = The trigger current setting.
 --============================================================================
@@ -3776,6 +3795,7 @@ RespCmdT =
 
   ["STRG"] = rSTRG,
   ["TRGZ"] = rTRGZ,
+  ["TRGX"] = rTRGX,
 
   ["pSET"] = rDummy,
 }
@@ -3922,6 +3942,7 @@ function refZoneData( zone)
 --  sendToDevice( "DZ@"..zone.."$")
   sendToDevice( "DRZ@"..zone.."$")
   sendToDevice( "TRGZ@"..zone.."$")
+  sendToDevice( "TRGX@"..zone.."$")
   sendToDevice( "^DMZ@"..zone.."$")
 end
 
@@ -5154,7 +5175,6 @@ ErrMsgT =
   </config>
 
   <control>lua_gen</control>
-  <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
 
   <small>devices_sm/avswitch.GIF</small>
@@ -8687,5 +8707,293 @@ ErrMsgT =
         <class><classname>AUDIO_SELECTION</classname></class>
       </classes>
     </connection>
+	<connection>
+      <id>101</id>
+      <connectionname>12V Trigger Port 1</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>102</id>
+      <connectionname>12V Trigger Port 2</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>103</id>
+      <connectionname>12V Trigger Port 3</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>104</id>
+      <connectionname>12V Trigger Port 4</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>105</id>
+      <connectionname>12V Trigger Port 5</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>106</id>
+      <connectionname>12V Trigger Port 6</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>107</id>
+      <connectionname>12V Trigger Port 7</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>108</id>
+      <connectionname>12V Trigger Port 8</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>109</id>
+      <connectionname>12V Trigger Port 9</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>110</id>
+      <connectionname>12V Trigger Port 10</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>111</id>
+      <connectionname>12V Trigger Port 11</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>112</id>
+      <connectionname>12V Trigger Port 12</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>113</id>
+      <connectionname>12V Trigger Port 13</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>114</id>
+      <connectionname>12V Trigger Port 14</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>115</id>
+      <connectionname>12V Trigger Port 15</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>116</id>
+      <connectionname>12V Trigger Port 16</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>117</id>
+      <connectionname>12V Trigger Port 17</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>118</id>
+      <connectionname>12V Trigger Port 18</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+	</connection>
+	<connection>
+      <id>119</id>
+      <connectionname>12V Trigger Port 19</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+	</connection>
+	<connection>
+      <id>120</id>
+      <connectionname>12V Trigger Port 20</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+	</connection>
+	<connection>
+      <id>121</id>
+      <connectionname>12V Trigger Port 21</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+	</connection>
+	<connection>
+      <id>122</id>
+      <connectionname>12V Trigger Port 22</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+	</connection>
+	<connection>
+      <id>123</id>
+      <connectionname>12V Trigger Port 23</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+	</connection>
+	<connection>
+      <id>124</id>
+      <connectionname>12V Trigger Port 24</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+	</connection>
   </connections>
 </devicedata>
