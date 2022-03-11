@@ -54,7 +54,7 @@ end
 function PRX_CMD.CONNECT_OUTPUT(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/1"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/0"
 		LogInfo("Set Mute OFF Due to Connect. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -68,7 +68,7 @@ end
 function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/0"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/1"
 		LogInfo("Set Mute ON Due to Disconnect. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
