@@ -332,7 +332,8 @@ function PRX_CMD.IS_AV_OUTPUT_TO_INPUT_VALID(idBinding, tParams)
     if MODE_SINK == 0 then
 	   local provider_class    	= tParams["Provider_sClass"]
 	   -- TODO: Test for other video sources gAVPathType[tonumber(params["Params_bindingType"])]?
-	   if provider_class ~= "VIDEO_SELECTION" then
+	   if provider_class == "VIDEO_SELECTION" or provider_class == "HDMI" then
+	   else
 		  local consumer_idBinding 	= tonumber(tParams["Consumer_idBinding"])	-- we are consuming the source, so the consumer binding is the source
 		  local provider_idBinding 	= tonumber(tParams["Provider_idBinding"]) 	-- we are providing the output, to the output is the provider binding    
 		  local consumer_class    	= tParams["Consumer_sClass"]

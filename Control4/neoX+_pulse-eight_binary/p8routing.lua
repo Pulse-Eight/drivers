@@ -137,7 +137,7 @@ end
 function P8INT:PORT_SET(idBinding, tParams)
     local input = tonumber(tParams["INPUT"] % 1000)
     local output = tonumber(tParams["OUTPUT"] % 1000)
-    if tParams["CLASS"] == "VIDEO_SELECTION" then
+    if tParams["CLASS"] == "VIDEO_SELECTION" or tParams["CLASS"] == "HDMI" then
 	   local uri = P8INT:GET_MATRIX_URL() .. "/Port/Set/" .. input .. "/" .. output
 	   LogInfo("Changing Routing. Input: " .. input .. " -> Output: " .. output)
 	   existingRouting["OUTPUT" .. output] = input
