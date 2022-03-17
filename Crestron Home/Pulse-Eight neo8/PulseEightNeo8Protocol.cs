@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Crestron.RAD.Common.BasicDriver;
 using Crestron.RAD.Common.Enums;
 using Crestron.RAD.Common.Transports;
+using Crestron.SimplSharp.Net.Http;
 using Crestron.RAD.DeviceTypes.AudioVideoSwitcher;
 using Newtonsoft.Json;
 using PulseEight.Neo8.IP.API;
@@ -141,7 +142,8 @@ namespace PulseEight.Neo8.IP {
 					SendMeData($"Unhandled command: {commandSet.StandardCommand}, Command = {commandSet.Command}");
 					return true; //Don't send message
 			}
-			
+			if (commandSet.Parameters == null)
+				commandSet.Parameters = new Object[] { RequestType.Get};
 			return base.PrepareStringThenSend(commandSet);
 		}
 
