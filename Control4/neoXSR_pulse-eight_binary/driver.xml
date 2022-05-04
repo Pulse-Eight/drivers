@@ -1,13 +1,13 @@
 <devicedata>
-  <copyright>Copyright 2021 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2022 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Pulse-Eight</manufacturer>
   <name>neo:XSR (Designed for BINARY Edition) IP Driver</name>
   <model>neo:XSR (Designed for BINARY Edition)</model>
   <created>04/05/2019 12:00 PM</created>
-  <modified>12/04/2021 12:00 PM</modified>
+  <modified>05/04/2022 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>10</version>
+  <version>12</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
@@ -748,6 +748,33 @@
 		<maximum>300</maximum>
 		<default>200</default>
 	  </property>
+	  <property>
+        <name>Routing Mode</name>
+        <type>LIST</type>
+        <default>Sink Mode</default>
+        <items>
+          <item>Source Mode</item>
+          <item>Sink Mode</item>
+        </items>
+      </property>
+      <property>
+        <name>Send CEC ON during route change</name>
+        <type>LIST</type>
+        <default>Yes</default>
+        <items>
+          <item>Yes</item>
+          <item>No</item>
+        </items>
+      </property>
+      <property>
+        <name>Send CEC OFF on zone off</name>
+        <type>LIST</type>
+        <items>
+          <item>Yes</item>
+          <item>No</item>
+        </items>
+        <default>No</default>
+      </property>
     </properties>
   </config>
   <composer_categories>

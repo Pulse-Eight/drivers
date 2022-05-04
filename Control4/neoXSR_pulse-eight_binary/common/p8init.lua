@@ -44,6 +44,33 @@ function ON_PROPERTY_CHANGED.LogLevel(propertyValue)
 	end
 end
 
+function ON_PROPERTY_CHANGED.RoutingMode(propertyValue)
+     --LogTrace("Routing Mode Changed" .. propertyValue)
+	if(propertyValue == "Sink Mode") then
+	   P8INT:SET_SOURCESINKMODE(1)
+     else
+	   P8INT:SET_SOURCESINKMODE(0)
+	end
+end
+
+function ON_PROPERTY_CHANGED.SendCECONduringroutechange(propertyValue)
+     --LogTrace("Autopoweron Mode Changed " .. propertyValue)
+	if(propertyValue == "Yes") then
+	   P8INT:SET_POWERON_ON_ROUTING_CHANGE(1)
+     else
+	   P8INT:SET_POWERON_ON_ROUTING_CHANGE(0)
+	end
+end
+
+function ON_PROPERTY_CHANGED.SendCECOFFonzoneoff(propertyValue)
+     --LogTrace("Autopoweroff Mode Changed " .. propertyValue)
+	if(propertyValue == "Yes") then
+	   MODE_POWEROFF_ON_ZONE_OFF = 1
+     else
+	   MODE_POWEROFF_ON_ZONE_OFF = 0
+	end
+end
+
 
 -- Main calls from the Director
 
@@ -90,7 +117,7 @@ end
 
 function OnDriverLateInit()
 	C4:ErrorLog("INIT_CODE: OnDriverLateInit()")
-	
+	C4:SendToProxy(DEFAULT_PROXY_BINDINGID, 'PROTOCOL_WILL_HANDLE_AV_VALID', {})
 	-- Call all ON_DRIVER_LATEINIT functions
 	for k,v in pairs(ON_DRIVER_LATEINIT) do
 		if (ON_DRIVER_LATEINIT[k] ~= nil and type(ON_DRIVER_LATEINIT[k]) == "function") then

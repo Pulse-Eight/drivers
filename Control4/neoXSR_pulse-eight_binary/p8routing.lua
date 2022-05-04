@@ -137,15 +137,37 @@ end
 function P8INT:PORT_SET(idBinding, tParams)
     local input = tonumber(tParams["INPUT"] % 1000)
     local output = tonumber(tParams["OUTPUT"] % 1000)
-    local uri = P8INT:GET_MATRIX_URL() .. "/Port/Set/" .. input .. "/" .. output
-    LogInfo("Changing Routing. Input: " .. input .. " -> Output: " .. output)
-    existingRouting["OUTPUT" .. output] = input
-    C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-		  local jsonResponse = JSON:decode(strData)
-		  if jsonResponse.Result then
-			 --self:GET_ROUTING(idBinding)
-		  end
-	   end)
+    if tParams["CLASS"] == "VIDEO_SELECTION" or tParams["CLASS"] == "HDMI" or tParams["CLASS"] == nil then
+	   local uri = P8INT:GET_MATRIX_URL() .. "/Port/Set/" .. input .. "/" .. output
+	   LogInfo("Changing Routing. Input: " .. input .. " -> Output: " .. output)
+	   existingRouting["OUTPUT" .. output] = input
+	   C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+			 local jsonResponse = JSON:decode(strData)
+			 if jsonResponse.Result then
+				--self:GET_ROUTING(idBinding)
+			 end
+		  end)
+    else
+	   -- Do not attempt audio routing in source mode
+	   if MODE_SINK == 1 then
+		  local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Route/" .. input .. "/" .. output
+		  LogInfo("Changing Audio Routing. Input: " .. input .. " -> Output: " .. output)
+		  existingRouting["OUTPUT" .. output] = input
+		  C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+				local jsonResponse = JSON:decode(strData)
+				if jsonResponse.Result then
+				    --self:GET_ROUTING(idBinding)
+				end
+			 end)
+		  -- Work around a firmware bug. If a cec off command has been sent to certain TV's the mute state gets locked on.
+		  local uri1 = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. output .. "/down"
+		  C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+			 local uri2 = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. output .. "/up"
+			 C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+			 end)
+		  end)
+	   end
+    end
 end
 
 function GetPowerState(data, mode, bay)
@@ -247,3 +269,4 @@ function P8INT:GET_ROUTING(idBinding)
 		  end
 	   end)
 end
+

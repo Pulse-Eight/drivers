@@ -1,13 +1,13 @@
 <devicedata>
-  <copyright>Copyright 2021 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2022 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Pulse-Eight</manufacturer>
   <name>neo:X+ IP Driver</name>
   <model>neo:X+</model>
   <created>05/04/2019 12:00 PM</created>
-  <modified>03/10/2022 11:27 AM</modified>
+  <modified>05/04/2022 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>11</version>
+  <version>12</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
@@ -17,7 +17,7 @@
     <type>pulse-eight:NeoX+</type>
   </search_types>
   <composer_categories>
-    <category>Audio/Video</category>
+	<category>Audio/Video</category>
   </composer_categories>
   <proxies qty="1">
     <proxy proxybindingid="5001" name="neo:X+" large_image="Images/neo_lg.png" small_image="Images/neo_sm.png" smimagepath="Images/neo_sm.png" lgimagepath="Images/neo_lg.png" image_source="c4z">avswitch</proxy>
@@ -28,7 +28,7 @@
     <can_downclass>True</can_downclass>
     <can_switch>True</can_switch>
     <can_upclass>True</can_upclass>
-    <has_audio>True</has_audio>
+	<has_audio>True</has_audio>
     <has_audio_sense_control>False</has_audio_sense_control>
     <has_discrete_balance_control>False</has_discrete_balance_control>
     <has_discrete_bass_control>False</has_discrete_bass_control>
@@ -57,8 +57,8 @@
       <connectionname>Input 1</connectionname>
       <consumer>True</consumer>
       <linelevel>True</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -71,8 +71,8 @@
       <connectionname>Input 2</connectionname>
       <consumer>True</consumer>
       <linelevel>True</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -85,8 +85,8 @@
       <connectionname>Input 3</connectionname>
       <consumer>True</consumer>
       <linelevel>True</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -99,8 +99,8 @@
       <connectionname>Input 4</connectionname>
       <consumer>True</consumer>
       <linelevel>True</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -113,8 +113,8 @@
       <connectionname>Input 5</connectionname>
       <consumer>True</consumer>
       <linelevel>True</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -127,8 +127,8 @@
       <connectionname>Input 6</connectionname>
       <consumer>True</consumer>
       <linelevel>True</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -141,8 +141,8 @@
       <connectionname>Input 7</connectionname>
       <consumer>True</consumer>
       <linelevel>True</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -155,8 +155,8 @@
       <connectionname>Input 8</connectionname>
       <consumer>True</consumer>
       <linelevel>True</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -169,8 +169,8 @@
       <connectionname>Output 1</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -183,8 +183,8 @@
       <connectionname>Output 2</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -197,8 +197,8 @@
       <connectionname>Output 3</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -211,8 +211,8 @@
       <connectionname>Output 4</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -225,8 +225,8 @@
       <connectionname>Output 5</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -239,8 +239,8 @@
       <connectionname>Output 6</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -253,8 +253,8 @@
       <connectionname>Output 7</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -267,8 +267,8 @@
       <connectionname>Output 8</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -281,8 +281,8 @@
       <connectionname>Output 9</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -295,8 +295,8 @@
       <connectionname>Output 10</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
         <class>
           <classname>HDMI</classname>
@@ -309,8 +309,8 @@
       <connectionname>Input 9</connectionname>
       <consumer>True</consumer>
       <linelevel>False</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>DIGITAL_OPTICAL</classname>
@@ -326,8 +326,8 @@
       <connectionname>Input 10</connectionname>
       <consumer>True</consumer>
       <linelevel>False</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>DIGITAL_OPTICAL</classname>
@@ -343,8 +343,8 @@
       <connectionname>Input 11</connectionname>
       <consumer>True</consumer>
       <linelevel>False</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>DIGITAL_OPTICAL</classname>
@@ -360,8 +360,8 @@
       <connectionname>Input 12</connectionname>
       <consumer>True</consumer>
       <linelevel>False</linelevel>
-      <audiosource>False</audiosource>
-      <videosource>False</videosource>
+	  <audiosource>False</audiosource>
+	  <videosource>False</videosource>
       <classes>
         <class>
           <classname>DIGITAL_OPTICAL</classname>
@@ -377,10 +377,10 @@
       <connectionname>Output 1</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
-        <class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -397,10 +397,10 @@
       <connectionname>Output 2</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
-        <class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -417,10 +417,10 @@
       <connectionname>Output 3</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
-        <class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -437,10 +437,10 @@
       <connectionname>Output 4</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
-        <class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -457,10 +457,10 @@
       <connectionname>Output 5</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
-        <class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -477,10 +477,10 @@
       <connectionname>Output 6</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
-        <class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -497,10 +497,10 @@
       <connectionname>Output 7</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
-        <class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -517,10 +517,10 @@
       <connectionname>Output 8</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
-        <class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -537,10 +537,10 @@
       <connectionname>Output 9</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
-        <class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -557,10 +557,10 @@
       <connectionname>Output 10</connectionname>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-      <videosource>True</videosource>
-      <audiosource>True</audiosource>
+	  <videosource>True</videosource>
+	  <audiosource>True</audiosource>
       <classes>
-        <class>
+		<class>
           <classname>STEREO</classname>
         </class>
         <class>
@@ -576,7 +576,7 @@
       <type>2</type>
       <connectionname>AVSWITCH</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -585,7 +585,7 @@
         </class>
       </classes>
     </connection>
-    <connection>
+	<connection>
       <id>6000</id>
       <connectionname>Network</connectionname>
       <type>4</type>
@@ -612,7 +612,7 @@
       <type>7</type>
       <connectionname>Room 1</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -622,9 +622,9 @@
         <class>
           <classname>VIDEO_SELECTION</classname>
         </class>
-        <class>
-          <classname>AUDIO_VOLUME</classname>
-        </class>
+		<class>
+		  <classname>AUDIO_VOLUME</classname>
+		</class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -632,7 +632,7 @@
       <type>7</type>
       <connectionname>Room 2</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -642,9 +642,9 @@
         <class>
           <classname>VIDEO_SELECTION</classname>
         </class>
-        <class>
-          <classname>AUDIO_VOLUME</classname>
-        </class>
+		<class>
+		  <classname>AUDIO_VOLUME</classname>
+		</class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -652,7 +652,7 @@
       <type>7</type>
       <connectionname>Room 3</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -662,9 +662,9 @@
         <class>
           <classname>VIDEO_SELECTION</classname>
         </class>
-        <class>
-          <classname>AUDIO_VOLUME</classname>
-        </class>
+		<class>
+		  <classname>AUDIO_VOLUME</classname>
+		</class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -672,7 +672,7 @@
       <type>7</type>
       <connectionname>Room 4</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -682,9 +682,9 @@
         <class>
           <classname>VIDEO_SELECTION</classname>
         </class>
-        <class>
-          <classname>AUDIO_VOLUME</classname>
-        </class>
+		<class>
+		  <classname>AUDIO_VOLUME</classname>
+		</class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -692,7 +692,7 @@
       <type>7</type>
       <connectionname>Room 5</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -702,9 +702,9 @@
         <class>
           <classname>VIDEO_SELECTION</classname>
         </class>
-        <class>
-          <classname>AUDIO_VOLUME</classname>
-        </class>
+		<class>
+		  <classname>AUDIO_VOLUME</classname>
+		</class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -712,7 +712,7 @@
       <type>7</type>
       <connectionname>Room 6</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -722,9 +722,9 @@
         <class>
           <classname>VIDEO_SELECTION</classname>
         </class>
-        <class>
-          <classname>AUDIO_VOLUME</classname>
-        </class>
+		<class>
+		  <classname>AUDIO_VOLUME</classname>
+		</class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -732,7 +732,7 @@
       <type>7</type>
       <connectionname>Room 7</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -742,9 +742,9 @@
         <class>
           <classname>VIDEO_SELECTION</classname>
         </class>
-        <class>
-          <classname>AUDIO_VOLUME</classname>
-        </class>
+		<class>
+		  <classname>AUDIO_VOLUME</classname>
+		</class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -752,7 +752,7 @@
       <type>7</type>
       <connectionname>Room 8</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -762,9 +762,9 @@
         <class>
           <classname>VIDEO_SELECTION</classname>
         </class>
-        <class>
-          <classname>AUDIO_VOLUME</classname>
-        </class>
+		<class>
+		  <classname>AUDIO_VOLUME</classname>
+		</class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -772,7 +772,7 @@
       <type>7</type>
       <connectionname>Room 9</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -782,9 +782,9 @@
         <class>
           <classname>VIDEO_SELECTION</classname>
         </class>
-        <class>
-          <classname>AUDIO_VOLUME</classname>
-        </class>
+		<class>
+		  <classname>AUDIO_VOLUME</classname>
+		</class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -792,7 +792,7 @@
       <type>7</type>
       <connectionname>Room 10</connectionname>
       <consumer>False</consumer>
-      <audiosource>False</audiosource>
+	  <audiosource>False</audiosource>
       <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
@@ -802,9 +802,9 @@
         <class>
           <classname>VIDEO_SELECTION</classname>
         </class>
-        <class>
-          <classname>AUDIO_VOLUME</classname>
-        </class>
+		<class>
+		  <classname>AUDIO_VOLUME</classname>
+		</class>
       </classes>
     </connection>
   </connections>
@@ -908,7 +908,7 @@
         <readonly>True</readonly>
         <default>Unknown</default>
       </property>
-      <property>
+	  <property>
         <name>Auto Sync Navigators</name>
         <type>LIST</type>
         <readonly>False</readonly>
@@ -918,14 +918,14 @@
           <item>No</item>
         </items>
       </property>
-      <property>
-        <name>Volume Ramp Speed</name>
-        <type>SCROLL</type>
-        <minimum>50</minimum>
-        <maximum>300</maximum>
-        <default>200</default>
-      </property>
-      <property>
+	  <property>
+		<name>Volume Ramp Speed</name>
+		<type>SCROLL</type>
+		<minimum>50</minimum>
+		<maximum>300</maximum>
+		<default>200</default>
+	  </property>
+	  <property>
         <name>Routing Mode</name>
         <type>LIST</type>
         <default>Sink Mode</default>
