@@ -196,7 +196,8 @@ function P8INT:GET_POWER_STATE(idBinding)
 		  if jsonResponse.Result then
 			 for i = 1,MAX_OUTPUTS do
 				local dps = GetPowerState(jsonResponse, "Output", (i-1))
-				if roomPower["OUTPUT" .. (i-1)] ~= dps and outputRoom["OUTPUT" .. (i-1)] ~= nil then
+				-- If CEC is disabled, the matrix will not return a DPS value (nil). Ignore the bay
+				if dps ~= nil and roomPower["OUTPUT" .. (i-1)] ~= dps and outputRoom["OUTPUT" .. (i-1)] ~= nil then
 				    LogInfo("Output " .. i .. " power state has changed, was " .. roomPower["OUTPUT" .. (i-1)] .. " now " .. dps)
 				    local outputsNewInput = existingRouting["OUTPUT" .. (i-1)]
 				    local newSourceProxyId = inputProxies["INPUT" .. outputsNewInput]
