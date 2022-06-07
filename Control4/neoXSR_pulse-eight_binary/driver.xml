@@ -7,7 +7,7 @@
   <created>04/05/2019 12:00 PM</created>
   <modified>05/25/2022 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>12</version>
+  <version>13</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
