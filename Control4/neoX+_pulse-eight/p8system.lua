@@ -11,6 +11,7 @@ function P8INT:GET_DETAILS(idBinding)
 			 LogWarn("Response Code = " .. responseCode)
 			 UpdateProperty("Connected To Network", "No")
 			 UpdateProperty("System Status", "Unable to connect to system")
+			 P8INT:SET_ONLINE_STATUS("offline")
 			 return
 		  end
 		  local jsonResponse = JSON:decode(strData)
@@ -26,12 +27,14 @@ function P8INT:GET_DETAILS(idBinding)
 			 else
 				UpdateProperty("Model", "Unknown Model " .. jsonResponse.Model .. " (You may have loaded the wrong driver)")
 			 end
+			 P8INT:SET_ONLINE_STATUS("online")
 		  else
 			 UpdateProperty("Model", "Unknown")
 			 UpdateProperty("Version", "Unknown")
 			 UpdateProperty("Serial", "Unknown")
 			 UpdateProperty("Connected To Network", "No")
 			 UpdateProperty("System Status", jsonResponse.ErrorMessage)
+			 C4:SetBindingStatus(6000, "unknown")
 		  end
 	   end)
 end

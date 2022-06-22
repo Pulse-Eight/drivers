@@ -189,11 +189,13 @@ function P8INT:GET_POWER_STATE(idBinding)
 				 LogWarn("Error = " .. strError)
 			 end
 			 LogWarn("Response Code = " .. responseCode)
+			 P8INT:SET_ONLINE_STATUS("offline")
 			 return
 		  end
 	   
 		  local jsonResponse = JSON:decode(strData)
 		  if jsonResponse.Result then
+			 P8INT:SET_ONLINE_STATUS("online")
 			 for i = 1,MAX_OUTPUTS do
 				local dps = GetPowerState(jsonResponse, "Output", (i-1))
 				-- If CEC is disabled, the matrix will not return a DPS value (nil). Ignore the bay

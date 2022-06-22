@@ -242,11 +242,13 @@ function P8INT:GET_ROUTING(idBinding)
 			 LogWarn("Unable to refresh routing")
 			 LogWarn("Error = " .. (strError or "Unknown Error"))
 			 LogWarn("Response Code = " .. responseCode)
+			 P8INT:SET_ONLINE_STATUS("offline")
 			 return
 		  end
 	   
 		  local jsonResponse = JSON:decode(strData)
 		  if jsonResponse.Result then
+			 P8INT:SET_ONLINE_STATUS("online")
 			 for i = 1,MAX_OUTPUTS do
 				if jsonResponse["Output" .. i] == nil then
 --					LogError("Error in output received, port " .. (i) .. " data is missing")

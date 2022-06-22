@@ -25,6 +25,8 @@ MODE_SINK = 1
 MODE_POWERON_ON_ROUTING_CHANGE = 1
 MODE_POWEROFF_ON_ZONE_OFF = 0
 
+DEVICE_ONLINE = 0
+
 
 
 -- I don't know why this has to be here, if its placed in p8init.lua it fails and the script does not work. If anyone knows why please let me know

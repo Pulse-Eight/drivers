@@ -125,6 +125,7 @@ function OnDriverLateInit()
 			ON_DRIVER_LATEINIT[k]()
 		end
 	end
+	C4:urlSetTimeout(10)
 end
 
 function OnDriverDestroyed()
