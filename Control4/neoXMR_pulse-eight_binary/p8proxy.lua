@@ -86,8 +86,7 @@ function PRX_CMD.PULSE(idBinding, tParams)
     if (bindingNum >= 300) then
 	   mode = "output"
     end
-
-    local bay = tonumber(bindingNum % 100)
+    local bay = tonumber(bindingNum % 100) - 1
     local postData = "{\"pronto\": \"" .. prontocode .. "\", \"repeat\": " .. tonumber(repeatCount) .. ", \"delay_after\": " .. tonumber(delayAfter) .. "}"
     local uri = P8INT:GET_MATRIX_URL() .. "/ir/tx/" .. mode .. "/" .. bay
     C4:urlPost(uri, postData)
