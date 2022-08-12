@@ -1,6 +1,25 @@
+ZoneMaps = {
+	["neo:XMR"] = {0,1,2,3,4,5,8,9},
+	["neo:XSR"] = {0,1,2,3,8,9},
+	["neo 8A Modular"] = {0,1,2,3,4,5,6,7,8,9},
+	["neo 6A Modular"] = {0,1,2,3,4,5,8,9},
+	["neo 4 Professional"] = {0,1,2,3},
+	["default"] = {0,1,2,3,4,5,6,7,8,9,10,11,12}
+}
+
+SourceMaps = {
+	["neo:XMR"] = {0,1,2,3,4,5,8,9,10,11},
+	["neo:XSR"] = {0,1,2,3,4,5},
+	["neo 8A Modular"] = {0,1,2,3,4,5,6,7},
+	["neo 6A Modular"] = {0,1,2,3,4,5},
+	["neo 4 Professional"] = {0,1,2,3},
+	["default"] = {0,1,2,3,4,5,6,7,8,9,10,11,12}
+}
+
 function EDRV_ZoneSetActiveSource(zone_index, source_index)
+	-- Input params are 0 indexed
     ELAN_ConnectTCP()
-    ELAN_SendHTTP("GET /Port/Set/" .. source_index .. "/" .. zone_index)
+    ELAN_SendHTTP("GET /Port/Set/" .. SourceMap[source_index+1] .. "/" .. ZoneMap[zone_index+1])
     ELAN_DisconnectTCP()
 end
 
@@ -39,8 +58,20 @@ function EDRV_ProcessIncoming(data)
     -- process data sent from the device
 end
 
+
 function EDRV_Init()
     ip_string = ELAN_GetIPString()
+	driver_name = ELAN_GetDriverName()
+	if(type(ZoneMaps[driver_name]) == "table") then
+		ZoneMap = ZoneMaps[driver_name]
+	else 
+		ZoneMap = ZoneMaps["default"]
+	end
+	if(type(SourceMaps[driver_name]) == "table") then
+		SourceMap = SourceMaps[driver_name]
+	else 
+		SourceMap = SourceMaps["default"]
+	end
 	ELAN_SetTimer(1,5000)
 end
 
