@@ -5,7 +5,7 @@
   <name>neo:X+ IP Driver</name>
   <model>neo:X+</model>
   <created>05/04/2019 12:00 PM</created>
-  <modified>21/06/2022 12:00 PM</modified>
+  <modified>06/21/2022 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
   <version>15</version>
   <small image_source="c4z">Images/neo_sm.png</small>
@@ -954,7 +954,4 @@
       </property>
     </properties>
   </config>
-  <composer_categories>
-    <category>Audio/Video</category>
-  </composer_categories>
 </devicedata>
