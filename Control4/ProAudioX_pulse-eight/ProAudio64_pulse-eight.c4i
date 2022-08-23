@@ -7,10 +7,12 @@
   <creator>Zonn Moore</creator>
   <copyright>(c) Copyright 2022, Pulse-Eight.  All rights reserved.</copyright>
   <created>11/06/2016 12:00 AM</created>
-  <modified>03/01/2022 12:00 AM</modified>
+  <modified>08/23/2022 12:00 AM</modified>
 
-  <version>301</version>
+  <version>302</version>
   <history>
+	Version 3.02
+	  Handle multiple error codes correctly
 	Version 3.01
 	  Added trigger connection
     Version 3.00
@@ -1160,13 +1162,15 @@ function NewDataFromDevice( strData)
     
     elseif (cc == "!") then
       -- Get error number
-      cc = tonumber( string.sub( respStr, 2, -1))
-      -- Check to see if error is in table (incase later firmware adds an error)
-      if (ErrMsgT[cc] ~= nil) then
-        print( "Error " .. cc ..": " .. ErrMsgT[cc])
-      else
-        print( "Error number: " .. cc)
-      end
+	  for ccA in string.gmatch(string.sub( respStr, 2, -1), '([^,]+)') do
+		  errorNum = tonumber(ccA)
+		  -- Check to see if error is in table (incase later firmware adds an error)
+		  if (ErrMsgT[errorNum] ~= nil) then
+			print( "Error " .. errorNum ..": " .. ErrMsgT[errorNum])
+		  else
+			print( "Error number: " .. errorNum)
+		  end
+	  end
 
       print( "Last command: " .. LastCmd)
 
@@ -3798,6 +3802,7 @@ RespCmdT =
   ["TRGX"] = rTRGX,
 
   ["pSET"] = rDummy,
+  ["KP"] = rDummy,
 }
 
 --============================================================================
