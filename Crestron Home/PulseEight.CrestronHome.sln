@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.ProAmp8.IP", "Pulse-Eight ProAmp8\PulseEight.ProAmp8.IP.csproj", "{2B457F46-49E9-4E66-9CBF-3288B7D4E3CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.Neo8.IP", "Pulse-Eight neo8\PulseEight.Neo8.IP.csproj", "{78DA7060-D54B-4825-9432-1FEA934DA2F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.Neo8.IP", "Pulse-Eight Neo\PulseEight.Neo8.IP.csproj", "{78DA7060-D54B-4825-9432-1FEA934DA2F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

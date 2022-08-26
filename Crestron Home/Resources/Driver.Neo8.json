@@ -16,7 +16,7 @@
 			"Manufacturer": "Pulse-Eight",
 			"BaseModel": "NEO8",
 			"VersionDate": "2022-02-18 00:00:00.000",
-			"DriverVersion": "1.0.000.1001",
+			"DriverVersion": "1.0.000.1003",
 			"SdkVersion": "4.00.000",
 			"Description": "neo Matrix Family (Video Routing Only)",
 			"Guid": "5cbfb4a2-1ef6-4c5b-8580-0a8dd2bab3c3",

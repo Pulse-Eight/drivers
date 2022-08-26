@@ -1,9 +1,6 @@
 *.suo
 /Crestron Home/.vs/
-/Crestron Home/Pulse-Eight ProAmp8/bin/
-/Crestron Home/Pulse-Eight ProAmp8/obj/
-/Crestron Home/Pulse-Eight ProAmp8/packages/
-/Crestron Home/Pulse-Eight neo8/bin/
-/Crestron Home/Pulse-Eight neo8/obj/
-/Crestron Home/Pulse-Eight neo8/packages/
+/Crestron Home/*/bin/
+/Crestron Home/*/obj/
+/Crestron Home/*/packages/
 /Crestron Home/packages/
