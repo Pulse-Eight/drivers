@@ -14,14 +14,14 @@
 		"GeneralInformation": {
 			"DeviceType": "AV Switcher",
 			"Manufacturer": "Pulse-Eight",
-			"BaseModel": "NEO8",
+			"BaseModel": "NEO4",
 			"VersionDate": "2022-08-26 00:00:00.000",
 			"DriverVersion": "1.0.000.1003",
 			"SdkVersion": "4.00.000",
 			"Description": "neo Matrix Family (Video Routing Only)",
-			"Guid": "5cbfb4a2-1ef6-4c5b-8580-0a8dd2bab3c3",
+			"Guid": "cecb311c-a753-4156-9759-a7b471811da1",
 			"SupportedSeries": [
-				"NEO8"
+				"NEO4"
 			],
 			"SupportedModels": []
 		},
@@ -157,74 +157,6 @@
 								"friendlyName": "HDMI 4 - Video"
 							}
 						]
-					},
-					{
-						"ApiIdentifier": "1004",
-						"Id": "input5",
-						"Name": "5",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "BuiltIn HDMI",
-						"Type": "DirectInput",
-						"AudioInputDetails": [],
-						"VideoInputDetails": [
-							{
-								"type": "Hdmi5",
-								"description": "Input 5 HDMI Video Input",
-								"connector": "Hdmi",
-								"friendlyName": "HDMI 5 - Video"
-							}
-						]
-					},
-					{
-						"ApiIdentifier": "1005",
-						"Id": "input6",
-						"Name": "6",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "BuiltIn HDMI",
-						"Type": "DirectInput",
-						"AudioInputDetails": [],
-						"VideoInputDetails": [
-							{
-								"type": "Hdmi6",
-								"description": "Input 6 HDMI Video Input",
-								"connector": "Hdmi",
-								"friendlyName": "HDMI 6 - Video"
-							}
-						]
-					},
-					{
-						"ApiIdentifier": "1006",
-						"Id": "input7",
-						"Name": "7",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "BuiltIn HDMI",
-						"Type": "DirectInput",
-						"AudioInputDetails": [],
-						"VideoInputDetails": [
-							{
-								"type": "Hdmi7",
-								"description": "Input 7 HDMI Video Input",
-								"connector": "Hdmi",
-								"friendlyName": "HDMI 7 - Video"
-							}
-						]
-					},
-					{
-						"ApiIdentifier": "1007",
-						"Id": "input8",
-						"Name": "8",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "BuiltIn HDMI",
-						"Type": "DirectInput",
-						"AudioInputDetails": [],
-						"VideoInputDetails": [
-							{
-								"type": "Hdmi8",
-								"description": "Input 8 HDMI Video Input",
-								"connector": "Hdmi",
-								"friendlyName": "HDMI 8 - Video"
-							}
-						]
 					}
 				],
 				"RoutableOutputs": [
@@ -317,150 +249,6 @@
 								"description": "Output 4 HDBaseT Video Output",
 								"connector": "GenericVideo",
 								"friendlyName": "Output 4 - Video"
-							}
-						],
-						"Ports": [],
-						"DeviceSupport": {},
-						"StandardCommands": {},
-						"Feedback": {}
-					},
-					{
-						"ApiIdentifier": "2004",
-						"Id": "output5",
-						"Name": "E",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "Receiver",
-						"Type": "IndirectOutput",
-						"WarmUpTime": 0,
-						"CoolDownTime": 0,
-						"VolumeRampingRate": 250,
-						"AudioOutputDetails": [],
-						"VideoOutputDetails": [
-							{
-								"type": "Hdmi5",
-								"description": "Output 5 HDBaseT Video Output",
-								"connector": "GenericVideo",
-								"friendlyName": "Output 5 - Video"
-							}
-						],
-						"Ports": [],
-						"DeviceSupport": {},
-						"StandardCommands": {},
-						"Feedback": {}
-					},
-					{
-						"ApiIdentifier": "2005",
-						"Id": "output6",
-						"Name": "F",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "Receiver",
-						"Type": "IndirectOutput",
-						"WarmUpTime": 0,
-						"CoolDownTime": 0,
-						"VolumeRampingRate": 250,
-						"AudioOutputDetails": [],
-						"VideoOutputDetails": [
-							{
-								"type": "Hdmi6",
-								"description": "Output 6 HDBaseT Video Output",
-								"connector": "GenericVideo",
-								"friendlyName": "Output 6 - Video"
-							}
-						],
-						"Ports": [],
-						"DeviceSupport": {},
-						"StandardCommands": {},
-						"Feedback": {}
-					},
-					{
-						"ApiIdentifier": "2006",
-						"Id": "output7",
-						"Name": "G",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "Receiver",
-						"Type": "IndirectOutput",
-						"WarmUpTime": 0,
-						"CoolDownTime": 0,
-						"VolumeRampingRate": 250,
-						"AudioOutputDetails": [],
-						"VideoOutputDetails": [
-							{
-								"type": "Hdmi7",
-								"description": "Output 7 HDBaseT Video Output",
-								"connector": "GenericVideo",
-								"friendlyName": "Output 7 - Video"
-							}
-						],
-						"Ports": [],
-						"DeviceSupport": {},
-						"StandardCommands": {},
-						"Feedback": {}
-					},
-					{
-						"ApiIdentifier": "2007",
-						"Id": "output8",
-						"Name": "H",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "Receiver",
-						"Type": "IndirectOutput",
-						"WarmUpTime": 0,
-						"CoolDownTime": 0,
-						"VolumeRampingRate": 250,
-						"AudioOutputDetails": [],
-						"VideoOutputDetails": [
-							{
-								"type": "Hdmi8",
-								"description": "Output 8 HDBaseT Video Output",
-								"connector": "GenericVideo",
-								"friendlyName": "Output 8 - Video"
-							}
-						],
-						"Ports": [],
-						"DeviceSupport": {},
-						"StandardCommands": {},
-						"Feedback": {}
-					},
-					{
-						"ApiIdentifier": "2008",
-						"Id": "output9",
-						"Name": "H",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "Receiver",
-						"Type": "DirectOutput",
-						"WarmUpTime": 0,
-						"CoolDownTime": 0,
-						"VolumeRampingRate": 250,
-						"AudioOutputDetails": [],
-						"VideoOutputDetails": [
-							{
-								"type": "Hdmi9",
-								"description": "Output 9 HDMI Video Output",
-								"connector": "GenericVideo",
-								"friendlyName": "Output 9 - Video"
-							}
-						],
-						"Ports": [],
-						"DeviceSupport": {},
-						"StandardCommands": {},
-						"Feedback": {}
-					},
-					{
-						"ApiIdentifier": "2009",
-						"Id": "output10",
-						"Name": "H",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "Receiver",
-						"Type": "DirectOutput",
-						"WarmUpTime": 0,
-						"CoolDownTime": 0,
-						"VolumeRampingRate": 250,
-						"AudioOutputDetails": [],
-						"VideoOutputDetails": [
-							{
-								"type": "Hdmi10",
-								"description": "Output 10 HDMI Video Output",
-								"connector": "GenericVideo",
-								"friendlyName": "Output 10 - Video"
 							}
 						],
 						"Ports": [],

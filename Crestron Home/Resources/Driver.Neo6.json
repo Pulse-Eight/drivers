@@ -14,14 +14,14 @@
 		"GeneralInformation": {
 			"DeviceType": "AV Switcher",
 			"Manufacturer": "Pulse-Eight",
-			"BaseModel": "NEO8",
+			"BaseModel": "NEO6",
 			"VersionDate": "2022-08-26 00:00:00.000",
 			"DriverVersion": "1.0.000.1003",
 			"SdkVersion": "4.00.000",
 			"Description": "neo Matrix Family (Video Routing Only)",
-			"Guid": "5cbfb4a2-1ef6-4c5b-8580-0a8dd2bab3c3",
+			"Guid": "b8ad6b1c-e086-4a53-a5f1-675446daf658",
 			"SupportedSeries": [
-				"NEO8"
+				"NEO6"
 			],
 			"SupportedModels": []
 		},
@@ -191,40 +191,6 @@
 								"friendlyName": "HDMI 6 - Video"
 							}
 						]
-					},
-					{
-						"ApiIdentifier": "1006",
-						"Id": "input7",
-						"Name": "7",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "BuiltIn HDMI",
-						"Type": "DirectInput",
-						"AudioInputDetails": [],
-						"VideoInputDetails": [
-							{
-								"type": "Hdmi7",
-								"description": "Input 7 HDMI Video Input",
-								"connector": "Hdmi",
-								"friendlyName": "HDMI 7 - Video"
-							}
-						]
-					},
-					{
-						"ApiIdentifier": "1007",
-						"Id": "input8",
-						"Name": "8",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "BuiltIn HDMI",
-						"Type": "DirectInput",
-						"AudioInputDetails": [],
-						"VideoInputDetails": [
-							{
-								"type": "Hdmi8",
-								"description": "Input 8 HDMI Video Input",
-								"connector": "Hdmi",
-								"friendlyName": "HDMI 8 - Video"
-							}
-						]
 					}
 				],
 				"RoutableOutputs": [
@@ -365,54 +331,6 @@
 								"description": "Output 6 HDBaseT Video Output",
 								"connector": "GenericVideo",
 								"friendlyName": "Output 6 - Video"
-							}
-						],
-						"Ports": [],
-						"DeviceSupport": {},
-						"StandardCommands": {},
-						"Feedback": {}
-					},
-					{
-						"ApiIdentifier": "2006",
-						"Id": "output7",
-						"Name": "G",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "Receiver",
-						"Type": "IndirectOutput",
-						"WarmUpTime": 0,
-						"CoolDownTime": 0,
-						"VolumeRampingRate": 250,
-						"AudioOutputDetails": [],
-						"VideoOutputDetails": [
-							{
-								"type": "Hdmi7",
-								"description": "Output 7 HDBaseT Video Output",
-								"connector": "GenericVideo",
-								"friendlyName": "Output 7 - Video"
-							}
-						],
-						"Ports": [],
-						"DeviceSupport": {},
-						"StandardCommands": {},
-						"Feedback": {}
-					},
-					{
-						"ApiIdentifier": "2007",
-						"Id": "output8",
-						"Name": "H",
-						"Manufacturer": "Pulse-Eight",
-						"Model": "Receiver",
-						"Type": "IndirectOutput",
-						"WarmUpTime": 0,
-						"CoolDownTime": 0,
-						"VolumeRampingRate": 250,
-						"AudioOutputDetails": [],
-						"VideoOutputDetails": [
-							{
-								"type": "Hdmi8",
-								"description": "Output 8 HDBaseT Video Output",
-								"connector": "GenericVideo",
-								"friendlyName": "Output 8 - Video"
 							}
 						],
 						"Ports": [],
