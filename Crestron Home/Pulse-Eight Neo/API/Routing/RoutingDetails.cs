@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace PulseEight.Neo8.IP.API.Routing {
+namespace PulseEight.Neo.IP.API.Routing {
 	public class RoutingDetails : BaseResponse {
 		[JsonProperty]
 		public List<SimplePortDetails> Ports { set; get; }

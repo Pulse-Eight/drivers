@@ -6,16 +6,16 @@ using Crestron.RAD.Common.Transports;
 using Crestron.SimplSharp.Net.Http;
 using Crestron.RAD.DeviceTypes.AudioVideoSwitcher;
 using Newtonsoft.Json;
-using PulseEight.Neo8.IP.API;
-using PulseEight.Neo8.IP.API.Health;
-using PulseEight.Neo8.IP.API.Routing;
+using PulseEight.Neo.IP.API;
+using PulseEight.Neo.IP.API.Health;
+using PulseEight.Neo.IP.API.Routing;
 
-namespace PulseEight.Neo8.IP {
-	public class PulseEightNeo8Protocol : AAudioVideoSwitcherProtocol {
+namespace PulseEight.Neo.IP {
+	public class PulseEightNeoProtocol : AAudioVideoSwitcherProtocol {
 		private HttpTransport myTransport;
 		private StandardCommandsEnum myLastCommand;
 		private readonly Dictionary<string, string> myLastData = new Dictionary<string, string>();
-		public PulseEightNeo8Protocol(HttpTransport connectionTransport, byte id) : base(connectionTransport, id) {
+		public PulseEightNeoProtocol(HttpTransport connectionTransport, byte id) : base(connectionTransport, id) {
 			myTransport = connectionTransport;
 			PollingInterval = 5000; //Milliseconds
 			TimeOut = 6000; //Timeout must be higher than PollingInterval, logic is flawed in that the true timeout is PollingInterval - TimeOut. 
@@ -136,14 +136,41 @@ namespace PulseEight.Neo8.IP {
 				case StandardCommandsEnum.AudioVideoSwitcherRoutePoll:
 				case StandardCommandsEnum.TemperaturePoll:
 				case StandardCommandsEnum.PowerPoll:
-					//SendMeData($"Sending Command: {commandSet.Command}");
+					SendMeData($"Sending Command: {commandSet.Command}");
 					break;
 				default:
 					SendMeData($"Unhandled command: {commandSet.StandardCommand}, Command = {commandSet.Command}");
 					return true; //Don't send message
 			}
-			if (commandSet.Parameters == null)
-				commandSet.Parameters = new Object[] { RequestType.Get};
+			//if (commandSet.Parameters == null)
+			SendMeData("Setting Parameters to GET.");
+			commandSet.Parameters = new Object[] { RequestType.Get };
+			//bool foundRequestType = false;
+			for(int i = 0; i < commandSet.Parameters.Length; i++)
+            {
+				SendMeData("Parameter " + i.ToString() + ": " + commandSet.Parameters[i].ToString());
+				if(commandSet.Parameters[i].GetType() == typeof(RequestType))
+                {
+					if ((RequestType)commandSet.Parameters[i] == RequestType.Get)
+					{
+						SendMeData("Object of type RequestType Found. Already GET");
+					} else
+					{
+						SendMeData("Object of type RequestType Found. Leaving as is");
+						//commandSet.Parameters[i] = RequestType.Get;
+					}
+					//foundRequestType = true;
+                }
+            }
+			/*if(!foundRequestType)
+            {
+				SendMeData("Object of type RequestType still not found. Adding it");
+				Object[] temp = commandSet.Parameters;
+				Array.Resize(ref temp, commandSet.Parameters.Length + 1);
+				temp[temp.GetUpperBound(0)] = RequestType.Get;
+				commandSet.Parameters = temp;
+            }*/
+
 			return base.PrepareStringThenSend(commandSet);
 		}
 

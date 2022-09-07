@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace PulseEight.Neo8.IP.API.Routing {
+namespace PulseEight.Neo.IP.API.Routing {
 	public class SimplePortDetails {
 		[JsonProperty]
 		public int Bay { set; get; }

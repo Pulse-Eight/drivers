@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace PulseEight.Neo8.IP.API.Health {
+namespace PulseEight.Neo.IP.API.Health {
 	public class HealthResponse : BaseResponse {
 		[JsonProperty]
 		public int Temperature0 { set; get; }

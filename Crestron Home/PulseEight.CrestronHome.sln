@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.ProAmp8.IP", "Pulse-Eight ProAmp8\PulseEight.ProAmp8.IP.csproj", "{2B457F46-49E9-4E66-9CBF-3288B7D4E3CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.Neo8.IP", "Pulse-Eight neo8\PulseEight.Neo8.IP.csproj", "{78DA7060-D54B-4825-9432-1FEA934DA2F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.Neo8.IP", "Pulse-Eight Neo\PulseEight.Neo8.IP.csproj", "{78DA7060-D54B-4825-9432-1FEA934DA2F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.Neo4.IP", "Pulse-Eight Neo\PulseEight.Neo4.IP.csproj", "{1EAEA36C-EA85-44AC-A2DD-BDECAAB57309}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.Neo6IP", "Pulse-Eight Neo\PulseEight.Neo6IP.csproj", "{D35A8BA4-A961-41EA-90EA-756373CEEAFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{78DA7060-D54B-4825-9432-1FEA934DA2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78DA7060-D54B-4825-9432-1FEA934DA2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78DA7060-D54B-4825-9432-1FEA934DA2F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EAEA36C-EA85-44AC-A2DD-BDECAAB57309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EAEA36C-EA85-44AC-A2DD-BDECAAB57309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EAEA36C-EA85-44AC-A2DD-BDECAAB57309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EAEA36C-EA85-44AC-A2DD-BDECAAB57309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D35A8BA4-A961-41EA-90EA-756373CEEAFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35A8BA4-A961-41EA-90EA-756373CEEAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35A8BA4-A961-41EA-90EA-756373CEEAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35A8BA4-A961-41EA-90EA-756373CEEAFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,8 +3,8 @@ using Crestron.RAD.Common.Transports;
 using Crestron.RAD.DeviceTypes.AudioVideoSwitcher;
 using Crestron.SimplSharp;
 
-namespace PulseEight.Neo8.IP {
-	public class PulseEightNeo8IP : AAudioVideoSwitcher, ITcp {
+namespace PulseEight.Neo.IP {
+	public class PulseEightNeoIP : AAudioVideoSwitcher, ITcp {
 		public void Initialize(IPAddress ipAddress, int port) {
 			var httpTransport = new HttpTransport {
 				EnableLogging = InternalEnableLogging,
@@ -17,7 +17,7 @@ namespace PulseEight.Neo8.IP {
 			ConnectionTransport = httpTransport;
 
 			AudioVideoSwitcherProtocol =
-				new PulseEightNeo8Protocol((HttpTransport)ConnectionTransport, Id) {
+				new PulseEightNeoProtocol((HttpTransport)ConnectionTransport, Id) {
 					EnableLogging = InternalEnableLogging,
 					CustomLogger = InternalCustomLogger
 				};

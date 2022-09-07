@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{78DA7060-D54B-4825-9432-1FEA934DA2F8}</ProjectGuid>
+    <ProjectGuid>{D35A8BA4-A961-41EA-90EA-756373CEEAFD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PulseEight.Neo8.IP</RootNamespace>
-    <AssemblyName>PulseEight.Neo8.IP</AssemblyName>
+    <RootNamespace>PulseEight.Neo6.IP</RootNamespace>
+    <AssemblyName>PulseEight.Neo6.IP</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\Neo6\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,110 +27,135 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\Neo6\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Crestron.SimplSharpPro.AudioDistribution, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.AudioDistribution.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.AudioDistribution.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.CrestronConnected, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.CrestronConnected.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.CrestronConnected.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.DeviceSupport, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.DeviceSupport.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.DeviceSupport.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.DM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.DM.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.DM.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.EthernetCommunications, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.EthernetCommunications.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.EthernetCommunications.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.Fusion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Fusion.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Fusion.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.Gateways, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Gateways.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Gateways.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.GeneralIO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.GeneralIO.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.GeneralIO.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.Keypads, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Keypads.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Keypads.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.Lighting, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Lighting.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Lighting.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Media.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Media.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.Remotes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Remotes.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Remotes.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.Shades, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Shades.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Shades.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.Thermostats, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Thermostats.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.Thermostats.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.ThreeSeriesCards, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.ThreeSeriesCards.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.ThreeSeriesCards.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.UC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.UC.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.UC.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Crestron.SimplSharpPro.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.UI.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\Crestron.SimplSharpPro.UI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="IrAVSwitcher">
       <HintPath>..\Common\IrAVSwitcher.dll</HintPath>
     </Reference>
+    <Reference Include="Crestron.DeviceDrivers.API">
+      <HintPath>..\Common\Crestron.DeviceDrivers.API.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="RADAVReceiver">
       <HintPath>..\Common\RADAVReceiver.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="RADBlurayPlayer">
       <HintPath>..\Common\RADBlurayPlayer.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="RADCommon">
       <HintPath>..\Common\RADCommon.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SimplSharpAutoUpdateInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpAutoUpdateInterface.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpAutoUpdateInterface.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpCryptographyInterface, Version=1.0.6197.21123, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpCryptographyInterface.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpCryptographyInterface.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpCustomAttributesInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpCustomAttributesInterface.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpCustomAttributesInterface.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpCWSHelperInterface, Version=2.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpCWSHelperInterface.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpCWSHelperInterface.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpExchangeWebServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpExchangeWebServices.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpExchangeWebServices.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpHelperInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpHelperInterface.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpHelperInterface.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpNewtonsoft, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpNewtonsoft.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpNewtonsoft.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpOnvifInterface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpOnvifInterface.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpOnvifInterface.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpPro, Version=1.5.3.17, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\SimplSharpPro.exe</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\lib\net47\SimplSharpPro.exe</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="SimplSharpReflectionInterface, Version=1.0.5583.25238, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpReflectionInterface.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpReflectionInterface.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpSQLHelperInterface, Version=1.0.92.0, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpSQLHelperInterface.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpSQLHelperInterface.dll</HintPath>
     </Reference>
     <Reference Include="SimplSharpTimerEventInterface, Version=1.0.6197.20052, Culture=neutral, PublicKeyToken=1099c178b3b54c3b, processorArchitecture=MSIL">
-      <HintPath>packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpTimerEventInterface.dll</HintPath>
+      <HintPath>..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\lib\net47\SimplSharpTimerEventInterface.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -147,25 +172,43 @@
     <Compile Include="API\Routing\RoutingDetails.cs" />
     <Compile Include="API\Routing\RoutingResponse.cs" />
     <Compile Include="API\Routing\SimplePortDetails.cs" />
-    <Compile Include="PulseEightNeo8IP.cs" />
+    <Compile Include="PulseEightNeoIP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PulseEightNeo8Protocol.cs" />
+    <Compile Include="PulseEightNeoProtocol.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Driver.json" />
-    <None Include="packages.config" />
+    <EmbeddedResource Include="..\Resources\Driver.Neo6.json" />
+    <None Include="..\packages.config" />
+    <None Include="..\Resources\PulseEight.Neo6.IP.pdf" Link="IncludeInPkg\PulseEight.Neo6.IP.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\SDK Utilities\ManifestUtil.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="packages\Crestron.SimplSharp.SDK.Library.2.14.134\build\Crestron.SimplSharp.SDK.Library.targets" Condition="Exists('packages\Crestron.SimplSharp.SDK.Library.2.14.134\build\Crestron.SimplSharp.SDK.Library.targets')" />
+  <Import Project="..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\build\Crestron.SimplSharp.SDK.Library.targets" Condition="Exists('packages\Crestron.SimplSharp.SDK.Library.2.14.134\build\Crestron.SimplSharp.SDK.Library.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Crestron.SimplSharp.SDK.Library.2.14.134\build\Crestron.SimplSharp.SDK.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Crestron.SimplSharp.SDK.Library.2.14.134\build\Crestron.SimplSharp.SDK.Library.targets'))" />
-    <Error Condition="!Exists('packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\build\Crestron.SimplSharp.SDK.ProgramLibrary.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\build\Crestron.SimplSharp.SDK.ProgramLibrary.targets'))" />
-    <Error Condition="!Exists('packages\Crestron.SimplSharp.SDK.Program.2.14.134\build\Crestron.SimplSharp.SDK.Program.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Crestron.SimplSharp.SDK.Program.2.14.134\build\Crestron.SimplSharp.SDK.Program.targets'))" />
+    <Error Condition="!Exists('..\packages\Crestron.SimplSharp.SDK.Library.2.14.134\build\Crestron.SimplSharp.SDK.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Crestron.SimplSharp.SDK.Library.2.14.134\build\Crestron.SimplSharp.SDK.Library.targets'))" />
+    <Error Condition="!Exists('..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\build\Crestron.SimplSharp.SDK.ProgramLibrary.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\build\Crestron.SimplSharp.SDK.ProgramLibrary.targets'))" />
+    <Error Condition="!Exists('..\packages\Crestron.SimplSharp.SDK.Program.2.14.134\build\Crestron.SimplSharp.SDK.Program.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Crestron.SimplSharp.SDK.Program.2.14.134\build\Crestron.SimplSharp.SDK.Program.targets'))" />
   </Target>
-  <Import Project="packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\build\Crestron.SimplSharp.SDK.ProgramLibrary.targets" Condition="Exists('packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\build\Crestron.SimplSharp.SDK.ProgramLibrary.targets')" />
-  <Import Project="packages\Crestron.SimplSharp.SDK.Program.2.14.134\build\Crestron.SimplSharp.SDK.Program.targets" Condition="Exists('packages\Crestron.SimplSharp.SDK.Program.2.14.134\build\Crestron.SimplSharp.SDK.Program.targets')" />
+  <Import Project="..\packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\build\Crestron.SimplSharp.SDK.ProgramLibrary.targets" Condition="Exists('packages\Crestron.SimplSharp.SDK.ProgramLibrary.2.14.134\build\Crestron.SimplSharp.SDK.ProgramLibrary.targets')" />
+  <Import Project="..\packages\Crestron.SimplSharp.SDK.Program.2.14.134\build\Crestron.SimplSharp.SDK.Program.targets" Condition="Exists('packages\Crestron.SimplSharp.SDK.Program.2.14.134\build\Crestron.SimplSharp.SDK.Program.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>cd $(ProjectDir)
+CreateManifest.bat "$(TargetDir)" "$(SolutionDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties _1_1_4resources_4driver_1Neo6_1json__JsonSchema="https://datahubproject.io/schemas/datahub_ingestion_schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
