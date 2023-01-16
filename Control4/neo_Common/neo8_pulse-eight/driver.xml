@@ -5,9 +5,9 @@
   <name>neo:8 IP Driver</name>
   <model>neo:8</model>
   <created>21/06/2017 10:39 PM</created>
-  <modified>09/30/2022 12:00 PM</modified>
+  <modified>01/13/2023 12:10 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>17</version>
+  <version>18</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>

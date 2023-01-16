@@ -43,20 +43,20 @@ function FirstRun()
     LogInfo("First Run")
     P8INT:SETUP()
     P8INT:FETCH_INSTALLER_ID()
-	--Initialise ring buffer for monitoring network timeouts
-	gP8NetworkStatusBuffer = P8RingBuffer:new(4)
+    --Initialise ring buffer for monitoring network timeouts
+    gP8NetworkStatusBuffer = gP8NetworkStatusBuffer or P8RingBuffer:new(4)
 
-	gP8InitTimer = c4_timer:new("Post Init", 1, "SECONDS", InitTimer)
-	gP8InitTimer:StartTimer() -- Call once to set initial states
-	gP8MainUpdateTimer = c4_timer:new("Main Update", 2, "SECONDS", MainUpdateTimer, true)
-	gP8HealthTimer = c4_timer:new("Health Check", 60, "SECONDS", HealthUpdateTimer, true)
-	gP8DetailsTimer = c4_timer:new("Details Update", 10, "SECONDS", DetailsUpdateTimer, true)
-	gP8PropertiesTimer = c4_timer:new("Properties Update", 3, "SECONDS", PropertiesUpdateTimer, true)
-	
-	gP8MainUpdateTimer:StartTimer()
-	gP8HealthTimer:StartTimer()
-	gP8DetailsTimer:StartTimer()
-	gP8PropertiesTimer:StartTimer()
+    gP8InitTimer = gP8InitTimer or c4_timer:new("Post Init", 1, "SECONDS", InitTimer)
+    gP8InitTimer:StartTimer() -- Call once to set initial states
+    gP8MainUpdateTimer = gP8MainUpdateTimer or c4_timer:new("Main Update", 2, "SECONDS", MainUpdateTimer, true)
+    gP8HealthTimer = gP8HealthTimer or c4_timer:new("Health Check", 60, "SECONDS", HealthUpdateTimer, true)
+    gP8DetailsTimer = gP8DetailsTimer or c4_timer:new("Details Update", 10, "SECONDS", DetailsUpdateTimer, true)
+    gP8PropertiesTimer = gP8PropertiesTimer or c4_timer:new("Properties Update", 3, "SECONDS", PropertiesUpdateTimer, true)
+
+    gP8MainUpdateTimer:StartTimer()
+    gP8HealthTimer:StartTimer()
+    gP8DetailsTimer:StartTimer()
+    gP8PropertiesTimer:StartTimer()
     
 end
 

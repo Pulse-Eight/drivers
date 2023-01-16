@@ -66,14 +66,41 @@ function ReceivedProxyIR(idBinding, strCommand, tParams)
 	end
 end
 
-function OnSystemEvent(data)
-    print("System Event " .. data)
+function OnSystemEvent(event)
+    print("System Event " .. event)
+    local _, _, eventname = event:find('.-name="(.-)"') 
+    print("Found event type: " .. eventname)
     local myIP = C4:GetMyNetworkAddress()
-    if (myIP ~= nil) then
-	   print("Updating Network Address to " .. myIP)
-	   UpdateProperty("Device IP Address", myIP)
-	   FirstRun()
+    local matchedUUID = 0
+    if (eventname ~= nil) then
+	   info = C4:GetDiscoveryInfo(6000)
+	   if (info ~= nil) then
+		  local startIndex, endIndex = event:find(info["uuid"], 0, true)
+		  if(startIndex ~= nil) then
+			 matchedUUID = 1
+		  end
+	   end
+	   print("UUID Match status: " .. matchedUUID)
+	   if     (eventname == "OnNetworkBindingAdded") then
+		  if (matchedUUID == 1) then
+			 UpdateNetworkAddress(myIP)
+		  end
+	   elseif (eventname == "OnSDDPDeviceStatus") then
+		  if (matchedUUID == 1) then
+			 UpdateNetworkAddress(myIP)
+		  end
+	   elseif (eventname == "OnDeviceIPAddressChanged") then
+		  if (matchedUUID == 1) then
+			 UpdateNetworkAddress(myIP)
+		  end
+	   end
     end
+end
+
+function UpdateNetworkAddress(ip) 
+    print("Updating Network Address to " .. ip)
+    UpdateProperty("Device IP Address", ip)
+    FirstRun()
 end
 
 function PRX_CMD.PULSE(idBinding, tParams)
