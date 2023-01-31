@@ -5,9 +5,9 @@
   <name>neo:X+ (Designed for BINARY Edition) IP Driver</name>
   <model>neo:X+ (Designed for BINARY Edition)</model>
   <created>04/05/2019 12:00 PM</created>
-  <modified>01/13/2023 12:10 PM</modified>
+  <modified>01/31/2023 12:10 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>18</version>
+  <version>19</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
