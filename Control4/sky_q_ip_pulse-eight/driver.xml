@@ -4,9 +4,9 @@
   <manufacturer>Sky</manufacturer>
   <name>Sky Q IP Driver</name>
   <model>Sky Q</model>
-  <created>04/22/2017 12:00 PM</created>
-  <modified>09/21/2021 12:00 PM</modified>
-  <version>11</version>
+  <created>22/04/2017 12:00 PM</created>
+  <modified>14/02/2021 12:00 PM</modified>
+  <version>10</version>
   <small image_source="c4z">assets/device_sm.png</small>
   <large image_source="c4z">assets/device_lg.png</large>
   <control>lua_gen</control>
@@ -106,18 +106,6 @@
     <has_up_down_volume_control>False</has_up_down_volume_control>
     <has_discrete_channel_select>True</has_discrete_channel_select>
     <has_discrete_input_select>False</has_discrete_input_select>
-    <transports>
-        <supported>
-            PLAY, PAUSE, SCAN_FWD, SCAN_REV, RECORD, PG_UP, PG_DOWN, PRG_BTNS, KEYPAD, CH_UP_DN, DPAD
-        </supported>
-		<button_bar>
-			<default_buttons>GUIDE, MENU, INFO, CANCEL</default_buttons>
-		</button_bar>
-		<dashboard>
-            <default_large>SCAN_REV, PLAY, PAUSE, SCAN_FWD, RECORD</default_large>
-            <default_small>SCAN_REV, PLAY, PAUSE, SCAN_FWD, RECORD</default_small>
-		</dashboard>
-    </transports>
   </capabilities>
   <config>
     <documentation file="www/documentation.rtf" />
