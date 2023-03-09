@@ -1,0 +1,2782 @@
+﻿<devicedata>
+  <search_type>pulse-eight:ProAudio1632</search_type>
+  <model>ProAudio1632</model>
+  <name>Pulse-Eight ProAudio1632</name>
+  <manufacturer>Pulse-Eight</manufacturer>
+  <creator>Zonn Moore</creator>
+  <copyright>(c) Copyright 2022, Pulse-Eight.  All rights reserved.</copyright>
+  <created>11/06/2016 12:00 AM</created>
+  <modified>03/09/2023 12:00 AM</modified>
+  <version>303</version>
+  <history>
+	Version 3.03
+	  Update documentation
+	Version 3.02
+	  Handle multiple error codes correctly
+	Version 3.01
+	  Skipped
+    Version 3.00
+      Initial Release.
+  </history>
+  <replaces>
+    <replace>ProAudio1632_pulse-eight.c4i</replace>
+  </replaces>  
+  <config>
+    
+<!-- xxx -->
+    <identify_text>
+Press the ID button on
+the back of the switch.
+    </identify_text>
+
+    <power_command_delay>20</power_command_delay>
+    <power_delay>20</power_delay>
+    <power_management_method>AlwaysOn</power_management_method>
+    <serialsettings>19200 8 none 1 none</serialsettings>
+    <serialsection>
+      <serialcodes />
+      <serialcodemacros />
+    </serialsection>
+
+    <properties>
+      <property>
+        <name>Model</name>
+        <type>STRING</type>
+        <default />
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Debug</name>
+        <type>LIST</type>
+        <items>
+          <item>Off</item>
+          <item>Print</item>
+          <item>Log</item>
+          <item>Print and Log</item>
+        </items>
+        <default>Off</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>Front Panel Bright Intensity</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>100</maximum>
+        <default>90</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>Front Panel Dim Intensity</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>100</maximum>
+        <default>50</default>
+        <readonly>false</readonly>
+      </property>
+
+<!-- xxx Start Audio Block -->
+<!--
+      <property>
+        <name>Master Volume</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>-200</minimum>
+        <maximum>48</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+        <property>
+        <name>Ramp Delay (ms)</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>50</minimum>
+        <maximum>500</maximum>
+        <default>100</default>
+        <readonly>false</readonly>
+      </property>
+-->
+<!--
+      <property>
+        <name>Header</name>
+        <type></type>
+        <default>Audio Output Settings</default>
+      </property>
+-->
+      <property>
+           <name> === Audio OUT Settings ===</name>
+        <type>STRING</type>
+        <default />
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Select Audio Output:</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>1</minimum>
+        <maximum>32</maximum> <!-- xxx -->
+        <default>1</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Analog Source</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>40</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Coax Source</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>40</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Volume</name>
+        <type>SCROLL</type>
+        <minimum>0</minimum>
+        <maximum>100</maximum>
+        <default>51</default>
+        <readonly>false</readonly>
+      </property>
+<!--
+      <property>
+        <name>...Loudness</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - Disabled</item>
+          <item>1 - Enabled</item>
+        </items>
+        <default>0 - Disabled</default>
+        <readonly>false</readonly>
+      </property>
+-->
+      <property>
+        <name>...Balance</name>
+        <type>SCROLL</type>
+        <minimum>-200</minimum>
+        <maximum>200</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+         <property>
+        <name>...Max Volume</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>-200</minimum>
+        <maximum>48</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Min Volume</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>-200</minimum>
+        <maximum>48</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Mute Level</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>248</maximum>
+        <default>40</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Mute Fading</name>
+        <type>LIST</type>
+        <items>
+          <item>1 - No fading</item>
+          <item>2 - Mute fading</item>
+        </items>
+        <default>2 - Mute fading</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Stereo Mix (O)</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - None</item>
+          <item>1 - Swap Left and Right</item>
+          <item>2 - Mono (Left + Right)</item>
+          <item>3 - Mono (All Left)</item>
+          <item>4 - Mono (All Right)</item>
+          <item>5 - Mono (Left - Right)</item>
+          <item>6 - Mono (Right - Left)</item>
+        </items>
+        <default>0 - None</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Channel Polarity</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - Normal</item>
+          <item>1 - Invert right channel</item>
+          <item>2 - Invert left channel</item>
+          <item>3 - Invert left and right</item>
+        </items>
+        <default>0 - Normal</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Bass</name>
+        <type>SCROLL</type>
+        <minimum>-40</minimum>
+        <maximum>40</maximum>
+        <default>0</default>
+<!--        <readonly>false</readonly>-->
+      </property>
+      <property>
+        <name>...Treble</name>
+        <type>SCROLL</type>
+        <minimum>-40</minimum>
+        <maximum>40</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...EQ1 (100Hz)</name>
+        <type>SCROLL</type>
+        <minimum>-40</minimum>
+        <maximum>40</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...EQ2 (330Hz)</name>
+        <type>SCROLL</type>
+        <minimum>-40</minimum>
+        <maximum>40</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...EQ3 (1,000Hz)</name>
+        <type>SCROLL</type>
+        <minimum>-40</minimum>
+        <maximum>40</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...EQ4 (3,300Hz)</name>
+        <type>SCROLL</type>
+        <minimum>-40</minimum>
+        <maximum>40</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...EQ5 (10,000Hz)</name>
+        <type>SCROLL</type>
+        <minimum>-40</minimum>
+        <maximum>40</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Lock Zone</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>32</maximum> <!-- xxx -->
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Sub Filter</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - Disabled</item>
+          <item>2 - 12dB/oct Low Pass Filter</item>
+          <item>3 - 12dB/oct High Pass Filter</item>
+          <item>4 - 24dB/oct Low Pass Filter</item>
+          <item>5 - 24dB/oct High Pass Filter</item>
+        </items>
+        <default>0 - Disabled</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Sub Freq</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - Disabled</item>
+          <item>1 - 50Hz</item>
+          <item>2 - 53Hz</item>
+          <item>3 - 56Hz</item>
+          <item>4 - 59Hz</item>
+          <item>5 - 63Hz</item>
+          <item>6 - 67Hz</item>
+          <item>7 - 71Hz</item>
+          <item>8 - 75Hz</item>
+          <item>9 - 79Hz</item>
+          <item>10 - 84Hz</item>
+          <item>11 - 94Hz</item>
+          <item>12 - 100Hz</item>
+          <item>13 - 106Hz</item>
+          <item>14 - 112Hz</item>
+          <item>15 - 119Hz</item>
+          <item>16 - 126Hz</item>
+          <item>17 - 133Hz</item>
+          <item>18 - 141Hz</item>
+          <item>19 - 150Hz</item>
+          <item>20 - 159Hz</item>
+          <item>21 - 168Hz</item>
+          <item>22 - 178Hz</item>
+          <item>23 - 189Hz</item>
+          <item>24 - 200Hz</item>
+          <item>25 - 212Hz</item>
+          <item>26 - 224Hz</item>
+          <item>27 - 238Hz</item>
+          <item>28 - 252Hz</item>
+          <item>29 - 267Hz</item>
+          <item>30 - 283Hz</item>
+          <item>31 - 300Hz</item>
+        </items> 
+        <default>0 - Disabled</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Output Level</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>-200</minimum>
+        <maximum>48</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Lip Sync Delay (O)</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>8191</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Coax Audio</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - Coax output is switched independent of analog</item>
+          <item>1 - Coax output mirrors analog output</item>
+          <item>2 - Coax is independent, uses stereo mix if available for source</item>
+        </items>
+        <default>0 - Coax output is switched independent of analog</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Assign 12V Trigger</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>12</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+
+      <property>
+        <name> --- Page Select ---</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>1</minimum>
+        <maximum>2</maximum>
+        <default>1</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Page - Source</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>40</maximum> <!-- xxx -->
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Page - Source Change</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - Allow source to change</item>
+          <item>1 - Source does not change</item>
+        </items>
+        <default>0 - Allow source to change</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Page - Volume Mode</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - Absolute</item>
+          <item>1 - Absolute Ramped</item>
+          <item>2 - Relative</item>
+          <item>3 - Relative Ramped</item>
+        </items>
+        <default>2 - Relative</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Page - Volume</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>-200</minimum>
+        <maximum>100</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+
+      <property>
+        <name>...Page - Minimum Volume</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>100</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Page - Mute</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - No change to mute</item>
+          <item>1 - Always mute</item>
+          <item>2 - Always unmute</item>
+        </items>
+        <default>0 - No change to mute</default>
+        <readonly>false</readonly>
+      </property>
+       <property>
+        <name>...Page - Do Not Disturb</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - Allow page</item>
+          <item>1 - Do not disturb</item>
+        </items>
+        <default>0 - Allow page</default>
+        <readonly>false</readonly>
+      </property>
+
+<!--
+      <property>
+        <name>Header</name>
+        <type></type>
+        <default>Global Paging Settings</default>
+      </property>
+-->
+      <property>
+            <name> === Global Paging Settings ===</name>
+        <type>STRING</type>
+        <default />
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Page - Startup Delay</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>99</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+       <property>
+        <name>Page - Min Page Time</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>120</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+       <property>
+        <name>Page - DB SW Action</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - Disabled</item>
+          <item>1 - Play while pressed (Paging) N.O.</item>
+          <item>2 - Play while pressed (Paging) N.C.</item>
+          <item>3 - Press to trigger (Doorbell) N.O.</item>
+          <item>4 - Press to trigger (Doorbell) N.C.</item>
+        </items>
+        <default>0 - Disabled</default>
+        <readonly>false</readonly>
+      </property>
+       <property>
+        <name>Page - DB SW Timeout</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>120</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+<!-- xxx End Audio Block -->
+<!--
+      <property>
+        <name>...Video Switch Time</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>2000</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Digital Audio Switch Time</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>2000</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Analog Audio Switch Time</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>2000</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+-->
+<!-- xxx Start of Audio block -->
+<!--
+      <property>
+        <name>Header</name>
+        <type></type>
+        <default>Audio Input Settings</default>
+      </property>
+-->
+      <property>
+            <name> === Audio IN Settings ===</name>
+        <type>STRING</type>
+        <default />
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Select Audio Input:</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>1</minimum>
+        <maximum>40</maximum> <!-- xxx -->
+        <default>1</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Input Gain</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>-48</minimum>
+        <maximum>48</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Stereo Mix (I)</name>
+        <type>LIST</type>
+        <items>
+          <item>0 - None</item>
+          <item>1 - Swap Left and Right</item>
+          <item>2 - Mono (Left + Right)</item>
+          <item>3 - Mono (All Left)</item>
+          <item>4 - Mono (All Right)</item>
+          <item>5 - Mono (Left - Right)</item>
+          <item>6 - Mono (Right - Left)</item>
+        </items>
+        <default>0 - None</default>
+        <readonly>false</readonly>
+      </property>
+      <property>
+        <name>...Lip Sync Delay (I)</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>8191</maximum>
+        <default>0</default>
+        <readonly>false</readonly>
+      </property>
+
+<!-- xxx Start of HDMI block -->
+<!-- xxx End of HDMI block -->
+<!-- xxx End of Audio block -->
+<!-- xxx Start of HDMI block -->
+<!-- xxx End of HDMI block -->
+
+      <property>
+        <name>IP Settings:</name>
+        <type>STRING</type>
+        <default>Not Connected</default>
+        <readonly>true</readonly>
+      </property>  
+      <property>
+        <name>...Static IP Address</name>
+        <type>STRING</type>
+        <default>0.0.0.0</default>
+        <readonly>false</readonly>
+      </property>      
+      <property>
+        <name>...Static IP Mask</name>
+        <type>STRING</type>
+        <default>255.255.255.255</default>
+        <readonly>false</readonly>
+      </property>      
+      <property>
+        <name>...Static IP Gateway</name>
+        <type>STRING</type>
+        <default>0.0.0.0</default>
+        <readonly>false</readonly>
+      </property>  
+      <property>
+        <name>...IP Mode</name>
+        <type>LIST</type>
+        <items>
+          <item>DHCP</item>
+          <item>Static</item>
+          <item>Static (Refresh)</item>
+        </items>
+        <default>DHCP</default>
+        <readonly>false</readonly>
+      </property>  
+    </properties>
+
+<!-- xxx -->
+    <actions>
+<!--
+      <action>
+        <name>Reset All!!!</name>
+        <command>RST_ALL</command>
+      </action>
+-->
+      <action>
+        <name>Factory Reset Options...</name>
+        <command>Reset</command>
+        <params>
+          <param>
+            <name>Select Option</name>
+            <type>LIST</type>
+            <items>
+              <item>Reset all audio settings</item>
+              <item>Reset paging parameters</item>
+              <item>Clear everything except TCP/IP</item>
+              <item>Set all zones to powered-off by default</item>
+            </items>
+            <default> </default>
+          </param>
+        </params>
+      </action>
+
+<!--
+      <action>
+        <name>...Reset All Except TCP/IP</name>
+        <command>RST_NoIP</command>
+      </action>
+      <action>
+        <name>...Reset Paging</name>
+        <command>RST_Paging</command>
+      </action>
+      <action>
+        <name>...Reset Audio</name>
+        <command>RST_Audio</command>
+      </action>
+-->
+<!-- xxx Start of HDMI block -->
+<!-- xxx End of HDMI block -->
+<!--
+      <action>
+        <name>Reset 3...</name>
+        <command>RST3</command>
+      </action>
+      <action>
+        <name>Reset 1...</name>
+        <command>RST1</command>
+      </action>
+      <action>
+        <name>Reset 2...</name>
+        <command>RST2</command>
+      </action>
+-->
+
+      <action>
+        <name>Test 12V Triggers...</name>
+        <command>TestTriggers</command>
+        <params>
+          <param>
+            <name>Trigger</name>
+            <type>RANGED_INTEGER</type>
+            <minimum>1</minimum>
+            <maximum>12</maximum>
+            <default>1</default>
+          </param>
+          <param>
+            <name>State</name>
+            <type>LIST</type>
+            <items>
+              <item>ON</item>
+              <item>OFF</item>
+              <item>ZONE CONTROL</item>
+            </items>
+            <default>ZONE CONTROL</default>
+          </param>
+        </params>
+      </action>
+
+      <action>
+        <name>Test Paging...</name>
+        <command>TestPaging</command>
+        <params>
+          <param>
+            <name>Page</name>
+            <type>RANGED_INTEGER</type>
+            <minimum>0</minimum>
+            <maximum>2</maximum>
+            <default>0</default>
+          </param>
+        </params>
+        <params>
+          <param>
+            <name>Timeout</name>
+            <type>RANGED_INTEGER</type>
+            <minimum>0</minimum>
+            <maximum>2000</maximum>
+            <default>0</default>
+          </param>
+        </params>
+      </action>
+
+<!-- xxx Start of HDMI block -->
+<!-- xxx End of HDMI block -->
+<!--
+      <action>
+        <name>Backup Switch Timing</name>
+        <command>BackupTiming</command>
+      </action>
+-->
+<!-- xxx Start of Audio block -->
+      <action>
+        <name>Backup Paging Settings</name>
+        <command>BackupPaging</command>
+      </action>
+      <action>
+        <name>Backup Audio Settings (except volume)</name>
+        <command>BackupAudio</command>
+      </action>
+      <action>
+        <name>Backup Volume Settings</name>
+        <command>BackupVolume</command>
+      </action>
+<!--
+      <action>
+        <name>Restore All Triggers to Zone Control</name>
+        <command>ResetTriggers</command>
+      </action>
+-->
+<!-- xxx End of Audio block -->
+<!--
+      <action>
+        <name>Backup Power and In-Out</name>
+        <command>BackupMappings</command>
+      </action>
+-->
+      <action>
+        <name>Refresh Driver</name>
+        <command>InitialSetup</command>
+      </action>
+
+    </actions>
+
+    <commands>
+      <command>
+        <name>Set 12V Trigger</name>
+        <description>Set Trigger PARAM1 to PARAM2</description>
+        <params>
+          <param>
+            <name>Trigger</name>
+            <type>RANGED_INTEGER</type>
+            <minimum>1</minimum>
+            <maximum>12</maximum>
+            <default>1</default>
+          </param>
+          <param>
+            <name>State</name>
+            <type>LIST</type>
+            <items>
+              <item>ON</item>
+              <item>OFF</item>
+              <item>ZONE CONTROL</item>
+            </items>
+            <default>ZONE CONTROL</default>
+          </param>
+        </params>
+      </command>
+      <command>
+        <name>Set Page</name>
+        <description>Set page number to PARAM1</description>
+        <params>
+          <param>
+            <name>Page</name>
+            <type>RANGED_INTEGER</type>
+            <minimum>0</minimum>
+            <maximum>2</maximum>
+            <default>0</default>
+          </param>
+        </params>
+      </command>
+    </commands>
+
+    <script jit="1" file="driver.lua">
+      
+    </script>
+  <documentation file="www/documentation.rtf" /></config>
+
+  <control>lua_gen</control>
+  <controlmethod>ip</controlmethod>
+  <driver>DriverWorks</driver>
+
+  <small>devices_sm/avswitch.GIF</small>
+  <large>devices_lg/avswitch.GIF</large>
+  <top />
+  <bottom />
+  <front />
+  <back />
+  <left />
+  <right />
+
+  <commands />
+  <conditionals />
+  <events />
+  <states />
+
+  <proxies qty="1">
+    <proxy proxybindingid="5001" name="Pulse-Eight ProAudio1632">avswitch</proxy>
+  </proxies>
+
+  <capabilities>
+    <audio_consumer_count>40</audio_consumer_count>
+    <audio_provider_count>64</audio_provider_count>
+    <can_downclass>True</can_downclass>
+    <can_upclass>True</can_upclass>
+    <has_audio>True</has_audio>
+    <has_audio_signal_sense>False</has_audio_signal_sense>
+    <has_discrete_balance_control>True</has_discrete_balance_control>
+    <has_discrete_bass_control>True</has_discrete_bass_control>
+    <has_discrete_input_select>True</has_discrete_input_select>
+    <has_discrete_loudness_control>False</has_discrete_loudness_control>
+    <has_discrete_mute_control>True</has_discrete_mute_control>
+    <has_discrete_treble_control>True</has_discrete_treble_control>
+    <has_discrete_volume_control>True</has_discrete_volume_control>
+    <has_toad_input_select>False</has_toad_input_select>
+    <has_toggle_loudness_control>False</has_toggle_loudness_control>
+    <has_toggle_mute_control>True</has_toggle_mute_control>
+    <has_up_down_balance_control>True</has_up_down_balance_control>
+    <has_up_down_bass_control>True</has_up_down_bass_control>
+    <has_up_down_treble_control>True</has_up_down_treble_control>
+    <has_up_down_volume_control>True</has_up_down_volume_control>
+
+    <has_video_signal_sense>False</has_video_signal_sense>
+    <video_consumer_count>0</video_consumer_count>
+    <video_provider_count>0</video_provider_count>
+
+    <can_switch_separate>True</can_switch_separate>
+    <requires_separate_switching>True</requires_separate_switching>
+  </capabilities>
+
+  <connections>
+    <connection>
+      <id>1</id>
+      <facing>1</facing>
+      <type>1</type>
+      <connectionname>Serial RS-232</connectionname>
+      <consumer>True</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>False</linelevel>
+      <delimiter>24</delimiter>
+      <classes>
+        <class><classname>RS_232</classname></class>
+      </classes>
+    </connection>
+
+    <connection>
+      <id>6001</id>
+      <facing>1</facing>
+      <connectionname>Pulse-Eight ProAudio1632 TCP/IP</connectionname>
+      <type>4</type>
+      <consumer>True</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <delimiter>24</delimiter>
+      <classes>
+        <class>
+          <classname>TCP</classname>
+          <ports>
+            <port>
+              <number>50005</number>
+              <auto_connect>True</auto_connect>
+              <monitor_connection>True</monitor_connection>
+              <keep_connection>True</keep_connection>
+            </port>
+          </ports>
+        </class>
+      </classes>
+    </connection>
+
+    <connection>
+      <id>5001</id>
+      <type>2</type>
+      <connectionname>Pulse-Eight ProAudio1632</connectionname>
+      <consumer>False</consumer>
+      <linelevel>False</linelevel>
+      <classes>
+        <class><classname>AVSWITCH</classname></class>
+      </classes>
+    </connection>
+
+    <connection proxybindingid="5001">
+      <id>3000</id>
+      <type>6</type>
+      <connectionname>LRIN-01</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3001</id>
+      <type>6</type>
+      <connectionname>LRIN-02</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3002</id>
+      <type>6</type>
+      <connectionname>LRIN-03</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3003</id>
+      <type>6</type>
+      <connectionname>LRIN-04</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3004</id>
+      <type>6</type>
+      <connectionname>LRIN-05</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3005</id>
+      <type>6</type>
+      <connectionname>LRIN-06</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3006</id>
+      <type>6</type>
+      <connectionname>LRIN-07</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3007</id>
+      <type>6</type>
+      <connectionname>LRIN-08</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3008</id>
+      <type>6</type>
+      <connectionname>LRIN-09</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3009</id>
+      <type>6</type>
+      <connectionname>LRIN-10</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3010</id>
+      <type>6</type>
+      <connectionname>LRIN-11</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3011</id>
+      <type>6</type>
+      <connectionname>LRIN-12</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3012</id>
+      <type>6</type>
+      <connectionname>LRIN-13</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3013</id>
+      <type>6</type>
+      <connectionname>LRIN-14</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3014</id>
+      <type>6</type>
+      <connectionname>LRIN-15</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3015</id>
+      <type>6</type>
+      <connectionname>LRIN-16</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+
+    <connection proxybindingid="5001">
+      <id>3016</id>
+      <type>6</type>
+      <connectionname>COAXIN-17</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3017</id>
+      <type>6</type>
+      <connectionname>COAXIN-18</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3018</id>
+      <type>6</type>
+      <connectionname>COAXIN-19</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3019</id>
+      <type>6</type>
+      <connectionname>COAXIN-20</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3020</id>
+      <type>6</type>
+      <connectionname>COAXIN-21</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3021</id>
+      <type>6</type>
+      <connectionname>COAXIN-22</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3022</id>
+      <type>6</type>
+      <connectionname>COAXIN-23</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3023</id>
+      <type>6</type>
+      <connectionname>COAXIN-24</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3024</id>
+      <type>6</type>
+      <connectionname>COAXIN-25</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3025</id>
+      <type>6</type>
+      <connectionname>COAXIN-26</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3026</id>
+      <type>6</type>
+      <connectionname>COAXIN-27</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3027</id>
+      <type>6</type>
+      <connectionname>COAXIN-28</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3028</id>
+      <type>6</type>
+      <connectionname>COAXIN-29</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3029</id>
+      <type>6</type>
+      <connectionname>COAXIN-30</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3030</id>
+      <type>6</type>
+      <connectionname>COAXIN-31</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3031</id>
+      <type>6</type>
+      <connectionname>COAXIN-32</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+
+    <connection proxybindingid="5001">
+      <id>3032</id>
+      <type>6</type>
+      <connectionname>OPTIN-33</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_OPTICAL</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3033</id>
+      <type>6</type>
+      <connectionname>OPTIN-34</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_OPTICAL</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3034</id>
+      <type>6</type>
+      <connectionname>OPTIN-35</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_OPTICAL</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3035</id>
+      <type>6</type>
+      <connectionname>OPTIN-36</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_OPTICAL</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3036</id>
+      <type>6</type>
+      <connectionname>OPTIN-37</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_OPTICAL</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3037</id>
+      <type>6</type>
+      <connectionname>OPTIN-38</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_OPTICAL</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3038</id>
+      <type>6</type>
+      <connectionname>OPTIN-39</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_OPTICAL</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>3039</id>
+      <type>6</type>
+      <connectionname>OPTIN-40</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_OPTICAL</classname></class>
+      </classes>
+    </connection>
+
+    <connection proxybindingid="5001">
+      <id>4000</id>
+      <type>6</type>
+      <connectionname>LROUT-01</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4001</id>
+      <type>6</type>
+      <connectionname>LROUT-02</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4002</id>
+      <type>6</type>
+      <connectionname>LROUT-03</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4003</id>
+      <type>6</type>
+      <connectionname>LROUT-04</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4004</id>
+      <type>6</type>
+      <connectionname>LROUT-05</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4005</id>
+      <type>6</type>
+      <connectionname>LROUT-06</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4006</id>
+      <type>6</type>
+      <connectionname>LROUT-07</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4007</id>
+      <type>6</type>
+      <connectionname>LROUT-08</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4008</id>
+      <type>6</type>
+      <connectionname>LROUT-09</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4009</id>
+      <type>6</type>
+      <connectionname>LROUT-10</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4010</id>
+      <type>6</type>
+      <connectionname>LROUT-11</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4011</id>
+      <type>6</type>
+      <connectionname>LROUT-12</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4012</id>
+      <type>6</type>
+      <connectionname>LROUT-13</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4013</id>
+      <type>6</type>
+      <connectionname>LROUT-14</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4014</id>
+      <type>6</type>
+      <connectionname>LROUT-15</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4015</id>
+      <type>6</type>
+      <connectionname>LROUT-16</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4016</id>
+      <type>6</type>
+      <connectionname>LROUT-17</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4017</id>
+      <type>6</type>
+      <connectionname>LROUT-18</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4018</id>
+      <type>6</type>
+      <connectionname>LROUT-19</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4019</id>
+      <type>6</type>
+      <connectionname>LROUT-20</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4020</id>
+      <type>6</type>
+      <connectionname>LROUT-21</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4021</id>
+      <type>6</type>
+      <connectionname>LROUT-22</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4022</id>
+      <type>6</type>
+      <connectionname>LROUT-23</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4023</id>
+      <type>6</type>
+      <connectionname>LROUT-24</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4024</id>
+      <type>6</type>
+      <connectionname>LROUT-25</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4025</id>
+      <type>6</type>
+      <connectionname>LROUT-26</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4026</id>
+      <type>6</type>
+      <connectionname>LROUT-27</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4027</id>
+      <type>6</type>
+      <connectionname>LROUT-28</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4028</id>
+      <type>6</type>
+      <connectionname>LROUT-29</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4029</id>
+      <type>6</type>
+      <connectionname>LROUT-30</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4030</id>
+      <type>6</type>
+      <connectionname>LROUT-31</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4031</id>
+      <type>6</type>
+      <connectionname>LROUT-32</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>STEREO</classname></class>
+      </classes>
+    </connection>
+
+    <connection proxybindingid="5001">
+      <id>4032</id>
+      <type>6</type>
+      <connectionname>COAXOUT-01</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4033</id>
+      <type>6</type>
+      <connectionname>COAXOUT-02</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4034</id>
+      <type>6</type>
+      <connectionname>COAXOUT-03</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4035</id>
+      <type>6</type>
+      <connectionname>COAXOUT-04</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4036</id>
+      <type>6</type>
+      <connectionname>COAXOUT-05</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4037</id>
+      <type>6</type>
+      <connectionname>COAXOUT-06</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4038</id>
+      <type>6</type>
+      <connectionname>COAXOUT-07</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4039</id>
+      <type>6</type>
+      <connectionname>COAXOUT-08</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4040</id>
+      <type>6</type>
+      <connectionname>COAXOUT-09</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4041</id>
+      <type>6</type>
+      <connectionname>COAXOUT-10</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4042</id>
+      <type>6</type>
+      <connectionname>COAXOUT-11</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4043</id>
+      <type>6</type>
+      <connectionname>COAXOUT-12</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4044</id>
+      <type>6</type>
+      <connectionname>COAXOUT-13</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4045</id>
+      <type>6</type>
+      <connectionname>COAXOUT-14</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4046</id>
+      <type>6</type>
+      <connectionname>COAXOUT-15</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4047</id>
+      <type>6</type>
+      <connectionname>COAXOUT-16</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4048</id>
+      <type>6</type>
+      <connectionname>COAXOUT-17</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4049</id>
+      <type>6</type>
+      <connectionname>COAXOUT-18</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4050</id>
+      <type>6</type>
+      <connectionname>COAXOUT-19</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4051</id>
+      <type>6</type>
+      <connectionname>COAXOUT-20</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4052</id>
+      <type>6</type>
+      <connectionname>COAXOUT-21</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4053</id>
+      <type>6</type>
+      <connectionname>COAXOUT-22</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4054</id>
+      <type>6</type>
+      <connectionname>COAXOUT-23</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4055</id>
+      <type>6</type>
+      <connectionname>COAXOUT-24</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4056</id>
+      <type>6</type>
+      <connectionname>COAXOUT-25</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4057</id>
+      <type>6</type>
+      <connectionname>COAXOUT-26</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4058</id>
+      <type>6</type>
+      <connectionname>COAXOUT-27</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4059</id>
+      <type>6</type>
+      <connectionname>COAXOUT-28</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4060</id>
+      <type>6</type>
+      <connectionname>COAXOUT-29</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4061</id>
+      <type>6</type>
+      <connectionname>COAXOUT-30</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4062</id>
+      <type>6</type>
+      <connectionname>COAXOUT-31</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4063</id>
+      <type>6</type>
+      <connectionname>COAXOUT-32</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>DIGITAL_COAX</classname></class>
+      </classes>
+    </connection>
+
+    <connection proxybindingid="5001">
+      <id>7000</id>
+      <type>7</type>
+      <connectionname>Room Selection 1</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7001</id>
+      <type>7</type>
+      <connectionname>Room Selection 2</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7002</id>
+      <type>7</type>
+      <connectionname>Room Selection 3</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7003</id>
+      <type>7</type>
+      <connectionname>Room Selection 4</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7004</id>
+      <type>7</type>
+      <connectionname>Room Selection 5</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7005</id>
+      <type>7</type>
+      <connectionname>Room Selection 6</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7006</id>
+      <type>7</type>
+      <connectionname>Room Selection 7</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7007</id>
+      <type>7</type>
+      <connectionname>Room Selection 8</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7008</id>
+      <type>7</type>
+      <connectionname>Room Selection 9</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7009</id>
+      <type>7</type>
+      <connectionname>Room Selection 10</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7010</id>
+      <type>7</type>
+      <connectionname>Room Selection 11</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7011</id>
+      <type>7</type>
+      <connectionname>Room Selection 12</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7012</id>
+      <type>7</type>
+      <connectionname>Room Selection 13</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7013</id>
+      <type>7</type>
+      <connectionname>Room Selection 14</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7014</id>
+      <type>7</type>
+      <connectionname>Room Selection 15</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7015</id>
+      <type>7</type>
+      <connectionname>Room Selection 16</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7016</id>
+      <type>7</type>
+      <connectionname>Room Selection 17</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7017</id>
+      <type>7</type>
+      <connectionname>Room Selection 18</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7018</id>
+      <type>7</type>
+      <connectionname>Room Selection 19</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7019</id>
+      <type>7</type>
+      <connectionname>Room Selection 20</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7020</id>
+      <type>7</type>
+      <connectionname>Room Selection 21</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7021</id>
+      <type>7</type>
+      <connectionname>Room Selection 22</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7022</id>
+      <type>7</type>
+      <connectionname>Room Selection 23</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7023</id>
+      <type>7</type>
+      <connectionname>Room Selection 24</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7024</id>
+      <type>7</type>
+      <connectionname>Room Selection 25</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7025</id>
+      <type>7</type>
+      <connectionname>Room Selection 26</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7026</id>
+      <type>7</type>
+      <connectionname>Room Selection 27</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7027</id>
+      <type>7</type>
+      <connectionname>Room Selection 28</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7028</id>
+      <type>7</type>
+      <connectionname>Room Selection 29</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7029</id>
+      <type>7</type>
+      <connectionname>Room Selection 30</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7030</id>
+      <type>7</type>
+      <connectionname>Room Selection 31</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7031</id>
+      <type>7</type>
+      <connectionname>Room Selection 32</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+        <class><classname>AUDIO_VOLUME</classname></class>
+      </classes>
+    </connection>
+
+    <connection proxybindingid="5001">
+      <id>7032</id>
+      <type>7</type>
+      <connectionname>Room Selection 33</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7033</id>
+      <type>7</type>
+      <connectionname>Room Selection 34</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7034</id>
+      <type>7</type>
+      <connectionname>Room Selection 35</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7035</id>
+      <type>7</type>
+      <connectionname>Room Selection 36</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7036</id>
+      <type>7</type>
+      <connectionname>Room Selection 37</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7037</id>
+      <type>7</type>
+      <connectionname>Room Selection 38</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7038</id>
+      <type>7</type>
+      <connectionname>Room Selection 39</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7039</id>
+      <type>7</type>
+      <connectionname>Room Selection 40</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7040</id>
+      <type>7</type>
+      <connectionname>Room Selection 41</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7041</id>
+      <type>7</type>
+      <connectionname>Room Selection 42</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7042</id>
+      <type>7</type>
+      <connectionname>Room Selection 43</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7043</id>
+      <type>7</type>
+      <connectionname>Room Selection 44</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7044</id>
+      <type>7</type>
+      <connectionname>Room Selection 45</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7045</id>
+      <type>7</type>
+      <connectionname>Room Selection 46</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7046</id>
+      <type>7</type>
+      <connectionname>Room Selection 47</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7047</id>
+      <type>7</type>
+      <connectionname>Room Selection 48</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7048</id>
+      <type>7</type>
+      <connectionname>Room Selection 49</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7049</id>
+      <type>7</type>
+      <connectionname>Room Selection 50</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7050</id>
+      <type>7</type>
+      <connectionname>Room Selection 51</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7051</id>
+      <type>7</type>
+      <connectionname>Room Selection 52</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7052</id>
+      <type>7</type>
+      <connectionname>Room Selection 53</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7053</id>
+      <type>7</type>
+      <connectionname>Room Selection 54</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7054</id>
+      <type>7</type>
+      <connectionname>Room Selection 55</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7055</id>
+      <type>7</type>
+      <connectionname>Room Selection 56</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7056</id>
+      <type>7</type>
+      <connectionname>Room Selection 57</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7057</id>
+      <type>7</type>
+      <connectionname>Room Selection 58</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7058</id>
+      <type>7</type>
+      <connectionname>Room Selection 59</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7059</id>
+      <type>7</type>
+      <connectionname>Room Selection 60</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7060</id>
+      <type>7</type>
+      <connectionname>Room Selection 61</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7061</id>
+      <type>7</type>
+      <connectionname>Room Selection 62</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7062</id>
+      <type>7</type>
+      <connectionname>Room Selection 63</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>7063</id>
+      <type>7</type>
+      <connectionname>Room Selection 64</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class><classname>AUDIO_SELECTION</classname></class>
+      </classes>
+    </connection>
+	<connection>
+      <id>101</id>
+      <connectionname>12V Trigger Port 1</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>102</id>
+      <connectionname>12V Trigger Port 2</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>103</id>
+      <connectionname>12V Trigger Port 3</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>104</id>
+      <connectionname>12V Trigger Port 4</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>105</id>
+      <connectionname>12V Trigger Port 5</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>106</id>
+      <connectionname>12V Trigger Port 6</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>107</id>
+      <connectionname>12V Trigger Port 7</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>108</id>
+      <connectionname>12V Trigger Port 8</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>109</id>
+      <connectionname>12V Trigger Port 9</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>110</id>
+      <connectionname>12V Trigger Port 10</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>111</id>
+      <connectionname>12V Trigger Port 11</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>112</id>
+      <connectionname>12V Trigger Port 12</connectionname>
+      <type>1</type>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+	  <classes>
+         <class>
+            <classname>RELAY</classname>
+         </class>
+      </classes>
+    </connection>
+  </connections>
+</devicedata>
