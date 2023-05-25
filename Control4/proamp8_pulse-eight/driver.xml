@@ -1,26 +1,26 @@
 <devicedata>
-  <copyright>Copyright 2021 Pulse-Eight Limited.  All rights reserved.</copyright>
+  <copyright>Copyright 2023 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Pulse-Eight</manufacturer>
   <name>ProAmp 8 IP Driver</name>
   <model>ProAmp 8</model>
   <created>28/05/2020 12:00 PM</created>
   <modified>03/10/2021 12:34 PM</modified>
-  <OnlineCategory>amplifier</OnlineCategory>
-  <version>16</version>
+  <OnlineCategory>AVSwitch</OnlineCategory>
+  <version>17</version>
   <small image_source="c4z">Images/proamp_sm.png</small>
   <large image_source="c4z">Images/proamp_lg.png</large>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
   <search_types>
-    <type>c4:av_gen</type>
+    <type>pulse-eight:proamp8</type>
   </search_types>
   <composer_categories>
     <category>Audio/Video</category>
   </composer_categories>
   <proxies qty="1">
-    <proxy proxybindingid="5001" name="ProAmp 8" large_image="Images/proamp_lg.png" small_image="Images/proamp_sm.png" smimagepath="Images/proamp_sm.png" lgimagepath="Images/proamp_lg.png" image_source="c4z">amplifier</proxy>
+    <proxy proxybindingid="5001" name="ProAmp 8" large_image="Images/proamp_lg.png" small_image="Images/proamp_sm.png" smimagepath="Images/proamp_sm.png" lgimagepath="Images/proamp_lg.png" image_source="c4z">avswitch</proxy>
   </proxies>
   <capabilities>
     <audio_consumer_count>8</audio_consumer_count>
@@ -256,7 +256,7 @@
     <connection>
       <id>5001</id>
       <type>2</type>
-      <connectionname>Amplifier</connectionname>
+      <connectionname>AVSWITCH</connectionname>
       <consumer>False</consumer>
       <audiosource>False</audiosource>
       <videosource>False</videosource>
@@ -268,6 +268,28 @@
       </classes>
     </connection>
     <connection>
+      <id>6000</id>
+      <connectionname>Network</connectionname>
+      <type>4</type>
+      <consumer>True</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>TCP</classname>
+          <ports>
+            <port>
+              <number>80</number>
+              <auto_connect>False</auto_connect>
+              <monitor_connection>False</monitor_connection>
+              <keep_connection>False</keep_connection>
+            </port>
+          </ports>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
       <id>7000</id>
       <type>7</type>
       <connectionname>Room 1</connectionname>
@@ -284,7 +306,7 @@
         </class>
       </classes>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7001</id>
       <type>7</type>
       <connectionname>Room 2</connectionname>
@@ -301,7 +323,7 @@
         </class>
       </classes>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7002</id>
       <type>7</type>
       <connectionname>Room 3</connectionname>
@@ -318,7 +340,7 @@
         </class>
       </classes>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7003</id>
       <type>7</type>
       <connectionname>Room 4</connectionname>
@@ -335,7 +357,7 @@
         </class>
       </classes>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7004</id>
       <type>7</type>
       <connectionname>Room 5</connectionname>
@@ -352,7 +374,7 @@
         </class>
       </classes>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7005</id>
       <type>7</type>
       <connectionname>Room 6</connectionname>
@@ -369,7 +391,7 @@
         </class>
       </classes>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7006</id>
       <type>7</type>
       <connectionname>Room 7</connectionname>
@@ -386,7 +408,7 @@
         </class>
       </classes>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7007</id>
       <type>7</type>
       <connectionname>Room 8</connectionname>
@@ -423,7 +445,7 @@
     <power_command_delay>0</power_command_delay>
     <power_delay>0</power_delay>
     <power_command_needed>False</power_command_needed>
-    <documentation file="www/documentation.rtf" />
+    <documentation file="www/documentation.rtf"/>
     <script file="p8driver.lua" />
     <properties>
       <property>

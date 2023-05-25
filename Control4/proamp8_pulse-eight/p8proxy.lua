@@ -1,4 +1,4 @@
---Copyright Pulse-Eight Limited 2020
+--Copyright Pulse-Eight Limited 2023
 --[[=============================================================================
     ReceivedFromProxy(idBinding, sCommand, tParams)
 
@@ -22,8 +22,16 @@ function ReceivedFromProxy(idBinding, sCommand, tParams)
 			tParams = {}
 		end
 		
-		--LogTrace("ReceivedFromProxy(): " .. sCommand .. " on binding " .. idBinding .. "; Call Function PRX_CMD." .. sCommand .. "()")
-		--LogInfo(tParams)
+		LogTrace("ReceivedFromProxy(): " .. sCommand .. " on binding " .. idBinding .. "; Call Function PRX_CMD." .. sCommand .. "()")
+		LogInfo(tParams)
+		if (sCommand == "IS_AV_OUTPUT_TO_INPUT_VALID") then
+			local status, retval = pcall(PRX_CMD[sCommand], idBinding, tParams)
+			if (status) then
+				LogTrace("IS_AV_OUTPUT_TO_INPUT_VALID returned " .. retval .. " for path of class " .. tParams["Provider_sClass"] .. " from " .. tonumber(tParams["Consumer_idBinding"]) .. " to " .. tonumber(tParams["Provider_idBinding"]))
+				return retval
+			end
+        end
+
 		if ((PRX_CMD[sCommand]) ~= nil) then
 			local status, err = pcall(PRX_CMD[sCommand], idBinding, tParams)
 			if (not status) then
@@ -63,6 +71,9 @@ function PRX_CMD.CONNECT_OUTPUT(idBinding, tParams)
 			  end
 		   end)
 	end
+end
+
+function PRX_CMD.GET_AUDIO_INPUTS(_, _) -- idBinding, tParams
 end
 
 function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
@@ -243,10 +254,11 @@ local outputVolumeTimers = {
 function PRX_CMD.START_VOL_UP(idBinding, tParams)
 	local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
 	local output = tonumber(tParams["OUTPUT"]) % 1000
+	local outputName = tostring("OUTPUT" .. output)
      LogTrace("Start Vol Up " .. output)
     
-	if outputVolumeTimers["OUTPUT" .. output] then
-		outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
+	if outputVolumeTimers[outputName] then
+		outputVolumeTimers[outputName] = C4:SetTimer(speed, function(timer, skips) 
 		   PRX_CMD.PULSE_VOL_UP(idBinding, tParams)
 		end, true)
 	end
@@ -255,16 +267,20 @@ end
 function PRX_CMD.STOP_VOL_UP(idBinding, tParams)
 	local output = tonumber(tParams["OUTPUT"]) % 1000
 	LogTrace("Stop Vol Up " .. output)
-	if outputVolumeTimers["OUTPUT" .. output] then
-		outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	local outputName = tostring("OUTPUT" .. output)
+	if outputVolumeTimers[outputName] ~= 1 then
+		outputVolumeTimers[outputName]:Cancel()
+		outputVolumeTimers[outputName] = 1
 	end
 end
 
 function PRX_CMD.END_VOL_UP(idBinding, tParams)
 	LogTrace("Vol Up End")
 	local output = tonumber(tParams["OUTPUT"]) % 1000
-	if outputVolumeTimers["OUTPUT" .. output] then
-		outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	local outputName = tostring("OUTPUT" .. output)
+	if outputVolumeTimers[outputName] ~= 1 then
+		outputVolumeTimers[outputName]:Cancel()
+		outputVolumeTimers[outputName] = 1
 	end
 end
 
@@ -272,8 +288,9 @@ function PRX_CMD.START_VOL_DOWN(idBinding, tParams)
     local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
     local output = tonumber(tParams["OUTPUT"]) % 1000
     LogTrace("Start Vol Down " .. output)
-    if outputVolumeTimers["OUTPUT" .. output] then
-	    outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
+    local outputName = tostring("OUTPUT" .. output)
+    if outputVolumeTimers[outputName] then
+	    outputVolumeTimers[outputName] = C4:SetTimer(speed, function(timer, skips) 
 		   PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
 	    end, true)
     end
@@ -281,17 +298,21 @@ end
 
 function PRX_CMD.STOP_VOL_DOWN(idBinding, tParams)
 	local output = tonumber(tParams["OUTPUT"]) % 1000
+	local outputName = tostring("OUTPUT" .. output)
 	LogTrace("Stop Vol Down " .. output)
-	if outputVolumeTimers["OUTPUT" .. output] then
-		outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	if outputVolumeTimers[outputName] ~= 1 then
+		outputVolumeTimers[outputName]:Cancel()
+		outputVolumeTimers[outputName] = 1
 	end
 end
 
 function PRX_CMD.END_VOL_DOWN(idBinding, tParams)
 	LogTrace("End Vol Down")
 	local output = tonumber(tParams["OUTPUT"]) % 1000
-	if outputVolumeTimers["OUTPUT" .. output] then
-		outputVolumeTimers["OUTPUT" .. output]:Cancel()
+	local outputName = tostring("OUTPUT" .. output)
+	if outputVolumeTimers[outputName] ~= 1 then
+		outputVolumeTimers[outputName]:Cancel()
+		outputVolumeTimers[outputName] = 1
 	end
 end
 
@@ -338,4 +359,17 @@ end
 function PRX_CMD.SET_ROOM_BINDING_NAME(idBinding, tParams)
     --PartnerDevice
     --OUTPUT
+end
+
+function PRX_CMD.IS_AV_OUTPUT_TO_INPUT_VALID(idBinding, tParams)
+    local pathIsValid =  "True"
+    local provider_class    	= tParams["Provider_sClass"]
+    local consumer_idBinding 	= tonumber(tParams["Consumer_idBinding"])	-- we are consuming the source, so the consumer binding is the source
+    local provider_idBinding 	= tonumber(tParams["Provider_idBinding"]) 	-- we are providing the output, to the output is the provider binding    
+    local consumer_class    	= tParams["Consumer_sClass"]
+    local roomID			= tonumber(tParams["Params_idRoom"])
+    if (consumer_idBinding % 1000) ~= (provider_idBinding % 1000) then
+	   pathIsValid = "False"
+    end
+    return pathIsValid
 end

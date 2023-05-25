@@ -90,7 +90,7 @@ end
 
 function OnDriverLateInit()
 	C4:ErrorLog("INIT_CODE: OnDriverLateInit()")
-	
+	C4:SendToProxy(DEFAULT_PROXY_BINDINGID, 'PROTOCOL_WILL_HANDLE_AV_VALID', {})
 	-- Call all ON_DRIVER_LATEINIT functions
 	for k,v in pairs(ON_DRIVER_LATEINIT) do
 		if (ON_DRIVER_LATEINIT[k] ~= nil and type(ON_DRIVER_LATEINIT[k]) == "function") then
