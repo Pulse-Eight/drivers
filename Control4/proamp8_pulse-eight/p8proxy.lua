@@ -332,6 +332,7 @@ function P8INT:UPDATE_AUDIO(idBinding, output)
 		local jsonResponse = JSON:decode(strData)
 		if jsonResponse.Result then
 			local volLevel = tonumber(jsonResponse["volLeft"]) or tonumber(jsonResponse["dolbyvolume"])
+			local muteState = tonumber(jsonResponse["muted"]) ~= 0
 			if volLevel > 100 then
 				volLevel = 100
 			end
@@ -340,17 +341,17 @@ function P8INT:UPDATE_AUDIO(idBinding, output)
 			end
 			LogTrace("Volume Level Changed = " .. volLevel .. " Output (" .. output .. ") = " .. (tonumber(output)-adjust))
 			local volChangedParams = { LEVEL = volLevel, OUTPUT = (tonumber(output)-adjust) }
-			local muteChangedParams = { MUTE = jsonResponse["mute"], OUTPUT = (tonumber(output)-adjust) }
+			--local muteChangedParams = { MUTE = muteState, OUTPUT = (tonumber(output)-adjust) }
 			local volChangedParams1 = { LEVEL = volLevel, OUTPUT = (tonumber(output)) }
-			local muteChangedParams1 = { MUTE = jsonResponse["mute"], OUTPUT = (tonumber(output)) }
+			local muteChangedParams1 = { MUTE = muteState, OUTPUT = (tonumber(output)) }
 			local volChangedParams2 = { LEVEL = volLevel, OUTPUT = (tonumber(output)-4000) }
-			local muteChangedParams2 = { MUTE = jsonResponse["mute"], OUTPUT = (tonumber(output)-4000) }
+			--local muteChangedParams2 = { MUTE = muteState, OUTPUT = (tonumber(output)-4000) }
 			C4:SendToProxy(idBinding, "VOLUME_LEVEL_CHANGED", volChangedParams)
-			C4:SendToProxy(idBinding, "MUTE_CHANGED", muteChangedParams)
+			--C4:SendToProxy(idBinding, "MUTE_CHANGED", muteChangedParams)
 			C4:SendToProxy(idBinding, "VOLUME_LEVEL_CHANGED", volChangedParams1)
 			C4:SendToProxy(idBinding, "MUTE_CHANGED", muteChangedParams1)
 			C4:SendToProxy(idBinding, "VOLUME_LEVEL_CHANGED", volChangedParams2)
-			C4:SendToProxy(idBinding, "MUTE_CHANGED", muteChangedParams2)
+			--C4:SendToProxy(idBinding, "MUTE_CHANGED", muteChangedParams2)
 		end
 	end)
 end

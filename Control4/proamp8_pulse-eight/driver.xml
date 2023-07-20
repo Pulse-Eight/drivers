@@ -5,9 +5,9 @@
   <name>ProAmp 8 IP Driver</name>
   <model>ProAmp 8</model>
   <created>28/05/2020 12:00 PM</created>
-  <modified>03/10/2021 12:34 PM</modified>
+  <modified>06/15/2021 12:34 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>17</version>
+  <version>18</version>
   <small image_source="c4z">Images/proamp_sm.png</small>
   <large image_source="c4z">Images/proamp_lg.png</large>
   <control>lua_gen</control>
@@ -23,6 +23,7 @@
     <proxy proxybindingid="5001" name="ProAmp 8" large_image="Images/proamp_lg.png" small_image="Images/proamp_sm.png" smimagepath="Images/proamp_sm.png" lgimagepath="Images/proamp_lg.png" image_source="c4z">avswitch</proxy>
   </proxies>
   <capabilities>
+	<has_audio>True</has_audio>
     <audio_consumer_count>8</audio_consumer_count>
     <audio_provider_count>8</audio_provider_count>
     <has_discrete_volume_control>True</has_discrete_volume_control>
