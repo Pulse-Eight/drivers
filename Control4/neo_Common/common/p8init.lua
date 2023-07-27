@@ -90,6 +90,16 @@ function ON_PROPERTY_CHANGED.SendCECOFFonzoneoff(propertyValue)
 	end
 end
 
+function ON_PROPERTY_CHANGED.IndependentRouting(propertyValue)
+     --LogTrace("Manual Mode Changed " .. propertyValue)
+	if(propertyValue == "Enabled") then
+	   P8INT:SET_MANUALMODE(1)
+     else
+	   P8INT:SET_MANUALMODE(0)
+	end
+end
+
+
 -- Main calls from the Director
 
 function OnDriverInit()

@@ -139,32 +139,53 @@ end
 
 function PRX_CMD.CONNECT_OUTPUT(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
+		local outputBinding = tonumber(tParams["OUTPUT"])
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/false"
-		LogInfo("Set Mute OFF Due to Connect. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  if jsonResponse.Result then
-				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-			  end
-		   end)
+		if MODE_MANUALMODE == 0 then 
+			local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/false"
+			LogInfo("Set Mute OFF Due to Connect. Output: " .. output)
+			C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+				  local jsonResponse = JSON:decode(strData)
+				  if jsonResponse.Result then
+					P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
+				  end
+			   end)
+		end
 	end
 end
 
 function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
+		local outputBinding = tonumber(tParams["OUTPUT"])
 		local output = tonumber(tParams["OUTPUT"] % 1000)
 		if MODE_POWEROFF_ON_ZONE_OFF == 1 then
 			C4:urlGet(P8INT:GET_MATRIX_URL() .. "/CEC/Off/Output/" .. output, {})
 		end
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/true"
-		LogInfo("Set Mute ON Due to Disconnect. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  if jsonResponse.Result then
-				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-			  end
-		   end)
+		
+		-- Audio zones
+		if outputBinding >= 4000 and outputBinding < 5000 then
+			if MODE_MANUALMODE_SUPPORTED == 1 then 
+				LogInfo("Disconnecting Audio. Output: " .. output)
+				local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Route/-1/" .. output
+				C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+					  local jsonResponse = JSON:decode(strData)
+					  if jsonResponse.Result then
+						P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
+					  end
+				   end)
+			else
+				local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/true"
+				LogInfo("Set Mute ON Due to Disconnect. Output: " .. output)
+				C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+					  local jsonResponse = JSON:decode(strData)
+					  if jsonResponse.Result then
+						P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
+					  end
+				   end)
+			
+			end
+		end
+		
 	end
 end
 
@@ -184,6 +205,26 @@ function EX_CMD.LUA_ACTION(tParams)
     elseif tParams["ACTION"] == "SENDPULSE" then
 	   P8INT:SEND_PULSE()
     end
+end
+
+function EX_CMD.LockAudioOutput(tParams)
+	LogTrace("Triggered Lock Audio Output")
+	LogInfo(tParams)
+	if tonumber(tParams["Zone"]) > -1 then
+		local zone = tonumber(tParams["Zone"]) - 1
+		portLock(zone, 1)
+		-- TODO: Send lock command to matrix
+	end
+end
+
+function EX_CMD.UnlockAudioOutput(tParams)
+	LogTrace("Triggered Unlock Audio Output")
+	LogInfo(tParams)
+	if tonumber(tParams["Zone"]) > -1 then
+		local zone = tonumber(tParams["Zone"]) - 1
+		portLock(zone, 0)
+		-- TODO: Send unlock command to matrix
+	end
 end
 
 function PRX_CMD.SET_VOLUME_LEVEL(idBinding, tParams)
@@ -393,10 +434,8 @@ end
 
 function PRX_CMD.IS_AV_OUTPUT_TO_INPUT_VALID(idBinding, tParams)
     local pathIsValid =  "True"
-
-    -- In sink mode assume all paths are valid
+	local provider_class    	= tParams["Provider_sClass"]
     if MODE_SINK == 0 then
-	   local provider_class    	= tParams["Provider_sClass"]
 	   -- TODO: Test for other video sources gAVPathType[tonumber(params["Params_bindingType"])]?
 	   if provider_class == "VIDEO_SELECTION" or provider_class == "HDMI" then
 	   else
@@ -409,6 +448,22 @@ function PRX_CMD.IS_AV_OUTPUT_TO_INPUT_VALID(idBinding, tParams)
 			 pathIsValid = "False"
 		  end
 	   end
+	   
+	else 
+		-- In sink mode check for manual mode and do audio locking
+		if provider_class == "VIDEO_SELECTION" or provider_class == "HDMI" then
+		else
+			if MODE_MANUALMODE == 1 then
+				local consumer_idBinding 	= tonumber(tParams["Consumer_idBinding"])
+				local output = consumer_idBinding % 1000
+				if portLocked(output) == 1 then
+					local lockedInput = portLockedGet(output)
+					if output ~= lockedInput then
+						pathIsValid = "False"
+					end
+				end
+			end
+		end
     end
     return pathIsValid
 end

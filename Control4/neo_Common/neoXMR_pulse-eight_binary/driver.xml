@@ -5,9 +5,9 @@
   <name>neo:XMR (Designed for BINARY Edition) IP Driver</name>
   <model>neo:XMR (Designed for BINARY Edition)</model>
   <created>04/05/2019 12:00 PM</created>
-  <modified>01/31/2023 12:10 PM</modified>
+  <modified>07/27/2023 12:10 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>19</version>
+  <version>20</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
@@ -46,8 +46,8 @@
     <has_video_sense_control>False</has_video_sense_control>
     <video_consumer_count>6</video_consumer_count>
     <video_provider_count>8</video_provider_count>
-    <can_switch_separately>False</can_switch_separately>
-    <requires_separate_switching>False</requires_separate_switching>
+    <can_switch_separately>True</can_switch_separately>
+    <requires_separate_switching>True</requires_separate_switching>
     <has_up_down_volume_control>True</has_up_down_volume_control>
   </capabilities>
   <connections>
@@ -883,6 +883,34 @@
         <command>SENDPULSE</command>
       </action>
     </actions>
+	<commands>
+      <command>
+        <name>Lock Audio Output</name>
+        <description>Lock Audio Output PARAM1 to currently selected input </description>
+        <params>
+          <param>
+            <name>Zone</name>
+            <type>RANGED_INTEGER</type>
+            <minimum>1</minimum>
+            <maximum>8</maximum>
+            <default>1</default>
+          </param>
+        </params>
+      </command>
+	  <command>
+        <name>Unlock Audio Output</name>
+        <description>Unlock Audio Output PARAM1 from currently locked input </description>
+        <params>
+          <param>
+            <name>Zone</name>
+            <type>RANGED_INTEGER</type>
+            <minimum>1</minimum>
+            <maximum>8</maximum>
+            <default>1</default>
+          </param>
+        </params>
+      </command>
+    </commands>
     <power_management_method>AlwaysOn</power_management_method>
     <power_command_delay>0</power_command_delay>
     <power_delay>0</power_delay>
@@ -988,12 +1016,22 @@
         <name>Auto Sync Navigators</name>
         <type>LIST</type>
         <readonly>False</readonly>
-        <default>Yes</default>
+        <default>No</default>
         <items>
           <item>Yes</item>
           <item>No</item>
         </items>
         <tooltip>Polls the matrix and updates control4 if external routing has been done. Typically using a TV remote</tooltip>
+      </property>
+	  <property>
+        <name>Independent Routing</name>
+        <type>LIST</type>
+        <readonly>False</readonly>
+        <default>Disabled</default>
+        <items>
+          <item>Enabled</item>
+          <item>Disabled</item>
+        </items>
       </property>
       <property>
         <name>Header</name>
@@ -1005,7 +1043,7 @@
         <name>CEC Support</name>
         <type>LIST</type>
         <readonly>False</readonly>
-        <default>Enabled</default>
+        <default>Disabled</default>
         <items>
           <item>Enabled</item>
           <item>Disabled</item>
@@ -1015,7 +1053,7 @@
         <name>CEC Switching Support</name>
         <type>LIST</type>
         <readonly>False</readonly>
-        <default>Enabled</default>
+        <default>Disabled</default>
         <items>
           <item>Enabled</item>
           <item>Disabled</item>
@@ -1024,7 +1062,7 @@
       <property>
         <name>Send CEC ON during route change</name>
         <type>LIST</type>
-        <default>Yes</default>
+        <default>No</default>
         <items>
           <item>Yes</item>
           <item>No</item>

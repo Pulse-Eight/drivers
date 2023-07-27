@@ -133,7 +133,7 @@ function HealthUpdateTimer()
 end
 
 function PropertiesUpdateTimer()
-	if gP8PropertiesTimerTicks == nil or gP8PropertiesTimerTicks == 3 then
+	if gP8PropertiesTimerTicks == nil or gP8PropertiesTimerTicks == 4 then
 		gP8PropertiesTimerTicks = 0
 	end
 	if gP8PollRequests.properties == nil then 
@@ -161,7 +161,13 @@ function PropertiesUpdateTimer()
 				P8INT:GET_SOURCESINKMODE(transfer, responses, errCode, errMsg)
 				end)
 			:Get(P8INT:GET_MATRIX_URL() .. "/Audio/SinkMode")
-		
+		elseif gP8PropertiesTimerTicks == 3 and MODE_MANUALMODE_SUPPORTED == 1 then
+			gP8PollRequests.properties = C4:url() 
+			:SetOption("timeout", 15)
+			:OnDone(function(transfer, responses, errCode, errMsg) 
+				P8INT:GET_MANUALMODE(transfer, responses, errCode, errMsg)
+				end)
+			:Get(P8INT:GET_MATRIX_URL() .. "/Audio/ManualMode")
 		end
 		gP8PropertiesTimerTicks = gP8PropertiesTimerTicks + 1
 	end

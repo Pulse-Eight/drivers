@@ -28,7 +28,30 @@ local existingRouting = {
     OUTPUT6 = -1,
     OUTPUT7 = -1,
     OUTPUT8 = -1,
-    OUTPUT9 = -1
+    OUTPUT9 = -1,
+    AUDIOOUTPUT0 = -1,
+    AUDIOOUTPUT1 = -1,
+    AUDIOOUTPUT2 = -1,
+    AUDIOOUTPUT3 = -1,
+    AUDIOOUTPUT4 = -1,
+    AUDIOOUTPUT5 = -1,
+    AUDIOOUTPUT6 = -1,
+    AUDIOOUTPUT7 = -1,
+    AUDIOOUTPUT8 = -1,
+    AUDIOOUTPUT9 = -1
+}
+
+local audioLocked = {
+    AUDIOOUTPUT0 = 0,
+    AUDIOOUTPUT1 = 0,
+    AUDIOOUTPUT2 = 0,
+    AUDIOOUTPUT3 = 0,
+    AUDIOOUTPUT4 = 0,
+    AUDIOOUTPUT5 = 0,
+    AUDIOOUTPUT6 = 0,
+    AUDIOOUTPUT7 = 0,
+    AUDIOOUTPUT8 = 0,
+    AUDIOOUTPUT9 = 0
 }
 
 local outputConsumers = {
@@ -171,9 +194,14 @@ function P8INT:PORT_SET(idBinding, tParams)
     else
         -- Do not attempt audio routing in source mode
         if MODE_SINK == 1 then
+			-- If the port is locked, force the input to the locked input.
+			if portLocked(output) == 1 then
+				input = existingRouting["AUDIOOUTPUT" .. output]
+			end
+
             local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Route/" .. input .. "/" .. output
             LogInfo("Changing Audio Routing. Input: " .. input .. " -> Output: " .. output)
-            existingRouting["OUTPUT" .. output] = input
+            existingRouting["AUDIOOUTPUT" .. output] = input
             ticket:OnDone(
                 function(transfer, responses, errCode, errMsg)
 					PermitRoutingPoll()
@@ -253,6 +281,13 @@ function P8INT:GET_ROUTING_STATE(transfer, responses, errCode, errMsg)
                     LogTrace("Output " .. outputNumber .. " routing has changed, was " .. existingRouting[outputName] .. " now " .. port.ReceiveFrom)
                     routingChanged = true
                 end
+				
+				if MODE_MANUALMODE_SUPPORTED == 1 then
+					-- We can only reliably track audio routing on matrices that support manual mode.
+					if port.AudioReceived ~= nil then
+						existingRouting["AUDIOOUTPUT" .. outputNumber] = tonumber(port.AudioRecieved)
+					end
+				end
 
                 if routingChanged then
                     LogTrace("Output " .. outputNumber .. " routing has changed, was " .. existingRouting[outputName] .. " now " .. port.ReceiveFrom)
@@ -295,4 +330,16 @@ function P8INT:GET_ROUTING_STATE(transfer, responses, errCode, errMsg)
     else
         MarkNetworkTransfer(false, "GET_ROUTING_STATE", -1, "Failed to parse response")
     end
+end
+
+function portLocked(port) 
+	return audioLocked["AUDIOOUTPUT" .. port]
+end
+
+function portLockedGet(port) 
+	return existingRouting["AUDIOOUTPUT" .. port]
+end
+
+function portLock(port, locked)
+	audioLocked["AUDIOOUTPUT" .. port] = locked
 end

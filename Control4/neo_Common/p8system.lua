@@ -95,6 +95,13 @@ function P8INT:GET_FEATURES(transfer, responses, errCode, errMsg)
 			UpdateProperty("CEC Switching Support", "Disabled")
 			MODE_CEC_SWITCHING = 1
 		end		
+		
+		if jsonResponse.Audio.SupportManualMode == true then
+			MODE_MANUALMODE_SUPPORTED = 1
+		else
+			MODE_MANUALMODE_SUPPORTED = 0
+		end
+		HideManualModeOption(MODE_MANUALMODE_SUPPORTED)
 		MarkNetworkTransfer(true)
 	else
 		MarkNetworkTransfer(false, "GET_FEATURES", -1, "Failed to parse response")
@@ -113,9 +120,11 @@ function P8INT:GET_SOURCESINKMODE(transfer, responses, errCode, errMsg)
 				UpdateProperty("Routing Mode", "Sink Mode")
 			else
 				MODE_SINK = 0
+				MODE_MANUALMODE = 0
 				UpdateProperty("Routing Mode", "Source Mode")
 			end
 		end
+		HideManualModeOption(MODE_SINK)
 		MarkNetworkTransfer(true)
 	else
 		MarkNetworkTransfer(false, "GET_SOURCESINKMODE", -2473, "Failed to get source/sink mode option")
@@ -126,6 +135,33 @@ function P8INT:GET_SOURCESINKMODE(transfer, responses, errCode, errMsg)
 		end
 	end
 end
+
+function P8INT:GET_MANUALMODE(transfer, responses, errCode, errMsg)
+	--LogTrace("Updating Manual Mode")
+	
+	if errCode == 0 then 
+		local jsonResponse = JSON:decode(responses[#responses].body)
+		if jsonResponse.Result then
+			if jsonResponse.manual_mode == true then
+				MODE_MANUALMODE = 1
+				UpdateProperty("Independent Routing", "Enabled")
+			else
+				MODE_MANUALMODE = 0
+				UpdateProperty("Independent Routing", "Disabled")
+			end
+		end
+		MarkNetworkTransfer(true)
+	else
+		MarkNetworkTransfer(false, "GET_SOURCESINKMODE", -2476, "Failed to get manual mode option")
+		if MODE_MANUALMODE == 1 then
+			UpdateProperty("Independent Routing", "Enabled")
+		else 
+			UpdateProperty("Routing Mode", "Source Mode")
+		end
+	end
+end
+
+
 
 function P8INT:GET_POWERON_ON_ROUTING_CHANGE(transfer, responses, errCode, errMsg)
 	if errCode == 0 then 
@@ -206,11 +242,44 @@ function P8INT:SET_CEC_SWITCHING_SUPPORT(value)
 		:Get(url)
 end
 
+
+function P8INT:SET_MANUALMODE(value)
+    --LogTrace("SET_MANUALMODE(" .. value .. ")")
+	local url = P8INT:GET_MATRIX_URL()
+	if value == 1 then
+		url = url .. "/Audio/ManualMode/1"
+	else
+		url = url .. "/Audio/ManualMode/0"
+	end
+	
+	local t = C4:url() -- must create a new ticket every time
+		:SetOption("timeout", 15)
+		:OnDone(function(transfer, responses, errCode, errMsg)
+				if errCode == 0 then 
+					MODE_MANUALMODE = value
+					MarkNetworkTransfer(true)
+				else
+					MarkNetworkTransfer(false, "SET_MANUALMODE", -2477, "Failed to change Manual Mode")
+					if MODE_MANUALMODE == 1 then
+						UpdateProperty("Independent Routing", "Enabled")
+					else
+						UpdateProperty("Independent Routing", "Disabled")
+					end
+				end
+			end)
+		:Get(url)
+end
+
 function HideCecOptions(value) 
 	value = 1 - value
 	C4:SetPropertyAttribs("CEC Switching Support", value)
 	C4:SetPropertyAttribs("Send CEC ON during route change", value)
 	C4:SetPropertyAttribs("Send CEC OFF on zone off", value)
+end
+
+function HideManualModeOption(value) 
+	value = 1 - value
+	C4:SetPropertyAttribs("Independent Routing", value)
 end
 
 function P8INT:SET_POWERON_ON_ROUTING_CHANGE(value)
