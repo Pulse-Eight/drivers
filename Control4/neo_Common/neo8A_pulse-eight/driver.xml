@@ -2,32 +2,34 @@
   <copyright>Copyright 2022 Pulse-Eight Limited.  All rights reserved.</copyright>
   <creator>Pulse-Eight</creator>
   <manufacturer>Pulse-Eight</manufacturer>
-  <name>neo:8 IP Driver</name>
-  <model>neo:8</model>
+  <name>neo:8/8A IP Driver</name>
+  <model>neo:8/8A</model>
   <created>21/06/2017 10:39 PM</created>
-  <modified>01/31/2023 12:10 PM</modified>
+  <modified>03/22/2023 12:10 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>19</version>
+  <version>20</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
   <search_types>
-    <type>pulse-eight:Neo8</type>
+    <type>pulse-eight:Neo8A</type>
+	<type>pulse-eight:Neo8</type>
   </search_types>
   <composer_categories>
     <category>Audio/Video</category>
   </composer_categories>
   <proxies qty="1">
-    <proxy proxybindingid="5001" name="neo:8" large_image="Images/neo_lg.png" small_image="Images/neo_sm.png" smimagepath="Images/neo_sm.png" lgimagepath="Images/neo_lg.png" image_source="c4z">avswitch</proxy>
+    <proxy proxybindingid="5001" name="neo:8/8A" large_image="Images/neo_lg.png" small_image="Images/neo_sm.png" smimagepath="Images/neo_sm.png" lgimagepath="Images/neo_lg.png" image_source="c4z">avswitch</proxy>
   </proxies>
   <capabilities>
     <audio_consumer_count>0</audio_consumer_count>
-    <audio_provider_count>0</audio_provider_count>
+    <audio_provider_count>8</audio_provider_count>
     <can_downclass>False</can_downclass>
     <can_switch>True</can_switch>
     <can_upclass>False</can_upclass>
+	<has_audio>True</has_audio>
     <has_audio_sense_control>False</has_audio_sense_control>
     <has_discrete_balance_control>False</has_discrete_balance_control>
     <has_discrete_bass_control>False</has_discrete_bass_control>
@@ -50,11 +52,401 @@
     <has_up_down_volume_control>false</has_up_down_volume_control>
   </capabilities>
   <connections>
+    <connection proxybindingid="5001">
+      <id>1000</id>
+      <type>5</type>
+      <connectionname>Input 1</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>1001</id>
+      <type>5</type>
+      <connectionname>Input 2</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>1002</id>
+      <type>5</type>
+      <connectionname>Input 3</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>1003</id>
+      <type>5</type>
+      <connectionname>Input 4</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>1004</id>
+      <type>5</type>
+      <connectionname>Input 5</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>1005</id>
+      <type>5</type>
+      <connectionname>Input 6</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>1006</id>
+      <type>5</type>
+      <connectionname>Input 7</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>1007</id>
+      <type>5</type>
+      <connectionname>Input 8</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2000</id>
+      <type>5</type>
+      <connectionname>Output 1</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2001</id>
+      <type>5</type>
+      <connectionname>Output 2</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2002</id>
+      <type>5</type>
+      <connectionname>Output 3</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2003</id>
+      <type>5</type>
+      <connectionname>Output 4</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2004</id>
+      <type>5</type>
+      <connectionname>Output 5</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2005</id>
+      <type>5</type>
+      <connectionname>Output 6</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2006</id>
+      <type>5</type>
+      <connectionname>Output 7</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2007</id>
+      <type>5</type>
+      <connectionname>Output 8</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2008</id>
+      <type>5</type>
+      <connectionname>Output 9</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>2009</id>
+      <type>5</type>
+      <connectionname>Output 10</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>HDMI</classname>
+        </class>
+      </classes>
+    </connection>
+	<connection proxybindingid="5001">
+      <id>4000</id>
+      <type>6</type>
+      <connectionname>Output 1</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4001</id>
+      <type>6</type>
+      <connectionname>Output 2</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4002</id>
+      <type>6</type>
+      <connectionname>Output 3</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4003</id>
+      <type>6</type>
+      <connectionname>Output 4</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4004</id>
+      <type>6</type>
+      <connectionname>Output 5</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4005</id>
+      <type>6</type>
+      <connectionname>Output 6</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4006</id>
+      <type>6</type>
+      <connectionname>Output 7</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
+    <connection proxybindingid="5001">
+      <id>4007</id>
+      <type>6</type>
+      <connectionname>Output 8</connectionname>
+      <consumer>False</consumer>
+      <linelevel>True</linelevel>
+      <videosource>True</videosource>
+      <audiosource>True</audiosource>
+      <classes>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
+      </classes>
+    </connection>
     <connection>
       <id>5001</id>
       <type>2</type>
       <connectionname>AVSWITCH</connectionname>
       <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
       <linelevel>True</linelevel>
       <classes>
         <class>
@@ -63,245 +455,35 @@
       </classes>
     </connection>
     <connection>
-      <id>1000</id>
-      <type>5</type>
-      <connectionname>Input 1</connectionname>
-      <consumer>true</consumer>
-      <linelevel>true</linelevel>
+      <id>6000</id>
+      <connectionname>Network</connectionname>
+      <type>4</type>
+      <consumer>True</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
       <classes>
         <class>
-          <classname>HDMI</classname>
+          <classname>TCP</classname>
+          <ports>
+            <port>
+              <number>80</number>
+              <auto_connect>False</auto_connect>
+              <monitor_connection>False</monitor_connection>
+              <keep_connection>False</keep_connection>
+            </port>
+          </ports>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
-    <connection>
-      <id>1001</id>
-      <type>5</type>
-      <connectionname>Input 2</connectionname>
-      <consumer>true</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>1002</id>
-      <type>5</type>
-      <connectionname>Input 3</connectionname>
-      <consumer>true</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>1003</id>
-      <type>5</type>
-      <connectionname>Input 4</connectionname>
-      <consumer>true</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>1004</id>
-      <type>5</type>
-      <connectionname>Input 5</connectionname>
-      <consumer>true</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>1005</id>
-      <type>5</type>
-      <connectionname>Input 6</connectionname>
-      <consumer>true</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>1006</id>
-      <type>5</type>
-      <connectionname>Input 7</connectionname>
-      <consumer>true</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>1007</id>
-      <type>5</type>
-      <connectionname>Input 8</connectionname>
-      <consumer>true</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>2000</id>
-      <type>5</type>
-      <connectionname>Output 1</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>2001</id>
-      <type>5</type>
-      <connectionname>Output 2</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>2002</id>
-      <type>5</type>
-      <connectionname>Output 3</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>2003</id>
-      <type>5</type>
-      <connectionname>Output 4</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>2004</id>
-      <type>5</type>
-      <connectionname>Output 5</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>2005</id>
-      <type>5</type>
-      <connectionname>Output 6</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>2006</id>
-      <type>5</type>
-      <connectionname>Output 7</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>2007</id>
-      <type>5</type>
-      <connectionname>Output 8</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>2008</id>
-      <type>5</type>
-      <connectionname>Output 9</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
-      <id>2009</id>
-      <type>5</type>
-      <connectionname>Output 10</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
-      <classes>
-        <class>
-          <classname>HDMI</classname>
-        </class>
-      </classes>
-      <facing>1</facing>
-    </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7000</id>
       <type>7</type>
       <connectionname>Room 1</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
       <classes>
         <class>
           <classname>AUDIO_SELECTION</classname>
@@ -310,7 +492,6 @@
           <classname>VIDEO_SELECTION</classname>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
     <connection>
       <id>7001</id>
@@ -326,9 +507,8 @@
           <classname>VIDEO_SELECTION</classname>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7002</id>
       <type>7</type>
       <connectionname>Room 3</connectionname>
@@ -342,7 +522,6 @@
           <classname>VIDEO_SELECTION</classname>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
     <connection>
       <id>7003</id>
@@ -358,7 +537,6 @@
           <classname>VIDEO_SELECTION</classname>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
     <connection>
       <id>7004</id>
@@ -374,7 +552,6 @@
           <classname>VIDEO_SELECTION</classname>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
     <connection>
       <id>7005</id>
@@ -390,7 +567,6 @@
           <classname>VIDEO_SELECTION</classname>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
     <connection>
       <id>7006</id>
@@ -406,14 +582,15 @@
           <classname>VIDEO_SELECTION</classname>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7007</id>
       <type>7</type>
       <connectionname>Room 8</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
       <classes>
         <class>
           <classname>AUDIO_SELECTION</classname>
@@ -422,14 +599,15 @@
           <classname>VIDEO_SELECTION</classname>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7008</id>
       <type>7</type>
       <connectionname>Room 9</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
       <classes>
         <class>
           <classname>AUDIO_SELECTION</classname>
@@ -438,14 +616,15 @@
           <classname>VIDEO_SELECTION</classname>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
-    <connection>
+    <connection proxybindingid="5001">
       <id>7009</id>
       <type>7</type>
       <connectionname>Room 10</connectionname>
-      <consumer>false</consumer>
-      <linelevel>true</linelevel>
+      <consumer>False</consumer>
+      <audiosource>False</audiosource>
+      <videosource>False</videosource>
+      <linelevel>True</linelevel>
       <classes>
         <class>
           <classname>AUDIO_SELECTION</classname>
@@ -454,7 +633,6 @@
           <classname>VIDEO_SELECTION</classname>
         </class>
       </classes>
-      <facing>1</facing>
     </connection>
   </connections>
   <config>
@@ -565,19 +743,10 @@
         <default>200</default>
       </property>
       <property>
-        <name>Routing Mode</name>
-        <type>LIST</type>
-        <default>Sink Mode</default>
-        <items>
-          <item>Source Mode</item>
-          <item>Sink Mode</item>
-        </items>
-      </property>
-      <property>
         <name>Auto Sync Navigators</name>
         <type>LIST</type>
         <readonly>False</readonly>
-        <default>Yes</default>
+        <default>No</default>
         <items>
           <item>Yes</item>
           <item>No</item>
@@ -594,7 +763,7 @@
         <name>CEC Support</name>
         <type>LIST</type>
         <readonly>False</readonly>
-        <default>Enabled</default>
+        <default>Disabled</default>
         <items>
           <item>Enabled</item>
           <item>Disabled</item>
@@ -604,7 +773,7 @@
         <name>CEC Switching Support</name>
         <type>LIST</type>
         <readonly>False</readonly>
-        <default>Enabled</default>
+        <default>Disabled</default>
         <items>
           <item>Enabled</item>
           <item>Disabled</item>
@@ -613,7 +782,7 @@
       <property>
         <name>Send CEC ON during route change</name>
         <type>LIST</type>
-        <default>Yes</default>
+        <default>No</default>
         <items>
           <item>Yes</item>
           <item>No</item>

@@ -35,31 +35,41 @@ function P8INT:GET_DETAILS(transfer, responses, errCode, errMsg)
 	local jsonResponse = JSON:decode(responses[#responses].body)
 	if jsonResponse.Result then
 		UpdateProperty("System Status", jsonResponse.StatusMessage)
---		UpdateProperty("Connected To Network", "Yes")
 		UpdateProperty("Version", jsonResponse.Version)
 		UpdateProperty("Serial", jsonResponse.Serial)
+		
 		if jsonResponse.Model == "FF88S" then
 			UpdateProperty("Model", "neo:X")
+			MODE_SINK_SUPPORTED = 1
 		elseif jsonResponse.Model == "FF88SA" then
 			UpdateProperty("Model", "neo:X+")
+			MODE_SINK_SUPPORTED = 1
 		elseif jsonResponse.Model == "FF66SA" then
 			UpdateProperty("Model", "neo:XMR")
+			MODE_SINK_SUPPORTED = 1
 		elseif jsonResponse.Model == "FF64S" then
 			UpdateProperty("Model", "neo:XSR")
+			MODE_SINK_SUPPORTED = 1
 		elseif jsonResponse.Model == "FF88" then
 			UpdateProperty("Model", "neo:8")
+			MODE_SINK_SUPPORTED = 0
 		elseif jsonResponse.Model == "FF88A" then
 			UpdateProperty("Model", "neo:8a")
+			MODE_SINK_SUPPORTED = 0
 		elseif jsonResponse.Model == "FF66A" then
 			UpdateProperty("Model", "neo:6")
+			MODE_SINK_SUPPORTED = 0
 		elseif jsonResponse.Model == "FFMS44" then
 			UpdateProperty("Model", "neo:4 Professional")
 		elseif jsonResponse.Model == "FFMB44" then
+			MODE_SINK_SUPPORTED = 0
 			UpdateProperty("Model", "neo:4 Basic")
 		elseif jsonResponse.Model == "MM88" then
 			UpdateProperty("Model", "neo:8 Modular")
+			MODE_SINK_SUPPORTED = 0
 		else
 			UpdateProperty("Model", "Unknown Model " .. jsonResponse.Model .. " (You may have loaded the wrong driver)")
+			MODE_SINK_SUPPORTED = 0
 		end
 		MarkNetworkTransfer(true)
 	else
@@ -69,7 +79,7 @@ function P8INT:GET_DETAILS(transfer, responses, errCode, errMsg)
 end
 
 function P8INT:GET_FEATURES(transfer, responses, errCode, errMsg) 
-    --LogTrace("Updating System Features")
+    LogTrace("Updating System Features")
 	if errCode ~= 0 or errMsg ~= nil then
 		if errMsg == nil then
 			errMsg = "Unknown Error"
@@ -101,7 +111,7 @@ function P8INT:GET_FEATURES(transfer, responses, errCode, errMsg)
 		else
 			MODE_MANUALMODE_SUPPORTED = 0
 		end
-		HideManualModeOption(MODE_MANUALMODE_SUPPORTED)
+		HideManualModeOption()
 		MarkNetworkTransfer(true)
 	else
 		MarkNetworkTransfer(false, "GET_FEATURES", -1, "Failed to parse response")
@@ -111,7 +121,9 @@ end
 
 function P8INT:GET_SOURCESINKMODE(transfer, responses, errCode, errMsg)
 	--LogTrace("Updating Source/Sink Mode")
-	
+	if MODE_SINK_SUPPORTED ~= 1 then
+		return
+	end
 	if errCode == 0 then 
 		local jsonResponse = JSON:decode(responses[#responses].body)
 		if jsonResponse.Result then
@@ -124,7 +136,7 @@ function P8INT:GET_SOURCESINKMODE(transfer, responses, errCode, errMsg)
 				UpdateProperty("Routing Mode", "Source Mode")
 			end
 		end
-		HideManualModeOption(MODE_SINK)
+		HideManualModeOption()
 		MarkNetworkTransfer(true)
 	else
 		MarkNetworkTransfer(false, "GET_SOURCESINKMODE", -2473, "Failed to get source/sink mode option")
@@ -216,7 +228,7 @@ function P8INT:SET_CEC_ENABLED(value)
 end
 
 function P8INT:SET_CEC_SWITCHING_SUPPORT(value)
-    --LogTrace("SET_CEC_SWITCHING_SUPPORT(" .. value .. ")")
+    LogTrace("SET_CEC_SWITCHING_SUPPORT(" .. value .. ")")
 	local url = P8INT:GET_MATRIX_URL()
 	if value == 1 then
 		url = url .. "/CEC/switching/on"
@@ -277,9 +289,12 @@ function HideCecOptions(value)
 	C4:SetPropertyAttribs("Send CEC OFF on zone off", value)
 end
 
-function HideManualModeOption(value) 
-	value = 1 - value
-	C4:SetPropertyAttribs("Independent Routing", value)
+function HideManualModeOption() 
+	if (MODE_SINK == 1 and MODE_MANUALMODE_SUPPORTED == 1) then
+		C4:SetPropertyAttribs("Independent Routing", 0)
+	else
+		C4:SetPropertyAttribs("Independent Routing", 1)
+	end
 end
 
 function P8INT:SET_POWERON_ON_ROUTING_CHANGE(value)

@@ -435,7 +435,7 @@ end
 function PRX_CMD.IS_AV_OUTPUT_TO_INPUT_VALID(idBinding, tParams)
     local pathIsValid =  "True"
 	local provider_class    	= tParams["Provider_sClass"]
-    if MODE_SINK == 0 then
+    if MODE_SINK == 0 or MODE_SINK_SUPPORTED == 0 then
 	   -- TODO: Test for other video sources gAVPathType[tonumber(params["Params_bindingType"])]?
 	   if provider_class == "VIDEO_SELECTION" or provider_class == "HDMI" then
 	   else

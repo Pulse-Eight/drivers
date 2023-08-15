@@ -193,7 +193,7 @@ function P8INT:PORT_SET(idBinding, tParams)
         ):Get(P8INT:GET_MATRIX_URL() .. "/Port/Set/" .. input .. "/" .. output)
     else
         -- Do not attempt audio routing in source mode
-        if MODE_SINK == 1 then
+        if MODE_SINK == 1 and MODE_SINK_SUPPORTED == 1  then
 			-- If the port is locked, force the input to the locked input.
 			if portLocked(output) == 1 then
 				input = existingRouting["AUDIOOUTPUT" .. output]
@@ -278,7 +278,7 @@ function P8INT:GET_ROUTING_STATE(transfer, responses, errCode, errMsg)
                     end
                 end
                 if existingRouting[outputName] ~= port.ReceiveFrom and outputRoom[outputName] ~= nil then
-                    LogTrace("Output " .. outputNumber .. " routing has changed, was " .. existingRouting[outputName] .. " now " .. port.ReceiveFrom)
+					LogTrace("Output " .. outputNumber .. " routing has changed, was " .. existingRouting[outputName] .. " now " .. port.ReceiveFrom)
                     routingChanged = true
                 end
 				
@@ -293,6 +293,9 @@ function P8INT:GET_ROUTING_STATE(transfer, responses, errCode, errMsg)
                     LogTrace("Output " .. outputNumber .. " routing has changed, was " .. existingRouting[outputName] .. " now " .. port.ReceiveFrom)
                     existingRouting[outputName] = port.ReceiveFrom
                     C4:SendToDevice(outputRoom[outputName], "SELECT_VIDEO_DEVICE", {deviceid = inputProxies["INPUT" .. port.ReceiveFrom]})
+					if MODE_MANUALMODE_SUPPORTED == 1 then
+						C4:SendToDevice(outputRoom[outputName], "SELECT_AUDIO_DEVICE", {deviceid = inputProxies["INPUT" .. port.AudioRecieved]})
+					end
                 elseif powerChanged then
 					if roomPower[outputName] == 0 then
 						--Tell Director to do a routing change and turn on any other items required

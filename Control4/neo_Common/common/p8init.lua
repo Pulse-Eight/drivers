@@ -64,7 +64,7 @@ end
 
 function ON_PROPERTY_CHANGED.CECSwitchingSupport(propertyValue)
      --LogTrace("CECSwitchingSupport Mode Changed " .. propertyValue)
-	if(propertyValue == "Yes") then
+	if(propertyValue == "Enabled") then
 	   P8INT:SET_CEC_SWITCHING_SUPPORT(1)
      else
 	   P8INT:SET_CEC_SWITCHING_SUPPORT(0)
