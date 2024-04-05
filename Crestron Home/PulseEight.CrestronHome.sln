@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.Neo4.IP", "Pulse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.Neo6IP", "Pulse-Eight Neo\PulseEight.Neo6IP.csproj", "{D35A8BA4-A961-41EA-90EA-756373CEEAFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PulseEight.OneIP.IP", "Pulse-Eight Neo\PulseEight.OneIP.IP.csproj", "{149E57BE-74C8-452B-AD1A-DE491B5CEDEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D35A8BA4-A961-41EA-90EA-756373CEEAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D35A8BA4-A961-41EA-90EA-756373CEEAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D35A8BA4-A961-41EA-90EA-756373CEEAFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{149E57BE-74C8-452B-AD1A-DE491B5CEDEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{149E57BE-74C8-452B-AD1A-DE491B5CEDEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{149E57BE-74C8-452B-AD1A-DE491B5CEDEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{149E57BE-74C8-452B-AD1A-DE491B5CEDEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
