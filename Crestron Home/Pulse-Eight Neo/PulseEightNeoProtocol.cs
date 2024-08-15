@@ -29,7 +29,7 @@ namespace PulseEight.Neo.IP {
 		/// </summary>
 		/// <param name="response">Data from the device</param>
 		protected override void DeConstructSwitcherRoute(string response) {
-			SendMeData($"Switcher Route Data: {response}");
+			Log($"Switcher Route Data: {response}");
 			base.DeConstructSwitcherRoute(response);
 		}
 
@@ -43,7 +43,7 @@ namespace PulseEight.Neo.IP {
 				}
 			}
 
-			SendMeData($"Routing Data: {response}");
+			Log($"Routing Data: {response}");
 		}
 
 		private void UpdateRoutingConfiguration(string response) {
@@ -70,7 +70,7 @@ namespace PulseEight.Neo.IP {
 		/// </summary>
 		/// <param name="response"></param>
 		protected override void DeConstructSwitcherPower(string response) {
-			SendMeData("Instructing Crestron that the device is On");
+			Log("Instructing Crestron that the device is On");
 			PowerIsOn = true;
 			base.DeConstructSwitcherPower(response);
 		}
@@ -82,13 +82,13 @@ namespace PulseEight.Neo.IP {
 		public override void DataHandler(string response) {
 			try {
 				response = response.Substring(response.IndexOf("{", StringComparison.InvariantCultureIgnoreCase));
-				
+
 				switch (myLastCommand) {
 					case StandardCommandsEnum.TemperaturePoll:
 						var healthData = JsonConvert.DeserializeObject<HealthResponse>(response);
 						CurrentTemperature = Convert.ToInt16(healthData.Temperature0);
 						CurrentTemperatureUnits = TemperatureUnit.Celcius;
-						SendMeData($"Updated temperature to: {CurrentTemperature} {CurrentTemperatureUnits}");
+						Log($"Updated temperature to: {CurrentTemperature} {CurrentTemperatureUnits}");
 						break;
 					case StandardCommandsEnum.AudioVideoSwitcherRoute:
 						HandleSwitcherRouteResponse(response);
@@ -101,14 +101,14 @@ namespace PulseEight.Neo.IP {
 						PowerIsOn = true;
 						break;
 					default:
-						SendMeData($"Unhandled response from device: {response}");
+						Log($"Unhandled response from device: {response}");
 						break;
 				}
 			} catch (Exception ex) {
 				if (myLastCommand == StandardCommandsEnum.PowerPoll) {
 					PowerIsOn = false;
 				}
-				SendMeData($"Failed to unpack response: {ex}: original data: '{response}'");
+				Log($"Failed to unpack response: {ex}: original data: '{response}'");
 			}
 
 			base.DataHandler(response);
@@ -121,65 +121,51 @@ namespace PulseEight.Neo.IP {
 		/// <returns></returns>
 		protected override bool PrepareStringThenSend(CommandSet commandSet) {
 			myLastCommand = commandSet.StandardCommand;
+			RuntimeLogger.Trace($"PrepareStringThenSend: {commandSet.StandardCommand}, Command = {commandSet.Command}");
 			switch (myLastCommand) {
 				case StandardCommandsEnum.AudioVideoSwitcherRoute:
 					var values = commandSet.Command.Split(',');
-					var inputId = Convert.ToInt32(values[0]) % 1000;
-					var outputId = Convert.ToInt32(values[1]) % 1000;
+					if (values.Length < 2) {
+						RuntimeLogger.Error("PrepareStringThenSend: Less than 2 values sent");
+					} else {
+						var inputStr = values[0];
+						var outputStr = values[1];
 
-					myLastData["input"] = values[0];
-					myLastData["output"] = values[1];
+						var success = int.TryParse(inputStr, out var inputId);
+						success &= int.TryParse(outputStr, out var outputId);
+						if (!success) {
+							// Input ID is not parseable as an integer - it's likely to be a string
+							if (values[0] == "NONE") {
+								RuntimeLogger.Info($"PrepareStringThenSend: Requested a clear on output {outputId}. No command sent to device");
+							} else {
+								RuntimeLogger.Warning($"PrepareStringThenSend: Unknown values passed to AudioVideoSwitcherRoute: {inputStr} {outputStr}");
+							}
+							return true;
+						}
 
-					commandSet.Command = $"port/set/{inputId}/{outputId}";
-					SendMeData($"Sending Routing Command: {commandSet.Command}");
+						// Strip out the prefix and convert to device IDs
+						outputId %= 1000;
+						inputId %= 1000;
+
+						myLastData["input"] = inputStr;
+						myLastData["output"] = outputStr;
+
+						commandSet.Command = $"port/set/{inputId}/{outputId}";
+						RuntimeLogger.Trace($"Sending Routing Command: {commandSet.Command}");
+					}
+
 					break;
 				case StandardCommandsEnum.AudioVideoSwitcherRoutePoll:
 				case StandardCommandsEnum.TemperaturePoll:
 				case StandardCommandsEnum.PowerPoll:
-					SendMeData($"Sending Command: {commandSet.Command}");
+					Log($"Sending Command: {commandSet.Command}");
 					break;
 				default:
-					SendMeData($"Unhandled command: {commandSet.StandardCommand}, Command = {commandSet.Command}");
+					Log($"Unhandled command: {commandSet.StandardCommand}, Command = {commandSet.Command}");
 					return true; //Don't send message
 			}
-			//if (commandSet.Parameters == null)
-			SendMeData("Setting Parameters to GET.");
-			commandSet.Parameters = new Object[] { RequestType.Get };
-			//bool foundRequestType = false;
-			for(int i = 0; i < commandSet.Parameters.Length; i++)
-            {
-				SendMeData("Parameter " + i.ToString() + ": " + commandSet.Parameters[i].ToString());
-				if(commandSet.Parameters[i].GetType() == typeof(RequestType))
-                {
-					if ((RequestType)commandSet.Parameters[i] == RequestType.Get)
-					{
-						SendMeData("Object of type RequestType Found. Already GET");
-					} else
-					{
-						SendMeData("Object of type RequestType Found. Leaving as is");
-						//commandSet.Parameters[i] = RequestType.Get;
-					}
-					//foundRequestType = true;
-                }
-            }
-			/*if(!foundRequestType)
-            {
-				SendMeData("Object of type RequestType still not found. Adding it");
-				Object[] temp = commandSet.Parameters;
-				Array.Resize(ref temp, commandSet.Parameters.Length + 1);
-				temp[temp.GetUpperBound(0)] = RequestType.Get;
-				commandSet.Parameters = temp;
-            }*/
-
+			commandSet.Parameters = new object[] { RequestType.Get };
 			return base.PrepareStringThenSend(commandSet);
-		}
-
-		/// <summary>
-		/// Wrapper for Log command
-		/// </summary>
-		/// <param name="data"></param>
-		private void SendMeData(string data) {
-			Log(data);
 		}
 	}
 }

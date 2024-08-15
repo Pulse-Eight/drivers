@@ -24,6 +24,6 @@ namespace PulseEight.Neo.IP {
 
 			AudioVideoSwitcherProtocol.RxOut += SendRxOut;
 			AudioVideoSwitcherProtocol.Initialize(AudioVideoSwitcherData);
-        }
+		}
 	}
 }
