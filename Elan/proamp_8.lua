@@ -4,10 +4,10 @@ end
 
 function EDRV_ZonePower(zone_index, turn_on_off)
 	local state
-	if (mute_on_off) then
-		state = 0
-	else
+	if (turn_on_off ~= 0) then
 		state = 1
+	else
+		state = 0
 	end
 
 	ELAN_ConnectTCP()
@@ -24,12 +24,11 @@ end
 
 function EDRV_ZoneSetMute(zone_index, mute_on_off)
 	local state
-	if (mute_on_off) then
-		state = 0
-	else
+	if (mute_on_off ~= 0) then
 		state = 1
+	else
+		state = 0
 	end
-
 	ELAN_ConnectTCP()
 	ELAN_SendHTTP("GET /Audio/Mute/" .. zone_index .. "/3/" .. state)
 	ELAN_DisconnectTCP()
@@ -41,6 +40,7 @@ function EDRV_Init()
 	ELAN_SendHTTP("GET /Details")
 	ELAN_DisconnectTCP()
 end
+
 
 
 
