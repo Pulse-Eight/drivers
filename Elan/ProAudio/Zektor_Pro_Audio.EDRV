@@ -1,0 +1,412 @@
+DRIVER_ID			= AUDIO_ZONECTLR_LUA_SERIAL
+DRIVER_VERSION		= 1.0.3
+VENDOR				= B-Scotch LLC
+DRIVER_NAME			= Zektor Pro Audio Series RS232
+LUA_SRC				= Zektor_Pro_Audio.lua
+SCHEMA				= 64
+
+VOLUME_MODE			= ABSOLUTE
+
+BAUD_RATE = 19200
+FLOW_CONTROL = NONE
+PARITY = NONE
+STOP_BITS = 1
+DATA_BITS = 8
+
+NUM_SOURCES		= 80
+
+SOURCE_1_NAME	= ANALOG 1
+SOURCE_2_NAME	= ANALOG 2
+SOURCE_3_NAME	= ANALOG 3
+SOURCE_4_NAME	= ANALOG 4
+SOURCE_5_NAME	= ANALOG 5
+SOURCE_6_NAME	= ANALOG 6
+SOURCE_7_NAME	= ANALOG 7
+SOURCE_8_NAME	= ANALOG 8
+SOURCE_9_NAME	= ANALOG 9
+SOURCE_10_NAME	= ANALOG 10
+SOURCE_11_NAME	= ANALOG 11
+SOURCE_12_NAME	= ANALOG 12
+SOURCE_13_NAME	= ANALOG 13
+SOURCE_14_NAME	= ANALOG 14
+SOURCE_15_NAME	= ANALOG 15
+SOURCE_16_NAME	= ANALOG 16
+SOURCE_17_NAME	= ANALOG 17
+SOURCE_18_NAME	= ANALOG 18
+SOURCE_19_NAME	= ANALOG 19
+SOURCE_20_NAME	= ANALOG 20
+SOURCE_21_NAME	= ANALOG 21
+SOURCE_22_NAME	= ANALOG 22
+SOURCE_23_NAME	= ANALOG 23
+SOURCE_24_NAME	= ANALOG 24
+SOURCE_25_NAME	= ANALOG 25
+SOURCE_26_NAME	= ANALOG 26
+SOURCE_27_NAME	= ANALOG 27
+SOURCE_28_NAME	= ANALOG 28
+SOURCE_29_NAME	= ANALOG 29
+SOURCE_30_NAME	= ANALOG 30
+SOURCE_31_NAME	= ANALOG 31
+SOURCE_32_NAME	= ANALOG 32
+SOURCE_33_NAME	= COAX 1
+SOURCE_34_NAME	= COAX 2
+SOURCE_35_NAME	= COAX 3
+SOURCE_36_NAME	= COAX 4
+SOURCE_37_NAME	= COAX 5
+SOURCE_38_NAME	= COAX 6
+SOURCE_39_NAME	= COAX 7
+SOURCE_40_NAME	= COAX 8
+SOURCE_41_NAME	= COAX 9
+SOURCE_42_NAME	= COAX 10
+SOURCE_43_NAME	= COAX 11
+SOURCE_44_NAME	= COAX 12
+SOURCE_45_NAME	= COAX 13
+SOURCE_46_NAME	= COAX 14
+SOURCE_47_NAME	= COAX 15
+SOURCE_48_NAME	= COAX 16
+SOURCE_49_NAME	= COAX 17
+SOURCE_50_NAME	= COAX 18
+SOURCE_51_NAME	= COAX 19
+SOURCE_52_NAME	= COAX 20
+SOURCE_53_NAME	= COAX 21
+SOURCE_54_NAME	= COAX 22
+SOURCE_55_NAME	= COAX 23
+SOURCE_56_NAME	= COAX 24
+SOURCE_57_NAME	= COAX 25
+SOURCE_58_NAME	= COAX 26
+SOURCE_59_NAME	= COAX 27
+SOURCE_60_NAME	= COAX 28
+SOURCE_61_NAME	= COAX 29
+SOURCE_62_NAME	= COAX 30
+SOURCE_63_NAME	= COAX 31
+SOURCE_64_NAME	= COAX 32
+SOURCE_65_NAME	= OPTICAL 1
+SOURCE_66_NAME	= OPTICAL 2
+SOURCE_67_NAME	= OPTICAL 3
+SOURCE_68_NAME	= OPTICAL 4
+SOURCE_69_NAME	= OPTICAL 5
+SOURCE_70_NAME	= OPTICAL 6
+SOURCE_71_NAME	= OPTICAL 7
+SOURCE_72_NAME	= OPTICAL 8
+SOURCE_73_NAME	= OPTICAL 9
+SOURCE_74_NAME	= OPTICAL 10
+SOURCE_75_NAME	= OPTICAL 11
+SOURCE_76_NAME	= OPTICAL 12
+SOURCE_77_NAME	= OPTICAL 13
+SOURCE_78_NAME	= OPTICAL 14
+SOURCE_79_NAME	= OPTICAL 15
+SOURCE_80_NAME	= OPTICAL 16
+
+
+NUM_ZONES		= 96
+
+ZONE_1_NAME	= Zektor A1
+ZONE_2_NAME	= Zektor A2
+ZONE_3_NAME	= Zektor A3
+ZONE_4_NAME	= Zektor A4
+ZONE_5_NAME	= Zektor A5
+ZONE_6_NAME	= Zektor A6
+ZONE_7_NAME	= Zektor A7
+ZONE_8_NAME	= Zektor A8
+ZONE_9_NAME	= Zektor A9
+ZONE_10_NAME	= Zektor A10
+ZONE_11_NAME	= Zektor A11
+ZONE_12_NAME	= Zektor A12
+ZONE_13_NAME	= Zektor A13
+ZONE_14_NAME	= Zektor A14
+ZONE_15_NAME	= Zektor A15
+ZONE_16_NAME	= Zektor A16
+ZONE_17_NAME	= Zektor A17
+ZONE_18_NAME	= Zektor A18
+ZONE_19_NAME	= Zektor A19
+ZONE_20_NAME	= Zektor A20
+ZONE_21_NAME	= Zektor A21
+ZONE_22_NAME	= Zektor A22
+ZONE_23_NAME	= Zektor A23
+ZONE_24_NAME	= Zektor A24
+ZONE_25_NAME	= Zektor A25
+ZONE_26_NAME	= Zektor A26
+ZONE_27_NAME	= Zektor A27
+ZONE_28_NAME	= Zektor A28
+ZONE_29_NAME	= Zektor A29
+ZONE_30_NAME	= Zektor A30
+ZONE_31_NAME	= Zektor A31
+ZONE_32_NAME	= Zektor A32
+ZONE_33_NAME	= Zektor A33
+ZONE_34_NAME	= Zektor A34
+ZONE_35_NAME	= Zektor A35
+ZONE_36_NAME	= Zektor A36
+ZONE_37_NAME	= Zektor A37
+ZONE_38_NAME	= Zektor A38
+ZONE_39_NAME	= Zektor A39
+ZONE_40_NAME	= Zektor A40
+ZONE_41_NAME	= Zektor A41
+ZONE_42_NAME	= Zektor A42
+ZONE_43_NAME	= Zektor A43
+ZONE_44_NAME	= Zektor A44
+ZONE_45_NAME	= Zektor A45
+ZONE_46_NAME	= Zektor A46
+ZONE_47_NAME	= Zektor A47
+ZONE_48_NAME	= Zektor A48
+ZONE_49_NAME	= Zektor A49
+ZONE_50_NAME	= Zektor A50
+ZONE_51_NAME	= Zektor A51
+ZONE_52_NAME	= Zektor A52
+ZONE_53_NAME	= Zektor A53
+ZONE_54_NAME	= Zektor A54
+ZONE_55_NAME	= Zektor A55
+ZONE_56_NAME	= Zektor A56
+ZONE_57_NAME	= Zektor A57
+ZONE_58_NAME	= Zektor A58
+ZONE_59_NAME	= Zektor A59
+ZONE_60_NAME	= Zektor A60
+ZONE_61_NAME	= Zektor A61
+ZONE_62_NAME	= Zektor A62
+ZONE_63_NAME	= Zektor A63
+ZONE_64_NAME	= Zektor A64
+ZONE_65_NAME	= Zektor D1
+ZONE_66_NAME	= Zektor D2
+ZONE_67_NAME	= Zektor D3
+ZONE_68_NAME	= Zektor D4
+ZONE_69_NAME	= Zektor D5
+ZONE_70_NAME	= Zektor D6
+ZONE_71_NAME	= Zektor D7
+ZONE_72_NAME	= Zektor D8
+ZONE_73_NAME	= Zektor D9
+ZONE_74_NAME	= Zektor D10
+ZONE_75_NAME	= Zektor D11
+ZONE_76_NAME	= Zektor D12
+ZONE_77_NAME	= Zektor D13
+ZONE_78_NAME	= Zektor D14
+ZONE_79_NAME	= Zektor D15
+ZONE_80_NAME	= Zektor D16
+ZONE_81_NAME	= Zektor D17
+ZONE_82_NAME	= Zektor D18
+ZONE_83_NAME	= Zektor D19
+ZONE_84_NAME	= Zektor D20
+ZONE_85_NAME	= Zektor D21
+ZONE_86_NAME	= Zektor D22
+ZONE_87_NAME	= Zektor D23
+ZONE_88_NAME	= Zektor D24
+ZONE_89_NAME	= Zektor D25
+ZONE_90_NAME	= Zektor D26
+ZONE_91_NAME	= Zektor D27
+ZONE_92_NAME	= Zektor D28
+ZONE_93_NAME	= Zektor D29
+ZONE_94_NAME	= Zektor D30
+ZONE_95_NAME	= Zektor D31
+ZONE_96_NAME	= Zektor D32
+
+
+
+
+
+[ZONE_INTEGER_VARIABLES_BEGIN]
+    BASS, -20, 20
+    TREBLE, -20, 20
+    LIPSYNC, 0, 170
+	100HZ, -20, 20
+	330HZ, -20, 20
+	1000HZ, -20, 20
+	3300HZ, -20, 20
+	10KHZ, -20, 20
+[ZONE_INTEGER_VARIABLES_END]
+
+
+[CONFIG_STRINGS_BEGIN]
+CFG_STRING_1: READ_ONLY label:Device Info tag:deviceinfo
+[CONFIG_STRINGS_END]
+
+CONFIG_BUTTON_1 = Get Device Info
+CONFIG_BUTTON_2 = Set Extended IO
+
+[RESOURCES_BEGIN]
+    Settings1.emv
+[RESOURCES_END]
+
+
+[OPTION:Zone Mix Down]
+    Normal
+    Swap LR
+    Mono
+    Mono L
+    Mono R
+    Mono Subtract L
+    Mono Subtract R
+[OPTION_END]
+
+ZONE_1_GUI = Settings1.emv
+ZONE_2_GUI = Settings1.emv
+ZONE_3_GUI = Settings1.emv
+ZONE_4_GUI = Settings1.emv
+ZONE_5_GUI = Settings1.emv
+ZONE_6_GUI = Settings1.emv
+ZONE_7_GUI = Settings1.emv
+ZONE_8_GUI = Settings1.emv
+ZONE_9_GUI = Settings1.emv
+ZONE_10_GUI = Settings1.emv
+ZONE_11_GUI = Settings1.emv
+ZONE_12_GUI = Settings1.emv
+ZONE_13_GUI = Settings1.emv
+ZONE_14_GUI = Settings1.emv
+ZONE_15_GUI = Settings1.emv
+ZONE_16_GUI = Settings1.emv
+ZONE_17_GUI = Settings1.emv
+ZONE_18_GUI = Settings1.emv
+ZONE_19_GUI = Settings1.emv
+ZONE_20_GUI = Settings1.emv
+ZONE_21_GUI = Settings1.emv
+ZONE_22_GUI = Settings1.emv
+ZONE_23_GUI = Settings1.emv
+ZONE_24_GUI = Settings1.emv
+ZONE_25_GUI = Settings1.emv
+ZONE_26_GUI = Settings1.emv
+ZONE_27_GUI = Settings1.emv
+ ZONE_28_GUI = Settings1.emv
+ ZONE_29_GUI = Settings1.emv
+ ZONE_30_GUI = Settings1.emv
+ ZONE_31_GUI = Settings1.emv
+ ZONE_32_GUI = Settings1.emv
+ ZONE_33_GUI = Settings1.emv
+ ZONE_34_GUI = Settings1.emv
+ ZONE_35_GUI = Settings1.emv
+ ZONE_36_GUI = Settings1.emv
+ ZONE_37_GUI = Settings1.emv
+ ZONE_38_GUI = Settings1.emv
+ ZONE_39_GUI = Settings1.emv
+ ZONE_40_GUI = Settings1.emv
+ ZONE_41_GUI = Settings1.emv
+ ZONE_42_GUI = Settings1.emv
+ ZONE_43_GUI = Settings1.emv
+ ZONE_44_GUI = Settings1.emv
+ ZONE_45_GUI = Settings1.emv
+ ZONE_46_GUI = Settings1.emv
+ ZONE_47_GUI = Settings1.emv
+ ZONE_48_GUI = Settings1.emv
+ ZONE_49_GUI = Settings1.emv
+ ZONE_50_GUI = Settings1.emv
+ ZONE_51_GUI = Settings1.emv
+ ZONE_52_GUI = Settings1.emv
+ ZONE_53_GUI = Settings1.emv
+ ZONE_54_GUI = Settings1.emv
+ ZONE_55_GUI = Settings1.emv
+ ZONE_56_GUI = Settings1.emv
+ ZONE_57_GUI = Settings1.emv
+ ZONE_58_GUI = Settings1.emv
+ ZONE_59_GUI = Settings1.emv
+ ZONE_60_GUI = Settings1.emv
+ ZONE_61_GUI = Settings1.emv
+ ZONE_62_GUI = Settings1.emv
+ ZONE_63_GUI = Settings1.emv
+ ZONE_64_GUI = Settings1.emv
+ ZONE_65_GUI = Settings1.emv
+ ZONE_66_GUI = Settings1.emv
+ ZONE_67_GUI = Settings1.emv
+ ZONE_68_GUI = Settings1.emv
+ ZONE_69_GUI = Settings1.emv
+ ZONE_70_GUI = Settings1.emv
+ ZONE_71_GUI = Settings1.emv
+ ZONE_72_GUI = Settings1.emv
+ ZONE_73_GUI = Settings1.emv
+ ZONE_74_GUI = Settings1.emv
+ ZONE_75_GUI = Settings1.emv
+ ZONE_76_GUI = Settings1.emv
+ ZONE_77_GUI = Settings1.emv
+ZONE_78_GUI = Settings1.emv
+ZONE_79_GUI = Settings1.emv
+ZONE_80_GUI = Settings1.emv
+ ZONE_81_GUI = Settings1.emv
+ ZONE_82_GUI = Settings1.emv
+ ZONE_83_GUI = Settings1.emv
+ ZONE_84_GUI = Settings1.emv
+ ZONE_85_GUI = Settings1.emv
+ ZONE_86_GUI = Settings1.emv
+ ZONE_87_GUI = Settings1.emv
+ ZONE_88_GUI = Settings1.emv
+ ZONE_89_GUI = Settings1.emv
+ ZONE_90_GUI = Settings1.emv
+ ZONE_91_GUI = Settings1.emv
+ ZONE_92_GUI = Settings1.emv
+ ZONE_93_GUI = Settings1.emv
+ZONE_94_GUI = Settings1.emv
+ZONE_95_GUI = Settings1.emv
+ZONE_96_GUI = Settings1.emv
+
+
+[REGISTER_COMMANDS_BEGIN]
+	Trigger 01 Off, 3000
+	Trigger 01 On, 3001
+	Trigger 02 Off, 3002
+	Trigger 02 On, 3003
+	Trigger 03 Off, 3004
+	Trigger 03 On, 3005
+	Trigger 04 Off, 3006
+	Trigger 04 On, 3007
+	Trigger 05 Off, 3008
+	Trigger 05 On, 3009
+	Trigger 06 Off, 3010
+	Trigger 06 On, 3011
+	Trigger 07 Off, 3012
+	Trigger 07 On, 3013
+	Trigger 08 Off, 3014
+	Trigger 08 On, 3015
+	Trigger 09 Off, 3016
+	Trigger 09 On, 3017
+	Trigger 10 Off, 3018
+	Trigger 10 On, 3019
+	Trigger 11 Off, 3020
+	Trigger 11 On, 3021
+	Trigger 12 Off, 3022
+	Trigger 12 On, 3023
+	Trigger 13 Off, 3024
+	Trigger 13 On, 3025
+	Trigger 14 Off, 3026
+	Trigger 14 On, 3027
+	Trigger 15 Off, 3028
+	Trigger 15 On, 3029
+	Trigger 16 Off, 3030
+	Trigger 16 On, 3031
+	Trigger 17 Off, 3032
+	Trigger 17 On, 3033
+	Trigger 18 Off, 3034
+	Trigger 18 On, 3035
+	Trigger 19 Off, 3036
+	Trigger 19 On, 3037
+	Trigger 20 Off, 3038
+	Trigger 20 On, 3039
+	Trigger 21 Off, 3040
+	Trigger 21 On, 3041
+	Trigger 22 Off, 3042
+	Trigger 22 On, 3043
+	Trigger 23 Off, 3044
+	Trigger 23 On, 3045
+	Trigger 24 Off, 3046
+	Trigger 01 Zone, 3047
+	Trigger 02 Zone , 3048
+	Trigger 03 Zone, 3049
+	Trigger 04 Zone, 3050
+	Trigger 05 Zone, 3051
+	Trigger 06 Zone, 3052
+	Trigger 07 Zone, 3053
+	Trigger 08 Zone, 3054
+	Trigger 09 Zone, 3055
+	Trigger 10 Zone, 3056
+	Trigger 11 Zone , 3057
+	Trigger 12 Zone, 3058
+	Trigger 13 Zone, 3059
+	Trigger 14 Zone, 3060
+	Trigger 15 Zone, 3061
+	Trigger 16 Zone, 3062
+	Trigger 17 Zone, 3063
+	Trigger 18 Zone, 3064
+	Trigger 19 Zone, 3065
+	Trigger 20 Zone, 3066
+	Trigger 21 Zone, 3067
+	Trigger 22 Zone, 3068
+	Trigger 23 Zone, 3069
+	Trigger 24 Zone, 3070
+[REGISTER_COMMANDS_END]
+
+
+
+INPUT_PREFIX="^="
+INPUT_SUFFIX="$"
