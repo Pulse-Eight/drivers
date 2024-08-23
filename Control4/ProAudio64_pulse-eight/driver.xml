@@ -1,15 +1,16 @@
-﻿<devicedata>
+<devicedata>
   <search_type>pulse-eight:ProAudio64</search_type>
   <model>ProAudio64</model>
   <name>Pulse-Eight ProAudio64</name>
-
   <manufacturer>Pulse-Eight</manufacturer>
   <creator>Zonn Moore</creator>
   <copyright>(c) Copyright 2022, Pulse-Eight.  All rights reserved.</copyright>
   <created>11/06/2016 12:00 AM</created>
-  <modified>03/09/2023 12:00 AM</modified>
-  <version>303</version>
+  <modified>08/23/2024 12:00 AM</modified>
+  <version>304</version>
   <history>
+	Version 3.04
+	  Compile fix
 	Version 3.03
 	  Update documentation
 	Version 3.02
@@ -21,15 +22,13 @@
   </history>
   <replaces>
     <replace>ProAudio64_pulse-eight.c4i</replace>
-  </replaces> 
+  </replaces>
   <config>
-    
-<!-- xxx -->
+    <!-- xxx -->
     <identify_text>
 Press the ID button on
 the back of the switch.
     </identify_text>
-
     <power_command_delay>20</power_command_delay>
     <power_delay>20</power_delay>
     <power_management_method>AlwaysOn</power_management_method>
@@ -38,7 +37,6 @@ the back of the switch.
       <serialcodes />
       <serialcodemacros />
     </serialsection>
-
     <properties>
       <property>
         <name>Model</name>
@@ -74,9 +72,8 @@ the back of the switch.
         <default>50</default>
         <readonly>false</readonly>
       </property>
-
-<!-- xxx Start Audio Block -->
-<!--
+      <!-- xxx Start Audio Block -->
+      <!--
       <property>
         <name>Master Volume</name>
         <type>RANGED_INTEGER</type>
@@ -94,7 +91,7 @@ the back of the switch.
         <readonly>false</readonly>
       </property>
 -->
-<!--
+      <!--
       <property>
         <name>Header</name>
         <type></type>
@@ -102,7 +99,7 @@ the back of the switch.
       </property>
 -->
       <property>
-           <name> === Audio OUT Settings ===</name>
+        <name> === Audio OUT Settings ===</name>
         <type>STRING</type>
         <default />
         <readonly>true</readonly>
@@ -111,7 +108,8 @@ the back of the switch.
         <name>Select Audio Output:</name>
         <type>RANGED_INTEGER</type>
         <minimum>1</minimum>
-        <maximum>64</maximum> <!-- xxx -->
+        <maximum>64</maximum>
+        <!-- xxx -->
         <default>1</default>
         <readonly>false</readonly>
       </property>
@@ -139,7 +137,7 @@ the back of the switch.
         <default>51</default>
         <readonly>false</readonly>
       </property>
-<!--
+      <!--
       <property>
         <name>...Loudness</name>
         <type>LIST</type>
@@ -159,7 +157,7 @@ the back of the switch.
         <default>0</default>
         <readonly>false</readonly>
       </property>
-         <property>
+      <property>
         <name>...Max Volume</name>
         <type>RANGED_INTEGER</type>
         <minimum>-200</minimum>
@@ -226,7 +224,7 @@ the back of the switch.
         <minimum>-40</minimum>
         <maximum>40</maximum>
         <default>0</default>
-<!--        <readonly>false</readonly>-->
+        <!--        <readonly>false</readonly>-->
       </property>
       <property>
         <name>...Treble</name>
@@ -280,7 +278,8 @@ the back of the switch.
         <name>...Lock Zone</name>
         <type>RANGED_INTEGER</type>
         <minimum>0</minimum>
-        <maximum>64</maximum> <!-- xxx -->
+        <maximum>64</maximum>
+        <!-- xxx -->
         <default>0</default>
         <readonly>false</readonly>
       </property>
@@ -333,7 +332,7 @@ the back of the switch.
           <item>29 - 267Hz</item>
           <item>30 - 283Hz</item>
           <item>31 - 300Hz</item>
-        </items> 
+        </items>
         <default>0 - Disabled</default>
         <readonly>false</readonly>
       </property>
@@ -372,7 +371,6 @@ the back of the switch.
         <default>0</default>
         <readonly>false</readonly>
       </property>
-
       <property>
         <name> --- Page Select ---</name>
         <type>RANGED_INTEGER</type>
@@ -385,7 +383,8 @@ the back of the switch.
         <name>...Page - Source</name>
         <type>RANGED_INTEGER</type>
         <minimum>0</minimum>
-        <maximum>80</maximum> <!-- xxx -->
+        <maximum>80</maximum>
+        <!-- xxx -->
         <default>0</default>
         <readonly>false</readonly>
       </property>
@@ -419,7 +418,6 @@ the back of the switch.
         <default>0</default>
         <readonly>false</readonly>
       </property>
-
       <property>
         <name>...Page - Minimum Volume</name>
         <type>RANGED_INTEGER</type>
@@ -439,7 +437,7 @@ the back of the switch.
         <default>0 - No change to mute</default>
         <readonly>false</readonly>
       </property>
-       <property>
+      <property>
         <name>...Page - Do Not Disturb</name>
         <type>LIST</type>
         <items>
@@ -449,8 +447,7 @@ the back of the switch.
         <default>0 - Allow page</default>
         <readonly>false</readonly>
       </property>
-
-<!--
+      <!--
       <property>
         <name>Header</name>
         <type></type>
@@ -458,7 +455,7 @@ the back of the switch.
       </property>
 -->
       <property>
-            <name> === Global Paging Settings ===</name>
+        <name> === Global Paging Settings ===</name>
         <type>STRING</type>
         <default />
         <readonly>true</readonly>
@@ -471,7 +468,7 @@ the back of the switch.
         <default>0</default>
         <readonly>false</readonly>
       </property>
-       <property>
+      <property>
         <name>Page - Min Page Time</name>
         <type>RANGED_INTEGER</type>
         <minimum>0</minimum>
@@ -479,7 +476,7 @@ the back of the switch.
         <default>0</default>
         <readonly>false</readonly>
       </property>
-       <property>
+      <property>
         <name>Page - DB SW Action</name>
         <type>LIST</type>
         <items>
@@ -492,7 +489,7 @@ the back of the switch.
         <default>0 - Disabled</default>
         <readonly>false</readonly>
       </property>
-       <property>
+      <property>
         <name>Page - DB SW Timeout</name>
         <type>RANGED_INTEGER</type>
         <minimum>0</minimum>
@@ -500,8 +497,8 @@ the back of the switch.
         <default>0</default>
         <readonly>false</readonly>
       </property>
-<!-- xxx End Audio Block -->
-<!--
+      <!-- xxx End Audio Block -->
+      <!--
       <property>
         <name>...Video Switch Time</name>
         <type>RANGED_INTEGER</type>
@@ -527,8 +524,8 @@ the back of the switch.
         <readonly>false</readonly>
       </property>
 -->
-<!-- xxx Start of Audio block -->
-<!--
+      <!-- xxx Start of Audio block -->
+      <!--
       <property>
         <name>Header</name>
         <type></type>
@@ -536,7 +533,7 @@ the back of the switch.
       </property>
 -->
       <property>
-            <name> === Audio IN Settings ===</name>
+        <name> === Audio IN Settings ===</name>
         <type>STRING</type>
         <default />
         <readonly>true</readonly>
@@ -545,7 +542,8 @@ the back of the switch.
         <name>Select Audio Input:</name>
         <type>RANGED_INTEGER</type>
         <minimum>1</minimum>
-        <maximum>80</maximum> <!-- xxx -->
+        <maximum>80</maximum>
+        <!-- xxx -->
         <default>1</default>
         <readonly>false</readonly>
       </property>
@@ -580,37 +578,35 @@ the back of the switch.
         <default>0</default>
         <readonly>false</readonly>
       </property>
-
-<!-- xxx Start of HDMI block -->
-<!-- xxx End of HDMI block -->
-<!-- xxx End of Audio block -->
-<!-- xxx Start of HDMI block -->
-<!-- xxx End of HDMI block -->
-
+      <!-- xxx Start of HDMI block -->
+      <!-- xxx End of HDMI block -->
+      <!-- xxx End of Audio block -->
+      <!-- xxx Start of HDMI block -->
+      <!-- xxx End of HDMI block -->
       <property>
         <name>IP Settings:</name>
         <type>STRING</type>
         <default>Not Connected</default>
         <readonly>true</readonly>
-      </property>  
+      </property>
       <property>
         <name>...Static IP Address</name>
         <type>STRING</type>
         <default>0.0.0.0</default>
         <readonly>false</readonly>
-      </property>      
+      </property>
       <property>
         <name>...Static IP Mask</name>
         <type>STRING</type>
         <default>255.255.255.255</default>
         <readonly>false</readonly>
-      </property>      
+      </property>
       <property>
         <name>...Static IP Gateway</name>
         <type>STRING</type>
         <default>0.0.0.0</default>
         <readonly>false</readonly>
-      </property>  
+      </property>
       <property>
         <name>...IP Mode</name>
         <type>LIST</type>
@@ -621,12 +617,11 @@ the back of the switch.
         </items>
         <default>DHCP</default>
         <readonly>false</readonly>
-      </property>  
+      </property>
     </properties>
-
-<!-- xxx -->
+    <!-- xxx -->
     <actions>
-<!--
+      <!--
       <action>
         <name>Reset All!!!</name>
         <command>RST_ALL</command>
@@ -645,12 +640,11 @@ the back of the switch.
               <item>Clear everything except TCP/IP</item>
               <item>Set all zones to powered-off by default</item>
             </items>
-            <default> </default>
+            <default></default>
           </param>
         </params>
       </action>
-
-<!--
+      <!--
       <action>
         <name>...Reset All Except TCP/IP</name>
         <command>RST_NoIP</command>
@@ -664,9 +658,9 @@ the back of the switch.
         <command>RST_Audio</command>
       </action>
 -->
-<!-- xxx Start of HDMI block -->
-<!-- xxx End of HDMI block -->
-<!--
+      <!-- xxx Start of HDMI block -->
+      <!-- xxx End of HDMI block -->
+      <!--
       <action>
         <name>Reset 3...</name>
         <command>RST3</command>
@@ -680,7 +674,6 @@ the back of the switch.
         <command>RST2</command>
       </action>
 -->
-
       <action>
         <name>Test 12V Triggers...</name>
         <command>TestTriggers</command>
@@ -704,7 +697,6 @@ the back of the switch.
           </param>
         </params>
       </action>
-
       <action>
         <name>Test Paging...</name>
         <command>TestPaging</command>
@@ -727,16 +719,15 @@ the back of the switch.
           </param>
         </params>
       </action>
-
-<!-- xxx Start of HDMI block -->
-<!-- xxx End of HDMI block -->
-<!--
+      <!-- xxx Start of HDMI block -->
+      <!-- xxx End of HDMI block -->
+      <!--
       <action>
         <name>Backup Switch Timing</name>
         <command>BackupTiming</command>
       </action>
 -->
-<!-- xxx Start of Audio block -->
+      <!-- xxx Start of Audio block -->
       <action>
         <name>Backup Paging Settings</name>
         <command>BackupPaging</command>
@@ -749,14 +740,14 @@ the back of the switch.
         <name>Backup Volume Settings</name>
         <command>BackupVolume</command>
       </action>
-<!--
+      <!--
       <action>
         <name>Restore All Triggers to Zone Control</name>
         <command>ResetTriggers</command>
       </action>
 -->
-<!-- xxx End of Audio block -->
-<!--
+      <!-- xxx End of Audio block -->
+      <!--
       <action>
         <name>Backup Power and In-Out</name>
         <command>BackupMappings</command>
@@ -766,9 +757,7 @@ the back of the switch.
         <name>Refresh Driver</name>
         <command>InitialSetup</command>
       </action>
-
     </actions>
-
     <commands>
       <command>
         <name>Set 12V Trigger</name>
@@ -807,16 +796,12 @@ the back of the switch.
         </params>
       </command>
     </commands>
-
-    <script jit="1" file="driver.lua">
-      
-    </script>
-  <documentation file="www/documentation.rtf" /></config>
-
+    <script jit="1" file="driver.lua"></script>
+    <documentation file="www/documentation.rtf" />
+  </config>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
-
   <small>devices_sm/avswitch.GIF</small>
   <large>devices_lg/avswitch.GIF</large>
   <top />
@@ -825,16 +810,13 @@ the back of the switch.
   <back />
   <left />
   <right />
-
   <commands />
   <conditionals />
   <events />
   <states />
-
   <proxies qty="1">
     <proxy proxybindingid="5001" name="Pulse-Eight ProAudio64">avswitch</proxy>
   </proxies>
-
   <capabilities>
     <audio_consumer_count>80</audio_consumer_count>
     <audio_provider_count>128</audio_provider_count>
@@ -856,15 +838,12 @@ the back of the switch.
     <has_up_down_bass_control>True</has_up_down_bass_control>
     <has_up_down_treble_control>True</has_up_down_treble_control>
     <has_up_down_volume_control>True</has_up_down_volume_control>
-
     <has_video_signal_sense>False</has_video_signal_sense>
     <video_consumer_count>0</video_consumer_count>
     <video_provider_count>0</video_provider_count>
-
     <can_switch_separate>True</can_switch_separate>
     <requires_separate_switching>True</requires_separate_switching>
   </capabilities>
-
   <connections>
     <connection>
       <id>1</id>
@@ -877,10 +856,11 @@ the back of the switch.
       <linelevel>False</linelevel>
       <delimiter>24</delimiter>
       <classes>
-        <class><classname>RS_232</classname></class>
+        <class>
+          <classname>RS_232</classname>
+        </class>
       </classes>
     </connection>
-
     <connection>
       <id>6001</id>
       <facing>1</facing>
@@ -905,7 +885,6 @@ the back of the switch.
         </class>
       </classes>
     </connection>
-
     <connection>
       <id>5001</id>
       <type>2</type>
@@ -913,10 +892,11 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>False</linelevel>
       <classes>
-        <class><classname>AVSWITCH</classname></class>
+        <class>
+          <classname>AVSWITCH</classname>
+        </class>
       </classes>
     </connection>
-
     <connection proxybindingid="5001">
       <id>3000</id>
       <type>6</type>
@@ -924,7 +904,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -934,7 +916,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -944,7 +928,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -954,7 +940,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -964,7 +952,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -974,7 +964,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -984,7 +976,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -994,7 +988,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1004,7 +1000,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1014,7 +1012,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1024,7 +1024,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1034,7 +1036,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1044,7 +1048,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1054,7 +1060,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1064,7 +1072,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1074,7 +1084,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1084,7 +1096,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1094,7 +1108,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1104,7 +1120,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1114,7 +1132,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1124,7 +1144,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1134,7 +1156,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1144,7 +1168,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1154,7 +1180,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1164,7 +1192,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1174,7 +1204,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1184,7 +1216,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1194,7 +1228,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1204,7 +1240,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1214,7 +1252,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1224,7 +1264,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1234,10 +1276,11 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
-
     <connection proxybindingid="5001">
       <id>3032</id>
       <type>6</type>
@@ -1245,7 +1288,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1255,7 +1300,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1265,7 +1312,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1275,7 +1324,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1285,7 +1336,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1295,7 +1348,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1305,7 +1360,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1315,7 +1372,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1325,7 +1384,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1335,7 +1396,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1345,7 +1408,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1355,7 +1420,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1365,7 +1432,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1375,7 +1444,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1385,7 +1456,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1395,7 +1468,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1405,7 +1480,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1415,7 +1492,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1425,7 +1504,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1435,7 +1516,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1445,7 +1528,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1455,7 +1540,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1465,7 +1552,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1475,7 +1564,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1485,7 +1576,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1495,7 +1588,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1505,7 +1600,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1515,7 +1612,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1525,7 +1624,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1535,7 +1636,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1545,7 +1648,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1555,10 +1660,11 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
-
     <connection proxybindingid="5001">
       <id>3064</id>
       <type>6</type>
@@ -1566,7 +1672,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1576,7 +1684,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1586,7 +1696,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1596,7 +1708,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1606,7 +1720,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1616,7 +1732,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1626,7 +1744,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1636,7 +1756,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1646,7 +1768,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1656,7 +1780,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1666,7 +1792,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1676,7 +1804,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1686,7 +1816,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1696,7 +1828,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1706,7 +1840,9 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1716,10 +1852,11 @@ the back of the switch.
       <consumer>True</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_OPTICAL</classname></class>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
       </classes>
     </connection>
-
     <connection proxybindingid="5001">
       <id>4000</id>
       <type>6</type>
@@ -1727,7 +1864,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1737,7 +1876,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1747,7 +1888,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1757,7 +1900,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1767,7 +1912,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1777,7 +1924,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1787,7 +1936,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1797,7 +1948,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1807,7 +1960,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1817,7 +1972,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1827,7 +1984,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1837,7 +1996,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1847,7 +2008,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1857,7 +2020,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1867,7 +2032,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1877,7 +2044,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1887,7 +2056,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1897,7 +2068,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1907,7 +2080,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1917,7 +2092,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1927,7 +2104,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1937,7 +2116,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1947,7 +2128,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1957,7 +2140,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1967,7 +2152,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1977,7 +2164,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1987,7 +2176,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -1997,7 +2188,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2007,7 +2200,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2017,7 +2212,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2027,7 +2224,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2037,7 +2236,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2047,7 +2248,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2057,7 +2260,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2067,7 +2272,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2077,7 +2284,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2087,7 +2296,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2097,7 +2308,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2107,7 +2320,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2117,7 +2332,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2127,7 +2344,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2137,7 +2356,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2147,7 +2368,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2157,7 +2380,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2167,7 +2392,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2177,7 +2404,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2187,7 +2416,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2197,7 +2428,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2207,7 +2440,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2217,7 +2452,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2227,7 +2464,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2237,7 +2476,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2247,7 +2488,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2257,7 +2500,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2267,7 +2512,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2277,7 +2524,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2287,7 +2536,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2297,7 +2548,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2307,7 +2560,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2317,7 +2572,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2327,7 +2584,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2337,7 +2596,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2347,7 +2608,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2357,10 +2620,11 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>STEREO</classname></class>
+        <class>
+          <classname>STEREO</classname>
+        </class>
       </classes>
     </connection>
-
     <connection proxybindingid="5001">
       <id>4064</id>
       <type>6</type>
@@ -2368,7 +2632,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2378,7 +2644,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2388,7 +2656,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2398,7 +2668,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2408,7 +2680,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2418,7 +2692,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2428,7 +2704,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2438,7 +2716,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2448,7 +2728,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2458,7 +2740,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2468,7 +2752,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2478,7 +2764,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2488,7 +2776,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2498,7 +2788,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2508,7 +2800,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2518,7 +2812,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2528,7 +2824,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2538,7 +2836,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2548,7 +2848,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2558,7 +2860,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2568,7 +2872,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2578,7 +2884,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2588,7 +2896,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2598,7 +2908,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2608,7 +2920,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2618,7 +2932,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2628,7 +2944,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2638,7 +2956,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2648,7 +2968,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2658,7 +2980,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2668,7 +2992,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2678,7 +3004,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2688,7 +3016,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2698,7 +3028,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2708,7 +3040,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2718,7 +3052,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2728,7 +3064,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2738,7 +3076,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2748,7 +3088,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2758,7 +3100,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2768,7 +3112,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2778,7 +3124,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2788,7 +3136,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2798,7 +3148,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2808,7 +3160,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2818,7 +3172,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2828,7 +3184,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2838,7 +3196,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2848,7 +3208,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2858,7 +3220,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2868,7 +3232,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2878,7 +3244,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2888,7 +3256,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2898,7 +3268,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2908,7 +3280,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2918,7 +3292,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2928,7 +3304,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2938,7 +3316,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2948,7 +3328,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2958,7 +3340,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2968,7 +3352,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2978,7 +3364,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2988,7 +3376,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -2998,10 +3388,11 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>DIGITAL_COAX</classname></class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
+        </class>
       </classes>
     </connection>
-
     <connection proxybindingid="5001">
       <id>7000</id>
       <type>7</type>
@@ -3009,8 +3400,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3020,8 +3415,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3031,8 +3430,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3042,8 +3445,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3053,8 +3460,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3064,8 +3475,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3075,8 +3490,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3086,8 +3505,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3097,8 +3520,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3108,8 +3535,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3119,8 +3550,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3130,8 +3565,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3141,8 +3580,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3152,8 +3595,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3163,8 +3610,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3174,8 +3625,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3185,8 +3640,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3196,8 +3655,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3207,8 +3670,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3218,8 +3685,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3229,8 +3700,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3240,8 +3715,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3251,8 +3730,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3262,8 +3745,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3273,8 +3760,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3284,8 +3775,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3295,8 +3790,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3306,8 +3805,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3317,8 +3820,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3328,8 +3835,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3339,8 +3850,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3350,8 +3865,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3361,8 +3880,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3372,8 +3895,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3383,8 +3910,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3394,8 +3925,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3405,8 +3940,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3416,8 +3955,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3427,8 +3970,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3438,8 +3985,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3449,8 +4000,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3460,8 +4015,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3471,8 +4030,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3482,8 +4045,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3493,8 +4060,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3504,8 +4075,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3515,8 +4090,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3526,8 +4105,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3537,8 +4120,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3548,8 +4135,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3559,8 +4150,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3570,8 +4165,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3581,8 +4180,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3592,8 +4195,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3603,8 +4210,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3614,8 +4225,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3625,8 +4240,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3636,8 +4255,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3647,8 +4270,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3658,8 +4285,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3669,8 +4300,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3680,8 +4315,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3691,8 +4330,12 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3702,11 +4345,14 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
-        <class><classname>AUDIO_VOLUME</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
+        <class>
+          <classname>AUDIO_VOLUME</classname>
+        </class>
       </classes>
     </connection>
-
     <connection proxybindingid="5001">
       <id>7064</id>
       <type>7</type>
@@ -3714,7 +4360,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3724,7 +4372,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3734,7 +4384,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3744,7 +4396,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3754,7 +4408,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3764,7 +4420,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3774,7 +4432,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3784,7 +4444,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3794,7 +4456,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3804,7 +4468,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3814,7 +4480,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3824,7 +4492,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3834,7 +4504,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3844,7 +4516,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3854,7 +4528,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3864,7 +4540,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3874,7 +4552,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3884,7 +4564,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3894,7 +4576,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3904,7 +4588,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3914,7 +4600,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3924,7 +4612,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3934,7 +4624,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3944,7 +4636,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3954,7 +4648,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3964,7 +4660,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3974,7 +4672,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3984,7 +4684,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -3994,7 +4696,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4004,7 +4708,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4014,7 +4720,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4024,7 +4732,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4034,7 +4744,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4044,7 +4756,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4054,7 +4768,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4064,7 +4780,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4074,7 +4792,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4084,7 +4804,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4094,7 +4816,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4104,7 +4828,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4114,7 +4840,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4124,7 +4852,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4134,7 +4864,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4144,7 +4876,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4154,7 +4888,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4164,7 +4900,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4174,7 +4912,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4184,7 +4924,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4194,7 +4936,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4204,7 +4948,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4214,7 +4960,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4224,7 +4972,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4234,7 +4984,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4244,7 +4996,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4254,7 +5008,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4264,7 +5020,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4274,7 +5032,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4284,7 +5044,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4294,7 +5056,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4304,7 +5068,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4314,7 +5080,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4324,7 +5092,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4334,7 +5104,9 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
     <connection proxybindingid="5001">
@@ -4344,296 +5116,298 @@ the back of the switch.
       <consumer>False</consumer>
       <linelevel>True</linelevel>
       <classes>
-        <class><classname>AUDIO_SELECTION</classname></class>
+        <class>
+          <classname>AUDIO_SELECTION</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>101</id>
       <connectionname>12V Trigger Port 1</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>102</id>
       <connectionname>12V Trigger Port 2</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>103</id>
       <connectionname>12V Trigger Port 3</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>104</id>
       <connectionname>12V Trigger Port 4</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>105</id>
       <connectionname>12V Trigger Port 5</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>106</id>
       <connectionname>12V Trigger Port 6</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>107</id>
       <connectionname>12V Trigger Port 7</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>108</id>
       <connectionname>12V Trigger Port 8</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>109</id>
       <connectionname>12V Trigger Port 9</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>110</id>
       <connectionname>12V Trigger Port 10</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>111</id>
       <connectionname>12V Trigger Port 11</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>112</id>
       <connectionname>12V Trigger Port 12</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>113</id>
       <connectionname>12V Trigger Port 13</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>114</id>
       <connectionname>12V Trigger Port 14</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>115</id>
       <connectionname>12V Trigger Port 15</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>116</id>
       <connectionname>12V Trigger Port 16</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>117</id>
       <connectionname>12V Trigger Port 17</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
     </connection>
-	<connection>
+    <connection>
       <id>118</id>
       <connectionname>12V Trigger Port 18</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
-	</connection>
-	<connection>
+    </connection>
+    <connection>
       <id>119</id>
       <connectionname>12V Trigger Port 19</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
-	</connection>
-	<connection>
+    </connection>
+    <connection>
       <id>120</id>
       <connectionname>12V Trigger Port 20</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
-	</connection>
-	<connection>
+    </connection>
+    <connection>
       <id>121</id>
       <connectionname>12V Trigger Port 21</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
-	</connection>
-	<connection>
+    </connection>
+    <connection>
       <id>122</id>
       <connectionname>12V Trigger Port 22</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
-	</connection>
-	<connection>
+    </connection>
+    <connection>
       <id>123</id>
       <connectionname>12V Trigger Port 23</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
-	</connection>
-	<connection>
+    </connection>
+    <connection>
       <id>124</id>
       <connectionname>12V Trigger Port 24</connectionname>
       <type>1</type>
       <consumer>False</consumer>
       <linelevel>True</linelevel>
-	  <classes>
-         <class>
-            <classname>RELAY</classname>
-         </class>
+      <classes>
+        <class>
+          <classname>RELAY</classname>
+        </class>
       </classes>
-	</connection>
+    </connection>
   </connections>
 </devicedata>
