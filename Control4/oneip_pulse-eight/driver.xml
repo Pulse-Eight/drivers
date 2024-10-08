@@ -5,11 +5,11 @@
   <name>OneIP Transceiver</name>
   <model>OneIP Transceiver</model>
   <created>05/04/2019 12:00 PM</created>
-  <modified>10/03/2024 12:10 PM</modified>
+  <modified>10/08/2024 12:10 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
   <version>2</version>
-  <small image_source="c4z">Images/neo_sm.png</small>
-  <large image_source="c4z">Images/neo_lg.png</large>
+  <small image_source="c4z">Images/oneip_sm.png</small>
+  <large image_source="c4z">Images/oneip_lg.png</large>
   <control>lua_gen</control>
   <controlmethod>ip</controlmethod>
   <driver>DriverWorks</driver>
@@ -23,7 +23,10 @@
     <category>Audio/Video</category>
   </composer_categories>
   <proxies qty="1">
-    <proxy proxybindingid="5001" name="OneIP Transceiver" large_image="Images/neo_lg.png" small_image="Images/neo_sm.png" smimagepath="Images/neo_sm.png" lgimagepath="Images/neo_lg.png" image_source="c4z">avswitch</proxy>
+    <proxy proxybindingid="5001" name="OneIP Transceiver" 
+	image_source="c4z"
+	large_image="Images/oneip_lg.png"
+	small_image="Images/oneip_sm.png">avswitch</proxy>
   </proxies>
   <replaces>
     <replace>oneiptz_pulse-eight.c4z</replace>
