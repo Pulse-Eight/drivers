@@ -18,6 +18,7 @@ MAX_OUTPUTS = 8
 local gP8DetailsTimer
 local gP8HealthTimer
 local gP8VolumeTimer
+local gP8PropertiesTimer
 
 function ON_DRIVER_EARLY_INIT.main()
     C4:AddVariable("Temp0", 0, "NUMBER")
@@ -38,10 +39,13 @@ function FirstRun()
     gP8HealthTimer:StartTimer()
     gP8VolumeTimer = c4_timer:new("Volume Update", 10, "SECONDS", VolumeUpdateTimer, true)
     gP8VolumeTimer:StartTimer()
+	gP8PropertiesTimer = gP8PropertiesTimer or c4_timer:new("Properties Update", 3, "SECONDS", PropertiesUpdateTimer, true)
+	gP8PropertiesTimer:StartTimer()
     --Call once to set initial states
     DetailsUpdateTimer()
     HealthUpdateTimer()
     LoopVolumeUpdate()
+	PropertiesUpdateTimer()
     P8INT:FETCH_INSTALLER_ID()
 end
 
@@ -61,4 +65,10 @@ end
 
 function HealthUpdateTimer()
     P8INT:GET_HEALTH(DEFAULT_PROXY_BINDINGID)
+end
+
+
+function PropertiesUpdateTimer()
+	P8INT:GET_FEATURES(DEFAULT_PROXY_BINDINGID)
+	P8INT:GET_DOLBYSETTINGS(DEFAULT_PROXY_BINDINGID)
 end

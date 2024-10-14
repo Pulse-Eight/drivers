@@ -44,6 +44,14 @@ function ON_PROPERTY_CHANGED.LogLevel(propertyValue)
 	end
 end
 
+function ON_PROPERTY_CHANGED.RoutingEnabled(propertyValue)
+	if(propertyValue == "Enabled") then
+		P8INT:SET_ROUTINGENABLED(1)
+	else
+		P8INT:SET_ROUTINGENABLED(0)
+	end
+end
+
 
 -- Main calls from the Director
 

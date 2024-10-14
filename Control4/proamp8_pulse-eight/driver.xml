@@ -4,10 +4,10 @@
   <manufacturer>Pulse-Eight</manufacturer>
   <name>ProAmp 8 IP Driver</name>
   <model>ProAmp 8</model>
-  <created>28/05/2020 12:00 PM</created>
-  <modified>06/15/2021 12:34 PM</modified>
+  <created>05/28/2020 12:00 PM</created>
+  <modified>10/14/2024 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>18</version>
+  <version>19</version>
   <small image_source="c4z">Images/proamp_sm.png</small>
   <large image_source="c4z">Images/proamp_lg.png</large>
   <control>lua_gen</control>
@@ -23,8 +23,8 @@
     <proxy proxybindingid="5001" name="ProAmp 8" large_image="Images/proamp_lg.png" small_image="Images/proamp_sm.png" smimagepath="Images/proamp_sm.png" lgimagepath="Images/proamp_lg.png" image_source="c4z">avswitch</proxy>
   </proxies>
   <capabilities>
-	<has_audio>True</has_audio>
-    <audio_consumer_count>8</audio_consumer_count>
+    <has_audio>True</has_audio>
+    <audio_consumer_count>9</audio_consumer_count>
     <audio_provider_count>8</audio_provider_count>
     <has_discrete_volume_control>True</has_discrete_volume_control>
     <has_up_down_volume_control>True</has_up_down_volume_control>
@@ -41,12 +41,6 @@
       <classes>
         <class>
           <classname>STEREO</classname>
-        </class>
-        <class>
-          <classname>DIGITAL_OPTICAL</classname>
-        </class>
-        <class>
-          <classname>DIGITAL_COAX</classname>
         </class>
       </classes>
     </connection>
@@ -131,6 +125,21 @@
       <classes>
         <class>
           <classname>STEREO</classname>
+        </class>
+      </classes>
+    </connection>
+	<connection>
+      <id>3008</id>
+      <type>6</type>
+      <connectionname>Digital Input</connectionname>
+      <consumer>True</consumer>
+      <linelevel>True</linelevel>
+      <classes>
+        <class>
+          <classname>DIGITAL_OPTICAL</classname>
+        </class>
+        <class>
+          <classname>DIGITAL_COAX</classname>
         </class>
       </classes>
     </connection>
@@ -434,10 +443,6 @@
         <command>REBOOT</command>
       </action>
       <action>
-        <name>Discover System</name>
-        <command>DISCOVER</command>
-      </action>
-      <action>
         <name>Send Monitoring Pulse</name>
         <command>SENDPULSE</command>
       </action>
@@ -446,7 +451,7 @@
     <power_command_delay>0</power_command_delay>
     <power_delay>0</power_delay>
     <power_command_needed>False</power_command_needed>
-    <documentation file="www/documentation.rtf"/>
+    <documentation file="www/documentation.rtf" />
     <script file="p8driver.lua" />
     <properties>
       <property>
@@ -455,7 +460,7 @@
         <readonly>False</readonly>
         <default>[Goto Action Tab and Click Discover System]</default>
         <tooltip>If you are unsure of the IP address of your system, enter www.gotomymatrix.com to be redirected to the web UI, copy the IP from your browser into this box</tooltip>
-        <description>The IP address of your system, this in many cases can be auto discovered via the action tab button "Discover System". If this fails, enter www.gotomymatrix.com into your browser for more information.</description>
+        <description>The IP address of your system, this should be populated if you have added the device using SDDP. Enter it manually if required</description>
       </property>
       <property>
         <name>Log Level</name>
@@ -533,6 +538,32 @@
         <minimum>50</minimum>
         <maximum>300</maximum>
         <default>200</default>
+      </property>
+	  <property>
+        <name>Routing Supported</name>
+        <type>STRING</type>
+        <readonly>True</readonly>
+        <default>Unknown</default>
+      </property>
+	  <property>
+        <name>Dolby Mode</name>
+        <type>LIST</type>
+		<readonly>True</readonly>
+        <default>Off</default>
+        <items>
+          <item>Off</item>
+          <item>On (3 Zones)</item>
+		  <item>On (4 Zones)</item>
+        </items>
+      </property>
+      <property>
+        <name>Routing Enabled</name>
+        <type>LIST</type>
+        <default>Enabled</default>
+        <items>
+          <item>Enabled</item>
+          <item>Disabled</item>
+        </items>
       </property>
     </properties>
   </config>

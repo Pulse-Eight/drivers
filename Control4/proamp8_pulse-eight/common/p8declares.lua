@@ -21,6 +21,9 @@ DEFAULT_PROXY_BINDINGID = 5001
 
 -- Driver wide properties
 DEVICE_ONLINE = 0
+SUPPORTS_ROUTING = 1
+ROUTING_ENABLED = 1
+DOLBY_MODE = 0
 
 -- I don't know why this has to be here, if its placed in p8init.lua it fails and the script does not work. If anyone knows why please let me know
 

@@ -48,7 +48,55 @@ function PRX_CMD.BINDING_CHANGE_ACTION(idBinding, tParams)
 end
 
 function PRX_CMD.SET_INPUT(idBinding, tParams)
-    --No Action Required
+    local input = tonumber(tParams["INPUT"] % 1000)
+    local output = tonumber(tParams["OUTPUT"] % 1000)
+    local input_id = tonumber(tParams["INPUT"])
+    local class = tParams["CLASS"]
+    local output_id = tonumber(tParams["OUTPUT"])
+    local bSwitchSeparate, bVideo, bAudio = false, false, false
+    local bSwitchSeparate = tParams["SWITCH_SEPARATE"]
+	
+	local ticket = C4:url():SetOption("timeout", 2)
+	
+	if (SUPPORTS_ROUTING == 0 or ROUTING_ENABLED == 0) then
+		SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = 3000+input, OUTPUT = 4000+input}, idBinding)
+	end
+	
+	-- Don't allow secondary Dolby outputs to be changed from within Composer
+	if (DOLBY_MODE == 1) then 
+		if(output > 0 and output < 3) then
+			return
+		end
+	end
+	if (DOLBY_MODE == 2) then 
+		if(output > 0 and output < 4) then
+			return
+		end
+	end
+	
+	
+	if (SUPPORTS_ROUTING == 1 and ROUTING_ENABLED == 1) then 
+		LogInfo("Changing Audio Routing. Input: " .. input .. " -> Output: " .. output)
+		ticket:OnDone(
+            function(transfer, responses, errCode, errMsg)
+                if errCode == 0 then
+					if ((DOLBY_MODE == 1 or DOLBY_MODE == 2) and output == 0) then 
+						-- We only care if we're dealing with the dolby output
+						SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = 3000+input, OUTPUT = 4000}, idBinding)
+						SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = 3000+input, OUTPUT = 4001}, idBinding)
+						SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = 3000+input, OUTPUT = 4002}, idBinding)
+						if (DOLBY_MODE == 2) then
+							SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = 3000+input, OUTPUT = 4003}, idBinding)
+						end
+					else 
+						SendNotify("INPUT_OUTPUT_CHANGED", tParams, idBinding)
+					end
+                end
+            end
+        ):Get(P8INT:GET_MATRIX_URL() .. "/Port/Set/" .. input .. "/" .. output)
+	end
+	
+	
 end
 
 function PRX_CMD.ON(idBinding, tParams)
@@ -62,14 +110,19 @@ end
 function PRX_CMD.CONNECT_OUTPUT(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/0"
-		LogInfo("Set Mute OFF Due to Connect. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+		if (SUPPORTS_ROUTING == 0) then
+			local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/0"
+			LogInfo("Set Mute OFF Due to Connect. Output: " .. output)
+			C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
 			  if jsonResponse.Result then
 				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
 			  end
 		   end)
+		else 
+			-- Do nothing on Connect. It'll be handled by SET_INPUT
+		end
+		
 	end
 end
 
@@ -77,16 +130,30 @@ function PRX_CMD.GET_AUDIO_INPUTS(_, _) -- idBinding, tParams
 end
 
 function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
+
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/1"
-		LogInfo("Set Mute ON Due to Disconnect. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  if jsonResponse.Result then
-				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-			  end
-		   end)
+		local uri = ""
+		if (SUPPORTS_ROUTING == 0) then
+			uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/1"
+			LogInfo("Set Mute ON Due to Disconnect. Output: " .. output)
+		else 
+			uri = P8INT:GET_MATRIX_URL() .. "/Port/Set/-1/" .. output
+			LogInfo("Disconnecting Output: " .. output)
+			SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = -1, OUTPUT = 4000+output}, idBinding)
+			SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = -1, OUTPUT = 2000+output}, idBinding)
+			--C4:SendToProxy(idBinding, 'INPUT_OUTPUT_CHANGED', {INPUT = -1, OUTPUT = 4000 + output})
+		end
+		if (uri ~= nil and uri ~= "") then
+			C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
+				local jsonResponse = JSON:decode(strData)
+				if jsonResponse.Result then
+					
+					P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
+					
+				end
+			end)
+		end
 	end
 end
 
@@ -101,8 +168,6 @@ end
 function EX_CMD.LUA_ACTION(tParams)
     if tParams["ACTION"] == "REBOOT" then
 	   P8INT:REBOOT()
-    elseif tParams["ACTION"] == "DISCOVER" then
-	   P8INT:DISCOVER()
     elseif tParams["ACTION"] == "SENDPULSE" then
 	   P8INT:SEND_PULSE()
     end
@@ -332,6 +397,9 @@ function P8INT:UPDATE_AUDIO(idBinding, output)
 		local jsonResponse = JSON:decode(strData)
 		if jsonResponse.Result then
 			local volLevel = tonumber(jsonResponse["volLeft"]) or tonumber(jsonResponse["dolbyvolume"])
+			if (volLevel == nil) then
+				volLevel = tonumber(jsonResponse["volume"]) or tonumber(jsonResponse["volume_left"])
+			end
 			local muteState = tonumber(jsonResponse["muted"]) ~= 0
 			if volLevel > 100 then
 				volLevel = 100
@@ -369,8 +437,32 @@ function PRX_CMD.IS_AV_OUTPUT_TO_INPUT_VALID(idBinding, tParams)
     local provider_idBinding 	= tonumber(tParams["Provider_idBinding"]) 	-- we are providing the output, to the output is the provider binding    
     local consumer_class    	= tParams["Consumer_sClass"]
     local roomID			= tonumber(tParams["Params_idRoom"])
-    if (consumer_idBinding % 1000) ~= (provider_idBinding % 1000) then
-	   pathIsValid = "False"
+    if (SUPPORTS_ROUTING == 0 or ROUTING_ENABLED == 0) then
+	   if (consumer_idBinding % 1000) ~= (provider_idBinding % 1000) then
+		  pathIsValid = "False"
+		  return pathIsValid
+	   end
+	else 
+		-- Routing supported and enabled
+		
+		if (DOLBY_MODE == 0) then
+			-- Dolby disabled. Anything to anything
+			return pathIsValid
+		elseif (DOLBY_MODE == 1) then
+			-- Dolby 3 zone. 
+			local output = provider_idBinding % 1000
+			if (output == 1 or output == 2) then
+				pathIsValid = "False"
+				return pathIsValid
+			end
+		elseif (DOLBY_MODE == 2) then
+			-- Dolby 4 zone. 
+			local output = provider_idBinding % 1000
+			if (output == 1 or output == 2 or output == 3) then
+				pathIsValid = "False"
+				return pathIsValid
+			end
+		end
     end
     return pathIsValid
 end

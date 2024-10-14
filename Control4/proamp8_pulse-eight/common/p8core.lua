@@ -5,22 +5,6 @@ function P8INT:GET_MATRIX_URL()
     return "http://" .. ip
 end
 
-function P8INT:DISCOVER()
-    C4:urlGet("http://www.gotomymatrix.com", {}, false,
-	   function(ticketId, strData, responseCode, tHeaders, strError)
-		  if responseCode == 302 then
-			 local httpLocation = tHeaders["Location"]
-			 httpLocation = string.gsub(httpLocation, "http://", "")
-			 httpLocation = string.gsub(httpLocation, "/", "")
-			 UpdateProperty("Device IP Address", httpLocation)
-			 LogInfo("Device IP Address has been updated to: " .. httpLocation)
-			 FirstRun()
-		  else
-			 LogWarn("Failed to discover your system, please visit www.gotomymatrix.com in your browser for more information")
-		  end
-	   end)
-end
-
 function P8INT:SET_ONLINE_STATUS(status)
     if (status == "offline") then
 	   if (DEVICE_ONLINE == 1) then
