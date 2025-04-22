@@ -6,10 +6,12 @@
   <creator>Zonn Moore</creator>
   <copyright>(c) Copyright 2022, Pulse-Eight.  All rights reserved.</copyright>
   <created>11/06/2016 12:00 AM</created>
-  <modified>03/09/2023 12:00 AM</modified>
-  <version>303</version>
-  <history>
-	Version 3.03
+  <modified>04/22/2025 12:00 AM</modified>
+  <version>310</version>
+<history>
+    Version 3.1.0
+	  Add support for bass/treble settings in navigators. This version requires OS 3.2.3 or higher.
+  	Version 3.03
 	  Update documentation
 	Version 3.02
 	  Handle multiple error codes correctly
@@ -222,7 +224,7 @@ the back of the switch.
       </property>
       <property>
         <name>...Bass</name>
-        <type>SCROLL</type>
+        <type>TRACK</type>
         <minimum>-40</minimum>
         <maximum>40</maximum>
         <default>0</default>
@@ -230,7 +232,7 @@ the back of the switch.
       </property>
       <property>
         <name>...Treble</name>
-        <type>SCROLL</type>
+        <type>TRACK</type>
         <minimum>-40</minimum>
         <maximum>40</maximum>
         <default>0</default>
@@ -747,10 +749,7 @@ the back of the switch.
         </params>
       </command>
     </commands>
-
-    <script jit="1" file="driver.lua">
-      
-    </script>
+    <script jit="1" file="driver.lua"></script>
   <documentation file="www/documentation.rtf" />
   </config>
   <control>lua_gen</control>
@@ -803,6 +802,12 @@ the back of the switch.
 
     <can_switch_separate>True</can_switch_separate>
     <requires_separate_switching>True</requires_separate_switching>
+    <hide_volume_control>True</hide_volume_control>
+    <has_eq_preset_control>True</has_eq_preset_control>
+    <eq_band_nav_count>0</eq_band_nav_count>
+    <eq_preset_nav_count>0</eq_preset_nav_count>
+    <use_tone_max_value>40</use_tone_max_value>
+    <use_tone_min_value>-40</use_tone_min_value>
   </capabilities>
 
   <connections>

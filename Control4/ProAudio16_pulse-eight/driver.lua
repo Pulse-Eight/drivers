@@ -91,8 +91,20 @@ end
 --============================================================================
 -- Initialize on startup
 --============================================================================
---function OnDriverInit()
---end
+function OnDriverInit()
+end
+
+function OnDriverLateInit()
+  print("Entered OnDriverLateInit")
+  for zone=1,16 do
+    -- Notify director that the eq should not be hidden
+    local binding = 3999 + zone
+    C4:SendToProxy(5001, "HIDEEQFROMNAVS_CHANGED", { OUTPUT = binding, ENABLED = false }, "NOTIFY")
+  end
+  -- send a list query commands to pull the eq bands
+  sendToDevice( "BAZ@1:80$")
+  sendToDevice( "TRZ@1:80$")
+end
 
 --function OnVariableChanged( strName)
 --end
@@ -1066,11 +1078,16 @@ end
 --============================================================================
 function pxBAZ( paramT)
   vlevel = paramT["LEVEL"]
-  -- C4 Thinks Bass levels can only be boosted (positive numbers only)
+  -- C4 now has the ability to show equalizer in navigators
+  -- Frustratingly, the range is settable there and is correctly reported (-40 to +40)
+  -- The traditional option of 'Volume Control' within composer has a range of 0-100 only
+  -- Both methods call the same proxy method with no means of distinguishing them.
+  -- Thankfully the 'Volume control' option within composer can be hidden 
+  -- using a secret capability 'hide_volume_control'
+  
   -- We have a -20dB to +20dB range in 0.5dB steps, so we'll make this a
-  -- range of 0-80 where 40 is flat, and each step is 0.5dB. Weird but
-  -- unless there's something I'm missing, there's not a lot of choices.
-  vlevel = vlevel + 88         -- convert 0-80 to 88-168
+  -- range of -40 to 40 where 0 is flat, and each step is 0.5dB. 
+  vlevel = vlevel + 128         -- convert -40-40 to 88-168
   sendZoneLevel( "BAZ", paramT["OUTPUT"], "", vlevel)
 end
 
@@ -1103,8 +1120,8 @@ end
 --============================================================================
 function pxTRZ( paramT)
   vlevel = paramT["LEVEL"]
-  -- Convert to switch values
-  vlevel = vlevel + 88         -- convert 0-80 to 88-168
+  -- Convert to switch values. See notes in pxBAZ
+  vlevel = vlevel + 128         -- convert -40+40 to 88-168
   sendZoneLevel( "TRZ", paramT["OUTPUT"], "", vlevel)
 end
 
@@ -1525,7 +1542,6 @@ function rSZ( paramT)
     else
       locsource = xX2N( source) + 2999    -- audio input bindings: 1=3000,2=3001,etc
     end
-    
     C4:SendToProxy( 5001, "INPUT_OUTPUT_CHANGED", {INPUT = locsource, OUTPUT = loczone})
     dbg( "SendToProxy: INPUT_OUTPUT_CHANGED, INPUT=" .. locsource .. ", OUTPUT=" .. loczone)
 --  end
@@ -1896,7 +1912,7 @@ function rBAZ( paramT)
   -- Decode the parameters assuming a "zone" type command
   zone,vlevel = parseZoneResp( paramT)
   loczone = zone + 3999               -- binding: 1=4000,2=4001,etc
-  loclevel = vlevel - 88              -- convert 88-168 to 0-80
+  loclevel = vlevel - 128              -- convert 88-168 to -40-40
   -- Send a notify message back to the C4
   C4:SendToProxy( 5001, "BASS_LEVEL_CHANGED", {LEVEL = loclevel, OUTPUT = loczone})
   -- if zone is the same as the select property zone, update properties as well
@@ -1912,7 +1928,7 @@ function rTRZ( paramT)
   -- Decode the parameters assuming a "zone" type command
   zone,vlevel = parseZoneResp( paramT)
   loczone = zone + 3999               -- binding: 1=4000,2=4001,etc
-  loclevel = vlevel - 88              -- convert 88-168 to 0-80
+  loclevel = vlevel - 128              -- convert 88-168 to -40-40
   -- Send a notify message back to the C4
   C4:SendToProxy( 5001, "TREBLE_LEVEL_CHANGED", {LEVEL = loclevel, OUTPUT = loczone})
   -- if zone is the same as the select property zone, update properties as well
@@ -3960,31 +3976,25 @@ function aInitialSetup()
   -- Get parameters for each zone
   for zone=1,16 do
     -- For each zone, send requests for all pertinent data
+    -- Notify director that the eq should not be hidden
+    local binding = 3999 + zone
+    C4:SendToProxy(5001, "HIDEEQFROMNAVS_CHANGED", { OUTPUT = binding, ENABLED = false }, "NOTIFY")
     if (zone == SelectOut) then
       -- If current zone is the currently selected zone, ask
       -- for additional information by calling 'refZoneData()'
       refZoneData( SelectOut)
       refPageData( SelectOut, SelectPgLevel)
       -- Query the parameters that are not properties
-    else
-      -- send a list query commands
-      sendToDevice( "^PZ@"..zone.."$")
-      sendToDevice( "VPZ@"..zone.."$")
-      sendToDevice( "VMZ@"..zone.."$")
-      sendToDevice( "BLZ@"..zone.."$")
-      sendToDevice( "BAZ@"..zone.."$")
-      sendToDevice( "TRZ@"..zone.."$")
-      sendToDevice( "DMZ@"..zone.."$")
     end
   end
-
-  for zone=1,0 do
-    if (zone == HSelectOut) then
-      refHZoneData( HSelectOut)
-    else
-      sendToDevice( "^HMZ@"..zone.."$")
-    end
-  end
+  
+  sendToDevice( "^PZ@1:80$")
+  sendToDevice( "^VPZ@1:80$")
+  sendToDevice( "^VMZ@1:80$")
+  sendToDevice( "^BLZ@1:80$")
+  sendToDevice( "^BAZ@1:80$")
+  sendToDevice( "^TRZ@1:80$")
+  sendToDevice( "^DMZ@1:80$")
 
   refSourceData( SelectIn)        -- Get source parameters
 end
