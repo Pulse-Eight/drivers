@@ -5,9 +5,9 @@
   <name>neo:XSR (Designed for BINARY Edition) IP Driver</name>
   <model>neo:XSR (Designed for BINARY Edition)</model>
   <created>04/05/2019 12:00 PM</created>
-  <modified>07/27/2023 12:10 PM</modified>
+  <modified>07/29/2025 12:10 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>20</version>
+  <version>23</version>
   <small image_source="c4z">Images/neo_sm.png</small>
   <large image_source="c4z">Images/neo_lg.png</large>
   <control>lua_gen</control>
@@ -635,10 +635,6 @@
         <command>REBOOT</command>
       </action>
       <action>
-        <name>Discover System</name>
-        <command>DISCOVER</command>
-      </action>
-      <action>
         <name>Send Monitoring Pulse</name>
         <command>SENDPULSE</command>
       </action>
@@ -670,6 +666,12 @@
           </param>
         </params>
       </command>
+      <command>
+        <name>Reboot Matrix</name>
+        <description>Reboot Matrix</description>
+        <params>
+        </params>
+      </command>
     </commands>
     <power_management_method>AlwaysOn</power_management_method>
     <power_command_delay>0</power_command_delay>
@@ -682,9 +684,8 @@
         <name>Device IP Address</name>
         <type>STRING</type>
         <readonly>False</readonly>
-        <default>[Goto Action Tab and Click Discover System]</default>
-        <tooltip>If you are unsure of the IP address of your matrix, enter www.gotomymatrix.com to be redirected to the web UI, copy the IP from your browser into this box</tooltip>
-        <description>The IP address of your neo matrix, this in many cases can be auto discovered via the action tab button "Discover System". If this fails, enter www.gotomymatrix.com into your browser for more information.</description>
+        <default></default>
+        <description>The IP address of your neo matrix</description>
       </property>
       <property>
         <name>Log Level</name>

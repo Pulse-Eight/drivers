@@ -163,13 +163,17 @@ function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
 		end
 		
 		-- Audio zones
-		if outputBinding >= 4000 and outputBinding < 5000 then
-			if MODE_MANUALMODE_SUPPORTED == 1 then 
+		if (outputBinding >= 4000 and outputBinding < 5000) or (outputBinding >= 7000 and outputBinding < 8000 and tParams["CLASS"] == "AUDIO_SELECTION") then
+			if MODE_SINK == 0 or MODE_SINK_SUPPORTED == 0 then
+				return
+			end
+			if MODE_MANUALMODE_SUPPORTED == 1 and MODE_MANUALMODE == 1 then 
 				LogInfo("Disconnecting Audio. Output: " .. output)
 				local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Route/-1/" .. output
 				C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 					  local jsonResponse = JSON:decode(strData)
 					  if jsonResponse.Result then
+						C4:SendToProxy(idBinding, 'INPUT_OUTPUT_CHANGED', {INPUT = 1999, OUTPUT = 4000 + output})
 						P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
 					  end
 				   end)
@@ -179,11 +183,15 @@ function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
 				C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 					  local jsonResponse = JSON:decode(strData)
 					  if jsonResponse.Result then
+						C4:SendToProxy(idBinding, 'INPUT_OUTPUT_CHANGED', {INPUT = 1999, OUTPUT = 4000 + output})
 						P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
 					  end
 				   end)
 			
 			end
+		else 
+			-- Video zone
+			C4:SendToProxy(idBinding, 'INPUT_OUTPUT_CHANGED', {INPUT = 1999, OUTPUT = 2000 + output})
 		end
 		
 	end
@@ -225,6 +233,11 @@ function EX_CMD.UnlockAudioOutput(tParams)
 		portLock(zone, 0)
 		-- TODO: Send unlock command to matrix
 	end
+end
+
+function EX_CMD.RebootMatrix(tParams)
+	LogTrace("Triggered Reboot Matrix")
+	C4:url():Get(P8INT:GET_MATRIX_URL() .. "/System/Restart")
 end
 
 function PRX_CMD.SET_VOLUME_LEVEL(idBinding, tParams)

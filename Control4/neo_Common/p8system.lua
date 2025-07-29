@@ -103,7 +103,7 @@ function P8INT:GET_FEATURES(transfer, responses, errCode, errMsg)
 			MODE_CEC_SWITCHING = 1
 		else
 			UpdateProperty("CEC Switching Support", "Disabled")
-			MODE_CEC_SWITCHING = 1
+			MODE_CEC_SWITCHING = 0
 		end		
 		
 		if jsonResponse.Audio.SupportManualMode == true then
