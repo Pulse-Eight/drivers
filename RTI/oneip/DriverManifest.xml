@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<driverManifest>
+	<driver
+		id="{4371f0c9-9d33-4dcb-8b18-360c7f26b327}"
+		name="OneIP"
+		author="Pulse-Eight Limited"
+		copyright="Pulse-Eight Limited 2026"
+		deviceManufacturer="Pulse-Eight Limited"
+		deviceModel="oneIP"
+		driverVersion="1.0"
+		minimumRuntimeVersion="1"		
+		minimumSoftwareVersion="9.7"
+		processorType="XP-8"
+		configSettingsStream="ConfigSettings.xml"
+	    systemFunctionsStream="SystemFunctions.xml"
+		systemVariablesStream="SystemVariables.xml"
+		helpTextStream="instructions.rtf">
+		<processorScript stream="json2.js" />
+		<processorScript stream="p8core.js" />
+		<processorScript stream="p8routing.js" />
+		<package>
+			<output filename="oneip" public="false"/>
+			<description>
+				OneIP Driver
+			</description>
+		</package>
+	</driver>
+</driverManifest>
