@@ -60,6 +60,7 @@ function PRX_CMD.SET_INPUT(idBinding, tParams)
 	
 	if (SUPPORTS_ROUTING == 0 or ROUTING_ENABLED == 0) then
 		SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = 3000+input, OUTPUT = 4000+input}, idBinding)
+		return
 	end
 	
 	-- Don't allow secondary Dolby outputs to be changed from within Composer
@@ -111,7 +112,7 @@ function PRX_CMD.CONNECT_OUTPUT(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
 		if (SUPPORTS_ROUTING == 0) then
-			local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/0"
+			local uri = P8INT:GET_MATRIX_URL() .. "/Amp/Mute/" .. output .. "/3/0"
 			LogInfo("Set Mute OFF Due to Connect. Output: " .. output)
 			C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -130,19 +131,18 @@ function PRX_CMD.GET_AUDIO_INPUTS(_, _) -- idBinding, tParams
 end
 
 function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
-
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
 		local uri = ""
 		if (SUPPORTS_ROUTING == 0) then
-			uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/1"
+			uri = P8INT:GET_MATRIX_URL() .. "/Amp/Mute/" .. output .. "/3/1"
 			LogInfo("Set Mute ON Due to Disconnect. Output: " .. output)
 		else 
 			uri = P8INT:GET_MATRIX_URL() .. "/Port/Set/-1/" .. output
 			LogInfo("Disconnecting Output: " .. output)
-			SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = -1, OUTPUT = 4000+output}, idBinding)
-			SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = -1, OUTPUT = 2000+output}, idBinding)
-			--C4:SendToProxy(idBinding, 'INPUT_OUTPUT_CHANGED', {INPUT = -1, OUTPUT = 4000 + output})
+			-- Historically sending -1 was required to mark the input as no longer connected in composer. This no longer works
+			-- Sending an invalid input looks to work and I haven't found any side effects.
+			SendNotify("INPUT_OUTPUT_CHANGED", {INPUT = 3999, OUTPUT = 4000+output}, idBinding)
 		end
 		if (uri ~= nil and uri ~= "") then
 			C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
@@ -173,11 +173,42 @@ function EX_CMD.LUA_ACTION(tParams)
     end
 end
 
+function EX_CMD.SetZonePowerState(tParams)
+	LogTrace("Triggered Set Zone Power State")
+	local powerMode = nil
+	local zone = nil
+	if (tParams["State"] ~= nil) then
+		local newState =  tParams["State"]
+		if (newState == "On") then
+			powerMode = 1
+		elseif (newState == "Off") then
+			powerMode = 0
+		elseif (newState == "Auto") then
+			powerMode = 3
+		elseif (newState == "12V Trigger") then		
+			powerMode = 2
+		end
+	end
+	
+	if tonumber(tParams["Zone"]) > -1 then
+		zone = tonumber(tParams["Zone"]) - 1
+	end
+		
+	if (powerMode ~= nil and zone ~= nil) then
+		local postData = "{\"zone\": " .. zone .. ",\"power_mode\":" .. powerMode .. "}"
+		local t = C4:url():SetOptions({
+			["fail_on_error"] = false,
+			["timeout"] = 3,
+			["connect_timeout"] = 2
+		}):Post(P8INT:GET_MATRIX_URL() .. "/Amp/StdZone", postData)
+	end
+end
+
 function PRX_CMD.SET_VOLUME_LEVEL(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
 		local level = tParams["LEVEL"]
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. output .. "/" .. level
+		local uri = P8INT:GET_MATRIX_URL() .. "/Amp/Volume/" .. output .. "/" .. level
 		LogInfo("Changing Volume. Output: " .. output .. " -> Level: " .. level)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -194,7 +225,7 @@ function PRX_CMD.MUTE_TOGGLE(idBinding, tParams)
 	--DEVICE_ID (230)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/0"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Amp/Mute/" .. output .. "/0"
 		LogInfo("Toggle Mute. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -211,7 +242,7 @@ function PRX_CMD.MUTE_ON(idBinding, tParams)
 	--DEVICE_ID (230)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/1"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Amp/Mute/" .. output .. "/3/1"
 		LogInfo("Mute On. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -228,7 +259,7 @@ function PRX_CMD.MUTE_OFF(idBinding, tParams)
 	--DEVICE_ID (230)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/0"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Amp/Mute/" .. output .. "/3/0"
 		LogInfo("Mute Off. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -245,7 +276,7 @@ function PRX_CMD.LOUDNESS_ON(idBinding, tParams)
 	--DEVICE_ID (230)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/0"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Amp/Mute/" .. output .. "/3/0"
 		LogInfo("Toggle Mute. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -262,7 +293,7 @@ function PRX_CMD.LOUDNESS_OFF(idBinding, tParams)
 	--DEVICE_ID (230)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/3/1"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Amp/Mute/" .. output .. "/3/1"
 		LogInfo("Toggle Mute. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -276,7 +307,7 @@ end
 function PRX_CMD.PULSE_VOL_UP(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. output .. "/up"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Amp/Volume/" .. output .. "/up"
 		LogInfo("Volume Up. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -292,7 +323,7 @@ end
 function PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
 	if tonumber(tParams["OUTPUT"]) > -1 then
 		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. output .. "/down"
+		local uri = P8INT:GET_MATRIX_URL() .. "/Amp/Volume/" .. output .. "/down"
 		--LogInfo("Volume Down. Output: " .. output)
 		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 			  local jsonResponse = JSON:decode(strData)
@@ -385,7 +416,7 @@ function P8INT:UPDATE_AUDIO(idBinding, output)
 	--LogTrace("Updating Audio for Output: " .. output)
 	local adjust = 3000;
 	local p8output = tonumber(output % 1000)
-	local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. p8output
+	local uri = P8INT:GET_MATRIX_URL() .. "/Amp/Volume/" .. p8output
 	C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
 		if responseCode ~= 200 or strError ~= nil then
 			LogWarn("Unable to fetch audio settings")
@@ -437,32 +468,50 @@ function PRX_CMD.IS_AV_OUTPUT_TO_INPUT_VALID(idBinding, tParams)
     local provider_idBinding 	= tonumber(tParams["Provider_idBinding"]) 	-- we are providing the output, to the output is the provider binding    
     local consumer_class    	= tParams["Consumer_sClass"]
     local roomID			= tonumber(tParams["Params_idRoom"])
-    if (SUPPORTS_ROUTING == 0 or ROUTING_ENABLED == 0) then
-	   if (consumer_idBinding % 1000) ~= (provider_idBinding % 1000) then
-		  pathIsValid = "False"
-		  return pathIsValid
-	   end
-	else 
-		-- Routing supported and enabled
-		
-		if (DOLBY_MODE == 0) then
-			-- Dolby disabled. Anything to anything
-			return pathIsValid
-		elseif (DOLBY_MODE == 1) then
-			-- Dolby 3 zone. 
-			local output = provider_idBinding % 1000
-			if (output == 1 or output == 2) then
-				pathIsValid = "False"
-				return pathIsValid
-			end
-		elseif (DOLBY_MODE == 2) then
-			-- Dolby 4 zone. 
-			local output = provider_idBinding % 1000
-			if (output == 1 or output == 2 or output == 3) then
-				pathIsValid = "False"
-				return pathIsValid
+	
+	local output = provider_idBinding % 1000
+	local input = consumer_idBinding % 1000
+	
+	if (DOLBY_MODE == 0) then
+		if (SUPPORTS_ROUTING == 0 or ROUTING_ENABLED == 0) then
+			if (output ~= input) then
+				return "False"
 			end
 		end
-    end
-    return pathIsValid
+		return "True" 
+	elseif (DOLBY_MODE == 1) then
+		if (output == 1 or output == 2) then
+			return "False"
+		end
+		if (SUPPORTS_ROUTING == 0 or ROUTING_ENABLED == 0) then
+			if (output == 0 and input == 8) then
+				return "True"
+			end
+			if (ouput == 0) then
+				return "False"
+			end
+			if (output ~= input) then
+				return "False"
+			end
+		end
+		return "True" 
+	
+	elseif (DOLBY_MODE == 2) then
+		if (output == 1 or output == 2 or output == 3) then
+			return "False"
+		end
+		if (SUPPORTS_ROUTING == 0 or ROUTING_ENABLED == 0) then
+			if (output == 0 and input == 8) then
+				return "True"
+			end
+			if (ouput == 0) then
+				return "False"
+			end
+			if (output ~= input) then
+				return "False"
+			end
+		end
+		return "True"
+	end
+	return "False"
 end

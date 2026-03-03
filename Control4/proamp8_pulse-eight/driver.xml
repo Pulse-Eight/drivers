@@ -7,7 +7,7 @@
   <created>05/28/2020 12:00 PM</created>
   <modified>10/14/2024 12:00 PM</modified>
   <OnlineCategory>AVSwitch</OnlineCategory>
-  <version>19</version>
+  <version>21</version>
   <small image_source="c4z">Images/proamp_sm.png</small>
   <large image_source="c4z">Images/proamp_lg.png</large>
   <control>lua_gen</control>
@@ -24,6 +24,9 @@
   </proxies>
   <capabilities>
     <has_audio>True</has_audio>
+	<can_switch>True</can_switch>
+	<video_consumer_count>0</video_consumer_count>
+	<video_provider_count>0</video_provider_count>	
     <audio_consumer_count>9</audio_consumer_count>
     <audio_provider_count>8</audio_provider_count>
     <has_discrete_volume_control>True</has_discrete_volume_control>
@@ -447,6 +450,31 @@
         <command>SENDPULSE</command>
       </action>
     </actions>
+	<commands>
+      <command>
+        <name>Set Zone Power State</name>
+        <description>Set power state on output PARAM1 to PARAM2</description>
+        <params>
+		  <param>
+			<name>Zone</name>
+            <type>RANGED_INTEGER</type>
+            <minimum>1</minimum>
+            <maximum>8</maximum>
+            <default>1</default>
+		  </param>
+		  <param>
+            <name>State</name>
+            <type>LIST</type>
+			<items>
+				<item>On</item>
+				<item>Off</item>
+				<item>Auto</item>
+				<item>12V Trigger</item>
+			</items>
+          </param>
+        </params>
+      </command>
+	</commands>
     <power_management_method>AlwaysOn</power_management_method>
     <power_command_delay>0</power_command_delay>
     <power_delay>0</power_delay>
