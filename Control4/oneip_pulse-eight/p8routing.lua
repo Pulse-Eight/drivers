@@ -3,43 +3,6 @@
 require "lib.json"
 
 local gP8ProxyId
-local inputProxies = {
-    INPUT0 = 0,
-    INPUT1 = 0,
-    INPUT2 = 0,
-    INPUT3 = 0,
-    INPUT4 = 0,
-    INPUT5 = 0,
-    INPUT6 = 0,
-    INPUT7 = 0,
-    INPUT8 = 0,
-    INPUT9 = 0,
-    INPUT10 = 0,
-    INPUT11 = 0
-}
-
-local existingRouting = {
-    OUTPUT0 = -1,
-    OUTPUT1 = -1,
-    OUTPUT2 = -1,
-    OUTPUT3 = -1,
-    OUTPUT4 = -1,
-    OUTPUT5 = -1,
-    OUTPUT6 = -1,
-    OUTPUT7 = -1,
-    OUTPUT8 = -1,
-    OUTPUT9 = -1,
-    AUDIOOUTPUT0 = -1,
-    AUDIOOUTPUT1 = -1,
-    AUDIOOUTPUT2 = -1,
-    AUDIOOUTPUT3 = -1,
-    AUDIOOUTPUT4 = -1,
-    AUDIOOUTPUT5 = -1,
-    AUDIOOUTPUT6 = -1,
-    AUDIOOUTPUT7 = -1,
-    AUDIOOUTPUT8 = -1,
-    AUDIOOUTPUT9 = -1
-}
 
 local audioLocked = {
     AUDIOOUTPUT0 = 0,
@@ -54,44 +17,297 @@ local audioLocked = {
     AUDIOOUTPUT9 = 0
 }
 
-local outputConsumers = {
-    OUTPUT0 = nil,
-    OUTPUT1 = nil,
-    OUTPUT2 = nil,
-    OUTPUT3 = nil,
-    OUTPUT4 = nil,
-    OUTPUT5 = nil,
-    OUTPUT6 = nil,
-    OUTPUT7 = nil,
-    OUTPUT8 = nil,
-    OUTPUT9 = nil
-}
+local routes = {}
+local binding_to_key = {}
+local key_to_binding = {}
 
-local outputRoom = {
-    OUTPUT0 = nil,
-    OUTPUT1 = nil,
-    OUTPUT2 = nil,
-    OUTPUT3 = nil,
-    OUTPUT4 = nil,
-    OUTPUT5 = nil,
-    OUTPUT6 = nil,
-    OUTPUT7 = nil,
-    OUTPUT8 = nil,
-    OUTPUT9 = nil
-}
+local function make_key(uid, port_name)
+    return uid .. ':' .. port_name
+end
 
-local roomPower = {
-    OUTPUT0 = -3,
-    OUTPUT1 = -3,
-    OUTPUT2 = -3,
-    OUTPUT3 = -3,
-    OUTPUT4 = -3,
-    OUTPUT5 = -3,
-    OUTPUT6 = -3,
-    OUTPUT7 = -3,
-    OUTPUT8 = -3,
-    OUTPUT9 = -3
-}
+function table.contains(tbl, val)
+    for _, v in ipairs(tbl) do
+        if v == val then return true end
+    end
+    return false
+end
+
+function dump(o, indent)
+    indent = indent or 0
+    local ind_str = string.rep(' ', indent)
+    if type(o) == 'table' then
+        local s = '{'
+        for k, v in pairs(o) do
+            if type(k) ~= 'number' then k = '"' .. k .. '"' end
+            s = s .. '\n' .. ind_str .. ' [' .. k .. '] = ' .. dump(v, indent + 1) .. ','
+        end
+        return s .. '\n' .. ind_str .. '}'
+    else
+        return tostring(o)
+    end
+end
+
+local function build_input_mappings(input_bays, ports)
+    local binding_to_key = {}
+    local key_to_binding = {}
+
+    -- Video inputs
+    local video_in_base = 1000
+    local video_port_types = {"hdmi-in-0", "hdmi-in-1", "hdmi-in-2"}
+    local block_size = 32
+    local range_end = 1099
+    for idx, port_type in ipairs(video_port_types) do
+        local offset = (idx - 1) * block_size
+        for _, bay in ipairs(input_bays) do
+            local key = make_key(bay.uid, port_type)
+            if ports[key] or table.contains(bay.children, port_type) then
+                local binding = video_in_base + offset + bay.bay
+                if binding <= range_end then
+                    binding_to_key[binding] = key
+                    key_to_binding[key] = binding
+                end
+            end
+        end
+    end
+
+    -- Audio inputs
+    local audio_in_base = 3000
+    local audio_port_types = {"rca-in-0", "spdif-in-0"}
+    local range_end = 3099
+    for idx, port_type in ipairs(audio_port_types) do
+        local offset = (idx - 1) * block_size
+        for _, bay in ipairs(input_bays) do
+            local key = make_key(bay.uid, port_type)
+            if ports[key] or table.contains(bay.children, port_type) then
+                local binding = audio_in_base + offset + bay.bay
+                if binding <= range_end then
+                    binding_to_key[binding] = key
+                    key_to_binding[key] = binding
+                end
+            end
+        end
+    end
+
+    return binding_to_key, key_to_binding
+end
+
+local function build_output_mappings(output_bays, ports)
+    local binding_to_key = {}
+    local key_to_binding = {}
+
+    -- Video outputs
+    local video_out_base = 2000
+    local video_port_types = {"hdmi-out-0", "hdmi-out-1"}
+    local block_size = 64
+    local range_end = 2999
+    for idx, port_type in ipairs(video_port_types) do
+        local offset = (idx - 1) * block_size
+        for _, bay in ipairs(output_bays) do
+            local key = make_key(bay.uid, port_type)
+            if ports[key] or table.contains(bay.children, port_type) then
+                local binding = video_out_base + offset + bay.bay
+                if binding <= range_end then
+                    binding_to_key[binding] = key
+                    key_to_binding[key] = binding
+                end
+            end
+        end
+    end
+
+    -- Audio outputs
+    local audio_out_base = 4000
+    local audio_port_types = {"spdif-out-0", "rca-out-0", "spdif-out-1"}
+    local range_end = 4999
+    for idx, port_type in ipairs(audio_port_types) do
+        local offset = (idx - 1) * block_size
+        for _, bay in ipairs(output_bays) do
+            local key = make_key(bay.uid, port_type)
+            if ports[key] or table.contains(bay.children, port_type) then
+                local binding = audio_out_base + offset + bay.bay
+                if binding <= range_end then
+                    binding_to_key[binding] = key
+                    key_to_binding[key] = binding
+                end
+            end
+        end
+    end
+
+    return binding_to_key, key_to_binding
+end
+
+local function process_audio_json(jsonResponse)
+	LogDebug("process_audio_json: starting with " .. #jsonResponse.devices .. " devices")
+    local temp_all_ports = {}
+    local temp_inputs = {}
+    local temp_outputs = {}
+    local temp_tx_ports = {}
+    local temp_rx_ports = {}
+    local temp_input_bays = {}
+    local temp_output_bays = {}
+    for _, device in ipairs(jsonResponse.devices) do
+        local dev_id = device.id
+        local uid = device.uid
+        for _, port in ipairs(device.inputs or {}) do
+            local name = port.name
+            local key = make_key(uid, name)
+            temp_all_ports[key] = {
+                device_id = dev_id,
+                uid = uid,
+                path = port.path,
+                name = name,
+                features = port.features,
+                type = 'input',
+                id = port.id,  -- Added to store port.id
+                output_selected = port.output and port.output.selected or nil,
+                output_supported = port.output and port.output.supported or nil,
+                address = port.address,
+                mediabay = port.mediabay,
+                parent = port.parent,
+                children = port.children
+            }
+            table.insert(temp_inputs, key)
+            if port.features and table.contains(port.features, 'v2ip rx') then
+                table.insert(temp_rx_ports, key)
+                if port.mediabay and port.mediabay.mode == "Output" then
+                    table.insert(temp_output_bays, {
+                        bay = port.mediabay.bay,
+                        uid = uid,
+                        mediabay_key = key,
+                        children = port.children or {}
+                    })
+                end
+            end
+        end
+        for _, port in ipairs(device.outputs or {}) do
+            local name = port.name
+            local key = make_key(uid, name)
+            temp_all_ports[key] = {
+                device_id = dev_id,
+                uid = uid,
+                path = port.path,
+                name = name,
+                features = port.features,
+                type = 'output',
+                id = port.id,  -- Added to store port.id
+                input_selected = port.input and port.input.selected or nil,
+                input_supported = port.input and port.input.supported or nil,
+                address = port.address,
+                mediabay = port.mediabay,
+                children = port.children,
+                mute = port.mute
+            }
+            table.insert(temp_outputs, key)
+            if port.features and table.contains(port.features, 'v2ip tx') then
+                table.insert(temp_tx_ports, key)
+                if port.mediabay and port.mediabay.mode == "Input" then
+                    table.insert(temp_input_bays, {
+                        bay = port.mediabay.bay,
+                        uid = uid,
+                        mediabay_key = key,
+                        children = port.children or {}
+                    })
+                end
+            end
+        end
+    end
+    table.sort(temp_input_bays, function(a, b) return a.bay < b.bay end)
+    table.sort(temp_output_bays, function(a, b) return a.bay < b.bay end)
+	
+	LogDebug(string.format("Collected %d input bays and %d output bays", #temp_input_bays, #temp_output_bays))
+	
+    if #temp_input_bays > 32 then end
+    if #temp_output_bays > 64 then end
+    local forward_adj = {}
+    for key, _ in pairs(temp_all_ports) do
+        forward_adj[key] = {}
+    end
+    for key, port in pairs(temp_all_ports) do
+		if port.type == 'output' then
+			if string.match(port.name, "^v2ip%-tx") then
+				for _, sname in ipairs({"hdmi-in-0", "spdif-in-0", "rca-in-0"}) do
+					local source_key = make_key(port.uid, sname)
+					if temp_all_ports[source_key] then
+						table.insert(forward_adj[source_key], key)
+					end
+				end
+				if port.input_supported then
+					for _, supp_name in ipairs(port.input_supported) do
+						local source_key = make_key(port.uid, supp_name)
+						if temp_all_ports[source_key] then
+							table.insert(forward_adj[source_key], key)
+						end
+					end
+				end
+			else
+				-- Regular sinks (hdmi-out-*, spdif-out-*, rca-out-*): always local v2ip-rx-0 + explicit if present
+				local rx_key = make_key(port.uid, "v2ip-rx-0")
+				if temp_all_ports[rx_key] then
+					table.insert(forward_adj[rx_key], key)
+				end
+				if port.input_supported then
+					for _, supp_name in ipairs(port.input_supported) do
+						local source_key = make_key(port.uid, supp_name)
+						if temp_all_ports[source_key] then
+							table.insert(forward_adj[source_key], key)
+						end
+					end
+				end
+			end
+		end
+	end
+    for _, tx_key in ipairs(temp_tx_ports) do
+        for _, rx_key in ipairs(temp_rx_ports) do
+            table.insert(forward_adj[tx_key], rx_key)
+        end
+    end
+    local reverse_adj = {}
+    for key, _ in pairs(temp_all_ports) do
+        reverse_adj[key] = {}
+    end
+    for from_key, targets in pairs(forward_adj) do
+        for _, to_key in ipairs(targets) do
+            table.insert(reverse_adj[to_key], from_key)
+        end
+    end
+    local temp_routes = {}
+    for _, sink_key in ipairs(temp_outputs) do
+        local sink_port = temp_all_ports[sink_key]
+        if not string.match(sink_port.name, "^v2ip%-tx%-") then
+            temp_routes[sink_key] = {}
+            local queue = {sink_key}
+            local visited = {[sink_key] = true}
+            local index = 1
+            while index <= #queue do
+                local current = queue[index]
+                index = index + 1
+                for _, prev_key in ipairs(reverse_adj[current] or {}) do
+                    if not visited[prev_key] then
+                        visited[prev_key] = true
+                        table.insert(queue, prev_key)
+                    end
+                end
+            end
+            for key, _ in pairs(visited) do
+                local src_port = temp_all_ports[key]
+                if src_port.type == 'input' and key ~= sink_key and not string.match(src_port.name, "^v2ip%-rx%-") then
+                    table.insert(temp_routes[sink_key], key)
+                end
+            end
+            table.sort(temp_routes[sink_key])
+        end
+    end
+    local input_binding_to_key, input_key_to_binding = build_input_mappings(temp_input_bays, temp_all_ports)
+    local output_binding_to_key, output_key_to_binding = build_output_mappings(temp_output_bays, temp_all_ports)
+    local temp_binding_to_key = {}
+    local temp_key_to_binding = {}
+    for k, v in pairs(input_binding_to_key) do temp_binding_to_key[k] = v end
+    for k, v in pairs(output_binding_to_key) do temp_binding_to_key[k] = v end
+    for k, v in pairs(input_key_to_binding) do temp_key_to_binding[k] = v end
+    for k, v in pairs(output_key_to_binding) do temp_key_to_binding[k] = v end
+	LogDebug("process_audio_json: mappings built successfully")
+    return temp_routes, temp_binding_to_key, temp_key_to_binding
+end
+
 
 function GetMyProxyId()
     local proxyIdList = C4:GetBoundConsumerDevices(0, DEFAULT_PROXY_BINDINGID)
@@ -104,82 +320,91 @@ function GetMyProxyId()
     end
 end
 
-function P8INT:SETUP()
-    GetMyProxyId()
-    for i = 0, (MAX_OUTPUTS - 1) do
-        local sourceProxyId = C4:GetBoundProviderDevice(gP8ProxyId, 1000 + i)
-        if (sourceProxyId == 0) then
-            LogWarn("WARNING: Source " .. (i + 1) .. " is not mapped in Composer, if this input port is used, it must be bound correctly in Composer to a source device")
-        else
-            inputProxies["INPUT" .. i] = sourceProxyId
-        end
+function P8INT:UPDATE_AUDIO_STATE(transfer, responses, errCode, errMsg) 
+	errCode = errCode or 0
+    errMsg  = errMsg or ""
+	
+    if errCode ~= 0 then
+        LogError(string.format("UPDATE_AUDIO_STATE failed - transport error (errCode=%s, msg=%s)", 
+            tostring(errCode), tostring(errMsg or "")))
+        MarkNetworkTransfer(false, "UPDATE_AUDIO_STATE", errCode, errMsg or "Transport error")
+        return
     end
-    GetConsumersForOutputs()
-    CalculateRoomForOutput()
+
+    if not responses or #responses == 0 then
+        LogWarn("UPDATE_AUDIO_STATE: no responses received")
+        MarkNetworkTransfer(false, "UPDATE_AUDIO_STATE", -2501, "No response")
+        return
+    end
+	
+	local body = responses[#responses].body
+    if not body or body == "" then
+        LogWarn("UPDATE_AUDIO_STATE: empty response body")
+        return
+    end
+	
+	local success, jsonResponse = pcall(JSON.decode, JSON, body)
+    if not success then
+        LogError("UPDATE_AUDIO_STATE: JSON decode failed")
+        LogDebug("Body snippet: " .. (body:sub(1, 250) or ""))
+        return
+    end
+	
+	if not jsonResponse.Result or type(jsonResponse.devices) ~= "table" then
+		LogWarn("UPDATE_AUDIO_STATE: invalid API response - missing Result or devices array")
+		return
+    end
+	
+    success, new_routes, new_binding_to_key, new_key_to_binding = pcall(process_audio_json, jsonResponse)
+    if not success then
+        LogError(string.format("UPDATE_AUDIO_STATE: process_audio_json crashed - %s", tostring(new_routes)))
+        return
+    end
+	
+    routes = new_routes
+    binding_to_key = new_binding_to_key
+    key_to_binding = new_key_to_binding
+	LogInfo(string.format("UPDATE_AUDIO_STATE: successfully processed %d devices", #jsonResponse.devices))
 end
 
-function CalculateRoomForOutput()
-    local rooms = C4:GetDevicesByC4iName("roomdevice.c4i")
-    if rooms ~= nil then
-        for roomId, roomName in pairs(rooms) do
-            LogInfo("Scanning Room: " .. roomId .. " (" .. roomName .. ")")
-            local roomDevices = C4:RoomGetVideoDevices(roomId)
-            if roomDevices ~= nil then
-                for deviceId, deviceName in pairs(roomDevices) do
-                    LogTrace("Attempting to link device: " .. deviceId .. " (" .. deviceName .. ")")
-                    for i = 0, (MAX_OUTPUTS - 1) do
-                        if
-                            outputConsumers["OUTPUT" .. i] ~= nil and
-                                tonumber(deviceId) == outputConsumers["OUTPUT" .. i]
-                         then
-                            LogInfo("Mapping Output " .. (i + 1) .. " to Room: " .. roomId .. " (" .. roomName .. ")")
-                            outputRoom["OUTPUT" .. i] = roomId
-                        elseif outputConsumers["OUTPUT" .. i] == nil then
-                            LogTrace(
-                                "Device Id: " ..
-                                    deviceId .. " cannot match Output " .. i .. " as there are no consumers linked"
-                            )
-                        else
-                            LogTrace(
-                                "Device Id: " ..
-                                    deviceId ..
-                                        " does not match Output " .. i .. " Consumer " .. outputConsumers["OUTPUT" .. i]
-                            )
-                        end
-                    end
-                end
-            end
-        end
-    end
-end
+function P8INT:IS_ROUTE_VALID(idBinding, tParams) 
+	local provider_class    	= tParams["Provider_sClass"]
+	local consumer_idBinding 	= tonumber(tParams["Consumer_idBinding"])
+	local provider_idBinding 	= tonumber(tParams["Provider_idBinding"])
+	local consumer_class    	= tParams["Consumer_sClass"]
+	local roomID			= tonumber(tParams["Params_idRoom"])
 
-function GetConsumersForOutputs()
-    for i = 0, (MAX_OUTPUTS - 1) do
-        local consumerDevices = C4:GetBoundConsumerDevices(gP8ProxyId, 2000 + i)
-        if consumerDevices ~= nil then
-            for id, name in pairs(consumerDevices) do
-                LogTrace("Output " .. (i + 1) .. " is connected to device " .. id .. " (" .. name .. ")")
-                outputConsumers["OUTPUT" .. i] = id
-            end
-        else
-            LogWarn("WARNING: No Sink connected to output " .. (i + 1))
-        end
+	if not consumer_idBinding or not provider_idBinding then
+		LogTrace("IS_ROUTE_VALID: missing Consumer or Provider binding")
+        return "False"
     end
+
+	local source_key = binding_to_key[consumer_idBinding]
+    local sink_key = binding_to_key[provider_idBinding]
+	
+	if not sink_key or not source_key then
+        LogDebug(string.format("IS_ROUTE_VALID: unmapped binding consumer=%d provider=%d", consumer_idBinding, provider_idBinding))
+        return "False"
+    end
+	
+	local valid = table.contains(routes[sink_key] or {}, source_key)
+    LogTrace(string.format("IS_ROUTE_VALID: %d -> %d = %s", provider_idBinding, consumer_idBinding, valid and "True" or "False"))
+    return valid and "True" or "False"
 end
 
 function P8INT:PORT_SET(idBinding, tParams)
+	LogTrace("PORT_SET entered - idBinding=" .. tostring(idBinding))
+    LogTrace("tParams: " .. dump(tParams))
     local input = tonumber(tParams["INPUT"] % 1000)
     local output = tonumber(tParams["OUTPUT"] % 1000)
     local input_id = tonumber(tParams["INPUT"])
     local class = tParams["CLASS"]
     local output_id = tonumber(tParams["OUTPUT"])
-    local bSwitchSeparate, bVideo, bAudio = false, false, false
     local bSwitchSeparate = tParams["SWITCH_SEPARATE"]
     CancelRoutingPoll()
     local ticket = C4:url():SetOption("timeout", 15)
     if class == "VIDEO_SELECTION" or class == "HDMI" or class == nil then
-        LogInfo("Changing Routing. Input: " .. input .. " -> Output: " .. output)
-        existingRouting["OUTPUT" .. output] = input
+        LogInfo(string.format("Setting VIDEO route: %d → %d", input_id, output_id))
         ticket:OnDone(
             function(transfer, responses, errCode, errMsg)
 				PermitRoutingPoll()
@@ -193,134 +418,49 @@ function P8INT:PORT_SET(idBinding, tParams)
         ):Get(P8INT:GET_MATRIX_URL() .. "/Port/Set/" .. input .. "/" .. output)
     else
 		-- If the port is locked, force the input to the locked input.
-		if portLocked(output) == 1 then
-			input = existingRouting["AUDIOOUTPUT" .. output]
-		end
-		LogInfo("Changing Audio Routing. Input: " .. input .. " -> Output: " .. output)
-		existingRouting["AUDIOOUTPUT" .. output] = input
-		ticket:OnDone(
-			function(transfer, responses, errCode, errMsg)
-				PermitRoutingPoll()
-				if errCode == 0 then
-					SendNotify("INPUT_OUTPUT_CHANGED", tParams, idBinding)
-					MarkNetworkTransfer(true)
-				else
-					MarkNetworkTransfer(false, "PORT_SET", -2501, "Failed to set port")
-				end
-			end
-		):Get(P8INT:GET_MATRIX_URL() .. "/Port/Set/" .. input .. "/" .. output)
+		-- TODO: Check locking
+		LogInfo(string.format("Setting AUDIO route: binding %d → %d", input_id, output_id))
+        local source_key = binding_to_key[input_id]
+        local sink_key = binding_to_key[output_id]
+        
+		if not source_key or not sink_key then
+			LogError(string.format("PORT_SET audio: no mapping for input=%d output=%d", input_id, output_id))
+            PermitRoutingPoll()
+            MarkNetworkTransfer(false, "PORT_SET", -2501, "Invalid binding mapping")
+            return
+        end
 		
-    end
-end
-
-function GetPowerState(data, mode, bay)
-    for index, port in pairs(data.Ports) do
-        if port.Bay == bay and port.Mode == mode then
-            return port.DPS
-        end
-    end
-end
-
-function P8INT:GET_ROUTING_STATE(transfer, responses, errCode, errMsg)
-    --LogTrace("Updating System Routing + Power")
-    if errCode ~= 0 or errMsg ~= nil then
-        if errMsg == nil then
-            errMsg = "Unknown Error"
-        end
-        MarkNetworkTransfer(false, "GET_ROUTING_STATE", errCode, errMsg)
-        return
-    end
-
-    local jsonResponse = JSON:decode(responses[#responses].body)
-    if jsonResponse.Result then
-        for index, port in pairs(jsonResponse.Ports) do
-            if port.Mode == "Output" then
-                local outputNumber = tonumber(port.Bay)
-                local outputName = "OUTPUT" .. outputNumber
-
-                local powerStateChanged = false
-                local powerStatePrevious
-                local routingChanged = false
-                -- No DPS value returned if CEC is disabled
-                if port.DPS ~= nil then
-                    if roomPower[outputName] ~= port.DPS and outputRoom[outputName] ~= nil then
-                        -- Handle Power State
-                        LogInfo(
-                            "Output " ..
-                                outputNumber ..
-                                    " power state has changed, was " .. roomPower[outputName] .. " now " .. port.DPS
-                        )
-                        powerStateChanged = true
-                        powerStatePrevious = roomPower[outputName]
-                        roomPower[outputName] = port.DPS
-                    end
-                end
-                if existingRouting[outputName] ~= port.ReceiveFrom and outputRoom[outputName] ~= nil then
-					LogTrace("Output " .. outputNumber .. " routing has changed, was " .. existingRouting[outputName] .. " now " .. port.ReceiveFrom)
-                    routingChanged = true
-                end
-				
-				if MODE_MANUALMODE_SUPPORTED == 1 then
-					-- We can only reliably track audio routing on matrices that support manual mode.
-					if port.AudioReceived ~= nil then
-						existingRouting["AUDIOOUTPUT" .. outputNumber] = tonumber(port.AudioRecieved)
-					end
-				end
-
-                if routingChanged then
-                    LogTrace("Output " .. outputNumber .. " routing has changed, was " .. existingRouting[outputName] .. " now " .. port.ReceiveFrom)
-                    existingRouting[outputName] = port.ReceiveFrom
-                    C4:SendToDevice(outputRoom[outputName], "SELECT_VIDEO_DEVICE", {deviceid = inputProxies["INPUT" .. port.ReceiveFrom]})
-					if MODE_MANUALMODE_SUPPORTED == 1 then
-						C4:SendToDevice(outputRoom[outputName], "SELECT_AUDIO_DEVICE", {deviceid = inputProxies["INPUT" .. port.AudioRecieved]})
-					end
-                elseif powerChanged then
-					if roomPower[outputName] == 0 then
-						--Tell Director to do a routing change and turn on any other items required
-						if existingRouting[outputName] ~= nil and inputProxies["INPUT" .. port.ReceiveFrom] ~= nil then
-							C4:SendToDevice(outputRoom[outputName], "SELECT_VIDEO_DEVICE", {deviceid = inputProxies["INPUT" .. port.ReceiveFrom]})
-						else
-							LogWarn("Output " .. outputNumber .. " Power State changed to on, however the source routed to this output is not mapped in composer. No notification will be sent to composer until it is correctly mapped.")
-						end
-					end
-					if roomPower[outputName] == 1 then
-						--Tell director this output has turned off
-						-- Not implemented
-					end
-					if roomPower[outputName] < 0 then
-                        -- Not implemented
-					end
-                end
-
-                if powerChanged or routingChanged then
-                    -- Update the view in composer
-                    SendNotify(
-                        "INPUT_OUTPUT_CHANGED",
-                        {INPUT = (port.ReceiveFrom + 3000), OUTPUT = (4000 + outputNumber)},
-                        DEFAULT_PROXY_BINDINGID
-                    ) -- Audio
-                    SendNotify(
-                        "INPUT_OUTPUT_CHANGED",
-                        {INPUT = (port.ReceiveFrom + 1000), OUTPUT = 2000 + outputNumber},
-                        DEFAULT_PROXY_BINDINGID
-                    ) -- Video
-                end
+		LogTrace(string.format("Resolved keys - Sink: %s | Source: %s", sink_key, source_key))
+		
+		local url = P8INT:GET_MATRIX_URL() .. "/audio/select/" .. sink_key .. "/" .. source_key
+        LogTrace("Calling: " .. url)
+		
+		ticket:OnDone(function(transfer, responses, errCode, errMsg)
+            PermitRoutingPoll()
+            if errCode == 0 then
+                LogInfo("Audio route set successfully")
+                SendNotify("INPUT_OUTPUT_CHANGED", tParams, idBinding)
+                MarkNetworkTransfer(true)
+            else
+                LogError(string.format("Audio route failed (errCode=%d)", errCode))
+                MarkNetworkTransfer(false, "PORT_SET", -2501, "Failed to set audio")
             end
-        end
-        MarkNetworkTransfer(true)
-    else
-        MarkNetworkTransfer(false, "GET_ROUTING_STATE", -1, "Failed to parse response")
+        end):Get(url)
     end
 end
 
-function portLocked(port) 
-	return audioLocked["AUDIOOUTPUT" .. port]
+
+function P8INT:PRINT_ROUTES()
+	print("=== Current Routes Table ===")
+	print(dump(routes))
 end
 
-function portLockedGet(port) 
-	return existingRouting["AUDIOOUTPUT" .. port]
+function P8INT:PRINT_BTK()
+	print("=== Binding to Key Table ===")
+	print(dump(binding_to_key))
 end
 
-function portLock(port, locked)
-	audioLocked["AUDIOOUTPUT" .. port] = locked
+function P8INT:PRINT_KTB()
+	print("=== Binding to Key Table ===")
+	print(dump(key_to_binding))
 end

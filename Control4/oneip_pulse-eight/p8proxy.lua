@@ -23,17 +23,17 @@ function ReceivedFromProxy(idBinding, sCommand, tParams)
 		end
 		
 		LogTrace("ReceivedFromProxy(): " .. sCommand .. " on binding " .. idBinding .. "; Call Function PRX_CMD." .. sCommand .. "()")
-		LogInfo(tParams)
+		LogDebug(tParams)
 		if (sCommand == "IS_AV_OUTPUT_TO_INPUT_VALID") then
 			local status, retval = pcall(PRX_CMD[sCommand], idBinding, tParams)
 			if (status) then
-				LogTrace("IS_AV_OUTPUT_TO_INPUT_VALID returned " .. retval .. " for path of class " .. tParams["Provider_sClass"] .. " from " .. tonumber(tParams["Consumer_idBinding"]) .. " to " .. tonumber(tParams["Provider_idBinding"]))
 				return retval
 			end
         end
 
 		if ((PRX_CMD[sCommand]) ~= nil) then
 			local status, err = pcall(PRX_CMD[sCommand], idBinding, tParams)
+			LogTrace(sCommand)
 			if (not status) then
 				LogError("LUA_ERROR: " .. err)
 			end
@@ -154,7 +154,6 @@ function P8INT:POST_REMOTE_URL(mode, bay, callback, postData)
 end
 
 function PRX_CMD.BINDING_CHANGE_ACTION(idBinding, tParams)
-    P8INT:SETUP()
     P8INT:FETCH_INSTALLER_ID()
 end
 
@@ -171,63 +170,19 @@ function PRX_CMD.OFF(idBinding, tParams)
 end
 
 function PRX_CMD.CONNECT_OUTPUT(idBinding, tParams)
-	if tonumber(tParams["OUTPUT"]) > -1 then
-		local outputBinding = tonumber(tParams["OUTPUT"])
-		local output = tonumber(tParams["OUTPUT"] % 1000)
-		if MODE_MANUALMODE == 0 then 
-			local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/false"
-			LogInfo("Set Mute OFF Due to Connect. Output: " .. output)
-			C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-				  local jsonResponse = JSON:decode(strData)
-				  if jsonResponse.Result then
-					P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-				  end
-			   end)
-		end
-	end
+	 --No Action Required
 end
 
 function PRX_CMD.DISCONNECT_OUTPUT(idBinding, tParams)
-	if tonumber(tParams["OUTPUT"]) > -1 then
-		local outputBinding = tonumber(tParams["OUTPUT"])
-		local output = tonumber(tParams["OUTPUT"] % 1000)
-		if MODE_POWEROFF_ON_ZONE_OFF == 1 then
-			C4:urlGet(P8INT:GET_MATRIX_URL() .. "/CEC/Off/Output/" .. output, {})
-		end
-		
-		-- Audio zones
-		if outputBinding >= 4000 and outputBinding < 5000 then
-			if MODE_MANUALMODE_SUPPORTED == 1 then 
-				LogInfo("Disconnecting Audio. Output: " .. output)
-				local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Route/-1/" .. output
-				C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-					  local jsonResponse = JSON:decode(strData)
-					  if jsonResponse.Result then
-						P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-					  end
-				   end)
-			else
-				local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/true"
-				LogInfo("Set Mute ON Due to Disconnect. Output: " .. output)
-				C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-					  local jsonResponse = JSON:decode(strData)
-					  if jsonResponse.Result then
-						P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-					  end
-				   end)
-			
-			end
-		end
-		
-	end
+	 --No Action Required
 end
 
 function PRX_CMD.GET_VIDEO_PATH(idBinding, tParams)
-    --P8INT:GET_ROUTING(idBinding, tParams)
+     --No Action Required
 end
 
 function PRX_CMD.GET_AUDIO_PATH(idBinding, tParams)
-    --P8INT:GET_ROUTING(idBinding, tParams)
+     --No Action Required
 end
 
 function EX_CMD.LUA_ACTION(tParams)
@@ -241,242 +196,205 @@ function EX_CMD.LUA_ACTION(tParams)
 end
 
 function PRX_CMD.SET_VOLUME_LEVEL(idBinding, tParams)
-	if tonumber(tParams["OUTPUT"]) > -1 then
-		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local level = tParams["LEVEL"]
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. output .. "/" .. level
-		LogInfo("Changing Volume. Output: " .. output .. " -> Level: " .. level)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  if jsonResponse.Result then
-				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-			  end
-		   end)
-	end
+	 --No Action Required
 end
 
 function PRX_CMD.MUTE_TOGGLE(idBinding, tParams)
-	--OUTPUT (7000)
-	--ROOM_ID (604)
-	--DEVICE_ID (230)
-	if tonumber(tParams["OUTPUT"]) > -1 then
-		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output
-		LogInfo("Toggle Mute. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  if jsonResponse.Result then
-				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-			  end
-		   end)
-	end
+	 --No Action Required
 end
 
 function PRX_CMD.MUTE_ON(idBinding, tParams)
-	--OUTPUT (7000)
-	--ROOM_ID (604)
-	--DEVICE_ID (230)
-	if tonumber(tParams["OUTPUT"]) > -1 then
-		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/true"
-		LogInfo("Mute On. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  if jsonResponse.Result then
-				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-			  end
-		   end)
-	end
+	 --No Action Required
 end
 
 function PRX_CMD.MUTE_OFF(idBinding, tParams)
-	--OUTPUT (7000)
-	--ROOM_ID (604)
-	--DEVICE_ID (230)
-	if tonumber(tParams["OUTPUT"]) > -1 then
-		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/false"
-		LogInfo("Mute Off. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  if jsonResponse.Result then
-				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-			  end
-		   end)
-	end
+	 --No Action Required
 end
 
 function PRX_CMD.LOUDNESS_ON(idBinding, tParams)
-	--OUTPUT (7000)
-	--ROOM_ID (604)
-	--DEVICE_ID (230)
-	if tonumber(tParams["OUTPUT"]) > -1 then
-		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/true"
-		LogInfo("Toggle Mute. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  if jsonResponse.Result then
-
-			  end
-		   end)
-	end
+	 --No Action Required
 end
 
 function PRX_CMD.LOUDNESS_OFF(idBinding, tParams)
-	--OUTPUT (7000)
-	--ROOM_ID (604)
-	--DEVICE_ID (230)
-	if tonumber(tParams["OUTPUT"]) > -1 then
-		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Mute/" .. output .. "/false"
-		LogInfo("Toggle Mute. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  if jsonResponse.Result then
-
-			  end
-		   end)
-	end
+	 --No Action Required
 end
 
 function PRX_CMD.PULSE_VOL_UP(idBinding, tParams)
-	if tonumber(tParams["OUTPUT"]) > -1 then
-		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. output .. "/up"
-		LogInfo("Volume Up. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  if jsonResponse.Result then
-				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-			  else
-			     LogWarn("System not set to control volume on this zone")
-			  end
-		   end)
-	end
+	 --No Action Required
 end
 
 function PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
-	if tonumber(tParams["OUTPUT"]) > -1 then
-		local output = tonumber(tParams["OUTPUT"] % 1000)
-		local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. output .. "/down"
-		--LogInfo("Volume Down. Output: " .. output)
-		C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-			  local jsonResponse = JSON:decode(strData)
-			  --if jsonResponse.Result then
-				P8INT:UPDATE_AUDIO(idBinding, tParams["OUTPUT"])
-			  --end
-		   end)
-	end
+	 --No Action Required
 end
 
-local outputVolumeTimers = {
-	OUTPUT0 = nil,
-	OUTPUT1 = nil,
-	OUTPUT2 = nil,
-	OUTPUT3 = nil,
-	OUTPUT4 = nil,
-	OUTPUT5 = nil,
-	OUTPUT6 = nil,
-	OUTPUT7 = nil,
-	OUTPUT8 = nil,
-	OUTPUT9 = nil
-}
-
 function PRX_CMD.START_VOL_UP(idBinding, tParams)
-    LogTrace("Ramp Up Start")
-    local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
-    local output = tonumber(tParams["OUTPUT"] % 1000)
-    
-    outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
-	   PRX_CMD.PULSE_VOL_UP(idBinding, tParams)
-    end, true)
+    --No Action Required
 end
 
 function PRX_CMD.STOP_VOL_UP(idBinding, tParams)
-    LogTrace("Ramp Up End")
-    local output = tonumber(tParams["OUTPUT"] % 1000)
-    outputVolumeTimers["OUTPUT" .. output]:Cancel()
+    --No Action Required
 end
 
 function PRX_CMD.START_VOL_DOWN(idBinding, tParams)
-    LogTrace("Ramp Down Start")
-    local speed = tonumber(Properties["Volume Ramp Speed"]) or 200 
-    local output = tonumber(tParams["OUTPUT"] % 1000)
-    
-    outputVolumeTimers["OUTPUT" .. output] = C4:SetTimer(speed, function(timer, skips) 
-	   PRX_CMD.PULSE_VOL_DOWN(idBinding, tParams)
-    end, true)
+    --No Action Required
 end
 
 function PRX_CMD.STOP_VOL_DOWN(idBinding, tParams)
-    LogTrace("Ramp Down End")
-    local output = tonumber(tParams["OUTPUT"] % 1000)
-    outputVolumeTimers["OUTPUT" .. output]:Cancel()
+    --No Action Required
 end
-
-function P8INT:UPDATE_AUDIO(idBinding, output)
-	--LogTrace("Updating Audio for Output: " .. output)
-	local p8output = tonumber(output % 1000)
-	local uri = P8INT:GET_MATRIX_URL() .. "/Audio/Volume/" .. p8output
-	C4:urlGet(uri, {}, false, function(ticketId, strData, responseCode, tHeaders, strError)
-		if responseCode ~= 200 or strError ~= nil then
-			LogWarn("Unable to fetch audio settings")
-			LogWarn("Error = " .. strError)
-			LogWarn("Response Code = " .. responseCode)
-			return
-		end
-
-		local jsonResponse = JSON:decode(strData)
-		if jsonResponse.Result then
-		     LogTrace("Volume Level Changed = " .. tonumber(jsonResponse["volume"]) .. " Output (" .. output .. ") = " .. (tonumber(output)-3000))
-			local volChangedParams = { LEVEL = tonumber(jsonResponse["volume"]), OUTPUT = (tonumber(output)-3000) }
-			local muteChangedParams = { MUTE = jsonResponse["muted"], OUTPUT = (tonumber(output)-3000) }
-			C4:SendToProxy(idBinding, "VOLUME_LEVEL_CHANGED", volChangedParams)
-			C4:SendToProxy(idBinding, "MUTE_CHANGED", muteChangedParams)
-		end
-	end)
-end
-
 
 function PRX_CMD.SET_ROOM_BINDING_NAME(idBinding, tParams)
-    --PartnerDevice
-    --OUTPUT
+    --No Action Required
 end
 
 
 function PRX_CMD.IS_AV_OUTPUT_TO_INPUT_VALID(idBinding, tParams)
-    local pathIsValid =  "True"
-	local provider_class    	= tParams["Provider_sClass"]
-    --if MODE_SINK == 0 or MODE_SINK_SUPPORTED == 0 then
-	--   -- TODO: Test for other video sources gAVPathType[tonumber(params["Params_bindingType"])]?
-	--   if provider_class == "VIDEO_SELECTION" or provider_class == "HDMI" then
-	--   else
-	--	  local consumer_idBinding 	= tonumber(tParams["Consumer_idBinding"])	-- we are consuming the source, so the consumer binding is the source
-	--	  local provider_idBinding 	= tonumber(tParams["Provider_idBinding"]) 	-- we are providing the output, to the output is the provider binding    
-	--	  local consumer_class    	= tParams["Consumer_sClass"]
-	--	  local roomID			= tonumber(tParams["Params_idRoom"])
-	--	  
-	--	  if (consumer_idBinding % 1000) ~= (provider_idBinding % 1000) then
-	--		 pathIsValid = "False"
-	--	  end
-	--   end
-	--   
-	--else 
-	--	-- In sink mode check for manual mode and do audio locking
-	--	if provider_class == "VIDEO_SELECTION" or provider_class == "HDMI" then
-	--	else
-	--		if MODE_MANUALMODE == 1 then
-	--			local consumer_idBinding 	= tonumber(tParams["Consumer_idBinding"])
-	--			local output = consumer_idBinding % 1000
-	--			if portLocked(output) == 1 then
-	--				local lockedInput = portLockedGet(output)
-	--				if output ~= lockedInput then
-	--					pathIsValid = "False"
-	--				end
-	--			end
-	--		end
-	--	end
-    --end
-    return pathIsValid
+	local retval = "False"
+	local provider_class = tParams["Provider_sClass"]
+	if provider_class == "VIDEO_SELECTION" or provider_class == "HDMI" then
+		retval = "True"
+	else
+		retval = P8INT:IS_ROUTE_VALID(idBinding, tParams)
+	end
+	LogTrace("IS_AV_OUTPUT_TO_INPUT_VALID returned " .. retval .. " for path of class " .. tParams["Provider_sClass"] .. " from " .. tonumber(tParams["Consumer_idBinding"]) .. " to " .. tonumber(tParams["Provider_idBinding"]))
+	return retval
+end
+
+--=============================
+--=    Programming commands   =
+--=============================
+
+local multiviewer_commands = {
+    ["Set Multiviewer Layout"] = {
+        endpoint = "/multiviewer/view",
+        value_map = {
+            ["Single"]              = 1,
+            ["Picture in Picture"]  = 2,
+            ["Two Screen Large"]    = 3,
+            ["Two Screen Small"]    = 4,
+            ["Three Screen Large"]  = 5,
+            ["Three Screen Small"]  = 6,
+            ["Four Screen Equal"]   = 7,
+            ["Four Screen Small"]   = 8,
+        }
+    },
+    ["Set Multiviewer PIP Position"] = {
+        endpoint = "/multiviewer/position",
+        value_map = {
+            ["Left Top"]     = 1,
+            ["Left Bottom"]  = 2,
+            ["Right Top"]    = 3,
+            ["Right Bottom"] = 4,
+        }
+    },
+    ["Set Multiviewer PIP Size"] = {
+        endpoint = "/multiviewer/size",
+        value_map = {
+            ["Small"]  = 1,
+            ["Medium"] = 2,
+            ["Large"]  = 3,
+        }
+    },
+    ["Set Multiviewer Audio Source"] = {
+        endpoint = "/multiviewer/audio",
+        value_map = nil   -- direct integer, 1-4 in UI → 0-3 on wire
+    }
+}
+
+local function SendMultiviewerCommand(cmdName, tParams)
+    LogTrace("SendMultiviewerCommand: " .. cmdName)
+
+    if not tParams then
+        LogWarn(cmdName .. ": Nil Params")
+        return
+    end
+
+    local zoneParam = tonumber(tParams["Zone"])
+    if not zoneParam or zoneParam < 1 or zoneParam > 32 then
+        LogWarn(cmdName .. ": Invalid or missing Zone (must be 1-32)")
+        return
+    end
+
+    local zone = zoneParam - 1   -- firmware is 0-based
+
+    local cmdDef = multiviewer_commands[cmdName]
+    if not cmdDef then
+        LogError(cmdName .. ": Unknown command definition")
+        return
+    end
+
+    local value
+    local paramName = (cmdName == "Set Multiviewer Audio Source") and "Source" or "Layout"
+
+    if cmdDef.value_map then
+        -- string list -> index
+        local rawValue = tParams[paramName]
+        value = cmdDef.value_map[rawValue]
+        if not value then
+            LogWarn(cmdName .. ": Invalid " .. paramName .. " value: " .. tostring(rawValue))
+            return
+        end
+    else
+        -- direct integer (Audio Source)
+        value = tonumber(tParams[paramName])
+        if not value or value < 1 or value > 4 then
+            LogWarn(cmdName .. ": Invalid Source (must be 1-4)")
+            return
+        end
+        value = value - 1
+    end
+
+    local url = P8INT:GET_MATRIX_URL() .. cmdDef.endpoint .. "/" .. zone .. "/" .. value
+    LogInfo(cmdName .. ": Sending " .. url)
+
+    C4:url()
+        :SetOption("timeout", 15)
+        :OnDone(function(transfer, responses, errCode, errMsg)
+            if errCode ~= 0 then
+                LogError(string.format("%s failed - transport error (errCode=%s, msg=%s)",
+                    cmdName, tostring(errCode), tostring(errMsg or "")))
+                return
+            end
+
+            if not responses or #responses == 0 then
+                LogWarn(cmdName .. ": No response received")
+                return
+            end
+
+            local body = responses[#responses].body
+            if not body or body == "" then
+                LogWarn(cmdName .. ": empty response body")
+                return
+            end
+
+            local success, jsonResponse = pcall(JSON.decode, JSON, body)
+            if not success then
+                LogError(cmdName .. ": JSON decode failed")
+                LogDebug("Body snippet: " .. (body:sub(1, 250) or ""))
+                return
+            end
+
+            if not jsonResponse.Result then
+                LogWarn(cmdName .. ": Failed - " .. (jsonResponse.ErrorMessage or "unknown error"))
+            else
+                LogInfo(cmdName .. ": Success")
+            end
+        end)
+        :Get(url)
+end
+
+function EX_CMD.SetMultiviewerLayout(tParams)
+    SendMultiviewerCommand("Set Multiviewer Layout", tParams)
+end
+
+function EX_CMD.SetMultiviewerPIPPosition(tParams)
+    SendMultiviewerCommand("Set Multiviewer PIP Position", tParams)
+end
+
+function EX_CMD.SetMultiviewerPIPSize(tParams)
+    SendMultiviewerCommand("Set Multiviewer PIP Size", tParams)
+end
+
+function EX_CMD.SetMultiviewerAudioSource(tParams)
+    SendMultiviewerCommand("Set Multiviewer Audio Source", tParams)
 end

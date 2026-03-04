@@ -10,25 +10,17 @@ require "p8system"
 require "p8routing"
 require "p8monitoring"
 
---Defines
-
-MAX_INPUTS = 12
-MAX_OUTPUTS = 10
-
 --Init Functions
 
-local gP8MainUpdateTimer
-local gP8MainUpdateTimerBlocked = false
 local gP8InitTimer
 local gP8DetailsTimer
-local gP8PropertiesTimer
-local gP8PropertiesTimerTicks
 local gP8HealthTimer
-local gP8VolumeTimer
+local gP8AudioTimer
 
 local gP8NetworkStatusBuffer
 local gP8PollTicket
 local gP8PollRequests = {}
+}
 
 function ON_DRIVER_EARLY_INIT.main()
     C4:AddVariable("Temp0", 0, "NUMBER")
@@ -40,60 +32,48 @@ end
 
 function FirstRun()
     --Init Connected Devices
-    LogInfo("First Run")
-    P8INT:SETUP()
+    LogInfo("=== Driver First Run ===")
     P8INT:FETCH_INSTALLER_ID()
     --Initialise ring buffer for monitoring network timeouts
     gP8NetworkStatusBuffer = gP8NetworkStatusBuffer or P8RingBuffer:new(4)
 
     gP8InitTimer = gP8InitTimer or c4_timer:new("Post Init", 1, "SECONDS", InitTimer)
     gP8InitTimer:StartTimer() -- Call once to set initial states
-    gP8MainUpdateTimer = gP8MainUpdateTimer or c4_timer:new("Main Update", 2, "SECONDS", MainUpdateTimer, true)
-    gP8HealthTimer = gP8HealthTimer or c4_timer:new("Health Check", 60, "SECONDS", HealthUpdateTimer, true)
-    gP8DetailsTimer = gP8DetailsTimer or c4_timer:new("Details Update", 10, "SECONDS", DetailsUpdateTimer, true)
-    gP8PropertiesTimer = gP8PropertiesTimer or c4_timer:new("Properties Update", 3, "SECONDS", PropertiesUpdateTimer, true)
+	
+    gP8HealthTimer     = gP8HealthTimer     or c4_timer:new("Health Check", 60, "SECONDS", HealthUpdateTimer, true)
+    gP8DetailsTimer    = gP8DetailsTimer    or c4_timer:new("Details Update", 10, "SECONDS", DetailsUpdateTimer, true)
+	gP8AudioTimer      = gP8AudioTimer      or c4_timer:new("Audio Update", 60, "SECONDS", AudioUpdateTimer, true)
 
-    gP8MainUpdateTimer:StartTimer()
     gP8HealthTimer:StartTimer()
     gP8DetailsTimer:StartTimer()
-    gP8PropertiesTimer:StartTimer()
-    
+	gP8AudioTimer:StartTimer()
+	
+    LogInfo("All timers started")
 end
 
 function InitTimer()
+	LogInfo("InitTimer: initial full update")
 	DetailsUpdateTimer()
 	HealthUpdateTimer()
-	PropertiesUpdateTimer()
-	MainUpdateTimer()
+	AudioUpdateTimer()
 end
 
-function VolumeUpdateTimer()
-    for i = 1,MAX_OUTPUTS do
-	   --P8INT:UPDATE_AUDIO(DEFAULT_PROXY_BINDINGID, 4000 + i - 1)
-    end
-end
-
-function MainUpdateTimer()
+function AudioUpdateTimer()
+	LogTrace("Updating Audio Details")
+	
 	local updateRequired = false
-	if gP8PollRequests.routing == nil then 
+	if gP8PollRequests.audio == nil then 
 		updateRequired = true
-	elseif gP8PollRequests.routing:TicketId() == 0 then
+	elseif gP8PollRequests.audio:TicketId() == 0 then
 		updateRequired = true
 	end
-
-	if gP8MainUpdateTimerBlocked == false then
-		if (Properties["Auto Sync Navigators"] == "Yes") then
-			if updateRequired then
-				gP8PollRequests.routing = C4:url()
-				:SetOption("timeout", 15)
-				:OnDone(function(transfer, responses, errCode, errMsg) 
-					P8INT:GET_ROUTING_STATE(transfer, responses, errCode, errMsg)
-					end)
-				:Get(P8INT:GET_MATRIX_URL() .. "/Port/List")
-			end
-		end
-	end
-	DetermineOnlineStatus()
+	LogTrace("Audio update required")
+	gP8PollRequests.audio = C4:url() -- must create a new ticket every time
+	:SetOption("timeout", 15)
+	:OnDone(function(transfer, responses, errCode, errMsg) 
+		P8INT:UPDATE_AUDIO_STATE(transfer, responses, errCode, errMsg)
+		end)
+	:Get(P8INT:GET_MATRIX_URL() .. "/Audio")
 end
 
 function DetailsUpdateTimer()
@@ -129,33 +109,6 @@ function HealthUpdateTimer()
 			P8INT:GET_HEALTH(transfer, responses, errCode, errMsg)
 			end)
 		:Get(P8INT:GET_MATRIX_URL() .. "/System/Health")
-	end
-end
-
-function PropertiesUpdateTimer()
-	if gP8PropertiesTimerTicks == nil or gP8PropertiesTimerTicks == 4 then
-		gP8PropertiesTimerTicks = 0
-	end
-	if gP8PollRequests.properties == nil then 
-		gP8PollRequests.properties = C4:url()
-	end
-	if gP8PollRequests.properties:TicketId() == 0 then
-		if gP8PropertiesTimerTicks == 0 then
-			gP8PollRequests.properties = C4:url()
-			:SetOption("timeout", 15)
-			:OnDone(function(transfer, responses, errCode, errMsg) 
-				P8INT:GET_FEATURES(transfer, responses, errCode, errMsg)
-				end)
-			:Get(P8INT:GET_MATRIX_URL() .. "/System/Features")
-		elseif gP8PropertiesTimerTicks == 1 then
-			gP8PollRequests.properties = C4:url() 
-			:SetOption("timeout", 15)
-			:OnDone(function(transfer, responses, errCode, errMsg) 
-				P8INT:GET_POWERON_ON_ROUTING_CHANGE(transfer, responses, errCode, errMsg)
-				end)
-			:Get(P8INT:GET_MATRIX_URL() .. "/CEC/AutoPowerOn")
-		end
-		gP8PropertiesTimerTicks = gP8PropertiesTimerTicks + 1
 	end
 end
 
@@ -195,7 +148,6 @@ function DetermineOnlineStatus()
 end
 
 function CancelRoutingPoll()
-	gP8MainUpdateTimerBlocked = true
 	if gP8PollRequests.routing ~= nil then
 		if gP8PollRequests.routing:TicketId() ~= 0 then
 			gP8PollRequests.routing:Cancel()
@@ -204,5 +156,5 @@ function CancelRoutingPoll()
 end
 
 function PermitRoutingPoll()
-	gP8MainUpdateTimerBlocked = false
+	-- gP8MainUpdateTimerBlocked = false
 end
