@@ -20,7 +20,6 @@ local gP8AudioTimer
 local gP8NetworkStatusBuffer
 local gP8PollTicket
 local gP8PollRequests = {}
-}
 
 function ON_DRIVER_EARLY_INIT.main()
     C4:AddVariable("Temp0", 0, "NUMBER")
